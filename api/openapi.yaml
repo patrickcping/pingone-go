@@ -7,12 +7,18 @@ externalDocs:
   description: PingOne Platform API Reference
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/
 servers:
-- description: PingOne EU
+- description: PingOne EU API
   url: https://api.pingone.eu
-- description: PingOne US
+- description: PingOne US API
   url: https://api.pingone.com
-- description: PingOne APAC
-  url: https://api.pingone.au
+- description: PingOne APAC API
+  url: https://api.pingone.asia
+- description: PingOne EU AUTH
+  url: https://auth.pingone.eu
+- description: PingOne US AUTH
+  url: https://auth.pingone.com
+- description: PingOne APAC AUTH
+  url: https://auth.pingone.asia
 security:
 - oauth: []
 tags:
