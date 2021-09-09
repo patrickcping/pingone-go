@@ -5,14 +5,14 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1EnvironmentsEnvIDUsersUserIDSessionsGet**](ManagementAPIsUsersSessionsApi.md#V1EnvironmentsEnvIDUsersUserIDSessionsGet) | **Get** /v1/environments/{envID}/users/{userID}/sessions | READ All Sessions
-[**V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete**](ManagementAPIsUsersSessionsApi.md#V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete) | **Delete** /v1/environments/{envID}/users/{userID}/sessions{sessionID} | DELETE Session
-[**V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet**](ManagementAPIsUsersSessionsApi.md#V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet) | **Get** /v1/environments/{envID}/users/{userID}/sessions{sessionID} | READ One Session
+[**V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete**](ManagementAPIsUsersSessionsApi.md#V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete) | **Delete** /v1/environments/{envID}/users/{userID}/sessions/{sessionID} | DELETE Session
+[**V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet**](ManagementAPIsUsersSessionsApi.md#V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet) | **Get** /v1/environments/{envID}/users/{userID}/sessions/{sessionID} | READ One Session
 
 
 
 ## V1EnvironmentsEnvIDUsersUserIDSessionsGet
 
-> V1EnvironmentsEnvIDUsersUserIDSessionsGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDSessionsGet(ctx, envID, userID).Execute()
 
 READ All Sessions
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -83,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete
+## V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete(ctx, envID, userID, sessionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(ctx, envID, userID, sessionID).Execute()
 
 DELETE Session
 
@@ -107,13 +105,12 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     sessionID := "sessionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete(context.Background(), envID, userID, sessionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(context.Background(), envID, userID, sessionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionssessionIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -131,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDSessionssessionIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -159,9 +155,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet
+## V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet(ctx, envID, userID, sessionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(ctx, envID, userID, sessionID).Execute()
 
 READ One Session
 
@@ -183,13 +179,12 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     sessionID := "sessionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet(context.Background(), envID, userID, sessionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(context.Background(), envID, userID, sessionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionssessionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -207,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDSessionssessionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -215,7 +210,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -223,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

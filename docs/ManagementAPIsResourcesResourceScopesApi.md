@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDResourcesResourceIDScopesGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesGet(ctx, envID, resourceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDScopesGet(ctx, envID, resourceID).Execute()
 
 READ All Scopes (Resource)
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesGet(context.Background(), envID, resourceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesGet(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDScopesPost
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesPost(ctx, envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDScopesPost(ctx, envID, resourceID).ContentType(contentType).Body(body).Execute()
 
 CREATE PingOne access control scope
 
@@ -109,12 +107,11 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesPost(context.Background(), envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesPost(context.Background(), envID, resourceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(ctx, envID, resourceID, scopeID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(ctx, envID, resourceID, scopeID).Execute()
 
 DELETE Scope
 
@@ -186,11 +182,10 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     scopeID := "scopeID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(context.Background(), envID, resourceID, scopeID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +213,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -226,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -240,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(ctx, envID, resourceID, scopeID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(ctx, envID, resourceID, scopeID).Execute()
 
 READ One Scope
 
@@ -262,11 +256,10 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     scopeID := "scopeID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(context.Background(), envID, resourceID, scopeID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,7 +287,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -302,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -316,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(ctx, envID, resourceID, scopeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(ctx, envID, resourceID, scopeID).ContentType(contentType).Body(body).Execute()
 
 UPDATE PingOne access control scope
 
@@ -339,12 +331,11 @@ func main() {
     resourceID := "resourceID_example" // string | 
     scopeID := "scopeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(context.Background(), envID, resourceID, scopeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(context.Background(), envID, resourceID, scopeID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDCustomDomainsDomIDDelete
 
-> V1EnvironmentsEnvIDCustomDomainsDomIDDelete(ctx, envID, domID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCustomDomainsDomIDDelete(ctx, envID, domID).Execute()
 
 DELETE Domain
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     domID := "domID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete(context.Background(), envID, domID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete(context.Background(), envID, domID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCustomDomainsDomIDGet
 
-> V1EnvironmentsEnvIDCustomDomainsDomIDGet(ctx, envID, domID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCustomDomainsDomIDGet(ctx, envID, domID).Execute()
 
 READ One Domain
 
@@ -108,11 +106,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     domID := "domID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet(context.Background(), envID, domID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet(context.Background(), envID, domID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,7 +135,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -146,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -160,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCustomDomainsDomIDPost
 
-> V1EnvironmentsEnvIDCustomDomainsDomIDPost(ctx, envID, domID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDCustomDomainsDomIDPost(ctx, envID, domID).ContentType(contentType).Body(body).Execute()
 
 Import Certificate
 
@@ -182,12 +178,11 @@ func main() {
     envID := "envID_example" // string | 
     domID := "domID_example" // string | 
     contentType := "application/vnd.pingidentity.certificate.import+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost(context.Background(), envID, domID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost(context.Background(), envID, domID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,7 +209,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -223,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -237,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCustomDomainsGet
 
-> V1EnvironmentsEnvIDCustomDomainsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCustomDomainsGet(ctx, envID).Execute()
 
 READ All Domains
 
@@ -257,11 +251,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,7 +278,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDCustomD
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -293,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -307,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCustomDomainsPost
 
-> V1EnvironmentsEnvIDCustomDomainsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDCustomDomainsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Domain
 
@@ -328,12 +320,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +349,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

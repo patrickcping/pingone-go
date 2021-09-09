@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet
 
-> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(ctx, envID, userID).Execute()
 
 READ Linked Accounts
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -85,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(ctx, envID, userID, linkedAccountID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(ctx, envID, userID, linkedAccountID).Execute()
 
 DELETE Linked Account
 
@@ -107,11 +105,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     linkedAccountID := "linkedAccountID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(context.Background(), envID, userID, linkedAccountID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(context.Background(), envID, userID, linkedAccountID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -161,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(ctx, envID, userID, linkedAccountID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(ctx, envID, userID, linkedAccountID).Execute()
 
 READ One Linked Account
 
@@ -183,11 +179,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     linkedAccountID := "linkedAccountID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(context.Background(), envID, userID, linkedAccountID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(context.Background(), envID, userID, linkedAccountID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,7 +210,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -223,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

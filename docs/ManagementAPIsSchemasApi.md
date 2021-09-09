@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDSchemasGet
 
-> V1EnvironmentsEnvIDSchemasGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSchemasGet(ctx, envID).Execute()
 
 READ All Schemas
 
@@ -37,11 +37,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDSchemas
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete(ctx, envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete(ctx, envID, schemaID, attributeID).ContentType(contentType).Execute()
 
 DELETE Attribute
 
@@ -110,11 +108,10 @@ func main() {
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +140,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -151,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -165,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet(ctx, envID, schemaID, attributeID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet(ctx, envID, schemaID, attributeID).Execute()
 
 READ One Attribute
 
@@ -187,11 +183,10 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet(context.Background(), envID, schemaID, attributeID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet(context.Background(), envID, schemaID, attributeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,7 +214,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -227,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -241,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch(ctx, envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch(ctx, envID, schemaID, attributeID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Attribute (Patch)
 
@@ -264,12 +258,11 @@ func main() {
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,7 +291,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -307,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -321,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut(ctx, envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut(ctx, envID, schemaID, attributeID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Attribute (Put)
 
@@ -344,12 +336,11 @@ func main() {
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -378,7 +369,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -387,7 +377,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -401,7 +391,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet(ctx, envID, schemaID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet(ctx, envID, schemaID).Execute()
 
 READ All (Schema) Attributes
 
@@ -422,11 +412,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet(context.Background(), envID, schemaID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet(context.Background(), envID, schemaID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -452,7 +441,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -460,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -474,7 +462,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost
 
-> V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost(ctx, envID, schemaID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost(ctx, envID, schemaID).ContentType(contentType).Body(body).Execute()
 
 CREATE Attribute
 
@@ -496,12 +484,11 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost(context.Background(), envID, schemaID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost(context.Background(), envID, schemaID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDAttributesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -528,7 +515,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -537,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -551,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSchemasSchemaIDGet
 
-> V1EnvironmentsEnvIDSchemasSchemaIDGet(ctx, envID, schemaID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSchemasSchemaIDGet(ctx, envID, schemaID).Execute()
 
 READ One Schema
 
@@ -572,11 +558,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDGet(context.Background(), envID, schemaID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDGet(context.Background(), envID, schemaID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.V1EnvironmentsEnvIDSchemasSchemaIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -602,7 +587,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -610,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

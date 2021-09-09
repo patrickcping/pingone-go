@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDSubscriptionsGet
 
-> V1EnvironmentsEnvIDSubscriptionsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSubscriptionsGet(ctx, envID).Execute()
 
 READ All Subscriptions
 
@@ -34,11 +34,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +61,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDSubscri
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -70,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -84,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSubscriptionsPost
 
-> V1EnvironmentsEnvIDSubscriptionsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSubscriptionsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Subscriptions
 
@@ -105,12 +103,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,7 +132,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -158,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete
 
-> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(ctx, envID, subscriptionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(ctx, envID, subscriptionID).Execute()
 
 DELETE Subscription
 
@@ -179,11 +175,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     subscriptionID := "subscriptionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(context.Background(), envID, subscriptionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(context.Background(), envID, subscriptionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +204,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet
 
-> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(ctx, envID, subscriptionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(ctx, envID, subscriptionID).Execute()
 
 READ One Subscription
 
@@ -252,11 +246,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     subscriptionID := "subscriptionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(context.Background(), envID, subscriptionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(context.Background(), envID, subscriptionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +275,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -290,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -304,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut
 
-> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(ctx, envID, subscriptionID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(ctx, envID, subscriptionID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Subscription
 
@@ -326,12 +318,11 @@ func main() {
     envID := "envID_example" // string | 
     subscriptionID := "subscriptionID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(context.Background(), envID, subscriptionID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(context.Background(), envID, subscriptionID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +349,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

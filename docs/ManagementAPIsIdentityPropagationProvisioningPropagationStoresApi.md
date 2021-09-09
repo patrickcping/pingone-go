@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost
 
-> V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 TEST Connection Configuration
 
@@ -36,12 +36,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/vnd.pingidentity.connection.check+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -75,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -89,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresGet
 
-> V1EnvironmentsEnvIDPropagationStoresGet(ctx, envID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationStoresGet(ctx, envID).Accept(accept).Execute()
 
 READ All Stores
 
@@ -110,11 +108,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet(context.Background(), envID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet(context.Background(), envID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -161,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresPost
 
-> V1EnvironmentsEnvIDPropagationStoresPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationStoresPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Store (Aquera)
 
@@ -182,12 +178,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,7 +207,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -221,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -235,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresStoreIDDelete
 
-> V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(ctx, envID, storeID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(ctx, envID, storeID).Accept(accept).Execute()
 
 DELETE Store
 
@@ -257,11 +251,10 @@ func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(context.Background(), envID, storeID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(context.Background(), envID, storeID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,7 +281,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -296,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -310,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresStoreIDGet
 
-> V1EnvironmentsEnvIDPropagationStoresStoreIDGet(ctx, envID, storeID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationStoresStoreIDGet(ctx, envID, storeID).Accept(accept).Execute()
 
 READ One Store
 
@@ -332,11 +324,10 @@ func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet(context.Background(), envID, storeID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet(context.Background(), envID, storeID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +354,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -371,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -385,7 +375,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresStoreIDPut
 
-> V1EnvironmentsEnvIDPropagationStoresStoreIDPut(ctx, envID, storeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationStoresStoreIDPut(ctx, envID, storeID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Store
 
@@ -407,12 +397,11 @@ func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -439,7 +428,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -448,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

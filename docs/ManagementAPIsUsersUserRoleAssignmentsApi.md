@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet
 
-> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet(ctx, envID, userID).Execute()
 
 READ Role Assignments
 
@@ -34,11 +34,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +63,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -72,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -86,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost
 
-> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
 
 CREATE User Role Assignment
 
@@ -108,12 +106,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -149,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -163,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete(ctx, envID, userID, roleAssignmentID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete(ctx, envID, userID, roleAssignmentID).Execute()
 
 DELETE User's Role Assignment
 
@@ -185,11 +181,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     roleAssignmentID := "roleAssignmentID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete(context.Background(), envID, userID, roleAssignmentID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete(context.Background(), envID, userID, roleAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +212,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -239,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet(ctx, envID, userID, roleAssignmentID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet(ctx, envID, userID, roleAssignmentID).Execute()
 
 READ One Role Assignment
 
@@ -261,11 +255,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     roleAssignmentID := "roleAssignmentID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet(context.Background(), envID, userID, roleAssignmentID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet(context.Background(), envID, userID, roleAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.V1EnvironmentsEnvIDUsersUserIDRoleAssignmentsRoleAssignmentIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,7 +286,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -301,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

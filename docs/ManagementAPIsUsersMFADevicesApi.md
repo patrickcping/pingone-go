@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDelete
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDelete(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDelete(ctx, envID, userID).ContentType(contentType).Execute()
 
 DELETE Device Order
 
@@ -39,11 +39,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.devices.order.remove+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete(context.Background(), envID, userID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +69,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -78,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -92,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(ctx, envID, userID, deviceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(ctx, envID, userID, deviceID).Execute()
 
 DELETE MFA User Device
 
@@ -114,11 +112,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(context.Background(), envID, userID, deviceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(context.Background(), envID, userID, deviceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,7 +143,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -154,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -168,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(ctx, envID, userID, deviceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(ctx, envID, userID, deviceID).Execute()
 
 READ One MFA User Device
 
@@ -190,11 +186,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(context.Background(), envID, userID, deviceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(context.Background(), envID, userID, deviceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -222,7 +217,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -230,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -308,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -386,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -400,7 +394,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(ctx, envID, userID, deviceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(ctx, envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
 
 ACTIVATE MFA User Device
 
@@ -423,12 +417,11 @@ func main() {
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
     contentType := "application/vnd.pingidentity.device.activate+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(context.Background(), envID, userID, deviceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -457,7 +450,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -466,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -480,7 +472,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesGet
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesGet(ctx, envID, userID).Execute()
 
 READ All MFA User Devices
 
@@ -501,11 +493,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -531,7 +522,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -539,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -553,7 +543,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesPost
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
 
 SET Device Order
 
@@ -575,12 +565,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.devices.reorder+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -607,7 +596,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -616,7 +604,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

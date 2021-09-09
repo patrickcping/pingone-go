@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDPost
 
-> V1EnvironmentsEnvIDUsersUserIDPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPost(ctx, envID, userID).ContentType(contentType).Execute()
 
 User Account Unlock
 
@@ -32,11 +32,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.account.unlock+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAccountsApi.V1EnvironmentsEnvIDUsersUserIDPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserAccountsApi.V1EnvironmentsEnvIDUsersUserIDPost(context.Background(), envID, userID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAccountsApi.V1EnvironmentsEnvIDUsersUserIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

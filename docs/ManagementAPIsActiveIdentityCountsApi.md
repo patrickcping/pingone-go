@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDActiveIdentityCountsGet
 
-> V1EnvironmentsEnvIDActiveIdentityCountsGet(ctx, envID).Authorization(authorization).Filter(filter).Limit(limit).Order(order).Execute()
+> V1EnvironmentsEnvIDActiveIdentityCountsGet(ctx, envID).Filter(filter).Limit(limit).Order(order).Execute()
 
 READ Active Identity Counts (Deprecated)
 
@@ -32,14 +32,13 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "startDate ge "2019-05-01T19:00:00Z" and samplingPeriod eq "10"" // string |  (optional)
     limit := int32(10) // int32 |  (optional)
     order := "-startDate" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet(context.Background(), envID).Authorization(authorization).Filter(filter).Limit(limit).Order(order).Execute()
+    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDActiveI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
  **order** | **string** |  | 
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet
 
-> V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(ctx, envID).Authorization(authorization).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+> V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(ctx, envID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
 
 READ Active Identity Counts by Date Range
 
@@ -108,7 +106,6 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "startDate ge "2020-05-01T19:00:00Z"" // string |  (optional)
     limit := int32(10) // int32 |  (optional)
     order := "-startDate" // string |  (optional)
@@ -116,7 +113,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(context.Background(), envID).Authorization(authorization).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMetrics
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
  **order** | **string** |  | 
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -166,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet
 
-> V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(ctx, orgID, licenseID).ERRORUNKNOWN(eRRORUNKNOWN).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+> V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(ctx, orgID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
 
 READ Active Identity Counts by License
 
@@ -187,14 +183,13 @@ import (
 func main() {
     orgID := "orgID_example" // string | 
     licenseID := "licenseID_example" // string | 
-    eRRORUNKNOWN := "eRRORUNKNOWN_example" // string |  (optional)
     aggregatedBy := "calendarMonth" // string |  (optional)
     limit := int32(20) // int32 |  (optional)
     order := "-startDate" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(context.Background(), orgID, licenseID).ERRORUNKNOWN(eRRORUNKNOWN).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(context.Background(), orgID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +215,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **eRRORUNKNOWN** | **string** |  | 
  **aggregatedBy** | **string** |  | 
  **limit** | **int32** |  | 
  **order** | **string** |  | 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDImagesImgIDDelete
 
-> V1EnvironmentsEnvIDImagesImgIDDelete(ctx, envID, imgID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDImagesImgIDDelete(ctx, envID, imgID).Execute()
 
 DELETE Image
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     imgID := "imgID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDDelete(context.Background(), envID, imgID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDDelete(context.Background(), envID, imgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -85,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDImagesImgIDGet
 
-> V1EnvironmentsEnvIDImagesImgIDGet(ctx, envID, imgID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDImagesImgIDGet(ctx, envID, imgID).Execute()
 
 READ Image
 
@@ -106,11 +104,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     imgID := "imgID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDGet(context.Background(), envID, imgID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDGet(context.Background(), envID, imgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesImgIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -158,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDImagesPost
 
-> V1EnvironmentsEnvIDImagesPost(ctx, envID).ContentType(contentType).ContentDisposition(contentDisposition).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDImagesPost(ctx, envID).ContentType(contentType).ContentDisposition(contentDisposition).Execute()
 
 CREATE Image
 
@@ -180,11 +176,10 @@ func main() {
     envID := "envID_example" // string | 
     contentType := "image/jpeg" // string |  (optional)
     contentDisposition := "attachment; filename=name.jpg" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesPost(context.Background(), envID).ContentType(contentType).ContentDisposition(contentDisposition).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesPost(context.Background(), envID).ContentType(contentType).ContentDisposition(contentDisposition).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsImagesApi.V1EnvironmentsEnvIDImagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -210,7 +205,6 @@ Name | Type | Description  | Notes
 
  **contentType** | **string** |  | 
  **contentDisposition** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -218,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

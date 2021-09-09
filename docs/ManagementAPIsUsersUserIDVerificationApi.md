@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet(ctx, envID, userID).Execute()
 
 READ All ID Verification Transaction Records for a User
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost(ctx, envID, userID).ContentType(contentType).Execute()
 
 CREATE ID Verification Transaction Record for a User
 
@@ -109,11 +107,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost(context.Background(), envID, userID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -148,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -162,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete(ctx, envID, userID, transactionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete(ctx, envID, userID, transactionID).Execute()
 
 DELETE ID Verification Transaction Record for a User
 
@@ -184,11 +180,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     transactionID := "transactionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), envID, userID, transactionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), envID, userID, transactionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,7 +211,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -224,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -238,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet(ctx, envID, userID, transactionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet(ctx, envID, userID, transactionID).Execute()
 
 READ ID Verification Transaction Record for a User
 
@@ -260,11 +254,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     transactionID := "transactionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), envID, userID, transactionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), envID, userID, transactionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,7 +285,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -300,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -314,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut(ctx, envID, userID, transactionID).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut(ctx, envID, userID, transactionID).Body(body).Execute()
 
 UPDATE ID Verification Transaction Record for a User
 
@@ -336,12 +328,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     transactionID := "transactionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), envID, userID, transactionID).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), envID, userID, transactionID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserIDVerificationApi.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsTransactionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -369,7 +360,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -378,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

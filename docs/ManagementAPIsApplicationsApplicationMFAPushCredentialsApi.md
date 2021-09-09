@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet(ctx, envID, appID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet(ctx, envID, appID).Execute()
 
 READ All MFA Push Credentials
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet(context.Background(), envID, appID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost
 
-> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost(ctx, envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
 
 CREATE MFA Push Credential (FCM)
 
@@ -109,12 +107,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost(context.Background(), envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -226,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -240,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet(ctx, envID, appID, pushCredID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet(ctx, envID, appID, pushCredID).Execute()
 
 READ One MFA Push Credential
 
@@ -262,11 +258,10 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet(context.Background(), envID, appID, pushCredID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet(context.Background(), envID, appID, pushCredID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,7 +289,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -302,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -316,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut(ctx, envID, appID, pushCredID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut(ctx, envID, appID, pushCredID).ContentType(contentType).Body(body).Execute()
 
 UPDATE MFA Push Credential
 
@@ -339,12 +333,11 @@ func main() {
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut(context.Background(), envID, appID, pushCredID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut(context.Background(), envID, appID, pushCredID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +366,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

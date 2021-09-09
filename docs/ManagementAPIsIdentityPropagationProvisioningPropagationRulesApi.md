@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet
 
-> V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(ctx, envID, planID).Accept(accept).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(ctx, envID, planID).Accept(accept).ContentType(contentType).Execute()
 
 READ One Plan's Rules
 
@@ -38,11 +38,10 @@ func main() {
     planID := "planID_example" // string | 
     accept := "application/json" // string |  (optional)
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(context.Background(), envID, planID).Accept(accept).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(context.Background(), envID, planID).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +69,6 @@ Name | Type | Description  | Notes
 
  **accept** | **string** |  | 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -78,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -150,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRulesPost
 
-> V1EnvironmentsEnvIDPropagationRulesPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationRulesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Rule
 
@@ -185,12 +183,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,7 +212,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -224,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -238,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRulesRuleIDDelete
 
-> V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(ctx, envID, ruleID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(ctx, envID, ruleID).Accept(accept).Execute()
 
 DELETE Rule
 
@@ -260,11 +256,10 @@ func main() {
     envID := "envID_example" // string | 
     ruleID := "ruleID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(context.Background(), envID, ruleID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(context.Background(), envID, ruleID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,7 +286,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -299,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -313,7 +307,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRulesRuleIDGet
 
-> V1EnvironmentsEnvIDPropagationRulesRuleIDGet(ctx, envID, ruleID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationRulesRuleIDGet(ctx, envID, ruleID).Accept(accept).Execute()
 
 READ One Rule
 
@@ -335,11 +329,10 @@ func main() {
     envID := "envID_example" // string | 
     ruleID := "ruleID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDGet(context.Background(), envID, ruleID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDGet(context.Background(), envID, ruleID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesRuleIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,7 +359,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -374,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -388,7 +380,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRulesStoreIDPut
 
-> V1EnvironmentsEnvIDPropagationRulesStoreIDPut(ctx, envID, storeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationRulesStoreIDPut(ctx, envID, storeID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Rule
 
@@ -410,12 +402,11 @@ func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesStoreIDPut(context.Background(), envID, storeID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesStoreIDPut(context.Background(), envID, storeID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi.V1EnvironmentsEnvIDPropagationRulesStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -442,7 +433,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -451,7 +441,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

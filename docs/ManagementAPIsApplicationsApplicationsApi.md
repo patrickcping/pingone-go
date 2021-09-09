@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDApplicationsAppDDelete
 
-> V1EnvironmentsEnvIDApplicationsAppDDelete(ctx, envID, appD).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppDDelete(ctx, envID, appD).ContentType(contentType).Execute()
 
 DELETE Application
 
@@ -36,11 +36,10 @@ func main() {
     envID := "envID_example" // string | 
     appD := "appD_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppDDelete(context.Background(), envID, appD).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppDDelete(context.Background(), envID, appD).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +66,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -75,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -89,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDGet(ctx, envID, appID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGet(ctx, envID, appID).Execute()
 
 READ One Application
 
@@ -110,11 +108,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDGet(context.Background(), envID, appID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDGet(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -148,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -162,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDPut(ctx, envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDPut(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Application (SAML)
 
@@ -184,12 +180,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDPut(context.Background(), envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDPut(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,7 +211,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -239,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsGet
 
-> V1EnvironmentsEnvIDApplicationsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsGet(ctx, envID).Execute()
 
 READ All Applications
 
@@ -259,11 +253,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,7 +280,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplica
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -295,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -309,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsPost
 
-> V1EnvironmentsEnvIDApplicationsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Application (SAML Protocol)
 
@@ -330,12 +322,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,7 +351,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -369,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

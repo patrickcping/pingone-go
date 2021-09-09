@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete(ctx, envID, gatewayID, credentialID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete(ctx, envID, gatewayID, credentialID).Execute()
 
 DELETE Gateway Credentials
 
@@ -33,11 +33,10 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     credentialID := "credentialID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete(context.Background(), envID, gatewayID, credentialID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete(context.Background(), envID, gatewayID, credentialID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(ctx, envID, gatewayID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(ctx, envID, gatewayID).ContentType(contentType).Execute()
 
 CREATE Gateway Credentials
 
@@ -109,11 +107,10 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(context.Background(), envID, gatewayID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(context.Background(), envID, gatewayID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -148,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

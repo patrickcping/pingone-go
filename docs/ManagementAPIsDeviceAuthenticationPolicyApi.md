@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut
 
-> V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(ctx, envID, deviceAuthPolicyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(ctx, envID, deviceAuthPolicyID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Device Authentication Policy
 
@@ -33,12 +33,11 @@ func main() {
     envID := "envID_example" // string | 
     deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet
 
-> V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(ctx, envID).Execute()
 
 READ Device Authentication Policy
 
@@ -108,11 +106,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDDeviceA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

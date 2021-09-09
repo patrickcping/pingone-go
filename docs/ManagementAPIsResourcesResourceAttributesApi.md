@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesGet(ctx, envID, resourceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesGet(ctx, envID, resourceID).Execute()
 
 READ All Resource Attributes
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesGet(context.Background(), envID, resourceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesGet(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesPost
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(ctx, envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(ctx, envID, resourceID).ContentType(contentType).Body(body).Execute()
 
 CREATE Resource Attribute
 
@@ -109,12 +107,11 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(context.Background(), envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(context.Background(), envID, resourceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete(ctx, envID, resourceID, resourceAttrID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete(ctx, envID, resourceID, resourceAttrID).Execute()
 
 DELETE Resource Attribute
 
@@ -186,11 +182,10 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     resourceAttrID := "resourceAttrID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete(context.Background(), envID, resourceID, resourceAttrID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete(context.Background(), envID, resourceID, resourceAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +213,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -226,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -240,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet(ctx, envID, resourceID, resourceAttrID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet(ctx, envID, resourceID, resourceAttrID).Execute()
 
 READ One Resource Attribute
 
@@ -262,11 +256,10 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     resourceAttrID := "resourceAttrID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet(context.Background(), envID, resourceID, resourceAttrID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet(context.Background(), envID, resourceID, resourceAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,7 +287,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -302,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -316,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(ctx, envID, resourceID, resourceAttrID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(ctx, envID, resourceID, resourceAttrID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Resource Attribute
 
@@ -339,12 +331,11 @@ func main() {
     resourceID := "resourceID_example" // string | 
     resourceAttrID := "resourceAttrID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(context.Background(), envID, resourceID, resourceAttrID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(context.Background(), envID, resourceID, resourceAttrID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

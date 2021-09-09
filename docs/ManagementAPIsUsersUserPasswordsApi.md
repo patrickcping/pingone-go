@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDPasswordGet
 
-> V1EnvironmentsEnvIDUsersUserIDPasswordGet(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPasswordGet(ctx, envID, userID).ContentType(contentType).Execute()
 
 READ Password State
 
@@ -34,11 +34,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPasswordPost
 
-> V1EnvironmentsEnvIDUsersUserIDPasswordPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPasswordPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
 
 Password Locked Out
 
@@ -109,12 +107,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.password.recover+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPasswordPut
 
-> V1EnvironmentsEnvIDUsersUserIDPasswordPut(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPasswordPut(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Password (Set)
 
@@ -186,12 +182,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.password.set+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +213,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -227,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

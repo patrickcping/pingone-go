@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDActivitiesActivityIDGet
 
-> V1EnvironmentsEnvIDActivitiesActivityIDGet(ctx, envID, activityID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDActivitiesActivityIDGet(ctx, envID, activityID).Execute()
 
 GET One User Activity
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     activityID := "activityID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesActivityIDGet(context.Background(), envID, activityID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesActivityIDGet(context.Background(), envID, activityID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesActivityIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -85,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDActivitiesGet
 
-> V1EnvironmentsEnvIDActivitiesGet(ctx, envID).Authorization(authorization).Filter(filter).Execute()
+> V1EnvironmentsEnvIDActivitiesGet(ctx, envID).Filter(filter).Execute()
 
 GET User Activities
 
@@ -105,12 +103,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "recordedat gt "2018-08-20T00:00:00Z" AND recordedat lt "2018-08-22T23:59:00Z"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesGet(context.Background(), envID).Authorization(authorization).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesGet(context.Background(), envID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +131,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDActivit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
 
 ### Return type
@@ -143,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -157,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDActivitiesPost
 
-> V1EnvironmentsEnvIDActivitiesPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDActivitiesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 GET User Activities
 
@@ -178,12 +174,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,7 +203,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

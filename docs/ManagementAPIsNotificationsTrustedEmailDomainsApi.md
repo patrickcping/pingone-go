@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete
 
-> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(ctx, envID, emailDomainId).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(ctx, envID, emailDomainId).Execute()
 
 DELETE Trusted Email Domain
 
@@ -37,11 +37,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     emailDomainId := "emailDomainId_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(context.Background(), envID, emailDomainId).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +66,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -75,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -89,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet
 
-> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(ctx, envID, emailDomainId).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(ctx, envID, emailDomainId).Execute()
 
 READ Trusted Email Domain DKIM Status
 
@@ -110,11 +108,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     emailDomainId := "emailDomainId_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(context.Background(), envID, emailDomainId).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +137,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -148,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -162,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet
 
-> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(ctx, envID, emailDomainId).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(ctx, envID, emailDomainId).Execute()
 
 READ One Trusted Email Domain
 
@@ -183,11 +179,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     emailDomainId := "emailDomainId_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(context.Background(), envID, emailDomainId).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,7 +208,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -221,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -235,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet
 
-> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(ctx, envID, emailDomainId).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(ctx, envID, emailDomainId).Execute()
 
 READ Trusted Email Domain Ownership Status
 
@@ -256,11 +250,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     emailDomainId := "emailDomainId_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(context.Background(), envID, emailDomainId).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,7 +279,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -294,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -308,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet
 
-> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(ctx, envID, emailDomainId).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(ctx, envID, emailDomainId).Execute()
 
 READ Trusted Email Domain SPF Status
 
@@ -329,11 +321,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     emailDomainId := "emailDomainId_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(context.Background(), envID, emailDomainId).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,7 +350,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -381,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsGet
 
-> V1EnvironmentsEnvIDEmailDomainsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDEmailDomainsGet(ctx, envID).Execute()
 
 READ All Trusted Email Domains
 
@@ -401,11 +391,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,7 +418,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDEmailDo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -437,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -451,7 +439,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEmailDomainsPost
 
-> V1EnvironmentsEnvIDEmailDomainsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDEmailDomainsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Trusted Email Domain
 
@@ -472,12 +460,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -502,7 +489,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -511,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

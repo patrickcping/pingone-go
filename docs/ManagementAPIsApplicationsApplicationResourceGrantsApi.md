@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGet(ctx, envID, appID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsGet(ctx, envID, appID).Execute()
 
 READ All Grants for an Application
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGet(context.Background(), envID, appID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGet(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(ctx, envID, appID, grantID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(ctx, envID, appID, grantID).Execute()
 
 DELETE Grant
 
@@ -109,11 +107,10 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(context.Background(), envID, appID, grantID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(context.Background(), envID, appID, grantID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -149,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -163,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(ctx, envID, appID, grantID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(ctx, envID, appID, grantID).Execute()
 
 READ One Grant for an Application
 
@@ -185,11 +181,10 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(context.Background(), envID, appID, grantID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(context.Background(), envID, appID, grantID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +212,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -239,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx, envID, appID, grantID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx, envID, appID, grantID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Grant
 
@@ -262,12 +256,11 @@ func main() {
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(context.Background(), envID, appID, grantID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(context.Background(), envID, appID, grantID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,7 +289,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -305,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -319,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsPost
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsPost(ctx, envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
 
 CREATE Grant
 
@@ -341,12 +333,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsPost(context.Background(), envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

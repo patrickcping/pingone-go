@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx, envID, userID, pairingKeyID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx, envID, userID, pairingKeyID).Execute()
 
 DELETE MFA Pairing Key
 
@@ -34,11 +34,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     pairingKeyID := "pairingKeyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), envID, userID, pairingKeyID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), envID, userID, pairingKeyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, envID, userID, pairingKeyID).Authorization(authorization).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, envID, userID, pairingKeyID).ContentType(contentType).Execute()
 
 READ One MFA Pairing Key
 
@@ -110,12 +108,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     pairingKeyID := "pairingKeyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).Authorization(authorization).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +140,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
 
 ### Return type
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -166,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPairingKeysPost
 
-> V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx, envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
 
 CREATE MFA Pairing Key
 
@@ -188,12 +184,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +215,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -229,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

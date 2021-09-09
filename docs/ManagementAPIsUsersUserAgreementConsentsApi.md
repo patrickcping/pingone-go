@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(ctx, envID, userID, agreementID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(ctx, envID, userID, agreementID).Execute()
 
 READ One User Agreement Consent
 
@@ -34,11 +34,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), envID, userID, agreementID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), envID, userID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost
 
-> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(ctx, envID, userID, agreementID).Authorization(authorization).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(ctx, envID, userID, agreementID).ContentType(contentType).Execute()
 
 Revoke Agreement
 
@@ -110,12 +108,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     contentType := "application/vnd.pingidentity.consent.revoke+json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), envID, userID, agreementID).Authorization(authorization).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), envID, userID, agreementID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +140,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
 
 ### Return type
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -166,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet
 
-> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(ctx, envID, userID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(ctx, envID, userID).Execute()
 
 READ All User Agreement Consents
 
@@ -187,11 +183,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(context.Background(), envID, userID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +212,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

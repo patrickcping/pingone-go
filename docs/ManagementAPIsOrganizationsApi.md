@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1OrganizationsGet
 
-> V1OrganizationsGet(ctx).Authorization(authorization).Execute()
+> V1OrganizationsGet(ctx).Execute()
 
 READ All Organizations
 
@@ -30,11 +30,10 @@ import (
 )
 
 func main() {
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsOrganizationsApi.V1OrganizationsGet(context.Background()).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsOrganizationsApi.V1OrganizationsGet(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsOrganizationsApi.V1OrganizationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -44,16 +43,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiV1OrganizationsGetRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -61,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -75,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDGet
 
-> V1OrganizationsOrgIDGet(ctx, orgID).Authorization(authorization).Execute()
+> V1OrganizationsOrgIDGet(ctx, orgID).Execute()
 
 READ One Organization
 
@@ -95,11 +90,10 @@ import (
 
 func main() {
     orgID := "orgID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsOrganizationsApi.V1OrganizationsOrgIDGet(context.Background(), orgID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsOrganizationsApi.V1OrganizationsOrgIDGet(context.Background(), orgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsOrganizationsApi.V1OrganizationsOrgIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,7 +117,6 @@ Other parameters are passed through a pointer to a apiV1OrganizationsOrgIDGetReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -131,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

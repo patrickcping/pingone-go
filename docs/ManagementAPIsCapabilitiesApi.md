@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDCapabilitiesGet
 
-> V1EnvironmentsEnvIDCapabilitiesGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCapabilitiesGet(ctx, envID).Execute()
 
 READ Environment Capabilities
 
@@ -31,11 +31,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCapabilitiesApi.V1EnvironmentsEnvIDCapabilitiesGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCapabilitiesApi.V1EnvironmentsEnvIDCapabilitiesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCapabilitiesApi.V1EnvironmentsEnvIDCapabilitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDCapabil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -67,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -81,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDCapabilitiesGet
 
-> V1OrganizationsOrgIDCapabilitiesGet(ctx, orgID).Authorization(authorization).Execute()
+> V1OrganizationsOrgIDCapabilitiesGet(ctx, orgID).Execute()
 
 READ Organization Capabilities
 
@@ -101,11 +99,10 @@ import (
 
 func main() {
     orgID := "orgID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCapabilitiesApi.V1OrganizationsOrgIDCapabilitiesGet(context.Background(), orgID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCapabilitiesApi.V1OrganizationsOrgIDCapabilitiesGet(context.Background(), orgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCapabilitiesApi.V1OrganizationsOrgIDCapabilitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,7 +126,6 @@ Other parameters are passed through a pointer to a apiV1OrganizationsOrgIDCapabi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -137,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet
 
-> V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(ctx, envID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(ctx, envID).Accept(accept).Execute()
 
 READ Latest Revision
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(context.Background(), envID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(context.Background(), envID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +61,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -70,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -84,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRevisionsPost
 
-> V1EnvironmentsEnvIDPropagationRevisionsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationRevisionsPost(ctx, envID).ContentType(contentType).Execute()
 
 CREATE Revision
 
@@ -105,11 +103,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +131,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -142,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -156,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet
 
-> V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(ctx, envID, previousRevisionID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(ctx, envID, previousRevisionID).Accept(accept).Execute()
 
 READ Previous Revision
 
@@ -178,11 +174,10 @@ func main() {
     envID := "envID_example" // string | 
     previousRevisionID := "previousRevisionID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), envID, previousRevisionID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), envID, previousRevisionID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +204,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

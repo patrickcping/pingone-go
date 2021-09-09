@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDDelete
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDDelete(ctx, envID, gatewayID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDDelete(ctx, envID, gatewayID).Execute()
 
 DELETE Gateway
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDDelete(context.Background(), envID, gatewayID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDDelete(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDGet
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDGet(ctx, envID, gatewayID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDGet(ctx, envID, gatewayID).Execute()
 
 READ One Gateway
 
@@ -108,11 +106,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDGet(context.Background(), envID, gatewayID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDGet(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,7 +135,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -146,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -160,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDPut
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDPut(ctx, envID, gatewayID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDPut(ctx, envID, gatewayID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Gateway
 
@@ -182,12 +178,11 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut(context.Background(), envID, gatewayID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut(context.Background(), envID, gatewayID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,7 +209,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -223,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -237,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGet
 
-> V1EnvironmentsEnvIDGatewaysGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGet(ctx, envID).Execute()
 
 READ All Gateways
 
@@ -257,11 +251,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,7 +278,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGateway
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -293,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -307,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysPost
 
-> V1EnvironmentsEnvIDGatewaysPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Ping Federate Gateway
 
@@ -328,12 +320,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +349,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

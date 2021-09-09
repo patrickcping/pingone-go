@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDApplicationsAppIDAttributesGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(ctx, envID, appID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(ctx, envID, appID).Execute()
 
 READ All Application Attribute Mappings
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(context.Background(), envID, appID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDAttributesPost
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(ctx, envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
 
 CREATE Application Attribute Mapping
 
@@ -109,12 +107,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(context.Background(), envID, appID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(ctx, envID, appID, samlAttrID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(ctx, envID, appID, samlAttrID).Execute()
 
 DELETE Application Attribute Mapping
 
@@ -186,11 +182,10 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(context.Background(), envID, appID, samlAttrID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(context.Background(), envID, appID, samlAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +213,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -226,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -240,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(ctx, envID, appID, samlAttrID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(ctx, envID, appID, samlAttrID).Execute()
 
 READ One Application Attribute Mapping
 
@@ -262,11 +256,10 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(context.Background(), envID, appID, samlAttrID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(context.Background(), envID, appID, samlAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,7 +287,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -302,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -316,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(ctx, envID, appID, samlAttrID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(ctx, envID, appID, samlAttrID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Application Attribute Mapping
 
@@ -339,12 +331,11 @@ func main() {
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(context.Background(), envID, appID, samlAttrID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(context.Background(), envID, appID, samlAttrID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

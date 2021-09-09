@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet
 
-> V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(ctx, envID).Execute()
 
 READ Notifications Settings (SMTP)
 
@@ -31,11 +31,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDNotific
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -67,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -81,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut
 
-> V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Notifications Settings (SMTP)
 
@@ -102,12 +100,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +129,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -141,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

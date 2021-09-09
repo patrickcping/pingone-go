@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUserActivitiesGet
 
-> V1EnvironmentsEnvIDUserActivitiesGet(ctx, envID).Authorization(authorization).Filter(filter).Execute()
+> V1EnvironmentsEnvIDUserActivitiesGet(ctx, envID).Filter(filter).Execute()
 
 READ User Activities
 
@@ -30,12 +30,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "startDate eq "2018-02-17T09:10:12-04:00" and endDate eq "2018-02-23T09:10:12-04:00"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet(context.Background(), envID).Authorization(authorization).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet(context.Background(), envID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUserAct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
 
 ### Return type
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

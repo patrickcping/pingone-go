@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDApplicationSignonsGet
 
-> V1EnvironmentsEnvIDApplicationSignonsGet(ctx, envID).Authorization(authorization).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
+> V1EnvironmentsEnvIDApplicationSignonsGet(ctx, envID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
 
 READ Authentications Per Application (Partial)
 
@@ -30,7 +30,6 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     limit := int32(1) // int32 |  (optional)
     samplePeriod := int32(1) // int32 |  (optional)
     samplePeriodCount := int32(100) // int32 |  (optional)
@@ -38,7 +37,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet(context.Background(), envID).Authorization(authorization).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet(context.Background(), envID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +61,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplica
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **limit** | **int32** |  | 
  **samplePeriod** | **int32** |  | 
  **samplePeriodCount** | **int32** |  | 
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete(ctx, envID, gatewayID, gatewayRoleAssignmentsID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete(ctx, envID, gatewayID, gatewayRoleAssignmentsID).Execute()
 
 DELETE Gateway Role Assignment
 
@@ -36,11 +36,10 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     gatewayRoleAssignmentsID := "gatewayRoleAssignmentsID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,7 +67,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -76,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -90,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet(ctx, envID, gatewayID, gatewayRoleAssignmentsID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet(ctx, envID, gatewayID, gatewayRoleAssignmentsID).Execute()
 
 READ One Gateway Role Assignment
 
@@ -112,11 +110,10 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     gatewayRoleAssignmentsID := "gatewayRoleAssignmentsID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,7 +141,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -166,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(ctx, envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(ctx, envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Gateway Role Assignments
 
@@ -189,12 +185,11 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
     gatewayRoleAssignmentsID := "gatewayRoleAssignmentsID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -223,7 +218,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -232,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -246,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet(ctx, envID, gatewayID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet(ctx, envID, gatewayID).Execute()
 
 READ Gateway Role Assignments
 
@@ -267,11 +261,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet(context.Background(), envID, gatewayID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -297,7 +290,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -305,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -319,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(ctx, envID, gatewayID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(ctx, envID, gatewayID).ContentType(contentType).Body(body).Execute()
 
 CREATE Gateway Role Assignments
 
@@ -341,12 +333,11 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(context.Background(), envID, gatewayID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(context.Background(), envID, gatewayID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

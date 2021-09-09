@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDPropagationPlansGet
 
-> V1EnvironmentsEnvIDPropagationPlansGet(ctx, envID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationPlansGet(ctx, envID).Accept(accept).Execute()
 
 READ All Plans
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansGet(context.Background(), envID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansGet(context.Background(), envID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +63,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -72,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -86,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPlanIDDelete
 
-> V1EnvironmentsEnvIDPropagationPlansPlanIDDelete(ctx, envID, planID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPlanIDDelete(ctx, envID, planID).Accept(accept).Execute()
 
 DELETE Plan
 
@@ -108,11 +106,10 @@ func main() {
     envID := "envID_example" // string | 
     planID := "planID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDDelete(context.Background(), envID, planID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDDelete(context.Background(), envID, planID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -161,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPlanIDGet
 
-> V1EnvironmentsEnvIDPropagationPlansPlanIDGet(ctx, envID, planID).Accept(accept).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPlanIDGet(ctx, envID, planID).Accept(accept).Execute()
 
 READ One Plan
 
@@ -183,11 +179,10 @@ func main() {
     envID := "envID_example" // string | 
     planID := "planID_example" // string | 
     accept := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDGet(context.Background(), envID, planID).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDGet(context.Background(), envID, planID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,7 +209,6 @@ Name | Type | Description  | Notes
 
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -222,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -236,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPlanIDPut
 
-> V1EnvironmentsEnvIDPropagationPlansPlanIDPut(ctx, envID, planID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPlanIDPut(ctx, envID, planID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Plan
 
@@ -258,12 +252,11 @@ func main() {
     envID := "envID_example" // string | 
     planID := "planID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut(context.Background(), envID, planID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut(context.Background(), envID, planID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,7 +283,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -299,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -313,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPost
 
-> V1EnvironmentsEnvIDPropagationPlansPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Plan
 
@@ -334,12 +326,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -364,7 +355,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -373,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

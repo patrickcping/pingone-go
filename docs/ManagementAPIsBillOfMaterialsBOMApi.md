@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDBillOfMaterialsGet
 
-> V1EnvironmentsEnvIDBillOfMaterialsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDBillOfMaterialsGet(ctx, envID).Execute()
 
 READ One Bill of Materials
 
@@ -31,11 +31,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDBillOfM
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -67,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -81,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDBillOfMaterialsPut
 
-> V1EnvironmentsEnvIDBillOfMaterialsPut(ctx, envID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDBillOfMaterialsPut(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Bill of Materials
 
@@ -101,13 +99,12 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsPut(context.Background(), envID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsPut(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +128,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDBillOfM
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
@@ -141,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

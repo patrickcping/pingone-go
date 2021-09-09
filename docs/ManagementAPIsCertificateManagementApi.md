@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet
 
-> V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(ctx, envID, certID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(ctx, envID, certID).Execute()
 
 GET Certificate Applications
 
@@ -47,11 +47,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     certID := "certID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(context.Background(), envID, certID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -77,7 +76,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -85,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -99,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCertificatesCertIDDelete
 
-> V1EnvironmentsEnvIDCertificatesCertIDDelete(ctx, envID, certID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCertificatesCertIDDelete(ctx, envID, certID).Execute()
 
 DELETE Certificate
 
@@ -120,11 +118,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     certID := "certID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete(context.Background(), envID, certID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,7 +147,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -158,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -172,7 +168,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCertificatesCertIDGet
 
-> V1EnvironmentsEnvIDCertificatesCertIDGet(ctx, envID, certID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCertificatesCertIDGet(ctx, envID, certID).Execute()
 
 GET Certificate
 
@@ -193,11 +189,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     certID := "certID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet(context.Background(), envID, certID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -223,7 +218,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -245,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCertificatesGet
 
-> V1EnvironmentsEnvIDCertificatesGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDCertificatesGet(ctx, envID).Execute()
 
 GET Certificates
 
@@ -265,11 +259,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,7 +286,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDCertifi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -301,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -315,7 +307,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCertificatesPost
 
-> V1EnvironmentsEnvIDCertificatesPost(ctx, envID).ContentType(contentType).Authorization(authorization).UsageType(usageType).File(file).Execute()
+> V1EnvironmentsEnvIDCertificatesPost(ctx, envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
 
 CREATE Certificate with PKCS7 or PEM File
 
@@ -336,13 +328,12 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/x-pkcs7-certificates" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     usageType := "usageType_example" // string |  (optional)
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).UsageType(usageType).File(file).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,7 +358,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **usageType** | **string** |  | 
  **file** | ***os.File** |  | 
 
@@ -377,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -391,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDDecryptionsPost
 
-> V1EnvironmentsEnvIDDecryptionsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDDecryptionsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 DECRYPT Data
 
@@ -412,12 +402,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -442,7 +431,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -451,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -465,7 +453,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEncryptionsPost
 
-> V1EnvironmentsEnvIDEncryptionsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDEncryptionsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 ENCRYPT Data
 
@@ -486,12 +474,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -516,7 +503,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -525,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -539,7 +525,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysGet
 
-> V1EnvironmentsEnvIDKeysGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDKeysGet(ctx, envID).Execute()
 
 GET Keys
 
@@ -559,11 +545,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -587,7 +572,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDKeysGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -595,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -609,7 +593,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDApplicationsGet
 
-> V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(ctx, envID, keyID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(ctx, envID, keyID).Execute()
 
 GET Key Applications
 
@@ -630,11 +614,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(context.Background(), envID, keyID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(context.Background(), envID, keyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -660,7 +643,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -668,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -682,7 +664,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDCsrGet
 
-> V1EnvironmentsEnvIDKeysKeyIDCsrGet(ctx, envID, keyID).Authorization(authorization).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDCsrGet(ctx, envID, keyID).ContentType(contentType).Execute()
 
 Export a certificate signing request (CSR)
 
@@ -703,12 +685,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     contentType := "application/pkcs10" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet(context.Background(), envID, keyID).Authorization(authorization).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -734,7 +715,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
 
 ### Return type
@@ -743,7 +723,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -757,7 +737,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDCsrPut
 
-> V1EnvironmentsEnvIDKeysKeyIDCsrPut(ctx, envID, keyID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDCsrPut(ctx, envID, keyID).ContentType(contentType).Execute()
 
 Import Certificate Authority (CA) Response to a CSR
 
@@ -779,11 +759,10 @@ func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
     contentType := "application/x-pem-file" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut(context.Background(), envID, keyID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -810,7 +789,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -818,7 +796,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -832,7 +810,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDDelete
 
-> V1EnvironmentsEnvIDKeysKeyIDDelete(ctx, envID, keyID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDDelete(ctx, envID, keyID).Execute()
 
 DELETE Key
 
@@ -853,11 +831,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete(context.Background(), envID, keyID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete(context.Background(), envID, keyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -883,7 +860,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -891,7 +867,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -905,7 +881,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDGet
 
-> V1EnvironmentsEnvIDKeysKeyIDGet(ctx, envID, keyID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDGet(ctx, envID, keyID).ContentType(contentType).Execute()
 
 EXPORT Public Key (X509 PEM)
 
@@ -927,11 +903,10 @@ func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
     contentType := "application/x-pkcs7-certificates" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet(context.Background(), envID, keyID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -958,7 +933,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -966,7 +940,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -980,7 +954,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDPut
 
-> V1EnvironmentsEnvIDKeysKeyIDPut(ctx, envID, keyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDPut(ctx, envID, keyID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Key
 
@@ -1002,12 +976,11 @@ func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1034,7 +1007,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -1043,7 +1015,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -1057,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysPost
 
-> V1EnvironmentsEnvIDKeysPost(ctx, envID).ContentType(contentType).Authorization(authorization).UsageType(usageType).File(file).Execute()
+> V1EnvironmentsEnvIDKeysPost(ctx, envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
 
 CREATE Key with PKCS12 File
 
@@ -1078,13 +1050,12 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/x-pkcs12-certificates" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     usageType := "usageType_example" // string |  (optional)
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).UsageType(usageType).File(file).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1109,7 +1080,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **usageType** | **string** |  | 
  **file** | ***os.File** |  | 
 
@@ -1119,7 +1089,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -1133,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSigningsPost
 
-> V1EnvironmentsEnvIDSigningsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSigningsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 SIGN Data
 
@@ -1154,12 +1124,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1184,7 +1153,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -1193,7 +1161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -1207,7 +1175,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDVerificationsPost
 
-> V1EnvironmentsEnvIDVerificationsPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDVerificationsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 VERIFY Signed Data
 
@@ -1228,12 +1196,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1258,7 +1225,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -1267,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

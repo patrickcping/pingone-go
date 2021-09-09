@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet
 
-> V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet(ctx, envID, languageID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet(ctx, envID, languageID).Execute()
 
 READ Language Localization Status
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     languageID := "languageID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet(context.Background(), envID, languageID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet(context.Background(), envID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete
 
-> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete(ctx, envID, languageID, l10nStatusID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete(ctx, envID, languageID, l10nStatusID).Execute()
 
 DELETE Language Localization Status
 
@@ -109,11 +107,10 @@ func main() {
     envID := "envID_example" // string | 
     languageID := "languageID_example" // string | 
     l10nStatusID := "l10nStatusID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete(context.Background(), envID, languageID, l10nStatusID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete(context.Background(), envID, languageID, l10nStatusID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -149,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -163,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet
 
-> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet(ctx, envID, languageID, l10nStatusID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet(ctx, envID, languageID, l10nStatusID).Execute()
 
 READ One Language Localization Status
 
@@ -185,11 +181,10 @@ func main() {
     envID := "envID_example" // string | 
     languageID := "languageID_example" // string | 
     l10nStatusID := "l10nStatusID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet(context.Background(), envID, languageID, l10nStatusID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet(context.Background(), envID, languageID, l10nStatusID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +212,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -239,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut
 
-> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut(ctx, envID, languageID, l10nStatusID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut(ctx, envID, languageID, l10nStatusID).ContentType(contentType).Body(body).Execute()
 
 CREATE Language Localization Status
 
@@ -262,12 +256,11 @@ func main() {
     languageID := "languageID_example" // string | 
     l10nStatusID := "l10nStatusID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut(context.Background(), envID, languageID, l10nStatusID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut(context.Background(), envID, languageID, l10nStatusID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,7 +289,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -305,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -319,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost
 
-> V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost(ctx, envID, languageID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost(ctx, envID, languageID).ContentType(contentType).Body(body).Execute()
 
 CREATE Language Localization Status
 
@@ -341,12 +333,11 @@ func main() {
     envID := "envID_example" // string | 
     languageID := "languageID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost(context.Background(), envID, languageID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost(context.Background(), envID, languageID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguageLocalizationStatusApi.V1EnvironmentsEnvIDLanguagesLanguageIDStatusPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +364,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -382,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

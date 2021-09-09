@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDMfaSettingsDelete
 
-> V1EnvironmentsEnvIDMfaSettingsDelete(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDMfaSettingsDelete(ctx, envID).Execute()
 
 RESET MFA Settings
 
@@ -32,11 +32,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsDelete(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsDelete(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +59,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSett
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -82,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDMfaSettingsGet
 
-> V1EnvironmentsEnvIDMfaSettingsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDMfaSettingsGet(ctx, envID).Execute()
 
 READ MFA Settings
 
@@ -102,11 +100,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +127,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSett
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -138,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDMfaSettingsPut
 
-> V1EnvironmentsEnvIDMfaSettingsPut(ctx, envID).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDMfaSettingsPut(ctx, envID).Body(body).Execute()
 
 UPDATE MFA Settings
 
@@ -172,12 +168,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsPut(context.Background(), envID).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsPut(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsMFASettingsApi.V1EnvironmentsEnvIDMfaSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,7 +196,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSett
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -210,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

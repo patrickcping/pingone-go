@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDTemplatesGet
 
-> V1EnvironmentsEnvIDTemplatesGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDTemplatesGet(ctx, envID).Execute()
 
 READ All Templates
 
@@ -38,11 +38,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDTemplat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(ctx, envID, templateName, contentID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(ctx, envID, templateName, contentID).Execute()
 
 DELETE Content
 
@@ -110,11 +108,10 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(context.Background(), envID, templateName, contentID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(context.Background(), envID, templateName, contentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -142,7 +139,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -164,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(ctx, envID, templateName, contentID).ContentType(contentType).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(ctx, envID, templateName, contentID).ContentType(contentType).Execute()
 
 READ One Content
 
@@ -187,11 +183,10 @@ func main() {
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).ContentType(contentType).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +215,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -228,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -242,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(ctx, envID, templateName, contentID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(ctx, envID, templateName, contentID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Push Content
 
@@ -265,12 +259,11 @@ func main() {
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -299,7 +292,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -308,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -322,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(ctx, envID, templateName).Authorization(authorization).Filter(filter).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(ctx, envID, templateName).Filter(filter).Execute()
 
 DELETE Bulk Variant Contents
 
@@ -343,12 +335,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "variant eq {{variantName}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(context.Background(), envID, templateName).Authorization(authorization).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(context.Background(), envID, templateName).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,7 +365,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
 
 ### Return type
@@ -383,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -397,7 +387,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(ctx, envID, templateName).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(ctx, envID, templateName).Execute()
 
 READ All Contents
 
@@ -418,11 +408,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(context.Background(), envID, templateName).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(context.Background(), envID, templateName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,7 +437,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -456,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -470,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(ctx, envID, templateName).Authorization(authorization).Filter(filter).Body(body).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(ctx, envID, templateName).Filter(filter).Body(body).Execute()
 
 PATCH Bulk Variant Contents
 
@@ -491,13 +479,12 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     filter := "variant eq {{variantName}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(context.Background(), envID, templateName).Authorization(authorization).Filter(filter).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(context.Background(), envID, templateName).Filter(filter).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -523,7 +510,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
  **filter** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
@@ -533,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -547,7 +533,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(ctx, envID, templateName).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(ctx, envID, templateName).ContentType(contentType).Body(body).Execute()
 
 CREATE Push Content
 
@@ -569,12 +555,11 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -601,7 +586,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -610,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -624,7 +608,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameGet
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameGet(ctx, envID, templateName).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameGet(ctx, envID, templateName).Execute()
 
 READ One Template
 
@@ -645,11 +629,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet(context.Background(), envID, templateName).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet(context.Background(), envID, templateName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -675,7 +658,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -683,7 +665,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

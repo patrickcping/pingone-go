@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1RolesGet
 
-> V1RolesGet(ctx).Authorization(authorization).Execute()
+> V1RolesGet(ctx).Execute()
 
 READ All Roles
 
@@ -30,11 +30,10 @@ import (
 )
 
 func main() {
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesGet(context.Background()).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesGet(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.V1RolesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -44,16 +43,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiV1RolesGetRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -61,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -75,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## V1RolesRoleIDGet
 
-> V1RolesRoleIDGet(ctx, roleID).Authorization(authorization).Execute()
+> V1RolesRoleIDGet(ctx, roleID).Execute()
 
 READ One Role
 
@@ -95,11 +90,10 @@ import (
 
 func main() {
     roleID := "roleID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesRoleIDGet(context.Background(), roleID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesRoleIDGet(context.Background(), roleID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.V1RolesRoleIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,7 +117,6 @@ Other parameters are passed through a pointer to a apiV1RolesRoleIDGetRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -131,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

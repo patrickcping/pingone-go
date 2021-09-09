@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDResourcesGet
 
-> V1EnvironmentsEnvIDResourcesGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesGet(ctx, envID).Execute()
 
 READ All Resources
 
@@ -34,11 +34,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +61,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -70,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -84,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesPost
 
-> V1EnvironmentsEnvIDResourcesPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 CREATE Resource
 
@@ -105,12 +103,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,7 +132,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -158,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDDelete
 
-> V1EnvironmentsEnvIDResourcesResourceIDDelete(ctx, envID, resourceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDDelete(ctx, envID, resourceID).Execute()
 
 DELETE Resource
 
@@ -179,11 +175,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDDelete(context.Background(), envID, resourceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDDelete(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +204,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDGet(ctx, envID, resourceID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDGet(ctx, envID, resourceID).Execute()
 
 READ One Resource
 
@@ -252,11 +246,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDGet(context.Background(), envID, resourceID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDGet(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +275,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -290,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -304,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDPut
 
-> V1EnvironmentsEnvIDResourcesResourceIDPut(ctx, envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDPut(ctx, envID, resourceID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Resource
 
@@ -326,12 +318,11 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDPut(context.Background(), envID, resourceID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDPut(context.Background(), envID, resourceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +349,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

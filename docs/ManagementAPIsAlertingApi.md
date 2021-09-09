@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut
 
-> V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(ctx, envID, alertChannelID).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(ctx, envID, alertChannelID).Body(body).Execute()
 
 UPDATE Alert Channel
 
@@ -34,12 +34,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     alertChannelID := "alertChannelID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(context.Background(), envID, alertChannelID).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(context.Background(), envID, alertChannelID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -74,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete
 
-> V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(ctx, envID, alertChannelsID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(ctx, envID, alertChannelsID).Execute()
 
 DELETE Alert Channel
 
@@ -109,11 +107,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     alertChannelsID := "alertChannelsID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(context.Background(), envID, alertChannelsID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(context.Background(), envID, alertChannelsID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -161,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAlertChannelsGet
 
-> V1EnvironmentsEnvIDAlertChannelsGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDAlertChannelsGet(ctx, envID).Execute()
 
 READ All Alert Channels per Environment
 
@@ -181,11 +177,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +204,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDAlertCh
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAlertChannelsPost
 
-> V1EnvironmentsEnvIDAlertChannelsPost(ctx, envID).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDAlertChannelsPost(ctx, envID).Body(body).Execute()
 
 CREATE Alert Channel (Email)
 
@@ -251,12 +245,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost(context.Background(), envID).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -280,7 +273,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDAlertCh
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -289,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

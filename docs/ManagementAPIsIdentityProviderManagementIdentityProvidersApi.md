@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDIdentityProvidersGet
 
-> V1EnvironmentsEnvIDIdentityProvidersGet(ctx, envID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersGet(ctx, envID).Execute()
 
 READ All Identity Providers
 
@@ -34,11 +34,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet(context.Background(), envID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +61,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDIdentit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -70,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -84,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersPost
 
-> V1EnvironmentsEnvIDIdentityProvidersPost(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersPost(ctx, envID).ContentType(contentType).Body(body).Execute()
 
 Discover OpenID Provider Metadata
 
@@ -105,12 +103,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/vnd.pingidentity.openid-configuration.discover+json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,7 +132,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -158,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete
 
-> V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(ctx, envID, providerID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(ctx, envID, providerID).Execute()
 
 DELETE Identity Provider
 
@@ -179,11 +175,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(context.Background(), envID, providerID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(context.Background(), envID, providerID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +204,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersProviderIDGet
 
-> V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(ctx, envID, providerID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(ctx, envID, providerID).Execute()
 
 READ One Identity Provider
 
@@ -252,11 +246,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(context.Background(), envID, providerID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(context.Background(), envID, providerID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +275,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -290,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -304,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersProviderIDPut
 
-> V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(ctx, envID, providerID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(ctx, envID, providerID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Identity Provider
 
@@ -326,12 +318,11 @@ func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(context.Background(), envID, providerID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(context.Background(), envID, providerID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +349,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -367,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

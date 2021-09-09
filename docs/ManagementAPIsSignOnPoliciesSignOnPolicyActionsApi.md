@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost
 
-> V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(ctx, policyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(ctx, policyID).ContentType(contentType).Body(body).Execute()
 
 CREATE Sign-On Policy Action (AGREEMENT)
 
@@ -36,12 +36,11 @@ import (
 func main() {
     policyID := "policyID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -75,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -89,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(ctx, envID, policyID, actionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(ctx, envID, policyID, actionID).Execute()
 
 DELETE Sign-On Policy Action
 
@@ -111,11 +109,10 @@ func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(context.Background(), envID, policyID, actionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(context.Background(), envID, policyID, actionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +140,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -151,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -165,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(ctx, envID, policyID, actionID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(ctx, envID, policyID, actionID).Execute()
 
 READ One Sign-On Policy Action
 
@@ -187,11 +183,10 @@ func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(context.Background(), envID, policyID, actionID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(context.Background(), envID, policyID, actionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,7 +214,6 @@ Name | Type | Description  | Notes
 
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -227,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -241,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(ctx, envID, policyID, actionID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(ctx, envID, policyID, actionID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Sign-On Policy Action
 
@@ -264,12 +258,11 @@ func main() {
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,7 +291,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -307,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -321,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(ctx, envID, policyID).Authorization(authorization).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(ctx, envID, policyID).Execute()
 
 READ All Sign-On Policy Actions
 
@@ -342,11 +334,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(context.Background(), envID, policyID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(context.Background(), envID, policyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -372,7 +363,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -380,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -394,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(ctx, envID, policyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(ctx, envID, policyID).ContentType(contentType).Body(body).Execute()
 
 CREATE Sign-On Policy Action (IDENTITY_PROVIDER)
 
@@ -416,12 +406,11 @@ func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,7 +437,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -457,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

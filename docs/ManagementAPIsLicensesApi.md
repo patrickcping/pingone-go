@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## V1OrganizationsOrgIDLicensesGet
 
-> V1OrganizationsOrgIDLicensesGet(ctx, orgID).Authorization(authorization).Execute()
+> V1OrganizationsOrgIDLicensesGet(ctx, orgID).Execute()
 
 READ All Licenses
 
@@ -33,11 +33,10 @@ import (
 
 func main() {
     orgID := "orgID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet(context.Background(), orgID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet(context.Background(), orgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +60,6 @@ Other parameters are passed through a pointer to a apiV1OrganizationsOrgIDLicens
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -69,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -83,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDLicensesLicenseIDGet
 
-> V1OrganizationsOrgIDLicensesLicenseIDGet(ctx, orgID, licenseID).Authorization(authorization).Execute()
+> V1OrganizationsOrgIDLicensesLicenseIDGet(ctx, orgID, licenseID).Execute()
 
 READ One License
 
@@ -104,11 +102,10 @@ import (
 func main() {
     orgID := "orgID_example" // string | 
     licenseID := "licenseID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet(context.Background(), orgID, licenseID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet(context.Background(), orgID, licenseID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +131,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -142,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -156,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDLicensesLicenseIDNameGet
 
-> V1OrganizationsOrgIDLicensesLicenseIDNameGet(ctx, orgID, licenseID).Authorization(authorization).Execute()
+> V1OrganizationsOrgIDLicensesLicenseIDNameGet(ctx, orgID, licenseID).Execute()
 
 READ One License Name
 
@@ -177,11 +173,10 @@ import (
 func main() {
     orgID := "orgID_example" // string | 
     licenseID := "licenseID_example" // string | 
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet(context.Background(), orgID, licenseID).Authorization(authorization).Execute()
+    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet(context.Background(), orgID, licenseID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,7 +202,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -215,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -229,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## V1OrganizationsOrgIDLicensesLicenseIDNamePut
 
-> V1OrganizationsOrgIDLicensesLicenseIDNamePut(ctx, orgID, licenseID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1OrganizationsOrgIDLicensesLicenseIDNamePut(ctx, orgID, licenseID).ContentType(contentType).Body(body).Execute()
 
 Update One License Name
 
@@ -251,12 +245,11 @@ func main() {
     orgID := "orgID_example" // string | 
     licenseID := "licenseID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    authorization := "Bearer {{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut(context.Background(), orgID, licenseID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut(context.Background(), orgID, licenseID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,7 +276,6 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -292,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
