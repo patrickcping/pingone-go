@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllPopulations
 
-> Populations ReadAllPopulations(ctx, envID).Limit(limit).Filter(filter).Execute()
+> EntityArray ReadAllPopulations(ctx, envID).Limit(limit).Filter(filter).Execute()
 
 READ All Populations
 
@@ -189,7 +189,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPopulationsApi.ReadAllPopulations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllPopulations`: Populations
+    // response from `ReadAllPopulations`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsPopulationsApi.ReadAllPopulations`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Populations**](Populations.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

@@ -27,28 +27,155 @@ var (
 // ManagementAPIsEnvironmentsApiService ManagementAPIsEnvironmentsApi service
 type ManagementAPIsEnvironmentsApiService service
 
-type ApiV1EnvironmentsEnvIDDeleteRequest struct {
+type ApiCreateEnvironmentActiveLicenseRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsEnvironmentsApiService
+	contentType *string
+	environment *Environment
+}
+
+func (r ApiCreateEnvironmentActiveLicenseRequest) ContentType(contentType string) ApiCreateEnvironmentActiveLicenseRequest {
+	r.contentType = &contentType
+	return r
+}
+func (r ApiCreateEnvironmentActiveLicenseRequest) Environment(environment Environment) ApiCreateEnvironmentActiveLicenseRequest {
+	r.environment = &environment
+	return r
+}
+
+func (r ApiCreateEnvironmentActiveLicenseRequest) Execute() (Environment, *_nethttp.Response, error) {
+	return r.ApiService.CreateEnvironmentActiveLicenseExecute(r)
+}
+
+/*
+CreateEnvironmentActiveLicense CREATE Environment (Active License)
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateEnvironmentActiveLicenseRequest
+*/
+func (a *ManagementAPIsEnvironmentsApiService) CreateEnvironmentActiveLicense(ctx _context.Context) ApiCreateEnvironmentActiveLicenseRequest {
+	return ApiCreateEnvironmentActiveLicenseRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Environment
+func (a *ManagementAPIsEnvironmentsApiService) CreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (Environment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Environment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.CreateEnvironmentActiveLicense")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+	}
+	// body params
+	localVarPostBody = r.environment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteEnvironmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsEnvironmentsApiService
 	envID string
 }
 
 
-func (r ApiV1EnvironmentsEnvIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDDeleteExecute(r)
+func (r ApiDeleteEnvironmentRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteEnvironmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDDelete DELETE Environment
+DeleteEnvironment DELETE Environment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDDeleteRequest
+ @return ApiDeleteEnvironmentRequest
 */
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDDelete(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDDeleteRequest{
+func (a *ManagementAPIsEnvironmentsApiService) DeleteEnvironment(ctx _context.Context, envID string) ApiDeleteEnvironmentRequest {
+	return ApiDeleteEnvironmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -56,7 +183,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDDelete(ctx _co
 }
 
 // Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDDeleteExecute(r ApiV1EnvironmentsEnvIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsEnvironmentsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -65,7 +192,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDDeleteExecute(
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsEnvIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.DeleteEnvironment")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -132,47 +259,179 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDDeleteExecute(
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDGetRequest struct {
+type ApiReadAllEnvironmentsRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsEnvironmentsApiService
-	envID string
+	limit *int32
+	filter *string
 }
 
+// Adding a paging value to limit the number of resources displayed per page
+func (r ApiReadAllEnvironmentsRequest) Limit(limit int32) ApiReadAllEnvironmentsRequest {
+	r.limit = &limit
+	return r
+}
+// Adding a SCIM filter for an environment to display only those resources associated with the specified environment. &#39;sw&#39;, &#39;eq&#39; and &#39;and&#39; are supported
+func (r ApiReadAllEnvironmentsRequest) Filter(filter string) ApiReadAllEnvironmentsRequest {
+	r.filter = &filter
+	return r
+}
 
-func (r ApiV1EnvironmentsEnvIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGetExecute(r)
+func (r ApiReadAllEnvironmentsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllEnvironmentsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDGet READ One Environment
+ReadAllEnvironments READ All Environments
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @return ApiV1EnvironmentsEnvIDGetRequest
+ @return ApiReadAllEnvironmentsRequest
 */
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDGetRequest {
-	return ApiV1EnvironmentsEnvIDGetRequest{
+func (a *ManagementAPIsEnvironmentsApiService) ReadAllEnvironments(ctx _context.Context) ApiReadAllEnvironmentsRequest {
+	return ApiReadAllEnvironmentsRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDGetExecute(r ApiV1EnvironmentsEnvIDGetRequest) (*_nethttp.Response, error) {
+//  @return EntityArray
+func (a *ManagementAPIsEnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (EntityArray, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsEnvIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.ReadAllEnvironments")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.filter != nil {
+		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneEnvironmentRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsEnvironmentsApiService
+	envID string
+}
+
+
+func (r ApiReadOneEnvironmentRequest) Execute() (Environment, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneEnvironmentExecute(r)
+}
+
+/*
+ReadOneEnvironment READ One Environment
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @return ApiReadOneEnvironmentRequest
+*/
+func (a *ManagementAPIsEnvironmentsApiService) ReadOneEnvironment(ctx _context.Context, envID string) ApiReadOneEnvironmentRequest {
+	return ApiReadOneEnvironmentRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+	}
+}
+
+// Execute executes the request
+//  @return Environment
+func (a *ManagementAPIsEnvironmentsApiService) ReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (Environment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Environment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.ReadOneEnvironment")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}"
@@ -201,19 +460,19 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDGetExecute(r A
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -226,49 +485,58 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDGetExecute(r A
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDPutRequest struct {
+type ApiUpdateEnvironmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsEnvironmentsApiService
 	envID string
 	contentType *string
-	body *map[string]interface{}
+	environment *Environment
 }
 
-func (r ApiV1EnvironmentsEnvIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPutRequest {
+func (r ApiUpdateEnvironmentRequest) ContentType(contentType string) ApiUpdateEnvironmentRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiV1EnvironmentsEnvIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPutRequest {
-	r.body = &body
+func (r ApiUpdateEnvironmentRequest) Environment(environment Environment) ApiUpdateEnvironmentRequest {
+	r.environment = &environment
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDPutExecute(r)
+func (r ApiUpdateEnvironmentRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.UpdateEnvironmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDPut UPDATE Environment
+UpdateEnvironment UPDATE Environment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDPutRequest
+ @return ApiUpdateEnvironmentRequest
 */
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPutRequest {
-	return ApiV1EnvironmentsEnvIDPutRequest{
+func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironment(ctx _context.Context, envID string) ApiUpdateEnvironmentRequest {
+	return ApiUpdateEnvironmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -276,7 +544,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPut(ctx _conte
 }
 
 // Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPutExecute(r ApiV1EnvironmentsEnvIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -285,7 +553,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPutExecute(r A
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsEnvIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.UpdateEnvironment")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -318,7 +586,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPutExecute(r A
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.environment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -357,38 +625,38 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDPutExecute(r A
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDTypePutRequest struct {
+type ApiUpdateEnvironmentTypeRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsEnvironmentsApiService
 	envID string
 	contentType *string
-	body *map[string]interface{}
+	inlineObject2 *InlineObject2
 }
 
-func (r ApiV1EnvironmentsEnvIDTypePutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDTypePutRequest {
+func (r ApiUpdateEnvironmentTypeRequest) ContentType(contentType string) ApiUpdateEnvironmentTypeRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiV1EnvironmentsEnvIDTypePutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDTypePutRequest {
-	r.body = &body
+func (r ApiUpdateEnvironmentTypeRequest) InlineObject2(inlineObject2 InlineObject2) ApiUpdateEnvironmentTypeRequest {
+	r.inlineObject2 = &inlineObject2
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDTypePutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDTypePutExecute(r)
+func (r ApiUpdateEnvironmentTypeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.UpdateEnvironmentTypeExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDTypePut UPDATE Environment Type
+UpdateEnvironmentType UPDATE Environment Type
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDTypePutRequest
+ @return ApiUpdateEnvironmentTypeRequest
 */
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDTypePut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDTypePutRequest {
-	return ApiV1EnvironmentsEnvIDTypePutRequest{
+func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironmentType(ctx _context.Context, envID string) ApiUpdateEnvironmentTypeRequest {
+	return ApiUpdateEnvironmentTypeRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -396,7 +664,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDTypePut(ctx _c
 }
 
 // Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDTypePutExecute(r ApiV1EnvironmentsEnvIDTypePutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -405,7 +673,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDTypePutExecute
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsEnvIDTypePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.UpdateEnvironmentType")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -438,224 +706,7 @@ func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsEnvIDTypePutExecute
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsGetRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsEnvironmentsApiService
-}
-
-
-func (r ApiV1EnvironmentsGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsGetExecute(r)
-}
-
-/*
-V1EnvironmentsGet READ All Environments
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnvironmentsGetRequest
-*/
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsGet(ctx _context.Context) ApiV1EnvironmentsGetRequest {
-	return ApiV1EnvironmentsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsGetExecute(r ApiV1EnvironmentsGetRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsGet")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsPostRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsEnvironmentsApiService
-	contentType *string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsPostRequest) ContentType(contentType string) ApiV1EnvironmentsPostRequest {
-	r.contentType = &contentType
-	return r
-}
-func (r ApiV1EnvironmentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsPostExecute(r)
-}
-
-/*
-V1EnvironmentsPost CREATE Environment (Active License)
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnvironmentsPostRequest
-*/
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsPost(ctx _context.Context) ApiV1EnvironmentsPostRequest {
-	return ApiV1EnvironmentsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsEnvironmentsApiService) V1EnvironmentsPostExecute(r ApiV1EnvironmentsPostRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsEnvironmentsApiService.V1EnvironmentsPost")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
-	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.inlineObject2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err

@@ -27,28 +27,28 @@ var (
 // ManagementAPIsBillOfMaterialsBOMApiService ManagementAPIsBillOfMaterialsBOMApi service
 type ManagementAPIsBillOfMaterialsBOMApiService service
 
-type ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest struct {
+type ApiReadOneBillOfMaterialsRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsBillOfMaterialsBOMApiService
 	envID string
 }
 
 
-func (r ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDBillOfMaterialsGetExecute(r)
+func (r ApiReadOneBillOfMaterialsRequest) Execute() (BillOfMaterials, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneBillOfMaterialsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDBillOfMaterialsGet READ One Bill of Materials
+ReadOneBillOfMaterials READ One Bill of Materials
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest
+ @return ApiReadOneBillOfMaterialsRequest
 */
-func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMaterialsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest {
-	return ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest{
+func (a *ManagementAPIsBillOfMaterialsBOMApiService) ReadOneBillOfMaterials(ctx _context.Context, envID string) ApiReadOneBillOfMaterialsRequest {
+	return ApiReadOneBillOfMaterialsRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -56,18 +56,20 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 }
 
 // Execute executes the request
-func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMaterialsGetExecute(r ApiV1EnvironmentsEnvIDBillOfMaterialsGetRequest) (*_nethttp.Response, error) {
+//  @return BillOfMaterials
+func (a *ManagementAPIsBillOfMaterialsBOMApiService) ReadOneBillOfMaterialsExecute(r ApiReadOneBillOfMaterialsRequest) (BillOfMaterials, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  BillOfMaterials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBillOfMaterialsBOMApiService.V1EnvironmentsEnvIDBillOfMaterialsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBillOfMaterialsBOMApiService.ReadOneBillOfMaterials")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/billOfMaterials"
@@ -96,19 +98,19 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -121,49 +123,58 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest struct {
+type ApiUpdateBillOfMaterialsRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsBillOfMaterialsBOMApiService
 	envID string
 	contentType *string
-	body *map[string]interface{}
+	billOfMaterials *BillOfMaterials
 }
 
-func (r ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest {
+func (r ApiUpdateBillOfMaterialsRequest) ContentType(contentType string) ApiUpdateBillOfMaterialsRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest {
-	r.body = &body
+func (r ApiUpdateBillOfMaterialsRequest) BillOfMaterials(billOfMaterials BillOfMaterials) ApiUpdateBillOfMaterialsRequest {
+	r.billOfMaterials = &billOfMaterials
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDBillOfMaterialsPutExecute(r)
+func (r ApiUpdateBillOfMaterialsRequest) Execute() (BillOfMaterials, *_nethttp.Response, error) {
+	return r.ApiService.UpdateBillOfMaterialsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDBillOfMaterialsPut UPDATE Bill of Materials
+UpdateBillOfMaterials UPDATE Bill of Materials
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest
+ @return ApiUpdateBillOfMaterialsRequest
 */
-func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMaterialsPut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest {
-	return ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest{
+func (a *ManagementAPIsBillOfMaterialsBOMApiService) UpdateBillOfMaterials(ctx _context.Context, envID string) ApiUpdateBillOfMaterialsRequest {
+	return ApiUpdateBillOfMaterialsRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -171,18 +182,20 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 }
 
 // Execute executes the request
-func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMaterialsPutExecute(r ApiV1EnvironmentsEnvIDBillOfMaterialsPutRequest) (*_nethttp.Response, error) {
+//  @return BillOfMaterials
+func (a *ManagementAPIsBillOfMaterialsBOMApiService) UpdateBillOfMaterialsExecute(r ApiUpdateBillOfMaterialsRequest) (BillOfMaterials, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  BillOfMaterials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBillOfMaterialsBOMApiService.V1EnvironmentsEnvIDBillOfMaterialsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBillOfMaterialsBOMApiService.UpdateBillOfMaterials")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/billOfMaterials"
@@ -213,22 +226,22 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.billOfMaterials
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -241,13 +254,22 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) V1EnvironmentsEnvIDBillOfMa
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

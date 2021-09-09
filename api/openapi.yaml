@@ -554,9 +554,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Agreement
       tags:
@@ -756,9 +754,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Language
       tags:
@@ -1011,9 +1007,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Revision
       tags:
@@ -1156,9 +1150,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Alert Channel
       tags:
@@ -1365,9 +1357,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Application
       tags:
@@ -1561,9 +1551,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Grant
       tags:
@@ -1780,9 +1768,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE SOP Assignment
       tags:
@@ -1999,9 +1985,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Application Role Assignment
       tags:
@@ -2160,9 +2144,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Application Attribute Mapping
       tags:
@@ -2384,9 +2366,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE MFA Push Credential
       tags:
@@ -2660,6 +2640,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneBillOfMaterials
       parameters:
       - explode: false
         in: path
@@ -2677,7 +2658,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillOfMaterials'
           description: Successful response
       summary: READ One Bill of Materials
       tags:
@@ -2685,6 +2668,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateBillOfMaterials
       parameters:
       - example: application/json
         explode: false
@@ -2705,17 +2689,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                products:
-                - type: PING_DIRECTORY
-                  description: PingOne Directory
-                - type: PING_ONE_MFA
-                  description: PingOne MFA
-                - type: PING_ONE_PROVISIONING
-                  description: PingOne Provisioning
-                - type: PING_ONE_RISK
-                  description: PingOne Risk
-              type: object
+              $ref: '#/components/schemas/BillOfMaterials'
       responses:
         "401":
           content:
@@ -2725,7 +2699,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillOfMaterials'
           description: Successful response
       summary: UPDATE Bill of Materials
       tags:
@@ -2949,9 +2925,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Branding Theme
       tags:
@@ -3315,9 +3289,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Key
       tags:
@@ -3540,9 +3512,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Certificate
       tags:
@@ -3963,9 +3933,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Domain
       tags:
@@ -4200,6 +4168,28 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllEnvironments
+      parameters:
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Adding a SCIM filter for an environment to display only those
+          resources associated with the specified environment. 'sw', 'eq' and 'and'
+          are supported
+        example: name sw "S" and license.id eq "34f0efac-21d9-4a17-8a35-196bb3362983"
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "401":
           content:
@@ -4209,7 +4199,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Environments
       tags:
@@ -4217,6 +4209,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createEnvironmentActiveLicense
       parameters:
       - example: application/json
         explode: false
@@ -4230,14 +4223,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: New-Env_{{$timestamp}}
-                description: Test Environment
-                region: NA
-                type: SANDBOX
-                license:
-                  id: '{{licenseID}}'
-              type: object
+              $ref: '#/components/schemas/Environment'
       responses:
         "401":
           content:
@@ -4247,7 +4233,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
           description: Successful response
       summary: CREATE Environment (Active License)
       tags:
@@ -4256,6 +4244,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteEnvironment
       parameters:
       - explode: false
         in: path
@@ -4271,9 +4260,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Environment
       tags:
@@ -4281,6 +4268,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneEnvironment
       parameters:
       - explode: false
         in: path
@@ -4298,7 +4286,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
           description: Successful response
       summary: READ One Environment
       tags:
@@ -4306,6 +4296,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateEnvironment
       parameters:
       - example: application/json
         explode: false
@@ -4326,18 +4317,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Updated-Environment-Name
-                region: NA
-                type: SANDBOX
-                description: Updated Description
-                billOfMaterials:
-                  products:
-                  - type: PING_ONE_BASE
-                    description: New environment product description
-                    console:
-                      href: https://example.com
-              type: object
+              $ref: '#/components/schemas/Environment'
       responses:
         "401":
           content:
@@ -4356,6 +4336,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateEnvironmentType
       parameters:
       - example: application/json
         explode: false
@@ -4373,11 +4354,20 @@ paths:
           type: string
         style: simple
       requestBody:
+        $ref: '#/components/requestBodies/inline_object_2'
         content:
           application/json:
             schema:
               example:
                 type: PRODUCTION
+              properties:
+                type:
+                  description: A string that specifies the type of environment to
+                    use. Options are PRODUCTION and SANDBOX.
+                  enum:
+                  - PRODUCTION
+                  - SANDBOX
+                  type: string
               type: object
       responses:
         "401":
@@ -4498,9 +4488,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Gateway
       tags:
@@ -4671,9 +4659,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Gateway Credentials
       tags:
@@ -4868,9 +4854,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Gateway Role Assignment
       tags:
@@ -4998,9 +4982,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Group
       tags:
@@ -5385,9 +5367,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Plan
       tags:
@@ -5604,9 +5584,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Store
       tags:
@@ -6089,9 +6067,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Rule
       tags:
@@ -6466,9 +6442,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Mapping
       tags:
@@ -6565,9 +6539,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Identity Provider
       tags:
@@ -6877,9 +6849,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Identity Provider Attribute
       tags:
@@ -6952,9 +6922,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Image
       tags:
@@ -7215,9 +7183,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Language
       tags:
@@ -7457,9 +7423,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Language Localization Status
       tags:
@@ -7717,9 +7681,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: RESET MFA Settings
       tags:
@@ -7880,9 +7842,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Bulk Variant Contents
       tags:
@@ -8050,9 +8010,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Content
       tags:
@@ -8180,9 +8138,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Notifications Settings
       tags:
@@ -8264,9 +8220,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Phone Delivery Settings
       tags:
@@ -8559,9 +8513,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Trusted Email Domain
       tags:
@@ -8796,9 +8748,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Trusted Email Address
       tags:
@@ -9184,7 +9134,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Populations'
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Populations
       tags:
@@ -9439,9 +9389,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Resource
       tags:
@@ -9643,9 +9591,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Scope
       tags:
@@ -9870,9 +9816,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Resource Attribute
       tags:
@@ -10113,9 +10057,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: 'DELETE Risk Policy Set '
       tags:
@@ -10735,9 +10677,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Attribute
       tags:
@@ -10990,9 +10930,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Sign On Policy
       tags:
@@ -11203,9 +11141,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Sign-On Policy Action
       tags:
@@ -11474,9 +11410,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Subscription
       tags:
@@ -11752,9 +11686,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE User
       tags:
@@ -12256,9 +12188,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: REMOVE User from Group
       tags:
@@ -12344,9 +12274,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Device Order
       tags:
@@ -12468,9 +12396,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE MFA User Device
       tags:
@@ -12904,9 +12830,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Linked Account
       tags:
@@ -12983,9 +12907,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE MFA Pairing Key
       tags:
@@ -13420,9 +13342,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE User's Role Assignment
       tags:
@@ -13572,9 +13492,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE ID Verification Transaction Record for a User
       tags:
@@ -13851,9 +13769,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unauthorised
-        "200":
-          content:
-            application/json: {}
+        "204":
           description: Successful response
       summary: DELETE Session
       tags:
@@ -13909,6 +13825,11 @@ components:
         multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object'
+    inline_object_2:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_2'
   schemas:
     Error:
       properties:
@@ -13923,10 +13844,35 @@ components:
             $ref: '#/components/schemas/Error_details'
           type: array
       type: object
-    Populations:
+    EntityArray:
       example:
         size: 1.4658129805029452
         _embedded:
+          environments:
+          - name: New-Env
+            description: New environment description
+            type: SANDBOX
+            region: EU
+            billOfMaterials:
+              products:
+                type: PING_ONE_BASE
+                description: New environment product description
+                console:
+                  href: https://example.com
+            license:
+              id: 34f0efac-21d9-4a17-8a35-196bb3362983
+          - name: New-Env
+            description: New environment description
+            type: SANDBOX
+            region: EU
+            billOfMaterials:
+              products:
+                type: PING_ONE_BASE
+                description: New environment product description
+                console:
+                  href: https://example.com
+            license:
+              id: 34f0efac-21d9-4a17-8a35-196bb3362983
           populations:
           - createdAt: createdAt
             userCount: 0
@@ -13943,11 +13889,105 @@ components:
         count: 6.027456183070403
       properties:
         _embedded:
-          $ref: '#/components/schemas/Populations__embedded'
+          $ref: '#/components/schemas/EntityArray__embedded'
         count:
           type: number
         size:
           type: number
+      type: object
+    BillOfMaterials:
+      example:
+        createdAt: createdAt
+        updatedAt: updatedAt
+        products:
+        - bookmarks:
+          - name: name
+            href: href
+          - name: name
+            href: href
+          description: description
+          id: id
+          type: PING_ONE_MFA
+        - bookmarks:
+          - name: name
+            href: href
+          - name: name
+            href: href
+          description: description
+          id: id
+          type: PING_ONE_MFA
+      properties:
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+        products:
+          description: An array that specifies the products associated with this bill
+            of materials
+          items:
+            $ref: '#/components/schemas/BillOfMaterials_products'
+          type: array
+      type: object
+    Environment:
+      example:
+        name: New-Env
+        description: New environment description
+        type: SANDBOX
+        region: EU
+        billOfMaterials:
+          products:
+            type: PING_ONE_BASE
+            description: New environment product description
+            console:
+              href: https://example.com
+        license:
+          id: 34f0efac-21d9-4a17-8a35-196bb3362983
+      properties:
+        billOfMaterials:
+          $ref: '#/components/schemas/BillOfMaterials'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the population.
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        license:
+          $ref: '#/components/schemas/Environment_license'
+        name:
+          description: A string that specifies the environment name, which must be
+            provided and must be unique within an organization.
+          type: string
+        organization:
+          $ref: '#/components/schemas/Environment_organization'
+        region:
+          description: A string that specifies the region in which this environment
+            will be used. The value is set when the environment is created and cannot
+            be updated. Options are NA, EU, and AP.
+          enum:
+          - NA
+          - EU
+          - AP
+          type: string
+        type:
+          description: A string that specifies the type of environment to use. Options
+            are PRODUCTION and SANDBOX.
+          enum:
+          - PRODUCTION
+          - SANDBOX
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
       type: object
     Population:
       example:
@@ -14000,6 +14040,18 @@ components:
           format: binary
           type: string
       type: object
+    inline_object_2:
+      example:
+        type: PRODUCTION
+      properties:
+        type:
+          description: A string that specifies the type of environment to use. Options
+            are PRODUCTION and SANDBOX.
+          enum:
+          - PRODUCTION
+          - SANDBOX
+          type: string
+      type: object
     Error_details:
       properties:
         code:
@@ -14009,8 +14061,33 @@ components:
         message:
           type: string
       type: object
-    Populations__embedded:
+    EntityArray__embedded:
       example:
+        environments:
+        - name: New-Env
+          description: New environment description
+          type: SANDBOX
+          region: EU
+          billOfMaterials:
+            products:
+              type: PING_ONE_BASE
+              description: New environment product description
+              console:
+                href: https://example.com
+          license:
+            id: 34f0efac-21d9-4a17-8a35-196bb3362983
+        - name: New-Env
+          description: New environment description
+          type: SANDBOX
+          region: EU
+          billOfMaterials:
+            products:
+              type: PING_ONE_BASE
+              description: New environment product description
+              console:
+                href: https://example.com
+          license:
+            id: 34f0efac-21d9-4a17-8a35-196bb3362983
         populations:
         - createdAt: createdAt
           userCount: 0
@@ -14025,10 +14102,92 @@ components:
           id: id
           updatedAt: updatedAt
       properties:
+        environments:
+          items:
+            $ref: '#/components/schemas/Environment'
+          type: array
         populations:
           items:
             $ref: '#/components/schemas/Population'
           type: array
+      type: object
+    BillOfMaterials_bookmarks:
+      example:
+        name: name
+        href: href
+      properties:
+        name:
+          description: Name of the custom bookmark. The name must be unique among
+            the product bookmarks and be 50 characters or fewer.
+          type: string
+        href:
+          description: A valid URL for the bookmark.
+          type: string
+      type: object
+    BillOfMaterials_products:
+      example:
+        bookmarks:
+        - name: name
+          href: href
+        - name: name
+          href: href
+        description: description
+        id: id
+        type: PING_ONE_MFA
+      properties:
+        id:
+          description: A string that specifies the BOM ID
+          readOnly: true
+          type: string
+        type:
+          description: A string that specifies the Ping Identity product type. Options
+            for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY,
+            and PING_ONE_BASE. The PING_ONE_BASE product represents the default set
+            of services that an environment can use on the PingOne platform. Options
+            for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY,
+            PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID,
+            PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL
+          enum:
+          - PING_ONE_MFA
+          - PING_ONE_RISK
+          - PING_ONE_VERIFY
+          - PING_ONE_BASE
+          - PING_FEDERATE
+          - PING_ACCESS
+          - PING_DIRECTORY
+          - PING_DATA_SYNC
+          - PING_DATA_GOVERNANCE
+          - PING_ONE_FOR_ENTERPRISE
+          - PING_ID
+          - PING_ID_SDK
+          - PING_INTELLIGENCE
+          - PING_CENTRAL
+          type: string
+        description:
+          description: A string that specifies the description of the product or standalone
+            service
+          type: string
+        bookmarks:
+          description: Optional array of custom bookmarks. Maximum of five bookmarks
+            per product.
+          items:
+            $ref: '#/components/schemas/BillOfMaterials_bookmarks'
+          type: array
+      type: object
+    Environment_license:
+      properties:
+        id:
+          description: A string that specifies the active license associated with
+            this environment. This property is required only if your organization
+            has more than one active license.
+          type: string
+      type: object
+    Environment_organization:
+      properties:
+        id:
+          description: A string that specifies the organization resource’s unique
+            identifier associated with the environment.
+          type: string
       type: object
   securitySchemes:
     bearer:

@@ -289,7 +289,7 @@ func (r ApiReadAllPopulationsRequest) Filter(filter string) ApiReadAllPopulation
 	return r
 }
 
-func (r ApiReadAllPopulationsRequest) Execute() (Populations, *_nethttp.Response, error) {
+func (r ApiReadAllPopulationsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
 	return r.ApiService.ReadAllPopulationsExecute(r)
 }
 
@@ -311,15 +311,15 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulations(ctx _context.Co
 }
 
 // Execute executes the request
-//  @return Populations
-func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (Populations, *_nethttp.Response, error) {
+//  @return EntityArray
+func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (EntityArray, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Populations
+		localVarReturnValue  EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.ReadAllPopulations")

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDBillOfMaterialsGet**](ManagementAPIsBillOfMaterialsBOMApi.md#V1EnvironmentsEnvIDBillOfMaterialsGet) | **Get** /v1/environments/{envID}/billOfMaterials | READ One Bill of Materials
-[**V1EnvironmentsEnvIDBillOfMaterialsPut**](ManagementAPIsBillOfMaterialsBOMApi.md#V1EnvironmentsEnvIDBillOfMaterialsPut) | **Put** /v1/environments/{envID}/billOfMaterials | UPDATE Bill of Materials
+[**ReadOneBillOfMaterials**](ManagementAPIsBillOfMaterialsBOMApi.md#ReadOneBillOfMaterials) | **Get** /v1/environments/{envID}/billOfMaterials | READ One Bill of Materials
+[**UpdateBillOfMaterials**](ManagementAPIsBillOfMaterialsBOMApi.md#UpdateBillOfMaterials) | **Put** /v1/environments/{envID}/billOfMaterials | UPDATE Bill of Materials
 
 
 
-## V1EnvironmentsEnvIDBillOfMaterialsGet
+## ReadOneBillOfMaterials
 
-> V1EnvironmentsEnvIDBillOfMaterialsGet(ctx, envID).Execute()
+> BillOfMaterials ReadOneBillOfMaterials(ctx, envID).Execute()
 
 READ One Bill of Materials
 
@@ -34,11 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsGet(context.Background(), envID).Execute()
+    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.ReadOneBillOfMaterials(context.Background(), envID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.ReadOneBillOfMaterials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneBillOfMaterials`: BillOfMaterials
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsBillOfMaterialsBOMApi.ReadOneBillOfMaterials`: %v\n", resp)
 }
 ```
 
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDBillOfMaterialsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneBillOfMaterialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -61,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**BillOfMaterials**](BillOfMaterials.md)
 
 ### Authorization
 
@@ -77,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDBillOfMaterialsPut
+## UpdateBillOfMaterials
 
-> V1EnvironmentsEnvIDBillOfMaterialsPut(ctx, envID).ContentType(contentType).Body(body).Execute()
+> BillOfMaterials UpdateBillOfMaterials(ctx, envID).ContentType(contentType).BillOfMaterials(billOfMaterials).Execute()
 
 UPDATE Bill of Materials
 
@@ -100,15 +102,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    billOfMaterials := *openapiclient.NewBillOfMaterials() // BillOfMaterials |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsPut(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials(context.Background(), envID).ContentType(contentType).BillOfMaterials(billOfMaterials).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.V1EnvironmentsEnvIDBillOfMaterialsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateBillOfMaterials`: BillOfMaterials
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials`: %v\n", resp)
 }
 ```
 
@@ -122,18 +126,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDBillOfMaterialsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateBillOfMaterialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **billOfMaterials** | [**BillOfMaterials**](BillOfMaterials.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**BillOfMaterials**](BillOfMaterials.md)
 
 ### Authorization
 

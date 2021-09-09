@@ -4,18 +4,86 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDDelete**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsEnvIDDelete) | **Delete** /v1/environments/{envID} | DELETE Environment
-[**V1EnvironmentsEnvIDGet**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsEnvIDGet) | **Get** /v1/environments/{envID} | READ One Environment
-[**V1EnvironmentsEnvIDPut**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsEnvIDPut) | **Put** /v1/environments/{envID} | UPDATE Environment
-[**V1EnvironmentsEnvIDTypePut**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsEnvIDTypePut) | **Put** /v1/environments/{envID}/type | UPDATE Environment Type
-[**V1EnvironmentsGet**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsGet) | **Get** /v1/environments | READ All Environments
-[**V1EnvironmentsPost**](ManagementAPIsEnvironmentsApi.md#V1EnvironmentsPost) | **Post** /v1/environments | CREATE Environment (Active License)
+[**CreateEnvironmentActiveLicense**](ManagementAPIsEnvironmentsApi.md#CreateEnvironmentActiveLicense) | **Post** /v1/environments | CREATE Environment (Active License)
+[**DeleteEnvironment**](ManagementAPIsEnvironmentsApi.md#DeleteEnvironment) | **Delete** /v1/environments/{envID} | DELETE Environment
+[**ReadAllEnvironments**](ManagementAPIsEnvironmentsApi.md#ReadAllEnvironments) | **Get** /v1/environments | READ All Environments
+[**ReadOneEnvironment**](ManagementAPIsEnvironmentsApi.md#ReadOneEnvironment) | **Get** /v1/environments/{envID} | READ One Environment
+[**UpdateEnvironment**](ManagementAPIsEnvironmentsApi.md#UpdateEnvironment) | **Put** /v1/environments/{envID} | UPDATE Environment
+[**UpdateEnvironmentType**](ManagementAPIsEnvironmentsApi.md#UpdateEnvironmentType) | **Put** /v1/environments/{envID}/type | UPDATE Environment Type
 
 
 
-## V1EnvironmentsEnvIDDelete
+## CreateEnvironmentActiveLicense
 
-> V1EnvironmentsEnvIDDelete(ctx, envID).Execute()
+> Environment CreateEnvironmentActiveLicense(ctx).ContentType(contentType).Environment(environment).Execute()
+
+CREATE Environment (Active License)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    contentType := "application/json" // string |  (optional)
+    environment := *openapiclient.NewEnvironment() // Environment |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense(context.Background()).ContentType(contentType).Environment(environment).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEnvironmentActiveLicense`: Environment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateEnvironmentActiveLicenseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string** |  | 
+ **environment** | [**Environment**](Environment.md) |  | 
+
+### Return type
+
+[**Environment**](Environment.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteEnvironment
+
+> DeleteEnvironment(ctx, envID).Execute()
 
 DELETE Environment
 
@@ -38,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDDelete(context.Background(), envID).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.DeleteEnvironment(context.Background(), envID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.DeleteEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -56,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteEnvironmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +149,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDGet
+## ReadAllEnvironments
 
-> V1EnvironmentsEnvIDGet(ctx, envID).Execute()
+> EntityArray ReadAllEnvironments(ctx).Limit(limit).Filter(filter).Execute()
+
+READ All Environments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
+    filter := "name sw "S" and license.id eq "34f0efac-21d9-4a17-8a35-196bb3362983"" // string | Adding a SCIM filter for an environment to display only those resources associated with the specified environment. 'sw', 'eq' and 'and' are supported (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.ReadAllEnvironments(context.Background()).Limit(limit).Filter(filter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.ReadAllEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllEnvironments`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsEnvironmentsApi.ReadAllEnvironments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllEnvironmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
+ **filter** | **string** | Adding a SCIM filter for an environment to display only those resources associated with the specified environment. &#39;sw&#39;, &#39;eq&#39; and &#39;and&#39; are supported | 
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneEnvironment
+
+> Environment ReadOneEnvironment(ctx, envID).Execute()
 
 READ One Environment
 
@@ -106,11 +242,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDGet(context.Background(), envID).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.ReadOneEnvironment(context.Background(), envID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.ReadOneEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneEnvironment`: Environment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsEnvironmentsApi.ReadOneEnvironment`: %v\n", resp)
 }
 ```
 
@@ -124,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneEnvironmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -149,9 +287,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDPut
+## UpdateEnvironment
 
-> V1EnvironmentsEnvIDPut(ctx, envID).ContentType(contentType).Body(body).Execute()
+> UpdateEnvironment(ctx, envID).ContentType(contentType).Environment(environment).Execute()
 
 UPDATE Environment
 
@@ -172,13 +310,13 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    environment := *openapiclient.NewEnvironment() // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDPut(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironment(context.Background(), envID).ContentType(contentType).Environment(environment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -194,14 +332,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateEnvironmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **environment** | [**Environment**](Environment.md) |  | 
 
 ### Return type
 
@@ -221,9 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDTypePut
+## UpdateEnvironmentType
 
-> V1EnvironmentsEnvIDTypePut(ctx, envID).ContentType(contentType).Body(body).Execute()
+> UpdateEnvironmentType(ctx, envID).ContentType(contentType).InlineObject2(inlineObject2).Execute()
 
 UPDATE Environment Type
 
@@ -244,13 +382,13 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDTypePut(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironmentType(context.Background(), envID).ContentType(contentType).InlineObject2(inlineObject2).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsEnvIDTypePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironmentType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -266,139 +404,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDTypePutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateEnvironmentTypeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsGet
-
-> V1EnvironmentsGet(ctx).Execute()
-
-READ All Environments
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsGetRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsPost
-
-> V1EnvironmentsPost(ctx).ContentType(contentType).Body(body).Execute()
-
-CREATE Environment (Active License)
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.V1EnvironmentsPost(context.Background()).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.V1EnvironmentsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
 
 ### Return type
 
