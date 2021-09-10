@@ -5,7 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
+**RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
+**Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
+**Users** | Pointer to [**[]User**](User.md) |  | [optional] 
 
 ## Methods
 
@@ -51,6 +55,31 @@ SetEnvironments sets Environments field to given value.
 
 HasEnvironments returns a boolean if a field has been set.
 
+### GetGroupMemberships
+
+`func (o *EntityArrayEmbedded) GetGroupMemberships() []GroupMembership`
+
+GetGroupMemberships returns the GroupMemberships field if non-nil, zero value otherwise.
+
+### GetGroupMembershipsOk
+
+`func (o *EntityArrayEmbedded) GetGroupMembershipsOk() (*[]GroupMembership, bool)`
+
+GetGroupMembershipsOk returns a tuple with the GroupMemberships field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMemberships
+
+`func (o *EntityArrayEmbedded) SetGroupMemberships(v []GroupMembership)`
+
+SetGroupMemberships sets GroupMemberships field to given value.
+
+### HasGroupMemberships
+
+`func (o *EntityArrayEmbedded) HasGroupMemberships() bool`
+
+HasGroupMemberships returns a boolean if a field has been set.
+
 ### GetPopulations
 
 `func (o *EntityArrayEmbedded) GetPopulations() []Population`
@@ -75,6 +104,81 @@ SetPopulations sets Populations field to given value.
 `func (o *EntityArrayEmbedded) HasPopulations() bool`
 
 HasPopulations returns a boolean if a field has been set.
+
+### GetRoleAssignments
+
+`func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment`
+
+GetRoleAssignments returns the RoleAssignments field if non-nil, zero value otherwise.
+
+### GetRoleAssignmentsOk
+
+`func (o *EntityArrayEmbedded) GetRoleAssignmentsOk() (*[]RoleAssignment, bool)`
+
+GetRoleAssignmentsOk returns a tuple with the RoleAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleAssignments
+
+`func (o *EntityArrayEmbedded) SetRoleAssignments(v []RoleAssignment)`
+
+SetRoleAssignments sets RoleAssignments field to given value.
+
+### HasRoleAssignments
+
+`func (o *EntityArrayEmbedded) HasRoleAssignments() bool`
+
+HasRoleAssignments returns a boolean if a field has been set.
+
+### GetRoles
+
+`func (o *EntityArrayEmbedded) GetRoles() []Role`
+
+GetRoles returns the Roles field if non-nil, zero value otherwise.
+
+### GetRolesOk
+
+`func (o *EntityArrayEmbedded) GetRolesOk() (*[]Role, bool)`
+
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoles
+
+`func (o *EntityArrayEmbedded) SetRoles(v []Role)`
+
+SetRoles sets Roles field to given value.
+
+### HasRoles
+
+`func (o *EntityArrayEmbedded) HasRoles() bool`
+
+HasRoles returns a boolean if a field has been set.
+
+### GetUsers
+
+`func (o *EntityArrayEmbedded) GetUsers() []User`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *EntityArrayEmbedded) GetUsersOk() (*[]User, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *EntityArrayEmbedded) SetUsers(v []User)`
+
+SetUsers sets Users field to given value.
+
+### HasUsers
+
+`func (o *EntityArrayEmbedded) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

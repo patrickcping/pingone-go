@@ -27,44 +27,46 @@ var (
 // ManagementAPIsRolesApiService ManagementAPIsRolesApi service
 type ManagementAPIsRolesApiService service
 
-type ApiV1RolesGetRequest struct {
+type ApiReadAllRolesRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRolesApiService
 }
 
 
-func (r ApiV1RolesGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1RolesGetExecute(r)
+func (r ApiReadAllRolesRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllRolesExecute(r)
 }
 
 /*
-V1RolesGet READ All Roles
+ReadAllRoles READ All Roles
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1RolesGetRequest
+ @return ApiReadAllRolesRequest
 */
-func (a *ManagementAPIsRolesApiService) V1RolesGet(ctx _context.Context) ApiV1RolesGetRequest {
-	return ApiV1RolesGetRequest{
+func (a *ManagementAPIsRolesApiService) ReadAllRoles(ctx _context.Context) ApiReadAllRolesRequest {
+	return ApiReadAllRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsRolesApiService) V1RolesGetExecute(r ApiV1RolesGetRequest) (*_nethttp.Response, error) {
+//  @return EntityArray
+func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (EntityArray, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.V1RolesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.ReadAllRoles")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/roles"
@@ -92,19 +94,19 @@ func (a *ManagementAPIsRolesApiService) V1RolesGetExecute(r ApiV1RolesGetRequest
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -113,43 +115,52 @@ func (a *ManagementAPIsRolesApiService) V1RolesGetExecute(r ApiV1RolesGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1RolesRoleIDGetRequest struct {
+type ApiReadOneRoleRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRolesApiService
 	roleID string
 }
 
 
-func (r ApiV1RolesRoleIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1RolesRoleIDGetExecute(r)
+func (r ApiReadOneRoleRequest) Execute() (Role, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneRoleExecute(r)
 }
 
 /*
-V1RolesRoleIDGet READ One Role
+ReadOneRole READ One Role
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param roleID
- @return ApiV1RolesRoleIDGetRequest
+ @return ApiReadOneRoleRequest
 */
-func (a *ManagementAPIsRolesApiService) V1RolesRoleIDGet(ctx _context.Context, roleID string) ApiV1RolesRoleIDGetRequest {
-	return ApiV1RolesRoleIDGetRequest{
+func (a *ManagementAPIsRolesApiService) ReadOneRole(ctx _context.Context, roleID string) ApiReadOneRoleRequest {
+	return ApiReadOneRoleRequest{
 		ApiService: a,
 		ctx: ctx,
 		roleID: roleID,
@@ -157,18 +168,20 @@ func (a *ManagementAPIsRolesApiService) V1RolesRoleIDGet(ctx _context.Context, r
 }
 
 // Execute executes the request
-func (a *ManagementAPIsRolesApiService) V1RolesRoleIDGetExecute(r ApiV1RolesRoleIDGetRequest) (*_nethttp.Response, error) {
+//  @return Role
+func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (Role, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.V1RolesRoleIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.ReadOneRole")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/roles/{roleID}"
@@ -197,19 +210,19 @@ func (a *ManagementAPIsRolesApiService) V1RolesRoleIDGetExecute(r ApiV1RolesRole
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -218,17 +231,26 @@ func (a *ManagementAPIsRolesApiService) V1RolesRoleIDGetExecute(r ApiV1RolesRole
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

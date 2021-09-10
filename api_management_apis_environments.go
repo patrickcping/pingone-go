@@ -130,7 +130,7 @@ func (a *ManagementAPIsEnvironmentsApiService) CreateEnvironmentActiveLicenseExe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -244,7 +244,7 @@ func (a *ManagementAPIsEnvironmentsApiService) DeleteEnvironmentExecute(r ApiDel
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -365,7 +365,7 @@ func (a *ManagementAPIsEnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -481,7 +481,7 @@ func (a *ManagementAPIsEnvironmentsApiService) ReadOneEnvironmentExecute(r ApiRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -610,7 +610,7 @@ func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironmentExecute(r ApiUpd
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -730,7 +730,7 @@ func (a *ManagementAPIsEnvironmentsApiService) UpdateEnvironmentTypeExecute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

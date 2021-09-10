@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDPost
 
-> V1EnvironmentsEnvIDUsersUserIDPost(ctx, envID, userID).ContentType(contentType).Execute()
+> EntityArray V1EnvironmentsEnvIDUsersUserIDPost(ctx, envID, userID).ContentType(contentType).Execute()
 
 User Account Unlock
 
@@ -40,6 +40,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAccountsApi.V1EnvironmentsEnvIDUsersUserIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `V1EnvironmentsEnvIDUsersUserIDPost`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUserAccountsApi.V1EnvironmentsEnvIDUsersUserIDPost`: %v\n", resp)
 }
 ```
 
@@ -65,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

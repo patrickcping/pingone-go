@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1RolesGet**](ManagementAPIsRolesApi.md#V1RolesGet) | **Get** /v1/roles | READ All Roles
-[**V1RolesRoleIDGet**](ManagementAPIsRolesApi.md#V1RolesRoleIDGet) | **Get** /v1/roles/{roleID} | READ One Role
+[**ReadAllRoles**](ManagementAPIsRolesApi.md#ReadAllRoles) | **Get** /v1/roles | READ All Roles
+[**ReadOneRole**](ManagementAPIsRolesApi.md#ReadOneRole) | **Get** /v1/roles/{roleID} | READ One Role
 
 
 
-## V1RolesGet
+## ReadAllRoles
 
-> V1RolesGet(ctx).Execute()
+> EntityArray ReadAllRoles(ctx).Execute()
 
 READ All Roles
 
@@ -33,11 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesGet(context.Background()).Execute()
+    resp, r, err := api_client.ManagementAPIsRolesApi.ReadAllRoles(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.V1RolesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.ReadAllRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllRoles`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRolesApi.ReadAllRoles`: %v\n", resp)
 }
 ```
 
@@ -47,12 +49,12 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RolesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllRolesRequest struct via the builder pattern
 
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -68,9 +70,9 @@ Other parameters are passed through a pointer to a apiV1RolesGetRequest struct v
 [[Back to README]](../README.md)
 
 
-## V1RolesRoleIDGet
+## ReadOneRole
 
-> V1RolesRoleIDGet(ctx, roleID).Execute()
+> Role ReadOneRole(ctx, roleID).Execute()
 
 READ One Role
 
@@ -93,11 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRolesApi.V1RolesRoleIDGet(context.Background(), roleID).Execute()
+    resp, r, err := api_client.ManagementAPIsRolesApi.ReadOneRole(context.Background(), roleID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.V1RolesRoleIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRolesApi.ReadOneRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneRole`: Role
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRolesApi.ReadOneRole`: %v\n", resp)
 }
 ```
 
@@ -111,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RolesRoleIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -120,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Role**](Role.md)
 
 ### Authorization
 

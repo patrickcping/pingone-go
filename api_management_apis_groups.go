@@ -133,7 +133,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGetExecute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -242,7 +242,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDDeleteE
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +359,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGetExec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -475,7 +475,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPutExec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,7 +587,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsPostExecute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

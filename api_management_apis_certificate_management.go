@@ -122,7 +122,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDCerti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -231,7 +231,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDCerti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDCerti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +445,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDCerti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -582,7 +582,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDCerti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -702,7 +702,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDDecry
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -822,7 +822,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDEncry
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -927,7 +927,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysG
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1036,7 +1036,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1153,7 +1153,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1270,7 +1270,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1379,7 +1379,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1496,7 +1496,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1620,7 +1620,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1757,7 +1757,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1877,7 +1877,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDSigni
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1997,7 +1997,7 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDVerif
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

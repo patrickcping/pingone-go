@@ -40,7 +40,7 @@ func (r ApiV1EnvironmentsEnvIDUsersUserIDPostRequest) ContentType(contentType st
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPostRequest) Execute() (EntityArray, *_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPostExecute(r)
 }
 
@@ -64,18 +64,20 @@ func (a *ManagementAPIsUsersUserAccountsApiService) V1EnvironmentsEnvIDUsersUser
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserAccountsApiService) V1EnvironmentsEnvIDUsersUserIDPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPostRequest) (*_nethttp.Response, error) {
+//  @return EntityArray
+func (a *ManagementAPIsUsersUserAccountsApiService) V1EnvironmentsEnvIDUsersUserIDPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPostRequest) (EntityArray, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserAccountsApiService.V1EnvironmentsEnvIDUsersUserIDPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}"
@@ -108,19 +110,19 @@ func (a *ManagementAPIsUsersUserAccountsApiService) V1EnvironmentsEnvIDUsersUser
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -129,17 +131,26 @@ func (a *ManagementAPIsUsersUserAccountsApiService) V1EnvironmentsEnvIDUsersUser
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

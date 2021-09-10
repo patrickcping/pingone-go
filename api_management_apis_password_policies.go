@@ -117,7 +117,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -226,7 +226,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -350,7 +350,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
