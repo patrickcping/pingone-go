@@ -1461,6 +1461,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllGrantsForAnApplication
       parameters:
       - explode: false
         in: path
@@ -1485,7 +1486,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Grants for an Application
       tags:
@@ -1493,6 +1496,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createGrant
       parameters:
       - example: application/json
         explode: false
@@ -1520,12 +1524,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                resource:
-                  id: '{{resourceID}}'
-                scopes:
-                - id: '{{scopeID}}'
-              type: object
+              $ref: '#/components/schemas/ApplicationResourceGrant'
       responses:
         "401":
           content:
@@ -1535,7 +1534,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourceGrant'
           description: Successful response
       summary: CREATE Grant
       tags:
@@ -2055,6 +2056,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllApplicationAttributeMappings
       parameters:
       - explode: false
         in: path
@@ -2079,7 +2081,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Application Attribute Mappings
       tags:
@@ -2087,6 +2091,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createApplicationAttributeMapping
       parameters:
       - example: application/json
         explode: false
@@ -2114,11 +2119,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: email
-                value: ${user.email}
-                required: false
-              type: object
+              $ref: '#/components/schemas/ApplicationAttributeMapping'
       responses:
         "401":
           content:
@@ -2128,7 +2129,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationAttributeMapping'
           description: Successful response
       summary: CREATE Application Attribute Mapping
       tags:
@@ -2137,6 +2140,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteApplicationAttributeMapping
       parameters:
       - explode: false
         in: path
@@ -2174,6 +2178,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneApplicationAttributeMapping
       parameters:
       - explode: false
         in: path
@@ -2205,7 +2210,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationAttributeMapping'
           description: Successful response
       summary: READ One Application Attribute Mapping
       tags:
@@ -2213,6 +2220,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateApplicationAttributeMapping
       parameters:
       - example: application/json
         explode: false
@@ -2247,11 +2255,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: email
-                value: ${user.email}
-                required: true
-              type: object
+              $ref: '#/components/schemas/ApplicationAttributeMapping'
       responses:
         "401":
           content:
@@ -13851,6 +13855,27 @@ components:
       example:
         size: 7.061401241503109
         _embedded:
+          grants:
+          - createdAt: createdAt
+            application:
+              id: id
+            resource:
+              id: id
+            id: id
+            scopes:
+            - id: id
+            - id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            application:
+              id: id
+            resource:
+              id: id
+            id: id
+            scopes:
+            - id: id
+            - id: id
+            updatedAt: updatedAt
           environments:
           - name: New-Env
             description: New environment description
@@ -13949,6 +13974,19 @@ components:
             description: description
             id: id
             type: OPENID_CONNECT
+            updatedAt: updatedAt
+          attributes:
+          - createdAt: createdAt
+            mappingType: CORE
+            name: name
+            value: value
+            required: true
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            mappingType: CORE
+            name: name
+            value: value
+            required: true
             updatedAt: updatedAt
           roleAssignments:
           - environment:
@@ -14232,6 +14270,90 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - $ref: '#/components/schemas/ApplicationOIDC_allOf'
+    ApplicationAttributeMapping:
+      example:
+        createdAt: createdAt
+        mappingType: CORE
+        name: name
+        value: value
+        required: true
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        mappingType:
+          description: A string that specifies the mapping type of the attribute.
+            Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types
+            are for reserved attributes managed by the API and cannot be removed.
+            Attribute values for these mapping types can be updated. The CUSTOM mapping
+            type is for user-defined attributes. Attributes of this type can be updated
+            and deleted.
+          enum:
+          - CORE
+          - SCOPE
+          - CUSTOM
+          type: string
+        name:
+          description: A string that specifies the name of attribute and must be unique
+            within an application. For SAML applications, the samlAssertion.subject
+            name is a reserved case-insensitive name which indicates the mapping to
+            be used for the subject in an assertion. For OpenID Connect applications,
+            the following names are reserved and cannot be used acr, amr, at_hash,
+            aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope,
+            sid, sub  This is a required property.
+          type: string
+        required:
+          description: A boolean to specify whether a mapping value is required for
+            this attribute. If true, a value must be set and a non-empty value must
+            be available in the SAML assertion or ID token.
+          type: boolean
+        updatedAt:
+          description: The time the resource was updated.
+          readOnly: true
+          type: string
+        value:
+          description: A string that specifies the string constants or expression
+            for mapping the attribute path against a specific source. The expression
+            format is ${<source>.<attribute_path>}. The only supported source is user
+            (for example, ${user.id}). This is a required property.
+          type: string
+      type: object
+    ApplicationResourceGrant:
+      example:
+        createdAt: createdAt
+        application:
+          id: id
+        resource:
+          id: id
+        id: id
+        scopes:
+        - id: id
+        - id: id
+        updatedAt: updatedAt
+      properties:
+        application:
+          $ref: '#/components/schemas/ApplicationResourceGrant_application'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the application resource grant ID.
+          readOnly: true
+          type: string
+        resource:
+          $ref: '#/components/schemas/ApplicationResourceGrant_resource'
+        scopes:
+          items:
+            $ref: '#/components/schemas/ApplicationResourceGrant_scopes'
+          type: array
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      type: object
     ApplicationSecret:
       example:
         environment:
@@ -14820,6 +14942,27 @@ components:
       type: object
     EntityArray__embedded:
       example:
+        grants:
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
         environments:
         - name: New-Env
           description: New environment description
@@ -14918,6 +15061,19 @@ components:
           description: description
           id: id
           type: OPENID_CONNECT
+          updatedAt: updatedAt
+        attributes:
+        - createdAt: createdAt
+          mappingType: CORE
+          name: name
+          value: value
+          required: true
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          mappingType: CORE
+          name: name
+          value: value
+          required: true
           updatedAt: updatedAt
         roleAssignments:
         - environment:
@@ -15080,6 +15236,10 @@ components:
         - ""
         - ""
       properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/ApplicationAttributeMapping'
+          type: array
         applications:
           items:
             anyOf:
@@ -15089,6 +15249,10 @@ components:
         environments:
           items:
             $ref: '#/components/schemas/Environment'
+          type: array
+        grants:
+          items:
+            $ref: '#/components/schemas/ApplicationResourceGrant'
           type: array
         groups:
           items:
@@ -15359,6 +15523,34 @@ components:
           - NONE
           - CLIENT_SECRET_BASIC
           - CLIENT_SECRET_POST
+          type: string
+      type: object
+    ApplicationResourceGrant_application:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the application resource ID.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ApplicationResourceGrant_resource:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the ID of the protected resource associated
+            with this grant. This is a required property.
+          type: string
+      type: object
+    ApplicationResourceGrant_scopes:
+      example:
+        id: id
+      properties:
+        id:
+          description: "id\tA array that specifies the IDs of the scopes associated\
+            \ with this grant. This is a required property."
           type: string
       type: object
     BillOfMaterials_bookmarks:

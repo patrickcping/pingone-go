@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | Pointer to [**[]ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | [optional] 
 **Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
@@ -32,6 +34,31 @@ will change when the set of required properties is changed
 NewEntityArrayEmbeddedWithDefaults instantiates a new EntityArrayEmbedded object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *EntityArrayEmbedded) GetAttributes() []ApplicationAttributeMapping`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]ApplicationAttributeMapping, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *EntityArrayEmbedded) SetAttributes(v []ApplicationAttributeMapping)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *EntityArrayEmbedded) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetApplications
 
@@ -82,6 +109,31 @@ SetEnvironments sets Environments field to given value.
 `func (o *EntityArrayEmbedded) HasEnvironments() bool`
 
 HasEnvironments returns a boolean if a field has been set.
+
+### GetGrants
+
+`func (o *EntityArrayEmbedded) GetGrants() []ApplicationResourceGrant`
+
+GetGrants returns the Grants field if non-nil, zero value otherwise.
+
+### GetGrantsOk
+
+`func (o *EntityArrayEmbedded) GetGrantsOk() (*[]ApplicationResourceGrant, bool)`
+
+GetGrantsOk returns a tuple with the Grants field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrants
+
+`func (o *EntityArrayEmbedded) SetGrants(v []ApplicationResourceGrant)`
+
+SetGrants sets Grants field to given value.
+
+### HasGrants
+
+`func (o *EntityArrayEmbedded) HasGrants() bool`
+
+HasGrants returns a boolean if a field has been set.
 
 ### GetGroups
 

@@ -4,88 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDApplicationsAppIDAttributesGet**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#V1EnvironmentsEnvIDApplicationsAppIDAttributesGet) | **Get** /v1/environments/{envID}/applications/{appID}/attributes | READ All Application Attribute Mappings
-[**V1EnvironmentsEnvIDApplicationsAppIDAttributesPost**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#V1EnvironmentsEnvIDApplicationsAppIDAttributesPost) | **Post** /v1/environments/{envID}/applications/{appID}/attributes | CREATE Application Attribute Mapping
-[**V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete) | **Delete** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | DELETE Application Attribute Mapping
-[**V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet) | **Get** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | READ One Application Attribute Mapping
-[**V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut) | **Put** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | UPDATE Application Attribute Mapping
+[**CreateApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#CreateApplicationAttributeMapping) | **Post** /v1/environments/{envID}/applications/{appID}/attributes | CREATE Application Attribute Mapping
+[**DeleteApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#DeleteApplicationAttributeMapping) | **Delete** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | DELETE Application Attribute Mapping
+[**ReadAllApplicationAttributeMappings**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#ReadAllApplicationAttributeMappings) | **Get** /v1/environments/{envID}/applications/{appID}/attributes | READ All Application Attribute Mappings
+[**ReadOneApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#ReadOneApplicationAttributeMapping) | **Get** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | READ One Application Attribute Mapping
+[**UpdateApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#UpdateApplicationAttributeMapping) | **Put** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | UPDATE Application Attribute Mapping
 
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDAttributesGet
+## CreateApplicationAttributeMapping
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(ctx, envID, appID).Execute()
-
-READ All Application Attribute Mappings
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    appID := "appID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesGet(context.Background(), envID, appID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**appID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDAttributesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDApplicationsAppIDAttributesPost
-
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
+> ApplicationAttributeMapping CreateApplicationAttributeMapping(ctx, envID, appID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
 
 CREATE Application Attribute Mapping
 
@@ -107,15 +36,17 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping(context.Background(), envID, appID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateApplicationAttributeMapping`: ApplicationAttributeMapping
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping`: %v\n", resp)
 }
 ```
 
@@ -130,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDAttributesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateApplicationAttributeMappingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -138,11 +69,11 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **applicationAttributeMapping** | [**ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**ApplicationAttributeMapping**](ApplicationAttributeMapping.md)
 
 ### Authorization
 
@@ -158,9 +89,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete
+## DeleteApplicationAttributeMapping
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(ctx, envID, appID, samlAttrID).Execute()
+> DeleteApplicationAttributeMapping(ctx, envID, appID, samlAttrID).Execute()
 
 DELETE Application Attribute Mapping
 
@@ -185,9 +116,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete(context.Background(), envID, appID, samlAttrID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -205,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationAttributeMappingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -232,9 +163,82 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet
+## ReadAllApplicationAttributeMappings
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(ctx, envID, appID, samlAttrID).Execute()
+> EntityArray ReadAllApplicationAttributeMappings(ctx, envID, appID).Execute()
+
+READ All Application Attribute Mappings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    appID := "appID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings(context.Background(), envID, appID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllApplicationAttributeMappings`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**appID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllApplicationAttributeMappingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneApplicationAttributeMapping
+
+> ApplicationAttributeMapping ReadOneApplicationAttributeMapping(ctx, envID, appID, samlAttrID).Execute()
 
 READ One Application Attribute Mapping
 
@@ -259,11 +263,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet(context.Background(), envID, appID, samlAttrID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneApplicationAttributeMapping`: ApplicationAttributeMapping
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping`: %v\n", resp)
 }
 ```
 
@@ -279,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneApplicationAttributeMappingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -290,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ApplicationAttributeMapping**](ApplicationAttributeMapping.md)
 
 ### Authorization
 
@@ -306,9 +312,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut
+## UpdateApplicationAttributeMapping
 
-> V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(ctx, envID, appID, samlAttrID).ContentType(contentType).Body(body).Execute()
+> UpdateApplicationAttributeMapping(ctx, envID, appID, samlAttrID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
 
 UPDATE Application Attribute Mapping
 
@@ -331,13 +337,13 @@ func main() {
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut(context.Background(), envID, appID, samlAttrID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.V1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -355,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDAttributesSamlAttrIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateApplicationAttributeMappingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -364,7 +370,7 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **applicationAttributeMapping** | [**ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | 
 
 ### Return type
 
