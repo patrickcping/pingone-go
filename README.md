@@ -118,18 +118,18 @@ Class | Method | HTTP request | Description
 *ManagementAPIsApplicationsApplicationRoleAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost**](docs/ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#v1environmentsenvidapplicationsappidroleassignmentspost) | **Post** /v1/environments/{envID}/applications/{appID}/roleAssignments | CREATE Application Role Assignments
 *ManagementAPIsApplicationsApplicationRoleAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete**](docs/ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#v1environmentsenvidapplicationsappidroleassignmentsroleassignmentiddelete) | **Delete** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
 *ManagementAPIsApplicationsApplicationRoleAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet**](docs/ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#v1environmentsenvidapplicationsappidroleassignmentsroleassignmentidget) | **Get** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
-*ManagementAPIsApplicationsApplicationSecretApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSecretGet**](docs/ManagementAPIsApplicationsApplicationSecretApi.md#v1environmentsenvidapplicationsappidsecretget) | **Get** /v1/environments/{envID}/applications/{appID}/secret | READ Application Secret
-*ManagementAPIsApplicationsApplicationSecretApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSecretPost**](docs/ManagementAPIsApplicationsApplicationSecretApi.md#v1environmentsenvidapplicationsappidsecretpost) | **Post** /v1/environments/{envID}/applications/{appID}/secret | UPDATE Application Secret
+*ManagementAPIsApplicationsApplicationSecretApi* | [**ReadApplicationSecret**](docs/ManagementAPIsApplicationsApplicationSecretApi.md#readapplicationsecret) | **Get** /v1/environments/{envID}/applications/{appID}/secret | READ Application Secret
+*ManagementAPIsApplicationsApplicationSecretApi* | [**UpdateApplicationSecret**](docs/ManagementAPIsApplicationsApplicationSecretApi.md#updateapplicationsecret) | **Post** /v1/environments/{envID}/applications/{appID}/secret | UPDATE Application Secret
 *ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsGet**](docs/ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvidapplicationsappidsignonpolicyassignmentsget) | **Get** /v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments | READ All SOP Assignments
 *ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost**](docs/ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvidapplicationsappidsignonpolicyassignmentspost) | **Post** /v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments | CREATE SOP Assignment
 *ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDDelete**](docs/ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvidapplicationsappidsignonpolicyassignmentssopassignmentiddelete) | **Delete** /v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments/{SOPAssignmentID} | DELETE SOP Assignment
 *ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDGet**](docs/ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvidapplicationsappidsignonpolicyassignmentssopassignmentidget) | **Get** /v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments/{SOPAssignmentID} | READ One SOP Assignment
 *ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut**](docs/ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvidapplicationsappidsignonpolicyassignmentssopassignmentidput) | **Put** /v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments/{SOPAssignmentID} | UPDATE SOP Assignment
-*ManagementAPIsApplicationsApplicationsApi* | [**V1EnvironmentsEnvIDApplicationsAppDDelete**](docs/ManagementAPIsApplicationsApplicationsApi.md#v1environmentsenvidapplicationsappddelete) | **Delete** /v1/environments/{envID}/applications/{appD} | DELETE Application
-*ManagementAPIsApplicationsApplicationsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDGet**](docs/ManagementAPIsApplicationsApplicationsApi.md#v1environmentsenvidapplicationsappidget) | **Get** /v1/environments/{envID}/applications/{appID} | READ One Application
-*ManagementAPIsApplicationsApplicationsApi* | [**V1EnvironmentsEnvIDApplicationsAppIDPut**](docs/ManagementAPIsApplicationsApplicationsApi.md#v1environmentsenvidapplicationsappidput) | **Put** /v1/environments/{envID}/applications/{appID} | UPDATE Application (SAML)
-*ManagementAPIsApplicationsApplicationsApi* | [**V1EnvironmentsEnvIDApplicationsGet**](docs/ManagementAPIsApplicationsApplicationsApi.md#v1environmentsenvidapplicationsget) | **Get** /v1/environments/{envID}/applications | READ All Applications
-*ManagementAPIsApplicationsApplicationsApi* | [**V1EnvironmentsEnvIDApplicationsPost**](docs/ManagementAPIsApplicationsApplicationsApi.md#v1environmentsenvidapplicationspost) | **Post** /v1/environments/{envID}/applications | CREATE Application (SAML Protocol)
+*ManagementAPIsApplicationsApplicationsApi* | [**CreateApplication**](docs/ManagementAPIsApplicationsApplicationsApi.md#createapplication) | **Post** /v1/environments/{envID}/applications | CREATE Application
+*ManagementAPIsApplicationsApplicationsApi* | [**DeleteApplication**](docs/ManagementAPIsApplicationsApplicationsApi.md#deleteapplication) | **Delete** /v1/environments/{envID}/applications/{appID} | DELETE Application
+*ManagementAPIsApplicationsApplicationsApi* | [**ReadAllApplications**](docs/ManagementAPIsApplicationsApplicationsApi.md#readallapplications) | **Get** /v1/environments/{envID}/applications | READ All Applications
+*ManagementAPIsApplicationsApplicationsApi* | [**ReadOneApplication**](docs/ManagementAPIsApplicationsApplicationsApi.md#readoneapplication) | **Get** /v1/environments/{envID}/applications/{appID} | READ One Application
+*ManagementAPIsApplicationsApplicationsApi* | [**UpdateApplication**](docs/ManagementAPIsApplicationsApplicationsApi.md#updateapplication) | **Put** /v1/environments/{envID}/applications/{appID} | UPDATE Application
 *ManagementAPIsAuditActivitiesApi* | [**V1EnvironmentsEnvIDActivitiesActivityIDGet**](docs/ManagementAPIsAuditActivitiesApi.md#v1environmentsenvidactivitiesactivityidget) | **Get** /v1/environments/{envID}/activities/{activityID} | GET One User Activity
 *ManagementAPIsAuditActivitiesApi* | [**V1EnvironmentsEnvIDActivitiesGet**](docs/ManagementAPIsAuditActivitiesApi.md#v1environmentsenvidactivitiesget) | **Get** /v1/environments/{envID}/activities | GET User Activities
 *ManagementAPIsAuditActivitiesApi* | [**V1EnvironmentsEnvIDActivitiesPost**](docs/ManagementAPIsAuditActivitiesApi.md#v1environmentsenvidactivitiespost) | **Post** /v1/environments/{envID}/activities | GET User Activities
@@ -191,11 +191,11 @@ Class | Method | HTTP request | Description
 *ManagementAPIsGatewayManagementGatewaysApi* | [**V1EnvironmentsEnvIDGatewaysGatewayIDPut**](docs/ManagementAPIsGatewayManagementGatewaysApi.md#v1environmentsenvidgatewaysgatewayidput) | **Put** /v1/environments/{envID}/gateways/{gatewayID} | UPDATE Gateway
 *ManagementAPIsGatewayManagementGatewaysApi* | [**V1EnvironmentsEnvIDGatewaysGet**](docs/ManagementAPIsGatewayManagementGatewaysApi.md#v1environmentsenvidgatewaysget) | **Get** /v1/environments/{envID}/gateways | READ All Gateways
 *ManagementAPIsGatewayManagementGatewaysApi* | [**V1EnvironmentsEnvIDGatewaysPost**](docs/ManagementAPIsGatewayManagementGatewaysApi.md#v1environmentsenvidgatewayspost) | **Post** /v1/environments/{envID}/gateways | CREATE Ping Federate Gateway
-*ManagementAPIsGroupsApi* | [**V1EnvironmentsEnvIDGroupsGet**](docs/ManagementAPIsGroupsApi.md#v1environmentsenvidgroupsget) | **Get** /v1/environments/{envID}/groups | READ All Groups
-*ManagementAPIsGroupsApi* | [**V1EnvironmentsEnvIDGroupsGroupIDDelete**](docs/ManagementAPIsGroupsApi.md#v1environmentsenvidgroupsgroupiddelete) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
-*ManagementAPIsGroupsApi* | [**V1EnvironmentsEnvIDGroupsGroupIDGet**](docs/ManagementAPIsGroupsApi.md#v1environmentsenvidgroupsgroupidget) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
-*ManagementAPIsGroupsApi* | [**V1EnvironmentsEnvIDGroupsGroupIDPut**](docs/ManagementAPIsGroupsApi.md#v1environmentsenvidgroupsgroupidput) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
-*ManagementAPIsGroupsApi* | [**V1EnvironmentsEnvIDGroupsPost**](docs/ManagementAPIsGroupsApi.md#v1environmentsenvidgroupspost) | **Post** /v1/environments/{envID}/groups | CREATE Group
+*ManagementAPIsGroupsApi* | [**CreateGroup**](docs/ManagementAPIsGroupsApi.md#creategroup) | **Post** /v1/environments/{envID}/groups | CREATE Group
+*ManagementAPIsGroupsApi* | [**DeleteGroup**](docs/ManagementAPIsGroupsApi.md#deletegroup) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
+*ManagementAPIsGroupsApi* | [**ReadAllGroups**](docs/ManagementAPIsGroupsApi.md#readallgroups) | **Get** /v1/environments/{envID}/groups | READ All Groups
+*ManagementAPIsGroupsApi* | [**ReadOneGroup**](docs/ManagementAPIsGroupsApi.md#readonegroup) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
+*ManagementAPIsGroupsApi* | [**UpdateGroup**](docs/ManagementAPIsGroupsApi.md#updategroup) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
 *ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi* | [**V1EnvironmentsEnvIDPropagationMappingMappingIDDelete**](docs/ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.md#v1environmentsenvidpropagationmappingmappingiddelete) | **Delete** /v1/environments/{envID}/propagation/mapping/{mappingID} | DELETE Mapping
 *ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi* | [**V1EnvironmentsEnvIDPropagationMappingsMappingIDGet**](docs/ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.md#v1environmentsenvidpropagationmappingsmappingidget) | **Get** /v1/environments/{envID}/propagation/mappings/{mappingID} | READ One Mapping
 *ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi* | [**V1EnvironmentsEnvIDPropagationMappingsMappingIDPut**](docs/ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.md#v1environmentsenvidpropagationmappingsmappingidput) | **Put** /v1/environments/{envID}/propagation/mappings/{mappingID} | UPDATE Mapping
@@ -311,11 +311,11 @@ Class | Method | HTTP request | Description
 *ManagementAPIsResourcesResourceScopesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete**](docs/ManagementAPIsResourcesResourceScopesApi.md#v1environmentsenvidresourcesresourceidscopesscopeiddelete) | **Delete** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
 *ManagementAPIsResourcesResourceScopesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet**](docs/ManagementAPIsResourcesResourceScopesApi.md#v1environmentsenvidresourcesresourceidscopesscopeidget) | **Get** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | READ One Scope
 *ManagementAPIsResourcesResourceScopesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut**](docs/ManagementAPIsResourcesResourceScopesApi.md#v1environmentsenvidresourcesresourceidscopesscopeidput) | **Put** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | UPDATE PingOne access control scope
-*ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesGet**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcesget) | **Get** /v1/environments/{envID}/resources | READ All Resources
-*ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesPost**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcespost) | **Post** /v1/environments/{envID}/resources | CREATE Resource
-*ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDDelete**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcesresourceiddelete) | **Delete** /v1/environments/{envID}/resources/{resourceID} | DELETE Resource
+*ManagementAPIsResourcesResourcesApi* | [**CreateResource**](docs/ManagementAPIsResourcesResourcesApi.md#createresource) | **Post** /v1/environments/{envID}/resources | CREATE Resource
+*ManagementAPIsResourcesResourcesApi* | [**DeleteResource**](docs/ManagementAPIsResourcesResourcesApi.md#deleteresource) | **Delete** /v1/environments/{envID}/resources/{resourceID} | DELETE Resource
+*ManagementAPIsResourcesResourcesApi* | [**ReadAllResources**](docs/ManagementAPIsResourcesResourcesApi.md#readallresources) | **Get** /v1/environments/{envID}/resources | READ All Resources
+*ManagementAPIsResourcesResourcesApi* | [**UpdateResource**](docs/ManagementAPIsResourcesResourcesApi.md#updateresource) | **Put** /v1/environments/{envID}/resources/{resourceID} | UPDATE Resource
 *ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDGet**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcesresourceidget) | **Get** /v1/environments/{envID}/resources/{resourceID} | READ One Resource
-*ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDPut**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcesresourceidput) | **Put** /v1/environments/{envID}/resources/{resourceID} | UPDATE Resource
 *ManagementAPIsRiskManagementRiskAdvancedPredictorsApi* | [**V1EnvironmentsEnvIDRiskPredictorsGet**](docs/ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.md#v1environmentsenvidriskpredictorsget) | **Get** /v1/environments/{envID}/riskPredictors | READ All Risk Predictors
 *ManagementAPIsRiskManagementRiskAdvancedPredictorsApi* | [**V1EnvironmentsEnvIDRiskPredictorsRiskPredictorIDGet**](docs/ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.md#v1environmentsenvidriskpredictorsriskpredictoridget) | **Get** /v1/environments/{envID}/riskPredictors/{riskPredictorID} | READ One Risk Predictor
 *ManagementAPIsRiskManagementRiskEvaluationsApi* | [**V1EnvironmentsEnvIDRiskEvaluationsPost**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#v1environmentsenvidriskevaluationspost) | **Post** /v1/environments/{envID}/riskEvaluations | CREATE Risk Evaluation
@@ -411,6 +411,23 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Application](docs/Application.md)
+ - [ApplicationAccessControl](docs/ApplicationAccessControl.md)
+ - [ApplicationAccessControlGroup](docs/ApplicationAccessControlGroup.md)
+ - [ApplicationAccessControlRole](docs/ApplicationAccessControlRole.md)
+ - [ApplicationIcon](docs/ApplicationIcon.md)
+ - [ApplicationMobile](docs/ApplicationMobile.md)
+ - [ApplicationMobileIntegrityDetection](docs/ApplicationMobileIntegrityDetection.md)
+ - [ApplicationMobileIntegrityDetectionCacheDuration](docs/ApplicationMobileIntegrityDetectionCacheDuration.md)
+ - [ApplicationOIDC](docs/ApplicationOIDC.md)
+ - [ApplicationOIDCAllOf](docs/ApplicationOIDCAllOf.md)
+ - [ApplicationSAML](docs/ApplicationSAML.md)
+ - [ApplicationSAMLAllOf](docs/ApplicationSAMLAllOf.md)
+ - [ApplicationSAMLAllOfIdpSigningtype](docs/ApplicationSAMLAllOfIdpSigningtype.md)
+ - [ApplicationSAMLAllOfIdpSigningtypeKey](docs/ApplicationSAMLAllOfIdpSigningtypeKey.md)
+ - [ApplicationSAMLAllOfSpVerification](docs/ApplicationSAMLAllOfSpVerification.md)
+ - [ApplicationSAMLAllOfSpVerificationCertificates](docs/ApplicationSAMLAllOfSpVerificationCertificates.md)
+ - [ApplicationSecret](docs/ApplicationSecret.md)
  - [BillOfMaterials](docs/BillOfMaterials.md)
  - [BillOfMaterialsBookmarks](docs/BillOfMaterialsBookmarks.md)
  - [BillOfMaterialsProducts](docs/BillOfMaterialsProducts.md)
@@ -419,14 +436,19 @@ Class | Method | HTTP request | Description
  - [Environment](docs/Environment.md)
  - [EnvironmentLicense](docs/EnvironmentLicense.md)
  - [EnvironmentOrganization](docs/EnvironmentOrganization.md)
+ - [Group](docs/Group.md)
+ - [GroupDirectMemberCounts](docs/GroupDirectMemberCounts.md)
  - [GroupMembership](docs/GroupMembership.md)
+ - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
  - [InlineObject2](docs/InlineObject2.md)
+ - [ObjectEnvironment](docs/ObjectEnvironment.md)
+ - [ObjectPopulation](docs/ObjectPopulation.md)
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetails](docs/P1ErrorDetails.md)
  - [Population](docs/Population.md)
+ - [Resource](docs/Resource.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
- - [RoleAssignmentEnvironment](docs/RoleAssignmentEnvironment.md)
  - [RoleAssignmentRole](docs/RoleAssignmentRole.md)
  - [RoleAssignmentScope](docs/RoleAssignmentScope.md)
  - [RolePermissions](docs/RolePermissions.md)

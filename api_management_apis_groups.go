@@ -27,38 +27,33 @@ var (
 // ManagementAPIsGroupsApiService ManagementAPIsGroupsApi service
 type ManagementAPIsGroupsApiService service
 
-type ApiV1EnvironmentsEnvIDGroupsGetRequest struct {
+type ApiCreateGroupRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsGroupsApiService
 	envID string
-	filter *string
-	limit *int32
+	group *Group
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGetRequest) Filter(filter string) ApiV1EnvironmentsEnvIDGroupsGetRequest {
-	r.filter = &filter
-	return r
-}
-func (r ApiV1EnvironmentsEnvIDGroupsGetRequest) Limit(limit int32) ApiV1EnvironmentsEnvIDGroupsGetRequest {
-	r.limit = &limit
+func (r ApiCreateGroupRequest) Group(group Group) ApiCreateGroupRequest {
+	r.group = &group
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGroupsGetExecute(r)
+func (r ApiCreateGroupRequest) Execute() (Group, *_nethttp.Response, error) {
+	return r.ApiService.CreateGroupExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDGroupsGet READ All Groups
+CreateGroup CREATE Group
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDGroupsGetRequest
+ @return ApiCreateGroupRequest
 */
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDGroupsGetRequest {
-	return ApiV1EnvironmentsEnvIDGroupsGetRequest{
+func (a *ManagementAPIsGroupsApiService) CreateGroup(ctx _context.Context, envID string) ApiCreateGroupRequest {
+	return ApiCreateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -66,18 +61,257 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGet(ctx _conte
 }
 
 // Execute executes the request
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGetExecute(r ApiV1EnvironmentsEnvIDGroupsGetRequest) (*_nethttp.Response, error) {
+//  @return Group
+func (a *ManagementAPIsGroupsApiService) CreateGroupExecute(r ApiCreateGroupRequest) (Group, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Group
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.CreateGroup")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/groups"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.group
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteGroupRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsGroupsApiService
+	envID string
+	groupID string
+}
+
+
+func (r ApiDeleteGroupRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteGroupExecute(r)
+}
+
+/*
+DeleteGroup DELETE Group
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param groupID
+ @return ApiDeleteGroupRequest
+*/
+func (a *ManagementAPIsGroupsApiService) DeleteGroup(ctx _context.Context, envID string, groupID string) ApiDeleteGroupRequest {
+	return ApiDeleteGroupRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		groupID: groupID,
+	}
+}
+
+// Execute executes the request
+func (a *ManagementAPIsGroupsApiService) DeleteGroupExecute(r ApiDeleteGroupRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.V1EnvironmentsEnvIDGroupsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.DeleteGroup")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/groups/{groupID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", _neturl.PathEscape(parameterToString(r.groupID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllGroupsRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsGroupsApiService
+	envID string
+	filter *string
+	limit *int32
+}
+
+func (r ApiReadAllGroupsRequest) Filter(filter string) ApiReadAllGroupsRequest {
+	r.filter = &filter
+	return r
+}
+func (r ApiReadAllGroupsRequest) Limit(limit int32) ApiReadAllGroupsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiReadAllGroupsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllGroupsExecute(r)
+}
+
+/*
+ReadAllGroups READ All Groups
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @return ApiReadAllGroupsRequest
+*/
+func (a *ManagementAPIsGroupsApiService) ReadAllGroups(ctx _context.Context, envID string) ApiReadAllGroupsRequest {
+	return ApiReadAllGroupsRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *ManagementAPIsGroupsApiService) ReadAllGroupsExecute(r ApiReadAllGroupsRequest) (EntityArray, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.ReadAllGroups")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/groups"
@@ -112,19 +346,19 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGetExecute(r A
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -137,127 +371,27 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGetExecute(r A
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsGroupsApiService
-	envID string
-	groupID string
-}
-
-
-func (r ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGroupsGroupIDDeleteExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDGroupsGroupIDDelete DELETE Group
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param groupID
- @return ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest
-*/
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDDelete(ctx _context.Context, envID string, groupID string) ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		groupID: groupID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDDeleteExecute(r ApiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.V1EnvironmentsEnvIDGroupsGroupIDDelete")
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/groups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", _neturl.PathEscape(parameterToString(r.groupID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+			error: err.Error(),
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest struct {
+type ApiReadOneGroupRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsGroupsApiService
 	envID string
@@ -265,27 +399,27 @@ type ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest struct {
 	include *string
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest) Include(include string) ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest {
+func (r ApiReadOneGroupRequest) Include(include string) ApiReadOneGroupRequest {
 	r.include = &include
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGroupsGroupIDGetExecute(r)
+func (r ApiReadOneGroupRequest) Execute() (Group, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneGroupExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDGroupsGroupIDGet READ One Group
+ReadOneGroup READ One Group
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param groupID
- @return ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest
+ @return ApiReadOneGroupRequest
 */
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGet(ctx _context.Context, envID string, groupID string) ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest {
-	return ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest{
+func (a *ManagementAPIsGroupsApiService) ReadOneGroup(ctx _context.Context, envID string, groupID string) ApiReadOneGroupRequest {
+	return ApiReadOneGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -294,18 +428,20 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGet(ctx
 }
 
 // Execute executes the request
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGetExecute(r ApiV1EnvironmentsEnvIDGroupsGroupIDGetRequest) (*_nethttp.Response, error) {
+//  @return Group
+func (a *ManagementAPIsGroupsApiService) ReadOneGroupExecute(r ApiReadOneGroupRequest) (Group, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.V1EnvironmentsEnvIDGroupsGroupIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.ReadOneGroup")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/groups/{groupID}"
@@ -338,19 +474,19 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGetExec
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -363,46 +499,55 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDGetExec
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest struct {
+type ApiUpdateGroupRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsGroupsApiService
 	envID string
 	groupID string
-	body *map[string]interface{}
+	group *Group
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest {
-	r.body = &body
+func (r ApiUpdateGroupRequest) Group(group Group) ApiUpdateGroupRequest {
+	r.group = &group
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGroupsGroupIDPutExecute(r)
+func (r ApiUpdateGroupRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.UpdateGroupExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDGroupsGroupIDPut UPDATE Group
+UpdateGroup UPDATE Group
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param groupID
- @return ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest
+ @return ApiUpdateGroupRequest
 */
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPut(ctx _context.Context, envID string, groupID string) ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest {
-	return ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest{
+func (a *ManagementAPIsGroupsApiService) UpdateGroup(ctx _context.Context, envID string, groupID string) ApiUpdateGroupRequest {
+	return ApiUpdateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -411,7 +556,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPut(ctx
 }
 
 // Execute executes the request
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPutExecute(r ApiV1EnvironmentsEnvIDGroupsGroupIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsGroupsApiService) UpdateGroupExecute(r ApiUpdateGroupRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -420,7 +565,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPutExec
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.V1EnvironmentsEnvIDGroupsGroupIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.UpdateGroup")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -451,119 +596,7 @@ func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsGroupIDPutExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDGroupsPostRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsGroupsApiService
-	envID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvIDGroupsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGroupsPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvIDGroupsPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDGroupsPostExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDGroupsPost CREATE Group
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @return ApiV1EnvironmentsEnvIDGroupsPostRequest
-*/
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDGroupsPostRequest {
-	return ApiV1EnvironmentsEnvIDGroupsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsGroupsApiService) V1EnvironmentsEnvIDGroupsPostExecute(r ApiV1EnvironmentsEnvIDGroupsPostRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGroupsApiService.V1EnvironmentsEnvIDGroupsPost")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.group
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err

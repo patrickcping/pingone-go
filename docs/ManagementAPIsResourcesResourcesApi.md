@@ -4,85 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDResourcesGet**](ManagementAPIsResourcesResourcesApi.md#V1EnvironmentsEnvIDResourcesGet) | **Get** /v1/environments/{envID}/resources | READ All Resources
-[**V1EnvironmentsEnvIDResourcesPost**](ManagementAPIsResourcesResourcesApi.md#V1EnvironmentsEnvIDResourcesPost) | **Post** /v1/environments/{envID}/resources | CREATE Resource
-[**V1EnvironmentsEnvIDResourcesResourceIDDelete**](ManagementAPIsResourcesResourcesApi.md#V1EnvironmentsEnvIDResourcesResourceIDDelete) | **Delete** /v1/environments/{envID}/resources/{resourceID} | DELETE Resource
+[**CreateResource**](ManagementAPIsResourcesResourcesApi.md#CreateResource) | **Post** /v1/environments/{envID}/resources | CREATE Resource
+[**DeleteResource**](ManagementAPIsResourcesResourcesApi.md#DeleteResource) | **Delete** /v1/environments/{envID}/resources/{resourceID} | DELETE Resource
+[**ReadAllResources**](ManagementAPIsResourcesResourcesApi.md#ReadAllResources) | **Get** /v1/environments/{envID}/resources | READ All Resources
+[**UpdateResource**](ManagementAPIsResourcesResourcesApi.md#UpdateResource) | **Put** /v1/environments/{envID}/resources/{resourceID} | UPDATE Resource
 [**V1EnvironmentsEnvIDResourcesResourceIDGet**](ManagementAPIsResourcesResourcesApi.md#V1EnvironmentsEnvIDResourcesResourceIDGet) | **Get** /v1/environments/{envID}/resources/{resourceID} | READ One Resource
-[**V1EnvironmentsEnvIDResourcesResourceIDPut**](ManagementAPIsResourcesResourcesApi.md#V1EnvironmentsEnvIDResourcesResourceIDPut) | **Put** /v1/environments/{envID}/resources/{resourceID} | UPDATE Resource
 
 
 
-## V1EnvironmentsEnvIDResourcesGet
+## CreateResource
 
-> V1EnvironmentsEnvIDResourcesGet(ctx, envID).Execute()
-
-READ All Resources
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesGet(context.Background(), envID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDResourcesPost
-
-> V1EnvironmentsEnvIDResourcesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> Resource CreateResource(ctx, envID).ContentType(contentType).Resource(resource).Execute()
 
 CREATE Resource
 
@@ -103,15 +35,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    resource := *openapiclient.NewResource() // Resource |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.CreateResource(context.Background(), envID).ContentType(contentType).Resource(resource).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.CreateResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateResource`: Resource
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourcesApi.CreateResource`: %v\n", resp)
 }
 ```
 
@@ -125,18 +59,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateResourceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **resource** | [**Resource**](Resource.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -152,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDResourcesResourceIDDelete
+## DeleteResource
 
-> V1EnvironmentsEnvIDResourcesResourceIDDelete(ctx, envID, resourceID).Execute()
+> DeleteResource(ctx, envID, resourceID).Execute()
 
 DELETE Resource
 
@@ -178,9 +112,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDDelete(context.Background(), envID, resourceID).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.DeleteResource(context.Background(), envID, resourceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.DeleteResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -197,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteResourceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -223,9 +157,154 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ReadAllResources
+
+> EntityArray ReadAllResources(ctx, envID).Execute()
+
+READ All Resources
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.ReadAllResources(context.Background(), envID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.ReadAllResources``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllResources`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourcesApi.ReadAllResources`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllResourcesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateResource
+
+> UpdateResource(ctx, envID, resourceID).ContentType(contentType).Resource(resource).Execute()
+
+UPDATE Resource
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    resourceID := "resourceID_example" // string | 
+    contentType := "application/json" // string |  (optional)
+    resource := *openapiclient.NewResource() // Resource |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.UpdateResource(context.Background(), envID, resourceID).ContentType(contentType).Resource(resource).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.UpdateResource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**resourceID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateResourceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **contentType** | **string** |  | 
+ **resource** | [**Resource**](Resource.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1EnvironmentsEnvIDResourcesResourceIDGet
 
-> V1EnvironmentsEnvIDResourcesResourceIDGet(ctx, envID, resourceID).Execute()
+> Resource V1EnvironmentsEnvIDResourcesResourceIDGet(ctx, envID, resourceID).Execute()
 
 READ One Resource
 
@@ -254,6 +333,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `V1EnvironmentsEnvIDResourcesResourceIDGet`: Resource
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDGet`: %v\n", resp)
 }
 ```
 
@@ -278,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -287,81 +368,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDResourcesResourceIDPut
-
-> V1EnvironmentsEnvIDResourcesResourceIDPut(ctx, envID, resourceID).ContentType(contentType).Body(body).Execute()
-
-UPDATE Resource
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    resourceID := "resourceID_example" // string | 
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDPut(context.Background(), envID, resourceID).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.V1EnvironmentsEnvIDResourcesResourceIDPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**resourceID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDApplicationsAppIDSecretGet**](ManagementAPIsApplicationsApplicationSecretApi.md#V1EnvironmentsEnvIDApplicationsAppIDSecretGet) | **Get** /v1/environments/{envID}/applications/{appID}/secret | READ Application Secret
-[**V1EnvironmentsEnvIDApplicationsAppIDSecretPost**](ManagementAPIsApplicationsApplicationSecretApi.md#V1EnvironmentsEnvIDApplicationsAppIDSecretPost) | **Post** /v1/environments/{envID}/applications/{appID}/secret | UPDATE Application Secret
+[**ReadApplicationSecret**](ManagementAPIsApplicationsApplicationSecretApi.md#ReadApplicationSecret) | **Get** /v1/environments/{envID}/applications/{appID}/secret | READ Application Secret
+[**UpdateApplicationSecret**](ManagementAPIsApplicationsApplicationSecretApi.md#UpdateApplicationSecret) | **Post** /v1/environments/{envID}/applications/{appID}/secret | UPDATE Application Secret
 
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDSecretGet
+## ReadApplicationSecret
 
-> V1EnvironmentsEnvIDApplicationsAppIDSecretGet(ctx, envID, appID).Execute()
+> ApplicationSecret ReadApplicationSecret(ctx, envID, appID).Execute()
 
 READ Application Secret
 
@@ -35,11 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.V1EnvironmentsEnvIDApplicationsAppIDSecretGet(context.Background(), envID, appID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.ReadApplicationSecret(context.Background(), envID, appID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSecretApi.V1EnvironmentsEnvIDApplicationsAppIDSecretGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSecretApi.ReadApplicationSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadApplicationSecret`: ApplicationSecret
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationSecretApi.ReadApplicationSecret`: %v\n", resp)
 }
 ```
 
@@ -54,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadApplicationSecretRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ApplicationSecret**](ApplicationSecret.md)
 
 ### Authorization
 
@@ -80,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDSecretPost
+## UpdateApplicationSecret
 
-> V1EnvironmentsEnvIDApplicationsAppIDSecretPost(ctx, envID, appID).ContentType(contentType).Execute()
+> UpdateApplicationSecret(ctx, envID, appID).ContentType(contentType).Execute()
 
 UPDATE Application Secret
 
@@ -107,9 +109,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.V1EnvironmentsEnvIDApplicationsAppIDSecretPost(context.Background(), envID, appID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.UpdateApplicationSecret(context.Background(), envID, appID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSecretApi.V1EnvironmentsEnvIDApplicationsAppIDSecretPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSecretApi.UpdateApplicationSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -126,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateApplicationSecretRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

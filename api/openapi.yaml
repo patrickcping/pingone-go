@@ -1070,7 +1070,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -1159,6 +1159,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllApplications
       parameters:
       - explode: false
         in: path
@@ -1176,7 +1177,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Applications
       tags:
@@ -1184,6 +1187,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createApplication
       parameters:
       - example: application/json
         explode: false
@@ -1219,7 +1223,9 @@ paths:
                 - https://example.com
                 sloResponseEndpoint: https://example.com
                 spEntityId: test
-              type: object
+              oneOf:
+              - $ref: '#/components/schemas/ApplicationSAML'
+              - $ref: '#/components/schemas/ApplicationOIDC'
       responses:
         "401":
           content:
@@ -1227,17 +1233,61 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ApplicationSAML'
+                - $ref: '#/components/schemas/ApplicationOIDC'
           description: Successful response
-      summary: CREATE Application (SAML Protocol)
+      summary: CREATE Application
       tags:
       - Management APIs > Applications > Applications
   /v1/environments/{envID}/applications/{appID}:
+    delete:
+      description: By design, PingOne requests solely comprise this collection. For
+        complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteApplication
+      parameters:
+      - example: application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "204":
+          description: Successful response
+      summary: DELETE Application
+      tags:
+      - Management APIs > Applications > Applications
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneApplication
       parameters:
       - explode: false
         in: path
@@ -1262,7 +1312,11 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ApplicationSAML'
+                - $ref: '#/components/schemas/ApplicationOIDC'
           description: Successful response
       summary: READ One Application
       tags:
@@ -1270,6 +1324,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateApplication
       parameters:
       - example: application/json
         explode: false
@@ -1308,7 +1363,9 @@ paths:
                 - https://example.com
                 sloResponseEndpoint: https://example.com
                 spEntityId: test
-              type: object
+              oneOf:
+              - $ref: '#/components/schemas/ApplicationSAML'
+              - $ref: '#/components/schemas/ApplicationOIDC'
       responses:
         "401":
           content:
@@ -1320,52 +1377,14 @@ paths:
           content:
             application/json: {}
           description: Successful response
-      summary: UPDATE Application (SAML)
-      tags:
-      - Management APIs > Applications > Applications
-  /v1/environments/{envID}/applications/{appD}:
-    delete:
-      description: By design, PingOne requests solely comprise this collection. For
-        complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: envID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: appD
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Unauthorised
-        "204":
-          description: Successful response
-      summary: DELETE Application
+      summary: UPDATE Application
       tags:
       - Management APIs > Applications > Applications
   /v1/environments/{envID}/applications/{appID}/secret:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readApplicationSecret
       parameters:
       - explode: false
         in: path
@@ -1390,7 +1409,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSecret'
           description: Successful response
       summary: READ Application Secret
       tags:
@@ -1398,6 +1419,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateApplicationSecret
       parameters:
       - example: application/json
         explode: false
@@ -1511,7 +1533,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -1728,7 +1750,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -1945,7 +1967,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -2104,7 +2126,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -2318,7 +2340,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -2884,7 +2906,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -3256,7 +3278,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -3479,7 +3501,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -3900,7 +3922,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -4231,7 +4253,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json:
               schema:
@@ -4455,7 +4477,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -4619,7 +4641,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -4814,7 +4836,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -4960,6 +4982,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteGroup
       parameters:
       - explode: false
         in: path
@@ -4990,6 +5013,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneGroup
       parameters:
       - example: totalMemberCounts
         explode: true
@@ -5022,7 +5046,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
           description: Successful response
       summary: READ One Group
       tags:
@@ -5030,6 +5056,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateGroup
       parameters:
       - explode: false
         in: path
@@ -5049,14 +5076,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: MyGroupName1
-                description: This is a group for testing.
-                externalId: cn=Some Group,ou=groups,dc=some,dc=active-directory,dc=domain
-                customData:
-                  groupOnwer: Bill Sample
-                  securityGroup: true
-              type: object
+              $ref: '#/components/schemas/Group'
       responses:
         "401":
           content:
@@ -5075,6 +5095,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllGroups
       parameters:
       - example: name eq "Training"
         explode: true
@@ -5108,7 +5129,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Groups
       tags:
@@ -5116,6 +5139,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createGroup
       parameters:
       - explode: false
         in: path
@@ -5128,14 +5152,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Managers
-                description: This is a test group
-                customData:
-                  groupOwner: Tom Jones
-                  securityGroup: true
-                userFilter: title eq "Manager"
-              type: object
+              $ref: '#/components/schemas/Group'
       responses:
         "401":
           content:
@@ -5143,9 +5160,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
           description: Successful response
       summary: CREATE Group
       tags:
@@ -5177,7 +5196,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -5326,7 +5345,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -5543,7 +5562,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -6026,7 +6045,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -6401,7 +6420,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -6713,7 +6732,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -6889,7 +6908,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -7301,7 +7320,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -7383,7 +7402,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -7516,7 +7535,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -7970,7 +7989,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -8359,7 +8378,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -8609,7 +8628,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -8913,7 +8932,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -9298,6 +9317,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllResources
       parameters:
       - explode: false
         in: path
@@ -9315,7 +9335,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Resources
       tags:
@@ -9323,6 +9345,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createResource
       parameters:
       - example: application/json
         explode: false
@@ -9343,12 +9366,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: CustomResource1
-                description: This is my custom resource
-                audience: https://api.custom.com
-                accessTokenValiditySeconds: 7200
-              type: object
+              $ref: '#/components/schemas/Resource'
       responses:
         "401":
           content:
@@ -9356,9 +9374,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
           description: Successful response
       summary: CREATE Resource
       tags:
@@ -9367,6 +9387,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteResource
       parameters:
       - explode: false
         in: path
@@ -9421,7 +9442,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
           description: Successful response
       summary: READ One Resource
       tags:
@@ -9429,6 +9452,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateResource
       parameters:
       - example: application/json
         explode: false
@@ -9456,10 +9480,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: CustomResource_EU
-                audience: https://api.custom.eu
-              type: object
+              $ref: '#/components/schemas/Resource'
       responses:
         "401":
           content:
@@ -9551,7 +9572,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -9776,7 +9797,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -10024,7 +10045,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -10298,7 +10319,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -10635,7 +10656,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -10903,7 +10924,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -11107,7 +11128,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -11302,7 +11323,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -11383,7 +11404,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -12979,7 +13000,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -13434,7 +13455,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Unauthorised
-        "200":
+        "201":
           content:
             application/json: {}
           description: Successful response
@@ -13828,7 +13849,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 5.962133916683182
+        size: 7.061401241503109
         _embedded:
           environments:
           - name: New-Env
@@ -13876,9 +13897,59 @@ components:
             - applicableTo
             - applicableTo
             id: id
+          groups:
+          - directMemberCounts:
+              users: 0
+            environment:
+              id: id
+            name: name
+            description: description
+            externalId: externalId
+            userFilter: userFilter
+            customData: '{}'
+            id: id
+            totalMemberCounts:
+              users: 6
+            population:
+              id: id
+          - directMemberCounts:
+              users: 0
+            environment:
+              id: id
+            name: name
+            description: description
+            externalId: externalId
+            userFilter: userFilter
+            customData: '{}'
+            id: id
+            totalMemberCounts:
+              users: 6
+            population:
+              id: id
           groupMemberships:
           - id: id
           - id: id
+          resources:
+          - createdAt: createdAt
+            audience: audience
+            environment:
+              id: id
+            accessTokenValiditySeconds: 5
+            name: name
+            description: description
+            id: id
+            type: OPENID_CONNECT
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            audience: audience
+            environment:
+              id: id
+            accessTokenValiditySeconds: 5
+            name: name
+            description: description
+            id: id
+            type: OPENID_CONNECT
+            updatedAt: updatedAt
           roleAssignments:
           - environment:
               id: id
@@ -13900,13 +13971,13 @@ components:
             id: id
           populations:
           - createdAt: createdAt
-            userCount: 0
+            userCount: 1
             name: name
             description: description
             id: id
             updatedAt: updatedAt
           - createdAt: createdAt
-            userCount: 0
+            userCount: 1
             name: name
             description: description
             id: id
@@ -13970,7 +14041,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 6
+              secondsUntilUnlock: 5
               unlockAt: unlockAt
               status: status
             username: username
@@ -14032,11 +14103,14 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 6
+              secondsUntilUnlock: 5
               unlockAt: unlockAt
               status: status
             username: username
-        count: 1.4658129805029452
+          applications:
+          - ""
+          - ""
+        count: 2.3021358869347655
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -14044,6 +14118,133 @@ components:
           type: number
         size:
           type: number
+      type: object
+    ObjectEnvironment:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectPopulation:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the population associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    Application:
+      properties:
+        accessControl:
+          $ref: '#/components/schemas/Application_accessControl'
+        assignActorRoles:
+          description: A boolean that specifies whether the permissions service should
+            assign default roles to the application. This property is set only on
+            the POST request. The property is ignored when included in a PUT request.
+          type: boolean
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the application.
+          type: string
+        enabled:
+          description: A string that specifies the current enabled state of the application.
+            Options are ENABLED or DISABLED.
+          enum:
+          - ENABLED
+          - DISABLED
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        icon:
+          $ref: '#/components/schemas/Application_icon'
+        id:
+          description: A string that specifies the application ID.
+          readOnly: true
+          type: string
+        loginPageUrl:
+          description: A string that specifies the custom login page URL for the application.
+            If you set the loginPageUrl property for applications in an environment
+            that sets a custom domain, the URL should include the top-level domain
+            and at least one additional domain level. Warning To avoid issues with
+            third-party cookies in some browsers, a custom domain must be used, giving
+            your PingOne environment the same parent domain as your authentication
+            application. For more information about custom domains, see Custom domains.
+          type: string
+        name:
+          description: A string that specifies the name of the application. This is
+            a required property.
+          type: string
+        protocol:
+          description: A string that specifies the protocol for the Application. Options
+            are OPENID_CONNECT and SAML.
+          enum:
+          - OPENID_CONNECT
+          - SAML
+          type: string
+        tags:
+          description: An array that specifies the list of labels associated with
+            the application. Options are PING_FED_CONNECTION_INTEGRATION.
+          items:
+            enum:
+            - PING_FED_CONNECTION_INTEGRATION
+            type: string
+          type: array
+        type:
+          description: A string that specifies the type associated with the application.
+            This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP,
+            and WORKER.
+          enum:
+          - WEB_APP
+          - NATIVE_APP
+          - SINGLE_PAGE_APP
+          - WORKER
+          - SERVICE
+          - CUSTOM_APP
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+        mobile:
+          $ref: '#/components/schemas/Application_mobile'
+        supportUnsignedRequestObject:
+          description: A boolean that specifies whether the request query parameter
+            JWT is allowed to be unsigned. If false or null (default), an unsigned
+            request object is not allowed.
+          type: boolean
+      type: object
+    ApplicationSAML:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationSAML_allOf'
+    ApplicationOIDC:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationOIDC_allOf'
+    ApplicationSecret:
+      example:
+        environment:
+          id: id
+        secret: secret
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        secret:
+          description: A string that specifies the application secret ID used to authenticate
+            to the authorization server.
+          readOnly: true
+          type: string
       type: object
     BillOfMaterials:
       example:
@@ -14139,6 +14340,65 @@ components:
           readOnly: true
           type: string
       type: object
+    Group:
+      example:
+        directMemberCounts:
+          users: 0
+        environment:
+          id: id
+        name: name
+        description: description
+        externalId: externalId
+        userFilter: userFilter
+        customData: '{}'
+        id: id
+        totalMemberCounts:
+          users: 6
+        population:
+          id: id
+      properties:
+        id:
+          description: The unique identifier for the group. Search all groups for
+            a specific group ID with a SCIM filter on GET /environments/{envID}/groups.
+            Retrieve all the group IDs associated with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupIDs.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        population:
+          $ref: '#/components/schemas/ObjectPopulation'
+        name:
+          description: The group name. A group name can be reused across populations,
+            but the same user cannot belong to multiple groups with the same group
+            name. Population groups cannot share a group name with an environment
+            group. Search all groups for a specific group name with a SCIM filter
+            on GET /environments/{envID}/groups. Retrieve all the group names associated
+            with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupNames.
+            Use this operation to determine group membership in attribute mappings
+            for claims and assertions.
+          type: string
+        userFilter:
+          description: A SCIM filter that determines which users are dynamically added
+            to the group. For more information, see Adding users to a group and Removing
+            users from a group.
+          type: string
+        description:
+          description: The group description.
+          type: string
+        externalId:
+          description: A user-defined identifier for the group. Use this propertry
+            to syncronize a group in PingOne with the same group in an external system.
+            PingOne does not directly use this property. Search all groups for a specific
+            external ID with a SCIM filter on GET /environments/{envID}/groups
+          type: string
+        customData:
+          description: Optional User-defined custom data.
+          type: object
+        directMemberCounts:
+          $ref: '#/components/schemas/Group_directMemberCounts'
+        totalMemberCounts:
+          $ref: '#/components/schemas/Group_totalMemberCounts'
+      type: object
     GroupMembership:
       example:
         id: id
@@ -14150,7 +14410,7 @@ components:
     Population:
       example:
         createdAt: createdAt
-        userCount: 0
+        userCount: 1
         name: name
         description: description
         id: id
@@ -14179,6 +14439,62 @@ components:
           description: The number of users that belong to the population
           readOnly: true
           type: integer
+      type: object
+    Resource:
+      example:
+        createdAt: createdAt
+        audience: audience
+        environment:
+          id: id
+        accessTokenValiditySeconds: 5
+        name: name
+        description: description
+        id: id
+        type: OPENID_CONNECT
+        updatedAt: updatedAt
+      properties:
+        accessTokenValiditySeconds:
+          description: An integer that specifies the number of seconds that the access
+            token is valid. If a value is not specified, the default is 3600. The
+            minimum value is 300 seconds (5 minutes); the maximum value is 2592000
+            seconds (30 days).
+          type: integer
+        audience:
+          description: A string that specifies a URL without a fragment or "@ObjectName"
+            and must not contain "pingone" or "pingidentity" (for example, https://api.myresource.com).
+            If a URL is not specified, the resource name is used.
+          type: string
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the resource.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the resource name, which must be provided
+            and must be unique within an environment.
+          type: string
+        type:
+          description: A string that specifies the type of resource. Options are OPENID_CONNECT,
+            PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created.
+            OPENID_CONNECT specifies the built-in platform resource for OpenID Connect.
+            PING_ONE_API specifies the built-in platform resource for PingOne.
+          enum:
+          - OPENID_CONNECT
+          - PING_ONE_API
+          - CUSTOM
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
       type: object
     Role:
       example:
@@ -14228,7 +14544,7 @@ components:
         id: id
       properties:
         environment:
-          $ref: '#/components/schemas/RoleAssignment_environment'
+          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: A string that specifies the user role assignment ID.
           readOnly: true
@@ -14303,7 +14619,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 6
+          secondsUntilUnlock: 5
           unlockAt: unlockAt
           status: status
         username: username
@@ -14550,9 +14866,59 @@ components:
           - applicableTo
           - applicableTo
           id: id
+        groups:
+        - directMemberCounts:
+            users: 0
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: '{}'
+          id: id
+          totalMemberCounts:
+            users: 6
+          population:
+            id: id
+        - directMemberCounts:
+            users: 0
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: '{}'
+          id: id
+          totalMemberCounts:
+            users: 6
+          population:
+            id: id
         groupMemberships:
         - id: id
         - id: id
+        resources:
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          accessTokenValiditySeconds: 5
+          name: name
+          description: description
+          id: id
+          type: OPENID_CONNECT
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          accessTokenValiditySeconds: 5
+          name: name
+          description: description
+          id: id
+          type: OPENID_CONNECT
+          updatedAt: updatedAt
         roleAssignments:
         - environment:
             id: id
@@ -14574,13 +14940,13 @@ components:
           id: id
         populations:
         - createdAt: createdAt
-          userCount: 0
+          userCount: 1
           name: name
           description: description
           id: id
           updatedAt: updatedAt
         - createdAt: createdAt
-          userCount: 0
+          userCount: 1
           name: name
           description: description
           id: id
@@ -14644,7 +15010,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 6
+            secondsUntilUnlock: 5
             unlockAt: unlockAt
             status: status
           username: username
@@ -14706,14 +15072,27 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 6
+            secondsUntilUnlock: 5
             unlockAt: unlockAt
             status: status
           username: username
+        applications:
+        - ""
+        - ""
       properties:
+        applications:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/ApplicationSAML'
+            - $ref: '#/components/schemas/ApplicationOIDC'
+          type: array
         environments:
           items:
             $ref: '#/components/schemas/Environment'
+          type: array
+        groups:
+          items:
+            $ref: '#/components/schemas/Group'
           type: array
         groupMemberships:
           items:
@@ -14722,6 +15101,10 @@ components:
         populations:
           items:
             $ref: '#/components/schemas/Population'
+          type: array
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
           type: array
         roleAssignments:
           items:
@@ -14735,6 +15118,248 @@ components:
           items:
             $ref: '#/components/schemas/User'
           type: array
+      type: object
+    Application_accessControl_role:
+      properties:
+        type:
+          description: A string that specifies the user role required to access the
+            application. Options are ADMIN_USERS_ONLY. A user is an admin user if
+            the user has one or more of the following roles Organization Admin, Environment
+            Admin, Identity Data Admin, or Client Application Developer.
+          type: string
+      type: object
+    Application_accessControl_group:
+      properties:
+        type:
+          description: A string that specifies the group type required to access the
+            application. Options are ANY_GROUP (the actor must belong to at least
+            one group listed in the accessControl.group.groups property) and ALL_GROUPS
+            (the actor must belong to all groups listed in the accessControl.group.groups
+            property).
+          type: string
+        groups:
+          description: A set that specifies the group IDs for the groups the actor
+            must belong to for access to the application.
+          items:
+            type: string
+          type: array
+      type: object
+    Application_accessControl:
+      properties:
+        role:
+          $ref: '#/components/schemas/Application_accessControl_role'
+        group:
+          $ref: '#/components/schemas/Application_accessControl_group'
+      type: object
+    Application_icon:
+      description: The HREF and the ID for the application icon.
+      properties:
+        id:
+          type: string
+        href:
+          type: string
+      type: object
+    Application_mobile_integrityDetection_cacheDuration:
+      properties:
+        amount:
+          description: An integer that specifies the number of minutes or hours that
+            specify the duration between successful integrity detection calls. Every
+            attestation request entails a certain time tradeoff. You can choose to
+            cache successful integrity detection calls for a predefined duration,
+            between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode
+            is ENABLED, the cache duration must be set.
+          type: integer
+        units:
+          description: A string that specifies the time units of the mobile.integrityDetection.cacheDuration.amount
+            :MINUTES, HOURS
+          enum:
+          - MINUTES
+          - HOURS
+          type: string
+      type: object
+    Application_mobile_integrityDetection:
+      properties:
+        mode:
+          description: A string that specifies whether device integrity detection
+            takes place on mobile devices, for the application's enrollment and authentication
+            events ENABLED, DISABLED
+          enum:
+          - ENABLED
+          - DISABLED
+          type: string
+        cacheDuration:
+          $ref: '#/components/schemas/Application_mobile_integrityDetection_cacheDuration'
+      type: object
+    Application_mobile:
+      properties:
+        bundleId:
+          description: A string that specifies the bundle associated with the application,
+            for push notifications in native apps. The value of the bundleId property
+            is unique per environment, and once defined, is immutable.
+          type: string
+        packageName:
+          description: A string that specifies the package name associated with the
+            application, for push notifications in native apps. The value of the mobile.packageName
+            property is unique per environment, and once defined, is immutable.
+          type: string
+        integrityDetection:
+          $ref: '#/components/schemas/Application_mobile_integrityDetection'
+      type: object
+    ApplicationSAML_allOf_idpSigningtype_key:
+      properties:
+        id:
+          description: A string that specifies the certificate to be used by the identity
+            provider to sign assertions and responses. If this property is omitted,
+            the default signing certificate for the environment is used.
+          type: string
+      type: object
+    ApplicationSAML_allOf_idpSigningtype:
+      properties:
+        key:
+          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigningtype_key'
+      type: object
+    ApplicationSAML_allOf_spVerification_certificates:
+      properties:
+        id:
+          description: An array that specifies the certificate IDs used to verify
+            the service provider signature.
+          type: string
+      type: object
+    ApplicationSAML_allOf_spVerification:
+      properties:
+        certificates:
+          items:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification_certificates'
+          type: array
+      type: object
+    ApplicationSAML_allOf:
+      properties:
+        acsUrls:
+          description: A string that specifies the Assertion Consumer Service URLs.
+            The first URL in the list is used as default (there must be at least one
+            URL). This is a required property.
+          items:
+            type: string
+          type: array
+        assertionDuration:
+          description: An integer that specifies the assertion validity duration in
+            seconds. This is a required property.
+          type: integer
+        assertionSigned:
+          description: A boolean that specifies whether the SAML assertion itself
+            should be signed. The default value is true.
+          type: boolean
+        idpSigningtype:
+          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigningtype'
+        nameIdFormat:
+          description: A string that specifies the format of the Subject NameID attibute
+            in the SAML assertion
+          type: string
+        responseSigned:
+          description: A boolean that specifies whether the SAML assertion response
+            itself should be signed. The default value is False.
+          type: boolean
+        sloBinding:
+          description: A string that specifies the binding protocol to be used for
+            the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default
+            is HTTP_POST; existing configurations with no data default to HTTP_POST.
+            This is an optional property.
+          enum:
+          - HTTP_REDIRECT
+          - HTTP_POST
+          type: string
+        sloEndpoint:
+          description: A string that specifies the logout endpoint URL. This is an
+            optional property. However, if a sloEndpoint logout endpoint URL is not
+            defined, logout actions result in an error.
+          type: string
+        sloResponseEndpoint:
+          description: A string that specifies the endpoint URL to submit the logout
+            response. If a value is not provided, the sloEndpoint property value is
+            used to submit SLO response.
+          type: string
+        spEntityId:
+          description: A string that specifies the service provider entity ID used
+            to lookup the application. This is a required property and is unique within
+            the environment.
+          type: string
+        spVerification:
+          $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
+      type: object
+    ApplicationOIDC_allOf:
+      properties:
+        grantTypes:
+          description: A string that specifies the grant type for the authorization
+            request. This is a required property. Options are authorization_code,
+            implicit, refresh_token, and client_credentials.
+          enum:
+          - authorization_code
+          - implicit
+          - refresh_token
+          - client_credentials
+          type: string
+        homePageUrl:
+          description: A string that specifies the custom home page URL for the application.
+          type: string
+        pkceEnforcement:
+          description: A string that specifies how PKCE request parameters are handled
+            on the authorize request. Options are OPTIONAL PKCE code_challenge is
+            optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge
+            is required and any code challenge method is acceptable. S256_REQUIRED
+            PKCE code_challege is required and the code_challenge_method must be S256.
+          enum:
+          - OPTIONAL
+          - REQUIRED
+          - S256_REQUIRED
+          type: string
+        postLogoutRedirectUris:
+          description: A string that specifies the URLs that the browser can be redirected
+            to after logout.
+          items:
+            type: string
+          type: array
+        redirectUris:
+          description: A string that specifies the callback URI for the authentication
+            response.
+          items:
+            type: string
+          type: array
+        refreshTokenDuration:
+          description: An integer that specifies the lifetime in seconds of the refresh
+            token. If a value is not provided, the default value is 2592000, or 30
+            days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration
+            property is specified for the application, then this property must be
+            less than or equal to the value of refreshTokenRollingDuration. After
+            this property is set, the value cannot be nullified. This value is used
+            to generate the value for the exp claim when minting a new refresh token.
+          type: integer
+        refreshTokenRollingDuration:
+          description: An integer that specifies the number of seconds a refresh token
+            can be exchanged before re-authentication is required. If a value is not
+            provided, the refresh token is valid forever. Valid values are between
+            60 and 2147483647. After this property is set, the value cannot be nullified.
+            This value is used to generate the value for the exp claim when minting
+            a new refresh token.
+          type: integer
+        responseTypes:
+          description: A string that specifies the code or token type returned by
+            an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note
+            that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN
+            because PingOne does not currently support OIDC hybrid flows.
+          enum:
+          - TOKEN
+          - ID_TOKEN
+          - CODE
+          type: string
+        tokenEndpointAuthMethod:
+          description: A string that specifies the client authentication methods supported
+            by the token endpoint. This is a required property. Options are NONE,
+            CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
+          enum:
+          - NONE
+          - CLIENT_SECRET_BASIC
+          - CLIENT_SECRET_POST
+          type: string
       type: object
     BillOfMaterials_bookmarks:
       example:
@@ -14814,6 +15439,32 @@ components:
             identifier associated with the environment.
           type: string
       type: object
+    Group_directMemberCounts:
+      description: An object containing a users (int) property. This property lists
+        the number of users explicitly added to the group with POST /environments/{envID}/users/{userID}/memberOfGroups.
+        Since these members were explicitly added to the group, they can be removed
+        from the group with DELETE /environments/{envID}/users/{userID}/memberOfGroups/{groupID}.
+      example:
+        users: 0
+      properties:
+        users:
+          description: Number of users with direct membership
+          type: integer
+      readOnly: true
+      type: object
+    Group_totalMemberCounts:
+      description: An object containing a users (int) property. This property lists
+        the total number of users added to the group. You must use GET /environments/{envID}/groups
+        with the include=totalMemberCounts query parameter to retrieve this property.
+        This property is not returned with a list of groups.
+      example:
+        users: 6
+      properties:
+        users:
+          description: Number of users with direct membership
+          type: integer
+      readOnly: true
+      type: object
     Role_permissions:
       example:
         classifier: classifier
@@ -14829,17 +15480,6 @@ components:
             enables for the role.
           readOnly: true
           type: string
-      type: object
-    RoleAssignment_environment:
-      example:
-        id: id
-      properties:
-        id:
-          description: A string that specifies the environment associated with the
-            user.
-          readOnly: true
-          type: string
-      readOnly: true
       type: object
     RoleAssignment_role:
       example:
@@ -14870,7 +15510,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 6
+        secondsUntilUnlock: 5
         unlockAt: unlockAt
         status: status
       properties:

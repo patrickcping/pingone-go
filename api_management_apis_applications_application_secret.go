@@ -27,7 +27,7 @@ var (
 // ManagementAPIsApplicationsApplicationSecretApiService ManagementAPIsApplicationsApplicationSecretApi service
 type ManagementAPIsApplicationsApplicationSecretApiService service
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest struct {
+type ApiReadApplicationSecretRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationSecretApiService
 	envID string
@@ -35,22 +35,22 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest struct {
 }
 
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDSecretGetExecute(r)
+func (r ApiReadApplicationSecretRequest) Execute() (ApplicationSecret, *_nethttp.Response, error) {
+	return r.ApiService.ReadApplicationSecretExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDSecretGet READ Application Secret
+ReadApplicationSecret READ Application Secret
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest
+ @return ApiReadApplicationSecretRequest
 */
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEnvIDApplicationsAppIDSecretGet(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest{
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecret(ctx _context.Context, envID string, appID string) ApiReadApplicationSecretRequest {
+	return ApiReadApplicationSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -59,18 +59,20 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEn
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEnvIDApplicationsAppIDSecretGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDSecretGetRequest) (*_nethttp.Response, error) {
+//  @return ApplicationSecret
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (ApplicationSecret, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  ApplicationSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.V1EnvironmentsEnvIDApplicationsAppIDSecretGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.ReadApplicationSecret")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/secret"
@@ -100,19 +102,19 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEn
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -125,18 +127,27 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEn
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest struct {
+type ApiUpdateApplicationSecretRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationSecretApiService
 	envID string
@@ -144,27 +155,27 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest struct {
 	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest {
+func (r ApiUpdateApplicationSecretRequest) ContentType(contentType string) ApiUpdateApplicationSecretRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDSecretPostExecute(r)
+func (r ApiUpdateApplicationSecretRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.UpdateApplicationSecretExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDSecretPost UPDATE Application Secret
+UpdateApplicationSecret UPDATE Application Secret
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest
+ @return ApiUpdateApplicationSecretRequest
 */
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEnvIDApplicationsAppIDSecretPost(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest{
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecret(ctx _context.Context, envID string, appID string) ApiUpdateApplicationSecretRequest {
+	return ApiUpdateApplicationSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -173,7 +184,7 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEn
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEnvIDApplicationsAppIDSecretPostExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDSecretPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -182,7 +193,7 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) V1EnvironmentsEn
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.V1EnvironmentsEnvIDApplicationsAppIDSecretPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.UpdateApplicationSecret")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}

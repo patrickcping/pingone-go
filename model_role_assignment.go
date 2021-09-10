@@ -16,7 +16,7 @@ import (
 
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
-	Environment *RoleAssignmentEnvironment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the user role assignment ID.
 	Id *string `json:"id,omitempty"`
 	// A boolean that specifies whether this role assignment can be deleted by the current actor.
@@ -43,9 +43,9 @@ func NewRoleAssignmentWithDefaults() *RoleAssignment {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *RoleAssignment) GetEnvironment() RoleAssignmentEnvironment {
+func (o *RoleAssignment) GetEnvironment() ObjectEnvironment {
 	if o == nil || o.Environment == nil {
-		var ret RoleAssignmentEnvironment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -53,7 +53,7 @@ func (o *RoleAssignment) GetEnvironment() RoleAssignmentEnvironment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignment) GetEnvironmentOk() (*RoleAssignmentEnvironment, bool) {
+func (o *RoleAssignment) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *RoleAssignment) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given RoleAssignmentEnvironment and assigns it to the Environment field.
-func (o *RoleAssignment) SetEnvironment(v RoleAssignmentEnvironment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *RoleAssignment) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

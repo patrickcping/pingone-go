@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Environment** | Pointer to [**RoleAssignmentEnvironment**](RoleAssignmentEnvironment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user role assignment ID. | [optional] [readonly] 
 **ReadOnly** | Pointer to **bool** | A boolean that specifies whether this role assignment can be deleted by the current actor. | [optional] [readonly] 
 **Role** | Pointer to [**RoleAssignmentRole**](RoleAssignmentRole.md) |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetEnvironment
 
-`func (o *RoleAssignment) GetEnvironment() RoleAssignmentEnvironment`
+`func (o *RoleAssignment) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *RoleAssignment) GetEnvironmentOk() (*RoleAssignmentEnvironment, bool)`
+`func (o *RoleAssignment) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *RoleAssignment) SetEnvironment(v RoleAssignmentEnvironment)`
+`func (o *RoleAssignment) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

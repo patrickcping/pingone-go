@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
+**Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
 **Users** | Pointer to [**[]User**](User.md) |  | [optional] 
@@ -29,6 +32,31 @@ will change when the set of required properties is changed
 NewEntityArrayEmbeddedWithDefaults instantiates a new EntityArrayEmbedded object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetApplications
+
+`func (o *EntityArrayEmbedded) GetApplications() []AnyOfApplicationSAMLApplicationOIDC`
+
+GetApplications returns the Applications field if non-nil, zero value otherwise.
+
+### GetApplicationsOk
+
+`func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]AnyOfApplicationSAMLApplicationOIDC, bool)`
+
+GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplications
+
+`func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC)`
+
+SetApplications sets Applications field to given value.
+
+### HasApplications
+
+`func (o *EntityArrayEmbedded) HasApplications() bool`
+
+HasApplications returns a boolean if a field has been set.
 
 ### GetEnvironments
 
@@ -54,6 +82,31 @@ SetEnvironments sets Environments field to given value.
 `func (o *EntityArrayEmbedded) HasEnvironments() bool`
 
 HasEnvironments returns a boolean if a field has been set.
+
+### GetGroups
+
+`func (o *EntityArrayEmbedded) GetGroups() []Group`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *EntityArrayEmbedded) GetGroupsOk() (*[]Group, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *EntityArrayEmbedded) SetGroups(v []Group)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *EntityArrayEmbedded) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 ### GetGroupMemberships
 
@@ -104,6 +157,31 @@ SetPopulations sets Populations field to given value.
 `func (o *EntityArrayEmbedded) HasPopulations() bool`
 
 HasPopulations returns a boolean if a field has been set.
+
+### GetResources
+
+`func (o *EntityArrayEmbedded) GetResources() []Resource`
+
+GetResources returns the Resources field if non-nil, zero value otherwise.
+
+### GetResourcesOk
+
+`func (o *EntityArrayEmbedded) GetResourcesOk() (*[]Resource, bool)`
+
+GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResources
+
+`func (o *EntityArrayEmbedded) SetResources(v []Resource)`
+
+SetResources sets Resources field to given value.
+
+### HasResources
+
+`func (o *EntityArrayEmbedded) HasResources() bool`
+
+HasResources returns a boolean if a field has been set.
 
 ### GetRoleAssignments
 

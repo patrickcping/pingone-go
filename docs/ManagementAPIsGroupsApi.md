@@ -4,17 +4,160 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDGroupsGet**](ManagementAPIsGroupsApi.md#V1EnvironmentsEnvIDGroupsGet) | **Get** /v1/environments/{envID}/groups | READ All Groups
-[**V1EnvironmentsEnvIDGroupsGroupIDDelete**](ManagementAPIsGroupsApi.md#V1EnvironmentsEnvIDGroupsGroupIDDelete) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
-[**V1EnvironmentsEnvIDGroupsGroupIDGet**](ManagementAPIsGroupsApi.md#V1EnvironmentsEnvIDGroupsGroupIDGet) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
-[**V1EnvironmentsEnvIDGroupsGroupIDPut**](ManagementAPIsGroupsApi.md#V1EnvironmentsEnvIDGroupsGroupIDPut) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
-[**V1EnvironmentsEnvIDGroupsPost**](ManagementAPIsGroupsApi.md#V1EnvironmentsEnvIDGroupsPost) | **Post** /v1/environments/{envID}/groups | CREATE Group
+[**CreateGroup**](ManagementAPIsGroupsApi.md#CreateGroup) | **Post** /v1/environments/{envID}/groups | CREATE Group
+[**DeleteGroup**](ManagementAPIsGroupsApi.md#DeleteGroup) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
+[**ReadAllGroups**](ManagementAPIsGroupsApi.md#ReadAllGroups) | **Get** /v1/environments/{envID}/groups | READ All Groups
+[**ReadOneGroup**](ManagementAPIsGroupsApi.md#ReadOneGroup) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
+[**UpdateGroup**](ManagementAPIsGroupsApi.md#UpdateGroup) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
 
 
 
-## V1EnvironmentsEnvIDGroupsGet
+## CreateGroup
 
-> V1EnvironmentsEnvIDGroupsGet(ctx, envID).Filter(filter).Limit(limit).Execute()
+> Group CreateGroup(ctx, envID).Group(group).Execute()
+
+CREATE Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    group := *openapiclient.NewGroup() // Group |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsGroupsApi.CreateGroup(context.Background(), envID).Group(group).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.CreateGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.CreateGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **group** | [**Group**](Group.md) |  | 
+
+### Return type
+
+[**Group**](Group.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteGroup
+
+> DeleteGroup(ctx, envID, groupID).Execute()
+
+DELETE Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    groupID := "groupID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsGroupsApi.DeleteGroup(context.Background(), envID, groupID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.DeleteGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**groupID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAllGroups
+
+> EntityArray ReadAllGroups(ctx, envID).Filter(filter).Limit(limit).Execute()
 
 READ All Groups
 
@@ -39,11 +182,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGet(context.Background(), envID).Filter(filter).Limit(limit).Execute()
+    resp, r, err := api_client.ManagementAPIsGroupsApi.ReadAllGroups(context.Background(), envID).Filter(filter).Limit(limit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.ReadAllGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllGroups`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.ReadAllGroups`: %v\n", resp)
 }
 ```
 
@@ -57,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGroupsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllGroupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -68,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -84,80 +229,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDGroupsGroupIDDelete
+## ReadOneGroup
 
-> V1EnvironmentsEnvIDGroupsGroupIDDelete(ctx, envID, groupID).Execute()
-
-DELETE Group
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    groupID := "groupID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDDelete(context.Background(), envID, groupID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**groupID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGroupsGroupIDDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDGroupsGroupIDGet
-
-> V1EnvironmentsEnvIDGroupsGroupIDGet(ctx, envID, groupID).Include(include).Execute()
+> Group ReadOneGroup(ctx, envID, groupID).Include(include).Execute()
 
 READ One Group
 
@@ -182,11 +256,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDGet(context.Background(), envID, groupID).Include(include).Execute()
+    resp, r, err := api_client.ManagementAPIsGroupsApi.ReadOneGroup(context.Background(), envID, groupID).Include(include).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.ReadOneGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.ReadOneGroup`: %v\n", resp)
 }
 ```
 
@@ -201,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGroupsGroupIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -212,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Group**](Group.md)
 
 ### Authorization
 
@@ -228,9 +304,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDGroupsGroupIDPut
+## UpdateGroup
 
-> V1EnvironmentsEnvIDGroupsGroupIDPut(ctx, envID, groupID).Body(body).Execute()
+> UpdateGroup(ctx, envID, groupID).Group(group).Execute()
 
 UPDATE Group
 
@@ -251,13 +327,13 @@ import (
 func main() {
     envID := "envID_example" // string | 
     groupID := "groupID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    group := *openapiclient.NewGroup() // Group |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDPut(context.Background(), envID, groupID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGroupsApi.UpdateGroup(context.Background(), envID, groupID).Group(group).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsGroupIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.UpdateGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -274,84 +350,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGroupsGroupIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDGroupsPost
-
-> V1EnvironmentsEnvIDGroupsPost(ctx, envID).Body(body).Execute()
-
-CREATE Group
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsPost(context.Background(), envID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.V1EnvironmentsEnvIDGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGroupsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
+ **group** | [**Group**](Group.md) |  | 
 
 ### Return type
 

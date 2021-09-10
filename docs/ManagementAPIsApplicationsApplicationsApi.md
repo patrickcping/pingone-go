@@ -4,17 +4,91 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDApplicationsAppDDelete**](ManagementAPIsApplicationsApplicationsApi.md#V1EnvironmentsEnvIDApplicationsAppDDelete) | **Delete** /v1/environments/{envID}/applications/{appD} | DELETE Application
-[**V1EnvironmentsEnvIDApplicationsAppIDGet**](ManagementAPIsApplicationsApplicationsApi.md#V1EnvironmentsEnvIDApplicationsAppIDGet) | **Get** /v1/environments/{envID}/applications/{appID} | READ One Application
-[**V1EnvironmentsEnvIDApplicationsAppIDPut**](ManagementAPIsApplicationsApplicationsApi.md#V1EnvironmentsEnvIDApplicationsAppIDPut) | **Put** /v1/environments/{envID}/applications/{appID} | UPDATE Application (SAML)
-[**V1EnvironmentsEnvIDApplicationsGet**](ManagementAPIsApplicationsApplicationsApi.md#V1EnvironmentsEnvIDApplicationsGet) | **Get** /v1/environments/{envID}/applications | READ All Applications
-[**V1EnvironmentsEnvIDApplicationsPost**](ManagementAPIsApplicationsApplicationsApi.md#V1EnvironmentsEnvIDApplicationsPost) | **Post** /v1/environments/{envID}/applications | CREATE Application (SAML Protocol)
+[**CreateApplication**](ManagementAPIsApplicationsApplicationsApi.md#CreateApplication) | **Post** /v1/environments/{envID}/applications | CREATE Application
+[**DeleteApplication**](ManagementAPIsApplicationsApplicationsApi.md#DeleteApplication) | **Delete** /v1/environments/{envID}/applications/{appID} | DELETE Application
+[**ReadAllApplications**](ManagementAPIsApplicationsApplicationsApi.md#ReadAllApplications) | **Get** /v1/environments/{envID}/applications | READ All Applications
+[**ReadOneApplication**](ManagementAPIsApplicationsApplicationsApi.md#ReadOneApplication) | **Get** /v1/environments/{envID}/applications/{appID} | READ One Application
+[**UpdateApplication**](ManagementAPIsApplicationsApplicationsApi.md#UpdateApplication) | **Put** /v1/environments/{envID}/applications/{appID} | UPDATE Application
 
 
 
-## V1EnvironmentsEnvIDApplicationsAppDDelete
+## CreateApplication
 
-> V1EnvironmentsEnvIDApplicationsAppDDelete(ctx, envID, appD).ContentType(contentType).Execute()
+> OneOfApplicationSAMLApplicationOIDC CreateApplication(ctx, envID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+
+CREATE Application
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    contentType := "application/json" // string |  (optional)
+    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.CreateApplication(context.Background(), envID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.CreateApplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateApplication`: OneOfApplicationSAMLApplicationOIDC
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.CreateApplication`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateApplicationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **contentType** | **string** |  | 
+ **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+
+### Return type
+
+[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteApplication
+
+> DeleteApplication(ctx, envID, appID).ContentType(contentType).Execute()
 
 DELETE Application
 
@@ -34,14 +108,14 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    appD := "appD_example" // string | 
+    appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppDDelete(context.Background(), envID, appD).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.DeleteApplication(context.Background(), envID, appID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.DeleteApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -54,11 +128,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **envID** | **string** |  | 
-**appD** | **string** |  | 
+**appID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -85,9 +159,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDGet
+## ReadAllApplications
 
-> V1EnvironmentsEnvIDApplicationsAppIDGet(ctx, envID, appID).Execute()
+> EntityArray ReadAllApplications(ctx, envID).Execute()
+
+READ All Applications
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.ReadAllApplications(context.Background(), envID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.ReadAllApplications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllApplications`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.ReadAllApplications`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllApplicationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneApplication
+
+> OneOfApplicationSAMLApplicationOIDC ReadOneApplication(ctx, envID, appID).Execute()
 
 READ One Application
 
@@ -111,11 +255,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDGet(context.Background(), envID, appID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.ReadOneApplication(context.Background(), envID, appID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.ReadOneApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneApplication`: OneOfApplicationSAMLApplicationOIDC
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.ReadOneApplication`: %v\n", resp)
 }
 ```
 
@@ -130,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -140,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
 
 ### Authorization
 
@@ -156,11 +302,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDPut
+## UpdateApplication
 
-> V1EnvironmentsEnvIDApplicationsAppIDPut(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
+> UpdateApplication(ctx, envID, appID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
 
-UPDATE Application (SAML)
+UPDATE Application
 
 
 
@@ -180,13 +326,13 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDPut(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.UpdateApplication(context.Background(), envID, appID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsAppIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.UpdateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -203,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,147 +357,7 @@ Name | Type | Description  | Notes
 
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDApplicationsGet
-
-> V1EnvironmentsEnvIDApplicationsGet(ctx, envID).Execute()
-
-READ All Applications
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsGet(context.Background(), envID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDApplicationsPost
-
-> V1EnvironmentsEnvIDApplicationsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
-
-CREATE Application (SAML Protocol)
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.V1EnvironmentsEnvIDApplicationsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
 
 ### Return type
 

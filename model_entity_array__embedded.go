@@ -16,9 +16,12 @@ import (
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
+	Applications *[]AnyOfApplicationSAMLApplicationOIDC `json:"applications,omitempty"`
 	Environments *[]Environment `json:"environments,omitempty"`
+	Groups *[]Group `json:"groups,omitempty"`
 	GroupMemberships *[]GroupMembership `json:"groupMemberships,omitempty"`
 	Populations *[]Population `json:"populations,omitempty"`
+	Resources *[]Resource `json:"resources,omitempty"`
 	RoleAssignments *[]RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles *[]Role `json:"roles,omitempty"`
 	Users *[]User `json:"users,omitempty"`
@@ -39,6 +42,38 @@ func NewEntityArrayEmbedded() *EntityArrayEmbedded {
 func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 	this := EntityArrayEmbedded{}
 	return &this
+}
+
+// GetApplications returns the Applications field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetApplications() []AnyOfApplicationSAMLApplicationOIDC {
+	if o == nil || o.Applications == nil {
+		var ret []AnyOfApplicationSAMLApplicationOIDC
+		return ret
+	}
+	return *o.Applications
+}
+
+// GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]AnyOfApplicationSAMLApplicationOIDC, bool) {
+	if o == nil || o.Applications == nil {
+		return nil, false
+	}
+	return o.Applications, true
+}
+
+// HasApplications returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasApplications() bool {
+	if o != nil && o.Applications != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApplications gets a reference to the given []AnyOfApplicationSAMLApplicationOIDC and assigns it to the Applications field.
+func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC) {
+	o.Applications = &v
 }
 
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
@@ -71,6 +106,38 @@ func (o *EntityArrayEmbedded) HasEnvironments() bool {
 // SetEnvironments gets a reference to the given []Environment and assigns it to the Environments field.
 func (o *EntityArrayEmbedded) SetEnvironments(v []Environment) {
 	o.Environments = &v
+}
+
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetGroups() []Group {
+	if o == nil || o.Groups == nil {
+		var ret []Group
+		return ret
+	}
+	return *o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetGroupsOk() (*[]Group, bool) {
+	if o == nil || o.Groups == nil {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasGroups() bool {
+	if o != nil && o.Groups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []Group and assigns it to the Groups field.
+func (o *EntityArrayEmbedded) SetGroups(v []Group) {
+	o.Groups = &v
 }
 
 // GetGroupMemberships returns the GroupMemberships field value if set, zero value otherwise.
@@ -135,6 +202,38 @@ func (o *EntityArrayEmbedded) HasPopulations() bool {
 // SetPopulations gets a reference to the given []Population and assigns it to the Populations field.
 func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
 	o.Populations = &v
+}
+
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetResources() []Resource {
+	if o == nil || o.Resources == nil {
+		var ret []Resource
+		return ret
+	}
+	return *o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetResourcesOk() (*[]Resource, bool) {
+	if o == nil || o.Resources == nil {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasResources() bool {
+	if o != nil && o.Resources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []Resource and assigns it to the Resources field.
+func (o *EntityArrayEmbedded) SetResources(v []Resource) {
+	o.Resources = &v
 }
 
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
@@ -235,14 +334,23 @@ func (o *EntityArrayEmbedded) SetUsers(v []User) {
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Applications != nil {
+		toSerialize["applications"] = o.Applications
+	}
 	if o.Environments != nil {
 		toSerialize["environments"] = o.Environments
+	}
+	if o.Groups != nil {
+		toSerialize["groups"] = o.Groups
 	}
 	if o.GroupMemberships != nil {
 		toSerialize["groupMemberships"] = o.GroupMemberships
 	}
 	if o.Populations != nil {
 		toSerialize["populations"] = o.Populations
+	}
+	if o.Resources != nil {
+		toSerialize["resources"] = o.Resources
 	}
 	if o.RoleAssignments != nil {
 		toSerialize["roleAssignments"] = o.RoleAssignments
