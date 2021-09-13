@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ReadAllGroupIDsForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllGroupIDsForUser) | **Get** /v1/environments/{envID}/users/{userID} | READ All Group IDs for User
-[**ReadAllUsersInAGroupWithOtherUserAttribute**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllUsersInAGroupWithOtherUserAttribute) | **Get** /v1/environments/{envID}/users | READ All Users in a Group with Other User Attribute
 [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
 [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
 [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
@@ -71,78 +70,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReadAllUsersInAGroupWithOtherUserAttribute
-
-> EntityArray ReadAllUsersInAGroupWithOtherUserAttribute(ctx, envID).Filter(filter).Execute()
-
-READ All Users in a Group with Other User Attribute
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadAllUsersInAGroupWithOtherUserAttribute(context.Background(), envID).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadAllUsersInAGroupWithOtherUserAttribute``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllUsersInAGroupWithOtherUserAttribute`: EntityArray
-    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersGroupMembershipApi.ReadAllUsersInAGroupWithOtherUserAttribute`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiReadAllUsersInAGroupWithOtherUserAttributeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **filter** | **string** |  | 
-
-### Return type
-
-[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

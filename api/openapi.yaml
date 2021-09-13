@@ -10524,6 +10524,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllSchemas
       parameters:
       - explode: false
         in: path
@@ -10541,7 +10542,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Schemas
       tags:
@@ -10550,6 +10553,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneSchema
       parameters:
       - explode: false
         in: path
@@ -10574,7 +10578,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
           description: Successful response
       summary: READ One Schema
       tags:
@@ -10583,6 +10589,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllSchemaAttributes
       parameters:
       - explode: false
         in: path
@@ -10607,7 +10614,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All (Schema) Attributes
       tags:
@@ -10615,6 +10624,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createAttribute
       parameters:
       - example: application/json
         explode: false
@@ -10642,17 +10652,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                description: An optional property that specifies the description of
-                  the new attribute.
-                displayName: An optional property that specifies the display name
-                  of the attribute.
-                enabled: false
-                name: customAttribute-101
-                required: false
-                type: STRING
-                unique: false
-              type: object
+              $ref: '#/components/schemas/SchemaAttribute'
       responses:
         "401":
           content:
@@ -10662,7 +10662,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaAttribute'
           description: Successful response
       summary: CREATE Attribute
       tags:
@@ -10671,6 +10673,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteAttribute
       parameters:
       - example: application/json
         explode: false
@@ -10716,6 +10719,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneAttribute
       parameters:
       - explode: false
         in: path
@@ -10747,7 +10751,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaAttribute'
           description: Successful response
       summary: READ One Attribute
       tags:
@@ -10755,6 +10761,7 @@ paths:
     patch:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateAttributePatch
       parameters:
       - example: application/json
         explode: false
@@ -10789,13 +10796,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: NewName
-                schemaType: CORE
-                type: STRING
-                unique: true
-                enabled: false
-              type: object
+              $ref: '#/components/schemas/SchemaAttribute'
       responses:
         "401":
           content:
@@ -10813,6 +10814,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateAttributePut
       parameters:
       - example: application/json
         explode: false
@@ -10847,12 +10849,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: customAttribute
-                unique: true
-                enabled: false
-                required: true
-              type: object
+              $ref: '#/components/schemas/SchemaAttribute'
       responses:
         "401":
           content:
@@ -11612,7 +11609,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: readAllUsersInAGroupWithOtherUserAttribute
+      operationId: readAllUsers
       parameters:
       - example: memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"
         explode: true
@@ -11642,13 +11639,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityArray'
           description: Successful response
-      summary: READ All Users in a Group with Other User Attribute
+      summary: READ All Users
       tags:
-      - Management APIs > Users > Group Membership
+      - Management APIs > Users > Users
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: createUserImport
+      operationId: createUser
       parameters:
       - example: application/vnd.pingidentity.user.import+json
         explode: false
@@ -11683,7 +11680,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
           description: Successful response
-      summary: CREATE User (Import)
+      summary: CREATE User
       tags:
       - Management APIs > Users > Users
   /v1/environments/{envID}/users/{userID}:
@@ -13922,6 +13919,79 @@ components:
             - applicableTo
             - applicableTo
             id: id
+          schemas:
+          - environment:
+              id: id
+            name: name
+            description: description
+            attributes:
+            - schema:
+                id: id
+              displayName: displayName
+              description: description
+              type: STRING
+              enabled: true
+              required: true
+              environment:
+                id: id
+              unique: true
+              name: name
+              schemaType: CORE
+              id: id
+              ldapAttribute: ldapAttribute
+              multiValued: true
+            - schema:
+                id: id
+              displayName: displayName
+              description: description
+              type: STRING
+              enabled: true
+              required: true
+              environment:
+                id: id
+              unique: true
+              name: name
+              schemaType: CORE
+              id: id
+              ldapAttribute: ldapAttribute
+              multiValued: true
+            id: id
+          - environment:
+              id: id
+            name: name
+            description: description
+            attributes:
+            - schema:
+                id: id
+              displayName: displayName
+              description: description
+              type: STRING
+              enabled: true
+              required: true
+              environment:
+                id: id
+              unique: true
+              name: name
+              schemaType: CORE
+              id: id
+              ldapAttribute: ldapAttribute
+              multiValued: true
+            - schema:
+                id: id
+              displayName: displayName
+              description: description
+              type: STRING
+              enabled: true
+              required: true
+              environment:
+                id: id
+              unique: true
+              name: name
+              schemaType: CORE
+              id: id
+              ldapAttribute: ldapAttribute
+              multiValued: true
+            id: id
           groups:
           - directMemberCounts:
               users: 0
@@ -13976,18 +14046,8 @@ components:
             type: OPENID_CONNECT
             updatedAt: updatedAt
           attributes:
-          - createdAt: createdAt
-            mappingType: CORE
-            name: name
-            value: value
-            required: true
-            updatedAt: updatedAt
-          - createdAt: createdAt
-            mappingType: CORE
-            name: name
-            value: value
-            required: true
-            updatedAt: updatedAt
+          - ""
+          - ""
           roleAssignments:
           - environment:
               id: id
@@ -14681,6 +14741,163 @@ components:
         scope:
           $ref: '#/components/schemas/RoleAssignment_scope'
       type: object
+    Schema:
+      example:
+        environment:
+          id: id
+        name: name
+        description: description
+        attributes:
+        - schema:
+            id: id
+          displayName: displayName
+          description: description
+          type: STRING
+          enabled: true
+          required: true
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: CORE
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+        - schema:
+            id: id
+          displayName: displayName
+          description: description
+          type: STRING
+          enabled: true
+          required: true
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: CORE
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+        id: id
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+          readOnly: true
+          type: array
+        description:
+          description: A string that specifies the description of the schema.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the resource name.
+          readOnly: true
+          type: string
+      type: object
+    SchemaAttribute:
+      example:
+        schema:
+          id: id
+        displayName: displayName
+        description: description
+        type: STRING
+        enabled: true
+        required: true
+        environment:
+          id: id
+        unique: true
+        name: name
+        schemaType: CORE
+        id: id
+        ldapAttribute: ldapAttribute
+        multiValued: true
+      properties:
+        description:
+          description: A string that specifies an optional property that specifies
+            the description of the attribute. If provided, it must not be an empty
+            string. Valid characters consists of any Unicode letter, mark (for example,
+            accent or umlaut), numeric character, punctuation character, or space.
+          type: string
+        displayName:
+          description: A string that specifies an optional property that specifies
+            the display name of the attribute such as 'T-shirt size’. If provided,
+            it must not be an empty string. Valid characters consist of any Unicode
+            letter, mark (for example, accent or umlaut), numeric character, forward
+            slash, dot, apostrophe, underscore, space, or hyphen.
+          type: string
+        enabled:
+          description: A boolean that specifies whether or not the attribute is enabled.
+            This is a required property for POST and PUT operations; it cannot be
+            omitted or explicitly set to null. Disabled attributes are ignored on
+            create/update and not returned on read.
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        ldapAttribute:
+          description: A string that specifies the LDAP attribute.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the name of the attribute. The attribute
+            name must be provided during creation, must not be empty and must not
+            exceed 256 characters. It must also be unique within the schema for an
+            environment. It must start with a letter and may be followed by letters,
+            numbers or hyphens.
+          type: string
+        required:
+          description: A boolean that specifies whether or not the attribute is required.
+            Required attributes must be provided a value during create/update. Defaults
+            to false if not provided.
+          type: boolean
+        schema:
+          $ref: '#/components/schemas/SchemaAttribute_schema'
+        schemaType:
+          description: A string that specifies the schema type of the attribute. It
+            may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are
+            present out-of-the-box. Core attributes may not be updated or deleted.
+            Standard attributes may not be deleted, but their mutable properties may
+            be updated. Custom attributes may be deleted, and their mutable properties
+            may be updated. New attributes are created with a schema type of CUSTOM.
+          enum:
+          - CORE
+          - STANDARD
+          - CUSTOM
+          type: string
+        type:
+          description: A string that specifies the the type of the attribute. It may
+            be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided
+            during creation, then it defaults to STRING. Complex and boolean attributes
+            may not be created, but standard attributes of those types may be updated.
+            JSON attributes are limited by size (total size must not exceed 16KB).
+          enum:
+          - STRING
+          - JSON
+          - BOOLEAN
+          - COMPLEX
+          type: string
+        unique:
+          description: A boolean that specifies whether or not the attribute must
+            have a unique value within the environment. This is a required property
+            for POST and PUT operations; it cannot be omitted or explicitly set to
+            null.
+          type: boolean
+        multiValued:
+          description: A boolean that specifies whether the attribute has multiple
+            values or a single one. This value can only change from false to true,
+            as changing from true to false is not allowed. Maximum number of values
+            stored is 1,000.
+          type: boolean
+      type: object
     User:
       example:
         preferredLanguage: preferredLanguage
@@ -15009,6 +15226,79 @@ components:
           - applicableTo
           - applicableTo
           id: id
+        schemas:
+        - environment:
+            id: id
+          name: name
+          description: description
+          attributes:
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: STRING
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: CORE
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: STRING
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: CORE
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          id: id
+        - environment:
+            id: id
+          name: name
+          description: description
+          attributes:
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: STRING
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: CORE
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: STRING
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: CORE
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          id: id
         groups:
         - directMemberCounts:
             users: 0
@@ -15063,18 +15353,8 @@ components:
           type: OPENID_CONNECT
           updatedAt: updatedAt
         attributes:
-        - createdAt: createdAt
-          mappingType: CORE
-          name: name
-          value: value
-          required: true
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          mappingType: CORE
-          name: name
-          value: value
-          required: true
-          updatedAt: updatedAt
+        - ""
+        - ""
         roleAssignments:
         - environment:
             id: id
@@ -15238,7 +15518,9 @@ components:
       properties:
         attributes:
           items:
-            $ref: '#/components/schemas/ApplicationAttributeMapping'
+            oneOf:
+            - $ref: '#/components/schemas/ApplicationAttributeMapping'
+            - $ref: '#/components/schemas/SchemaAttribute'
           type: array
         applications:
           items:
@@ -15277,6 +15559,10 @@ components:
         roles:
           items:
             $ref: '#/components/schemas/Role'
+          type: array
+        schemas:
+          items:
+            $ref: '#/components/schemas/Schema'
           type: array
         users:
           items:
@@ -15696,6 +15982,16 @@ components:
           - ORGANIZATION
           - ENVIRONMENT
           - POPULATION
+          type: string
+      type: object
+    SchemaAttribute_schema:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the identifier of the resource referenced
+            by this relationship.
+          readOnly: true
           type: string
       type: object
     User_account:

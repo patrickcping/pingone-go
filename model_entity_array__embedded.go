@@ -16,7 +16,7 @@ import (
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Attributes *[]ApplicationAttributeMapping `json:"attributes,omitempty"`
+	Attributes *[]OneOfApplicationAttributeMappingSchemaAttribute `json:"attributes,omitempty"`
 	Applications *[]AnyOfApplicationSAMLApplicationOIDC `json:"applications,omitempty"`
 	Environments *[]Environment `json:"environments,omitempty"`
 	Grants *[]ApplicationResourceGrant `json:"grants,omitempty"`
@@ -26,6 +26,7 @@ type EntityArrayEmbedded struct {
 	Resources *[]Resource `json:"resources,omitempty"`
 	RoleAssignments *[]RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles *[]Role `json:"roles,omitempty"`
+	Schemas *[]Schema `json:"schemas,omitempty"`
 	Users *[]User `json:"users,omitempty"`
 }
 
@@ -47,9 +48,9 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetAttributes() []ApplicationAttributeMapping {
+func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttribute {
 	if o == nil || o.Attributes == nil {
-		var ret []ApplicationAttributeMapping
+		var ret []OneOfApplicationAttributeMappingSchemaAttribute
 		return ret
 	}
 	return *o.Attributes
@@ -57,7 +58,7 @@ func (o *EntityArrayEmbedded) GetAttributes() []ApplicationAttributeMapping {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetAttributesOk() (*[]ApplicationAttributeMapping, bool) {
+func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttribute, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -73,8 +74,8 @@ func (o *EntityArrayEmbedded) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []ApplicationAttributeMapping and assigns it to the Attributes field.
-func (o *EntityArrayEmbedded) SetAttributes(v []ApplicationAttributeMapping) {
+// SetAttributes gets a reference to the given []OneOfApplicationAttributeMappingSchemaAttribute and assigns it to the Attributes field.
+func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttribute) {
 	o.Attributes = &v
 }
 
@@ -366,6 +367,38 @@ func (o *EntityArrayEmbedded) SetRoles(v []Role) {
 	o.Roles = &v
 }
 
+// GetSchemas returns the Schemas field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetSchemas() []Schema {
+	if o == nil || o.Schemas == nil {
+		var ret []Schema
+		return ret
+	}
+	return *o.Schemas
+}
+
+// GetSchemasOk returns a tuple with the Schemas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetSchemasOk() (*[]Schema, bool) {
+	if o == nil || o.Schemas == nil {
+		return nil, false
+	}
+	return o.Schemas, true
+}
+
+// HasSchemas returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasSchemas() bool {
+	if o != nil && o.Schemas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemas gets a reference to the given []Schema and assigns it to the Schemas field.
+func (o *EntityArrayEmbedded) SetSchemas(v []Schema) {
+	o.Schemas = &v
+}
+
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetUsers() []User {
 	if o == nil || o.Users == nil {
@@ -429,6 +462,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Roles != nil {
 		toSerialize["roles"] = o.Roles
+	}
+	if o.Schemas != nil {
+		toSerialize["schemas"] = o.Schemas
 	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users

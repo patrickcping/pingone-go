@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**[]ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | [optional] 
+**Attributes** | Pointer to [**[]OneOfApplicationAttributeMappingSchemaAttribute**](OneOfApplicationAttributeMappingSchemaAttribute.md) |  | [optional] 
 **Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
+**Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
 **Users** | Pointer to [**[]User**](User.md) |  | [optional] 
 
 ## Methods
@@ -37,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAttributes
 
-`func (o *EntityArrayEmbedded) GetAttributes() []ApplicationAttributeMapping`
+`func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttribute`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]ApplicationAttributeMapping, bool)`
+`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttribute, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EntityArrayEmbedded) SetAttributes(v []ApplicationAttributeMapping)`
+`func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttribute)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -284,6 +285,31 @@ SetRoles sets Roles field to given value.
 `func (o *EntityArrayEmbedded) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### GetSchemas
+
+`func (o *EntityArrayEmbedded) GetSchemas() []Schema`
+
+GetSchemas returns the Schemas field if non-nil, zero value otherwise.
+
+### GetSchemasOk
+
+`func (o *EntityArrayEmbedded) GetSchemasOk() (*[]Schema, bool)`
+
+GetSchemasOk returns a tuple with the Schemas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchemas
+
+`func (o *EntityArrayEmbedded) SetSchemas(v []Schema)`
+
+SetSchemas sets Schemas field to given value.
+
+### HasSchemas
+
+`func (o *EntityArrayEmbedded) HasSchemas() bool`
+
+HasSchemas returns a boolean if a field has been set.
 
 ### GetUsers
 

@@ -27,7 +27,7 @@ var (
 // ManagementAPIsUsersUsersApiService ManagementAPIsUsersUsersApi service
 type ManagementAPIsUsersUsersApiService service
 
-type ApiCreateUserImportRequest struct {
+type ApiCreateUserRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
@@ -35,30 +35,30 @@ type ApiCreateUserImportRequest struct {
 	user *User
 }
 
-func (r ApiCreateUserImportRequest) ContentType(contentType string) ApiCreateUserImportRequest {
+func (r ApiCreateUserRequest) ContentType(contentType string) ApiCreateUserRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiCreateUserImportRequest) User(user User) ApiCreateUserImportRequest {
+func (r ApiCreateUserRequest) User(user User) ApiCreateUserRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiCreateUserImportRequest) Execute() (User, *_nethttp.Response, error) {
-	return r.ApiService.CreateUserImportExecute(r)
+func (r ApiCreateUserRequest) Execute() (User, *_nethttp.Response, error) {
+	return r.ApiService.CreateUserExecute(r)
 }
 
 /*
-CreateUserImport CREATE User (Import)
+CreateUser CREATE User
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiCreateUserImportRequest
+ @return ApiCreateUserRequest
 */
-func (a *ManagementAPIsUsersUsersApiService) CreateUserImport(ctx _context.Context, envID string) ApiCreateUserImportRequest {
-	return ApiCreateUserImportRequest{
+func (a *ManagementAPIsUsersUsersApiService) CreateUser(ctx _context.Context, envID string) ApiCreateUserRequest {
+	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -67,7 +67,7 @@ func (a *ManagementAPIsUsersUsersApiService) CreateUserImport(ctx _context.Conte
 
 // Execute executes the request
 //  @return User
-func (a *ManagementAPIsUsersUsersApiService) CreateUserImportExecute(r ApiCreateUserImportRequest) (User, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUsersApiService) CreateUserExecute(r ApiCreateUserRequest) (User, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -77,7 +77,7 @@ func (a *ManagementAPIsUsersUsersApiService) CreateUserImportExecute(r ApiCreate
 		localVarReturnValue  User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.CreateUserImport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.CreateUser")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -265,6 +265,130 @@ func (a *ManagementAPIsUsersUsersApiService) DeleteUserExecute(r ApiDeleteUserRe
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllUsersRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsUsersUsersApiService
+	envID string
+	filter *string
+}
+
+func (r ApiReadAllUsersRequest) Filter(filter string) ApiReadAllUsersRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ApiReadAllUsersRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllUsersExecute(r)
+}
+
+/*
+ReadAllUsers READ All Users
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @return ApiReadAllUsersRequest
+*/
+func (a *ManagementAPIsUsersUsersApiService) ReadAllUsers(ctx _context.Context, envID string) ApiReadAllUsersRequest {
+	return ApiReadAllUsersRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *ManagementAPIsUsersUsersApiService) ReadAllUsersExecute(r ApiReadAllUsersRequest) (EntityArray, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.ReadAllUsers")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/users"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.filter != nil {
+		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateUserPatchRequest struct {

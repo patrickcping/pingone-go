@@ -204,6 +204,9 @@ docs/RoleAssignment.md
 docs/RoleAssignmentRole.md
 docs/RoleAssignmentScope.md
 docs/RolePermissions.md
+docs/Schema.md
+docs/SchemaAttribute.md
+docs/SchemaAttributeSchema.md
 docs/User.md
 docs/UserAccount.md
 docs/UserAddress.md
@@ -267,6 +270,9 @@ model_role_assignment.go
 model_role_assignment_role.go
 model_role_assignment_scope.go
 model_role_permissions.go
+model_schema.go
+model_schema_attribute.go
+model_schema_attribute_schema.go
 model_user.go
 model_user_account.go
 model_user_address.go

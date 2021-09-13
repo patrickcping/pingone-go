@@ -4,8 +4,9 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateUserImport**](ManagementAPIsUsersUsersApi.md#CreateUserImport) | **Post** /v1/environments/{envID}/users | CREATE User (Import)
+[**CreateUser**](ManagementAPIsUsersUsersApi.md#CreateUser) | **Post** /v1/environments/{envID}/users | CREATE User
 [**DeleteUser**](ManagementAPIsUsersUsersApi.md#DeleteUser) | **Delete** /v1/environments/{envID}/users/{userID} | DELETE User
+[**ReadAllUsers**](ManagementAPIsUsersUsersApi.md#ReadAllUsers) | **Get** /v1/environments/{envID}/users | READ All Users
 [**UpdateUserPatch**](ManagementAPIsUsersUsersApi.md#UpdateUserPatch) | **Patch** /v1/environments/{envID}/users/{userID} | UPDATE User (Patch)
 [**UpdateUserPut**](ManagementAPIsUsersUsersApi.md#UpdateUserPut) | **Put** /v1/environments/{envID}/users/{userID} | UPDATE User (Put)
 [**V1EnvironmentsEnvIDUsersUserIDIdentityProviderGet**](ManagementAPIsUsersUsersApi.md#V1EnvironmentsEnvIDUsersUserIDIdentityProviderGet) | **Get** /v1/environments/{envID}/users/{userID}/identityProvider | READ User Identity Provider
@@ -15,11 +16,11 @@ Method | HTTP request | Description
 
 
 
-## CreateUserImport
+## CreateUser
 
-> User CreateUserImport(ctx, envID).ContentType(contentType).User(user).Execute()
+> User CreateUser(ctx, envID).ContentType(contentType).User(user).Execute()
 
-CREATE User (Import)
+CREATE User
 
 
 
@@ -42,13 +43,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.CreateUserImport(context.Background(), envID).ContentType(contentType).User(user).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.CreateUser(context.Background(), envID).ContentType(contentType).User(user).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.CreateUserImport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.CreateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateUserImport`: User
-    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.CreateUserImport`: %v\n", resp)
+    // response from `CreateUser`: User
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.CreateUser`: %v\n", resp)
 }
 ```
 
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateUserImportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -145,6 +146,78 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAllUsers
+
+> EntityArray ReadAllUsers(ctx, envID).Filter(filter).Execute()
+
+READ All Users
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.ReadAllUsers(context.Background(), envID).Filter(filter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.ReadAllUsers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllUsers`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.ReadAllUsers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllUsersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **filter** | **string** |  | 
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
