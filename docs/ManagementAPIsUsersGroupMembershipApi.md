@@ -4,12 +4,87 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddUserToGroup**](ManagementAPIsUsersGroupMembershipApi.md#AddUserToGroup) | **Post** /v1/environments/{envID}/users/{userID}/memberOfGroups | ADD User to Group
 [**ReadAllGroupIDsForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllGroupIDsForUser) | **Get** /v1/environments/{envID}/users/{userID} | READ All Group IDs for User
-[**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
-[**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
-[**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
-[**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost**](ManagementAPIsUsersGroupMembershipApi.md#V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost) | **Post** /v1/environments/{envID}/users/{userID}/memberOfGroups | ADD User to Group
+[**ReadAllGroupMembershipsForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
+[**ReadOneGroupMembershipForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
+[**RemoveUserFromGroup**](ManagementAPIsUsersGroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
 
+
+
+## AddUserToGroup
+
+> Group AddUserToGroup(ctx, envID, userID).InlineObject3(inlineObject3).Execute()
+
+ADD User to Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    userID := "userID_example" // string | 
+    inlineObject3 := *openapiclient.NewInlineObject3() // InlineObject3 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.AddUserToGroup(context.Background(), envID, userID).InlineObject3(inlineObject3).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.AddUserToGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddUserToGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersGroupMembershipApi.AddUserToGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddUserToGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **inlineObject3** | [**InlineObject3**](InlineObject3.md) |  | 
+
+### Return type
+
+[**Group**](Group.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ReadAllGroupIDsForUser
@@ -85,9 +160,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet
+## ReadAllGroupMembershipsForUser
 
-> V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet(ctx, envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
+> EntityArray ReadAllGroupMembershipsForUser(ctx, envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
 
 READ All Group Memberships for User
 
@@ -114,11 +189,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet(context.Background(), envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser(context.Background(), envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllGroupMembershipsForUser`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser`: %v\n", resp)
 }
 ```
 
@@ -133,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllGroupMembershipsForUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -162,83 +239,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete
+## ReadOneGroupMembershipForUser
 
-> V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete(ctx, envID, userID, groupID).Execute()
-
-REMOVE User from Group
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    userID := "userID_example" // string | 
-    groupID := "groupID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete(context.Background(), envID, userID, groupID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**userID** | **string** |  | 
-**groupID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet
-
-> V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet(ctx, envID, userID, groupID).Expand(expand).Execute()
+> Group ReadOneGroupMembershipForUser(ctx, envID, userID, groupID).Expand(expand).Execute()
 
 READ One Group Membership for User
 
@@ -264,11 +267,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet(context.Background(), envID, userID, groupID).Expand(expand).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser(context.Background(), envID, userID, groupID).Expand(expand).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneGroupMembershipForUser`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser`: %v\n", resp)
 }
 ```
 
@@ -284,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneGroupMembershipForUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -296,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Group**](Group.md)
 
 ### Authorization
 
@@ -312,11 +317,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost
+## RemoveUserFromGroup
 
-> V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost(ctx, envID, userID).Body(body).Execute()
+> RemoveUserFromGroup(ctx, envID, userID, groupID).Execute()
 
-ADD User to Group
+REMOVE User from Group
 
 
 
@@ -335,13 +340,13 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    groupID := "groupID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost(context.Background(), envID, userID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.RemoveUserFromGroup(context.Background(), envID, userID, groupID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.RemoveUserFromGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -355,17 +360,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **envID** | **string** |  | 
 **userID** | **string** |  | 
+**groupID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemoveUserFromGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+
 
 ### Return type
 
@@ -377,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

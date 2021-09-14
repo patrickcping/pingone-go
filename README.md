@@ -318,9 +318,9 @@ Class | Method | HTTP request | Description
 *ManagementAPIsResourcesResourcesApi* | [**V1EnvironmentsEnvIDResourcesResourceIDGet**](docs/ManagementAPIsResourcesResourcesApi.md#v1environmentsenvidresourcesresourceidget) | **Get** /v1/environments/{envID}/resources/{resourceID} | READ One Resource
 *ManagementAPIsRiskManagementRiskAdvancedPredictorsApi* | [**V1EnvironmentsEnvIDRiskPredictorsGet**](docs/ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.md#v1environmentsenvidriskpredictorsget) | **Get** /v1/environments/{envID}/riskPredictors | READ All Risk Predictors
 *ManagementAPIsRiskManagementRiskAdvancedPredictorsApi* | [**V1EnvironmentsEnvIDRiskPredictorsRiskPredictorIDGet**](docs/ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.md#v1environmentsenvidriskpredictorsriskpredictoridget) | **Get** /v1/environments/{envID}/riskPredictors/{riskPredictorID} | READ One Risk Predictor
-*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**V1EnvironmentsEnvIDRiskEvaluationsPost**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#v1environmentsenvidriskevaluationspost) | **Post** /v1/environments/{envID}/riskEvaluations | CREATE Risk Evaluation
-*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#v1environmentsenvidriskevaluationsriskideventput) | **Put** /v1/environments/{envID}/riskEvaluations/{riskID}/event | UPDATE Risk Evaluation
-*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#v1environmentsenvidriskevaluationsriskidget) | **Get** /v1/environments/{envID}/riskEvaluations/{riskID} | READ One Risk Evaluation
+*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**CreateRiskEvaluation**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#createriskevaluation) | **Post** /v1/environments/{envID}/riskEvaluations | CREATE Risk Evaluation
+*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**ReadOneRiskEvaluation**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#readoneriskevaluation) | **Get** /v1/environments/{envID}/riskEvaluations/{riskID} | READ One Risk Evaluation
+*ManagementAPIsRiskManagementRiskEvaluationsApi* | [**UpdateRiskEvaluation**](docs/ManagementAPIsRiskManagementRiskEvaluationsApi.md#updateriskevaluation) | **Put** /v1/environments/{envID}/riskEvaluations/{riskID}/event | UPDATE Risk Evaluation
 *ManagementAPIsRiskManagementRiskPoliciesApi* | [**V1EnvironmentsEnvIDRiskPolicySetsGet**](docs/ManagementAPIsRiskManagementRiskPoliciesApi.md#v1environmentsenvidriskpolicysetsget) | **Get** /v1/environments/{envID}/riskPolicySets | READ Risk Policy Sets
 *ManagementAPIsRiskManagementRiskPoliciesApi* | [**V1EnvironmentsEnvIDRiskPolicySetsPost**](docs/ManagementAPIsRiskManagementRiskPoliciesApi.md#v1environmentsenvidriskpolicysetspost) | **Post** /v1/environments/{envID}/riskPolicySets | CREATE Risk Policy Set
 *ManagementAPIsRiskManagementRiskPoliciesApi* | [**V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete**](docs/ManagementAPIsRiskManagementRiskPoliciesApi.md#v1environmentsenvidriskpolicysetsriskpolicysetiddelete) | **Delete** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | DELETE Risk Policy Set 
@@ -358,11 +358,11 @@ Class | Method | HTTP request | Description
 *ManagementAPIsUsersEnableUsersApi* | [**V1EnvironmentsEnvIDUsersUserIDEnabledPut**](docs/ManagementAPIsUsersEnableUsersApi.md#v1environmentsenvidusersuseridenabledput) | **Put** /v1/environments/{envID}/users/{userID}/enabled | UPDATE User Enabled
 *ManagementAPIsUsersEnableUsersMFAApi* | [**V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet**](docs/ManagementAPIsUsersEnableUsersMFAApi.md#v1environmentsenvidusersuseridmfaenabledget) | **Get** /v1/environments/{envID}/users/{userID}/mfaEnabled | READ User MFA Enabled
 *ManagementAPIsUsersEnableUsersMFAApi* | [**V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut**](docs/ManagementAPIsUsersEnableUsersMFAApi.md#v1environmentsenvidusersuseridmfaenabledput) | **Put** /v1/environments/{envID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
+*ManagementAPIsUsersGroupMembershipApi* | [**AddUserToGroup**](docs/ManagementAPIsUsersGroupMembershipApi.md#addusertogroup) | **Post** /v1/environments/{envID}/users/{userID}/memberOfGroups | ADD User to Group
 *ManagementAPIsUsersGroupMembershipApi* | [**ReadAllGroupIDsForUser**](docs/ManagementAPIsUsersGroupMembershipApi.md#readallgroupidsforuser) | **Get** /v1/environments/{envID}/users/{userID} | READ All Group IDs for User
-*ManagementAPIsUsersGroupMembershipApi* | [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet**](docs/ManagementAPIsUsersGroupMembershipApi.md#v1environmentsenvidusersuseridmemberofgroupsget) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
-*ManagementAPIsUsersGroupMembershipApi* | [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete**](docs/ManagementAPIsUsersGroupMembershipApi.md#v1environmentsenvidusersuseridmemberofgroupsgroupiddelete) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
-*ManagementAPIsUsersGroupMembershipApi* | [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet**](docs/ManagementAPIsUsersGroupMembershipApi.md#v1environmentsenvidusersuseridmemberofgroupsgroupidget) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
-*ManagementAPIsUsersGroupMembershipApi* | [**V1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost**](docs/ManagementAPIsUsersGroupMembershipApi.md#v1environmentsenvidusersuseridmemberofgroupspost) | **Post** /v1/environments/{envID}/users/{userID}/memberOfGroups | ADD User to Group
+*ManagementAPIsUsersGroupMembershipApi* | [**ReadAllGroupMembershipsForUser**](docs/ManagementAPIsUsersGroupMembershipApi.md#readallgroupmembershipsforuser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
+*ManagementAPIsUsersGroupMembershipApi* | [**ReadOneGroupMembershipForUser**](docs/ManagementAPIsUsersGroupMembershipApi.md#readonegroupmembershipforuser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
+*ManagementAPIsUsersGroupMembershipApi* | [**RemoveUserFromGroup**](docs/ManagementAPIsUsersGroupMembershipApi.md#removeuserfromgroup) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
 *ManagementAPIsUsersLinkedAccountsApi* | [**V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet**](docs/ManagementAPIsUsersLinkedAccountsApi.md#v1environmentsenvidusersuseridlinkedaccountsget) | **Get** /v1/environments/{envID}/users/{userID}/linkedAccounts | READ Linked Accounts
 *ManagementAPIsUsersLinkedAccountsApi* | [**V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete**](docs/ManagementAPIsUsersLinkedAccountsApi.md#v1environmentsenvidusersuseridlinkedaccountslinkedaccountiddelete) | **Delete** /v1/environments/{envID}/users/{userID}/linkedAccounts/{linkedAccountID} | DELETE Linked Account
 *ManagementAPIsUsersLinkedAccountsApi* | [**V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet**](docs/ManagementAPIsUsersLinkedAccountsApi.md#v1environmentsenvidusersuseridlinkedaccountslinkedaccountidget) | **Get** /v1/environments/{envID}/users/{userID}/linkedAccounts/{linkedAccountID} | READ One Linked Account
@@ -446,12 +446,35 @@ Class | Method | HTTP request | Description
  - [GroupMembership](docs/GroupMembership.md)
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
  - [InlineObject2](docs/InlineObject2.md)
+ - [InlineObject3](docs/InlineObject3.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectPopulation](docs/ObjectPopulation.md)
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetails](docs/P1ErrorDetails.md)
  - [Population](docs/Population.md)
  - [Resource](docs/Resource.md)
+ - [RiskEvaluation](docs/RiskEvaluation.md)
+ - [RiskEvaluationDetails](docs/RiskEvaluationDetails.md)
+ - [RiskEvaluationDetailsIpAddressReputation](docs/RiskEvaluationDetailsIpAddressReputation.md)
+ - [RiskEvaluationDetailsIpVelocityByUser](docs/RiskEvaluationDetailsIpVelocityByUser.md)
+ - [RiskEvaluationDetailsIpVelocityByUserThreshold](docs/RiskEvaluationDetailsIpVelocityByUserThreshold.md)
+ - [RiskEvaluationDetailsIpVelocityByUserVelocity](docs/RiskEvaluationDetailsIpVelocityByUserVelocity.md)
+ - [RiskEvaluationDetailsPreviousSuccessfulTransaction](docs/RiskEvaluationDetailsPreviousSuccessfulTransaction.md)
+ - [RiskEvaluationDetailsUserBasedRiskBehavior](docs/RiskEvaluationDetailsUserBasedRiskBehavior.md)
+ - [RiskEvaluationDetailsUserRiskBehavior](docs/RiskEvaluationDetailsUserRiskBehavior.md)
+ - [RiskEvaluationDetailsUserVelocityByIp](docs/RiskEvaluationDetailsUserVelocityByIp.md)
+ - [RiskEvaluationDetailsUserVelocityByIpThreshold](docs/RiskEvaluationDetailsUserVelocityByIpThreshold.md)
+ - [RiskEvaluationDetailsUserVelocityByIpVelocity](docs/RiskEvaluationDetailsUserVelocityByIpVelocity.md)
+ - [RiskEvaluationEvent](docs/RiskEvaluationEvent.md)
+ - [RiskEvaluationEventBrowser](docs/RiskEvaluationEventBrowser.md)
+ - [RiskEvaluationEventEvaluatedFactors](docs/RiskEvaluationEventEvaluatedFactors.md)
+ - [RiskEvaluationEventFlow](docs/RiskEvaluationEventFlow.md)
+ - [RiskEvaluationEventSession](docs/RiskEvaluationEventSession.md)
+ - [RiskEvaluationEventTargetResource](docs/RiskEvaluationEventTargetResource.md)
+ - [RiskEvaluationEventUser](docs/RiskEvaluationEventUser.md)
+ - [RiskEvaluationEventUserGroups](docs/RiskEvaluationEventUserGroups.md)
+ - [RiskEvaluationResult](docs/RiskEvaluationResult.md)
+ - [RiskEvaluationRiskPolicySet](docs/RiskEvaluationRiskPolicySet.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
  - [RoleAssignmentRole](docs/RoleAssignmentRole.md)

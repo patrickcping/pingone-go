@@ -4,15 +4,15 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDRiskEvaluationsPost**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#V1EnvironmentsEnvIDRiskEvaluationsPost) | **Post** /v1/environments/{envID}/riskEvaluations | CREATE Risk Evaluation
-[**V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut) | **Put** /v1/environments/{envID}/riskEvaluations/{riskID}/event | UPDATE Risk Evaluation
-[**V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet) | **Get** /v1/environments/{envID}/riskEvaluations/{riskID} | READ One Risk Evaluation
+[**CreateRiskEvaluation**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#CreateRiskEvaluation) | **Post** /v1/environments/{envID}/riskEvaluations | CREATE Risk Evaluation
+[**ReadOneRiskEvaluation**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#ReadOneRiskEvaluation) | **Get** /v1/environments/{envID}/riskEvaluations/{riskID} | READ One Risk Evaluation
+[**UpdateRiskEvaluation**](ManagementAPIsRiskManagementRiskEvaluationsApi.md#UpdateRiskEvaluation) | **Put** /v1/environments/{envID}/riskEvaluations/{riskID}/event | UPDATE Risk Evaluation
 
 
 
-## V1EnvironmentsEnvIDRiskEvaluationsPost
+## CreateRiskEvaluation
 
-> V1EnvironmentsEnvIDRiskEvaluationsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> RiskEvaluation CreateRiskEvaluation(ctx, envID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
 
 CREATE Risk Evaluation
 
@@ -33,15 +33,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    riskEvaluation := *openapiclient.NewRiskEvaluation() // RiskEvaluation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation(context.Background(), envID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateRiskEvaluation`: RiskEvaluation
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation`: %v\n", resp)
 }
 ```
 
@@ -55,18 +57,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskEvaluationsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRiskEvaluationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **riskEvaluation** | [**RiskEvaluation**](RiskEvaluation.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**RiskEvaluation**](RiskEvaluation.md)
 
 ### Authorization
 
@@ -82,84 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut
+## ReadOneRiskEvaluation
 
-> V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut(ctx, envID, riskID).ContentType(contentType).Body(body).Execute()
-
-UPDATE Risk Evaluation
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    riskID := "riskID_example" // string | 
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut(context.Background(), envID, riskID).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**riskID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet
-
-> V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet(ctx, envID, riskID).Execute()
+> RiskEvaluation ReadOneRiskEvaluation(ctx, envID, riskID).Execute()
 
 READ One Risk Evaluation
 
@@ -183,11 +110,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet(context.Background(), envID, riskID).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation(context.Background(), envID, riskID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneRiskEvaluation`: RiskEvaluation
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation`: %v\n", resp)
 }
 ```
 
@@ -202,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneRiskEvaluationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -212,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**RiskEvaluation**](RiskEvaluation.md)
 
 ### Authorization
 
@@ -221,6 +150,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateRiskEvaluation
+
+> RiskEvaluation UpdateRiskEvaluation(ctx, envID, riskID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+
+UPDATE Risk Evaluation
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    riskID := "riskID_example" // string | 
+    contentType := "application/json" // string |  (optional)
+    riskEvaluation := *openapiclient.NewRiskEvaluation() // RiskEvaluation |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), envID, riskID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateRiskEvaluation`: RiskEvaluation
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**riskID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRiskEvaluationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **contentType** | **string** |  | 
+ **riskEvaluation** | [**RiskEvaluation**](RiskEvaluation.md) |  | 
+
+### Return type
+
+[**RiskEvaluation**](RiskEvaluation.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

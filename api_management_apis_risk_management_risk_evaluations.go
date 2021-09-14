@@ -27,38 +27,38 @@ var (
 // ManagementAPIsRiskManagementRiskEvaluationsApiService ManagementAPIsRiskManagementRiskEvaluationsApi service
 type ManagementAPIsRiskManagementRiskEvaluationsApiService service
 
-type ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest struct {
+type ApiCreateRiskEvaluationRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
 	envID string
 	contentType *string
-	body *map[string]interface{}
+	riskEvaluation *RiskEvaluation
 }
 
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest {
+func (r ApiCreateRiskEvaluationRequest) ContentType(contentType string) ApiCreateRiskEvaluationRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest {
-	r.body = &body
+func (r ApiCreateRiskEvaluationRequest) RiskEvaluation(riskEvaluation RiskEvaluation) ApiCreateRiskEvaluationRequest {
+	r.riskEvaluation = &riskEvaluation
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDRiskEvaluationsPostExecute(r)
+func (r ApiCreateRiskEvaluationRequest) Execute() (RiskEvaluation, *_nethttp.Response, error) {
+	return r.ApiService.CreateRiskEvaluationExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDRiskEvaluationsPost CREATE Risk Evaluation
+CreateRiskEvaluation CREATE Risk Evaluation
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest
+ @return ApiCreateRiskEvaluationRequest
 */
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest {
-	return ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest{
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) CreateRiskEvaluation(ctx _context.Context, envID string) ApiCreateRiskEvaluationRequest {
+	return ApiCreateRiskEvaluationRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -66,18 +66,20 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 }
 
 // Execute executes the request
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsPostExecute(r ApiV1EnvironmentsEnvIDRiskEvaluationsPostRequest) (*_nethttp.Response, error) {
+//  @return RiskEvaluation
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (RiskEvaluation, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  RiskEvaluation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.V1EnvironmentsEnvIDRiskEvaluationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.CreateRiskEvaluation")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/riskEvaluations"
@@ -108,22 +110,22 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.riskEvaluation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -136,51 +138,50 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest struct {
+type ApiReadOneRiskEvaluationRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
 	envID string
 	riskID string
-	contentType *string
-	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest {
-	r.contentType = &contentType
-	return r
-}
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest {
-	r.body = &body
-	return r
-}
 
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutExecute(r)
+func (r ApiReadOneRiskEvaluationRequest) Execute() (RiskEvaluation, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneRiskEvaluationExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut UPDATE Risk Evaluation
+ReadOneRiskEvaluation READ One Risk Evaluation
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param riskID
- @return ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest
+ @return ApiReadOneRiskEvaluationRequest
 */
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut(ctx _context.Context, envID string, riskID string) ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest {
-	return ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest{
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) ReadOneRiskEvaluation(ctx _context.Context, envID string, riskID string) ApiReadOneRiskEvaluationRequest {
+	return ApiReadOneRiskEvaluationRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -189,18 +190,150 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 }
 
 // Execute executes the request
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutExecute(r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPutRequest) (*_nethttp.Response, error) {
+//  @return RiskEvaluation
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (RiskEvaluation, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  RiskEvaluation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.ReadOneRiskEvaluation")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/riskEvaluations/{riskID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"riskID"+"}", _neturl.PathEscape(parameterToString(r.riskID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateRiskEvaluationRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
+	envID string
+	riskID string
+	contentType *string
+	riskEvaluation *RiskEvaluation
+}
+
+func (r ApiUpdateRiskEvaluationRequest) ContentType(contentType string) ApiUpdateRiskEvaluationRequest {
+	r.contentType = &contentType
+	return r
+}
+func (r ApiUpdateRiskEvaluationRequest) RiskEvaluation(riskEvaluation RiskEvaluation) ApiUpdateRiskEvaluationRequest {
+	r.riskEvaluation = &riskEvaluation
+	return r
+}
+
+func (r ApiUpdateRiskEvaluationRequest) Execute() (RiskEvaluation, *_nethttp.Response, error) {
+	return r.ApiService.UpdateRiskEvaluationExecute(r)
+}
+
+/*
+UpdateRiskEvaluation UPDATE Risk Evaluation
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param riskID
+ @return ApiUpdateRiskEvaluationRequest
+*/
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) UpdateRiskEvaluation(ctx _context.Context, envID string, riskID string) ApiUpdateRiskEvaluationRequest {
+	return ApiUpdateRiskEvaluationRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		riskID: riskID,
+	}
+}
+
+// Execute executes the request
+//  @return RiskEvaluation
+func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (RiskEvaluation, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  RiskEvaluation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.V1EnvironmentsEnvIDRiskEvaluationsRiskIDEventPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.UpdateRiskEvaluation")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/riskEvaluations/{riskID}/event"
@@ -232,22 +365,22 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.riskEvaluation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -260,122 +393,22 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEn
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
-	envID string
-	riskID string
-}
-
-
-func (r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDRiskEvaluationsRiskIDGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet READ One Risk Evaluation
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param riskID
- @return ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest
-*/
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet(ctx _context.Context, envID string, riskID string) ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest {
-	return ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		riskID: riskID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) V1EnvironmentsEnvIDRiskEvaluationsRiskIDGetExecute(r ApiV1EnvironmentsEnvIDRiskEvaluationsRiskIDGetRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRiskManagementRiskEvaluationsApiService.V1EnvironmentsEnvIDRiskEvaluationsRiskIDGet")
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/riskEvaluations/{riskID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskID"+"}", _neturl.PathEscape(parameterToString(r.riskID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+			error: err.Error(),
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
