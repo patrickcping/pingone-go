@@ -489,14 +489,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -595,14 +587,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -676,14 +660,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -802,14 +778,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -897,14 +865,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1189,14 +1149,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createApplication
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1250,14 +1202,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: deleteApplication
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1326,14 +1270,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateApplication
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1375,7 +1311,11 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ApplicationSAML'
+                - $ref: '#/components/schemas/ApplicationOIDC'
           description: Successful response
       summary: UPDATE Application
       tags:
@@ -1421,14 +1361,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateApplicationSecret
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1498,14 +1430,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createGrant
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1622,14 +1546,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1713,14 +1629,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1839,14 +1747,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -1928,14 +1828,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2093,14 +1985,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createApplicationAttributeMapping
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2222,14 +2106,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateApplicationAttributeMapping
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2265,7 +2141,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationAttributeMapping'
           description: Successful response
       summary: UPDATE Application Attribute Mapping
       tags:
@@ -2307,14 +2185,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2440,14 +2310,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2534,14 +2396,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2696,14 +2550,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateBillOfMaterials
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -2770,14 +2616,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - example: '{{jwtToken}}'
         explode: false
         in: header
@@ -3364,14 +3202,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -3613,14 +3443,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -3658,14 +3480,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -3701,14 +3515,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -3745,14 +3551,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -3897,14 +3695,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4088,14 +3878,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4236,15 +4018,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createEnvironmentActiveLicense
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -4324,14 +4097,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateEnvironment
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4353,7 +4118,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
           description: Successful response
       summary: UPDATE Environment
       tags:
@@ -4364,14 +4131,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateEnvironmentType
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4404,7 +4163,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
           description: Successful response
       summary: UPDATE Environment Type
       tags:
@@ -4439,14 +4200,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4555,14 +4308,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4616,14 +4361,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4800,14 +4537,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -4928,14 +4657,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5090,7 +4811,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
           description: Successful response
       summary: UPDATE Group
       tags:
@@ -5178,14 +4901,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5320,14 +5035,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5439,14 +5146,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5520,14 +5219,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5656,14 +5347,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5768,14 +5451,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5821,14 +5496,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5869,14 +5536,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -5917,14 +5576,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6010,14 +5661,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6189,14 +5832,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6288,14 +5923,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6387,14 +6014,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6603,14 +6222,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6698,14 +6309,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -6787,14 +6390,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -7247,14 +6842,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -7295,14 +6882,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -7368,14 +6947,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -7494,14 +7065,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -7642,14 +7205,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: orgID
@@ -7953,14 +7508,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8042,14 +7589,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8089,14 +7628,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8195,14 +7726,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8277,14 +7800,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8352,14 +7867,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8426,14 +7933,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8603,14 +8102,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -8900,14 +8391,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9050,14 +8533,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9167,14 +8642,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createPopulation
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9276,14 +8743,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updatePopulation
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9312,7 +8771,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Population'
           description: Successful response
       summary: UPDATE Population
       tags:
@@ -9351,14 +8812,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createResource
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9458,14 +8911,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateResource
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9494,7 +8939,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
           description: Successful response
       summary: UPDATE Resource
       tags:
@@ -9536,14 +8983,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9664,14 +9103,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9764,14 +9195,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9889,14 +9312,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -9970,14 +9385,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10123,14 +9530,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10222,14 +9621,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createRiskEvaluation
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10300,14 +9691,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateRiskEvaluation
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10326,7 +9709,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RiskEvaluation'
+              $ref: '#/components/schemas/RiskEvaluationEvent'
       responses:
         "401":
           content:
@@ -10558,14 +9941,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createAttribute
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10607,14 +9982,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: deleteAttribute
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10695,14 +10062,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateAttributePatch
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10738,7 +10097,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaAttribute'
           description: Successful response
       summary: UPDATE Attribute (Patch)
       tags:
@@ -10748,14 +10109,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateAttributePut
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10791,7 +10144,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaAttribute'
           description: Successful response
       summary: UPDATE Attribute (Put)
       tags:
@@ -10826,14 +10181,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -10931,14 +10278,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11013,14 +10352,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11149,14 +10480,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11224,14 +10547,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: policyID
@@ -11293,14 +10608,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11411,14 +10718,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11551,6 +10850,14 @@ paths:
         schema:
           type: string
         style: form
+      - example: "100"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       - explode: false
         in: path
         name: envID
@@ -11650,7 +10957,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: readAllGroupIDsForUser
+      operationId: readUser
       parameters:
       - example: memberOfGroupIDs
         explode: true
@@ -11658,6 +10965,9 @@ paths:
         name: include
         required: false
         schema:
+          enum:
+          - memberOfGroupIDs
+          - memberOfGroupNames
           type: string
         style: form
       - explode: false
@@ -11683,24 +10993,18 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
           description: Successful response
-      summary: READ All Group IDs for User
+      summary: READ User
       tags:
-      - Management APIs > Users > Group Membership
+      - Management APIs > Users > Users
     patch:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateUserPatch
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11729,7 +11033,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
           description: Successful response
       summary: UPDATE User (Patch)
       tags:
@@ -11781,14 +11087,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: updateUserPut
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11817,7 +11115,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
           description: Successful response
       summary: UPDATE User (Put)
       tags:
@@ -11859,14 +11159,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11908,14 +11200,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -11948,14 +11232,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12446,14 +11722,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12501,14 +11769,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12588,14 +11848,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12668,14 +11920,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12863,14 +12107,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12911,14 +12147,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -12992,14 +12220,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: content-type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -13040,14 +12260,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -13213,14 +12425,6 @@ paths:
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       operationId: createUserRoleAssignment
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -13374,14 +12578,6 @@ paths:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
       parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: envID
@@ -14064,7 +13260,9 @@ components:
             id: id
             email: email
             updatedAt: updatedAt
-            memberOfGroupIDs: memberOfGroupIDs
+            memberOfGroupIDs:
+            - memberOfGroupIDs
+            - memberOfGroupIDs
             address:
               streetAddress: streetAddress
               countryCode: countryCode
@@ -14074,7 +13272,9 @@ components:
             externalId: externalId
             photo:
               href: href
-            memberOfGroupNames: memberOfGroupNames
+            memberOfGroupNames:
+            - memberOfGroupNames
+            - memberOfGroupNames
             population:
               id: id
             primaryPhone: primaryPhone
@@ -14126,7 +13326,9 @@ components:
             id: id
             email: email
             updatedAt: updatedAt
-            memberOfGroupIDs: memberOfGroupIDs
+            memberOfGroupIDs:
+            - memberOfGroupIDs
+            - memberOfGroupIDs
             address:
               streetAddress: streetAddress
               countryCode: countryCode
@@ -14136,7 +13338,9 @@ components:
             externalId: externalId
             photo:
               href: href
-            memberOfGroupNames: memberOfGroupNames
+            memberOfGroupNames:
+            - memberOfGroupNames
+            - memberOfGroupNames
             population:
               id: id
             primaryPhone: primaryPhone
@@ -14695,7 +13899,7 @@ components:
             - name: name
             - name: name
             id: id
-            type: type
+            type: EXTERNAL
           flow:
             type: AUTHENTICATION
         updatedAt: updatedAt
@@ -14890,7 +14094,7 @@ components:
           - name: name
           - name: name
           id: id
-          type: type
+          type: EXTERNAL
         flow:
           type: AUTHENTICATION
       properties:
@@ -15269,7 +14473,9 @@ components:
         id: id
         email: email
         updatedAt: updatedAt
-        memberOfGroupIDs: memberOfGroupIDs
+        memberOfGroupIDs:
+        - memberOfGroupIDs
+        - memberOfGroupIDs
         address:
           streetAddress: streetAddress
           countryCode: countryCode
@@ -15279,7 +14485,9 @@ components:
         externalId: externalId
         photo:
           href: href
-        memberOfGroupNames: memberOfGroupNames
+        memberOfGroupNames:
+        - memberOfGroupNames
+        - memberOfGroupNames
         population:
           id: id
         primaryPhone: primaryPhone
@@ -15355,15 +14563,19 @@ components:
             of. This property is returned for GET /environments/{envID}/users/{userID}
             when include=memberOfGroupIDs is appended to the request. This property
             is not returned with a list of users.
+          items:
+            type: string
           readOnly: true
-          type: string
+          type: array
         memberOfGroupNames:
           description: A read-only array of names for the groups the user is a member
             of. This property is returned for GET /environments/{envID}/users/{userID}
             when include=memberOfGroupNames is appended to the request. This property
             is not returned with a list of users.
+          items:
+            type: string
           readOnly: true
-          type: string
+          type: array
         mfaEnabled:
           description: A boolean attribute that specifies whether multi-factor authentication
             is enabled. This attribute is set to false by default when the user is
@@ -15765,7 +14977,9 @@ components:
           id: id
           email: email
           updatedAt: updatedAt
-          memberOfGroupIDs: memberOfGroupIDs
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
           address:
             streetAddress: streetAddress
             countryCode: countryCode
@@ -15775,7 +14989,9 @@ components:
           externalId: externalId
           photo:
             href: href
-          memberOfGroupNames: memberOfGroupNames
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
           population:
             id: id
           primaryPhone: primaryPhone
@@ -15827,7 +15043,9 @@ components:
           id: id
           email: email
           updatedAt: updatedAt
-          memberOfGroupIDs: memberOfGroupIDs
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
           address:
             streetAddress: streetAddress
             countryCode: countryCode
@@ -15837,7 +15055,9 @@ components:
           externalId: externalId
           photo:
             href: href
-          memberOfGroupNames: memberOfGroupNames
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
           population:
             id: id
           primaryPhone: primaryPhone
@@ -16786,7 +16006,7 @@ components:
         - name: name
         - name: name
         id: id
-        type: type
+        type: EXTERNAL
       properties:
         id:
           description: A string that specifies the ID of the user associated with
@@ -16799,6 +16019,8 @@ components:
         type:
           description: A string that specifies the type of user associated with the
             event. Options are EXTERNAL. This is a required property.
+          enum:
+          - EXTERNAL
           type: string
         groups:
           description: An array of group names.

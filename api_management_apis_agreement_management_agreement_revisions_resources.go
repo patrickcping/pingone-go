@@ -247,14 +247,9 @@ type ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost
 	envID string
 	agreementID string
 	languageID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPostRequest {
 	r.body = &body
 	return r
@@ -325,9 +320,6 @@ func (a *ManagementAPIsAgreementManagementAgreementRevisionsResourcesApiService)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

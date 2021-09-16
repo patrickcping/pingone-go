@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplicationSecret
 
-> UpdateApplicationSecret(ctx, envID, appID).ContentType(contentType).Execute()
+> UpdateApplicationSecret(ctx, envID, appID).Execute()
 
 UPDATE Application Secret
 
@@ -105,11 +105,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.UpdateApplicationSecret(context.Background(), envID, appID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSecretApi.UpdateApplicationSecret(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSecretApi.UpdateApplicationSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,7 +134,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 

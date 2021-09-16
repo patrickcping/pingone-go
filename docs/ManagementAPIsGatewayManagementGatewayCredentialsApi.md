@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(ctx, envID, gatewayID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(ctx, envID, gatewayID).Execute()
 
 CREATE Gateway Credentials
 
@@ -106,11 +106,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(context.Background(), envID, gatewayID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayCredentialsApi.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +135,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 

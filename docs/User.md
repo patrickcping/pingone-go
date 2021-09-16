@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **LastSignOn** | Pointer to [**UserLastSignOn**](UserLastSignOn.md) |  | [optional] 
 **Lifecycle** | Pointer to [**UserLifecycle**](UserLifecycle.md) |  | [optional] 
 **Locale** | Pointer to **string** | A string that specifies the user’s default location, which is optional. This may be explicitly set to null when updating a user to unset it. This is used for purposes of localizing such items as currency, date time format, or numerical representations. If provided, it must be a valid language tag as defined in RFC 5646. The following are example tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
-**MemberOfGroupIDs** | Pointer to **string** | A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include&#x3D;memberOfGroupIDs is appended to the request. This property is not returned with a list of users. | [optional] [readonly] 
-**MemberOfGroupNames** | Pointer to **string** | A read-only array of names for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include&#x3D;memberOfGroupNames is appended to the request. This property is not returned with a list of users. | [optional] [readonly] 
+**MemberOfGroupIDs** | Pointer to **[]string** | A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include&#x3D;memberOfGroupIDs is appended to the request. This property is not returned with a list of users. | [optional] [readonly] 
+**MemberOfGroupNames** | Pointer to **[]string** | A read-only array of names for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include&#x3D;memberOfGroupNames is appended to the request. This property is not returned with a list of users. | [optional] [readonly] 
 **MfaEnabled** | Pointer to **bool** | A boolean attribute that specifies whether multi-factor authentication is enabled. This attribute is set to false by default when the user is created. You can set mfaEnabled to true with POST CREATE User, POST CREATE User (Import), or PUT UPDATE User MFA Enabled. You cannot update mfaEnabled with PUT UPDATE User or PATCH UPDATE User. | [optional] 
 **MobilePhone** | Pointer to **string** | A string that specifies the user’s native phone number, which is optional. This might also match the primaryPhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32. | [optional] 
 **Name** | Pointer to [**UserName**](UserName.md) |  | [optional] 
@@ -355,20 +355,20 @@ HasLocale returns a boolean if a field has been set.
 
 ### GetMemberOfGroupIDs
 
-`func (o *User) GetMemberOfGroupIDs() string`
+`func (o *User) GetMemberOfGroupIDs() []string`
 
 GetMemberOfGroupIDs returns the MemberOfGroupIDs field if non-nil, zero value otherwise.
 
 ### GetMemberOfGroupIDsOk
 
-`func (o *User) GetMemberOfGroupIDsOk() (*string, bool)`
+`func (o *User) GetMemberOfGroupIDsOk() (*[]string, bool)`
 
 GetMemberOfGroupIDsOk returns a tuple with the MemberOfGroupIDs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemberOfGroupIDs
 
-`func (o *User) SetMemberOfGroupIDs(v string)`
+`func (o *User) SetMemberOfGroupIDs(v []string)`
 
 SetMemberOfGroupIDs sets MemberOfGroupIDs field to given value.
 
@@ -380,20 +380,20 @@ HasMemberOfGroupIDs returns a boolean if a field has been set.
 
 ### GetMemberOfGroupNames
 
-`func (o *User) GetMemberOfGroupNames() string`
+`func (o *User) GetMemberOfGroupNames() []string`
 
 GetMemberOfGroupNames returns the MemberOfGroupNames field if non-nil, zero value otherwise.
 
 ### GetMemberOfGroupNamesOk
 
-`func (o *User) GetMemberOfGroupNamesOk() (*string, bool)`
+`func (o *User) GetMemberOfGroupNamesOk() (*[]string, bool)`
 
 GetMemberOfGroupNamesOk returns a tuple with the MemberOfGroupNames field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemberOfGroupNames
 
-`func (o *User) SetMemberOfGroupNames(v string)`
+`func (o *User) SetMemberOfGroupNames(v []string)`
 
 SetMemberOfGroupNames sets MemberOfGroupNames field to given value.
 

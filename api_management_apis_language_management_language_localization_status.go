@@ -368,14 +368,9 @@ type ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPutRequest struc
 	envID string
 	languageID string
 	l10nStatusID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPutRequest {
 	r.body = &body
 	return r
@@ -447,9 +442,6 @@ func (a *ManagementAPIsLanguageManagementLanguageLocalizationStatusApiService) V
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -495,14 +487,9 @@ type ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusPostRequest struct {
 	ApiService *ManagementAPIsLanguageManagementLanguageLocalizationStatusApiService
 	envID string
 	languageID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDLanguagesLanguageIDStatusPostRequest {
 	r.body = &body
 	return r
@@ -570,9 +557,6 @@ func (a *ManagementAPIsLanguageManagementLanguageLocalizationStatusApiService) V
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

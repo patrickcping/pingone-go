@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateUser**](ManagementAPIsUsersUsersApi.md#CreateUser) | **Post** /v1/environments/{envID}/users | CREATE User
 [**DeleteUser**](ManagementAPIsUsersUsersApi.md#DeleteUser) | **Delete** /v1/environments/{envID}/users/{userID} | DELETE User
 [**ReadAllUsers**](ManagementAPIsUsersUsersApi.md#ReadAllUsers) | **Get** /v1/environments/{envID}/users | READ All Users
+[**ReadUser**](ManagementAPIsUsersUsersApi.md#ReadUser) | **Get** /v1/environments/{envID}/users/{userID} | READ User
 [**UpdateUserPatch**](ManagementAPIsUsersUsersApi.md#UpdateUserPatch) | **Patch** /v1/environments/{envID}/users/{userID} | UPDATE User (Patch)
 [**UpdateUserPut**](ManagementAPIsUsersUsersApi.md#UpdateUserPut) | **Put** /v1/environments/{envID}/users/{userID} | UPDATE User (Put)
 [**V1EnvironmentsEnvIDUsersUserIDIdentityProviderGet**](ManagementAPIsUsersUsersApi.md#V1EnvironmentsEnvIDUsersUserIDIdentityProviderGet) | **Get** /v1/environments/{envID}/users/{userID}/identityProvider | READ User Identity Provider
@@ -163,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllUsers
 
-> EntityArray ReadAllUsers(ctx, envID).Filter(filter).Execute()
+> EntityArray ReadAllUsers(ctx, envID).Filter(filter).Limit(limit).Execute()
 
 READ All Users
 
@@ -184,10 +185,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
+    limit := int32(100) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.ReadAllUsers(context.Background(), envID).Filter(filter).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.ReadAllUsers(context.Background(), envID).Filter(filter).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.ReadAllUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,6 +216,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **filter** | **string** |  | 
+ **limit** | **int32** |  | 
 
 ### Return type
 
@@ -233,9 +236,84 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ReadUser
+
+> User ReadUser(ctx, envID, userID).Include(include).Execute()
+
+READ User
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    userID := "userID_example" // string | 
+    include := "memberOfGroupIDs" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.ReadUser(context.Background(), envID, userID).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.ReadUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadUser`: User
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.ReadUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **include** | **string** |  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateUserPatch
 
-> UpdateUserPatch(ctx, envID, userID).ContentType(contentType).User(user).Execute()
+> User UpdateUserPatch(ctx, envID, userID).User(user).Execute()
 
 UPDATE User (Patch)
 
@@ -256,16 +334,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     user := *openapiclient.NewUser() // User |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.UpdateUserPatch(context.Background(), envID, userID).ContentType(contentType).User(user).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.UpdateUserPatch(context.Background(), envID, userID).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.UpdateUserPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateUserPatch`: User
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.UpdateUserPatch`: %v\n", resp)
 }
 ```
 
@@ -287,12 +366,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **user** | [**User**](User.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**User**](User.md)
 
 ### Authorization
 
@@ -310,7 +388,7 @@ Name | Type | Description  | Notes
 
 ## UpdateUserPut
 
-> UpdateUserPut(ctx, envID, userID).ContentType(contentType).User(user).Execute()
+> User UpdateUserPut(ctx, envID, userID).User(user).Execute()
 
 UPDATE User (Put)
 
@@ -331,16 +409,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     user := *openapiclient.NewUser() // User |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.UpdateUserPut(context.Background(), envID, userID).ContentType(contentType).User(user).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.UpdateUserPut(context.Background(), envID, userID).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.UpdateUserPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateUserPut`: User
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUsersApi.UpdateUserPut`: %v\n", resp)
 }
 ```
 
@@ -362,12 +441,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **user** | [**User**](User.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**User**](User.md)
 
 ### Authorization
 
@@ -456,7 +534,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut
 
-> V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut(ctx, envID, userID).Body(body).Execute()
 
 UPDATE User Identity Provider
 
@@ -477,12 +555,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut(context.Background(), envID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDIdentityProviderPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -508,7 +585,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -531,7 +607,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet(ctx, envID, userID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet(ctx, envID, userID).Execute()
 
 READ user verification status
 
@@ -552,11 +628,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet(context.Background(), envID, userID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -582,7 +657,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -604,7 +678,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut
 
-> V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut(ctx, envID, userID).Body(body).Execute()
 
 UPDATE user verification status
 
@@ -625,12 +699,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut(context.Background(), envID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUsersApi.V1EnvironmentsEnvIDUsersUserIDVerifyStatusPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -656,7 +729,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

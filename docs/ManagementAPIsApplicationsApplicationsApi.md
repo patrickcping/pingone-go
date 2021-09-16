@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateApplication
 
-> OneOfApplicationSAMLApplicationOIDC CreateApplication(ctx, envID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> OneOfApplicationSAMLApplicationOIDC CreateApplication(ctx, envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
 
 CREATE Application
 
@@ -34,12 +34,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.CreateApplication(context.Background(), envID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.CreateApplication(context.Background(), envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.CreateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Other parameters are passed through a pointer to a apiCreateApplicationRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
 
 ### Return type
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApplication
 
-> DeleteApplication(ctx, envID, appID).ContentType(contentType).Execute()
+> DeleteApplication(ctx, envID, appID).Execute()
 
 DELETE Application
 
@@ -109,11 +107,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.DeleteApplication(context.Background(), envID, appID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.DeleteApplication(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.DeleteApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +136,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -304,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplication
 
-> UpdateApplication(ctx, envID, appID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> OneOfApplicationSAMLApplicationOIDC UpdateApplication(ctx, envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
 
 UPDATE Application
 
@@ -325,16 +321,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.UpdateApplication(context.Background(), envID, appID).ContentType(contentType).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.UpdateApplication(context.Background(), envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.UpdateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateApplication`: OneOfApplicationSAMLApplicationOIDC
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.UpdateApplication`: %v\n", resp)
 }
 ```
 
@@ -356,12 +353,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
 
 ### Authorization
 

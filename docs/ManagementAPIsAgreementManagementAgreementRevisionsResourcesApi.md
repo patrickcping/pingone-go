@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost
 
-> V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost(ctx, envID, agreementID, languageID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost(ctx, envID, agreementID, languageID).Body(body).Execute()
 
 CREATE Revision
 
@@ -168,12 +168,11 @@ func main() {
     envID := "envID_example" // string | 
     agreementID := "agreementID_example" // string | 
     languageID := "languageID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost(context.Background(), envID, agreementID, languageID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost(context.Background(), envID, agreementID, languageID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,7 +200,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

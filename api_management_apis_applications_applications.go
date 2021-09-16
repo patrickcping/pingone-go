@@ -31,14 +31,9 @@ type ApiCreateApplicationRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
 	envID string
-	contentType *string
 	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
 }
 
-func (r ApiCreateApplicationRequest) ContentType(contentType string) ApiCreateApplicationRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateApplicationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiCreateApplicationRequest {
 	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
 	return r
@@ -106,9 +101,6 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplicationExec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.uNKNOWNBASETYPE
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -163,13 +155,8 @@ type ApiDeleteApplicationRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
 	envID string
 	appID string
-	contentType *string
 }
 
-func (r ApiDeleteApplicationRequest) ContentType(contentType string) ApiDeleteApplicationRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiDeleteApplicationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteApplicationExecute(r)
@@ -233,9 +220,6 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) DeleteApplicationExec
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -516,20 +500,15 @@ type ApiUpdateApplicationRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
 	envID string
 	appID string
-	contentType *string
 	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
 }
 
-func (r ApiUpdateApplicationRequest) ContentType(contentType string) ApiUpdateApplicationRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateApplicationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiUpdateApplicationRequest {
 	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
 	return r
 }
 
-func (r ApiUpdateApplicationRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateApplicationRequest) Execute() (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
 	return r.ApiService.UpdateApplicationExecute(r)
 }
 
@@ -553,18 +532,20 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplication(ctx
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*_nethttp.Response, error) {
+//  @return OneOfApplicationSAMLApplicationOIDC
+func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  OneOfApplicationSAMLApplicationOIDC
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationsApiService.UpdateApplication")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}"
@@ -592,26 +573,23 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.uNKNOWNBASETYPE
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -624,13 +602,22 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExec
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

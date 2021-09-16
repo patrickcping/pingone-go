@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddUserToGroup**](ManagementAPIsUsersGroupMembershipApi.md#AddUserToGroup) | **Post** /v1/environments/{envID}/users/{userID}/memberOfGroups | ADD User to Group
-[**ReadAllGroupIDsForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllGroupIDsForUser) | **Get** /v1/environments/{envID}/users/{userID} | READ All Group IDs for User
 [**ReadAllGroupMembershipsForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
 [**ReadOneGroupMembershipForUser**](ManagementAPIsUsersGroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
 [**RemoveUserFromGroup**](ManagementAPIsUsersGroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
@@ -80,79 +79,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReadAllGroupIDsForUser
-
-> ReadAllGroupIDsForUser(ctx, envID, userID).Include(include).Execute()
-
-READ All Group IDs for User
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    userID := "userID_example" // string | 
-    include := "memberOfGroupIDs" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadAllGroupIDsForUser(context.Background(), envID, userID).Include(include).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadAllGroupIDsForUser``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**userID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiReadAllGroupIDsForUserRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **include** | **string** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

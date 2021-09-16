@@ -141,14 +141,9 @@ type ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest struct {
 	ApiService *ManagementAPIsUsersEnableUsersMFAApiService
 	envID string
 	userID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest {
 	r.body = &body
 	return r
@@ -216,9 +211,6 @@ func (a *ManagementAPIsUsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUs
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

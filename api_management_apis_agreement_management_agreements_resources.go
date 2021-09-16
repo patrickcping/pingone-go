@@ -250,14 +250,9 @@ type ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest struct {
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 	agreementID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest {
 	r.body = &body
 	return r
@@ -325,9 +320,6 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -478,14 +470,9 @@ type ApiV1EnvironmentsEnvIDAgreementsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDAgreementsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDAgreementsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDAgreementsPostRequest {
 	r.body = &body
 	return r
@@ -550,9 +537,6 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

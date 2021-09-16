@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(ctx, envID, policyID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(ctx, envID, policyID).Body(body).Execute()
 
 UPDATE Sign On Policy
 
@@ -245,12 +245,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(context.Background(), envID, policyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(context.Background(), envID, policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +275,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -299,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPost
 
-> V1EnvironmentsEnvIDSignOnPoliciesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPost(ctx, envID).Body(body).Execute()
 
 CREATE Sign On Policy
 
@@ -319,12 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +345,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDSignOnP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

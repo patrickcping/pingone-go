@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(ctx, envID, templateName, contentID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(ctx, envID, templateName, contentID).Execute()
 
 READ One Content
 
@@ -182,11 +182,10 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,7 +213,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -236,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(ctx, envID, templateName, contentID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(ctx, envID, templateName, contentID).Body(body).Execute()
 
 UPDATE Push Content
 
@@ -258,12 +256,11 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,7 +288,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -533,7 +529,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost
 
-> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(ctx, envID, templateName).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(ctx, envID, templateName).Body(body).Execute()
 
 CREATE Push Content
 
@@ -554,12 +550,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -585,7 +580,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

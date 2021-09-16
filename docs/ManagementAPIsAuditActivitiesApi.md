@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDActivitiesPost
 
-> V1EnvironmentsEnvIDActivitiesPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDActivitiesPost(ctx, envID).Body(body).Execute()
 
 GET User Activities
 
@@ -173,12 +173,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuditActivitiesApi.V1EnvironmentsEnvIDActivitiesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,7 +201,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDActivit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

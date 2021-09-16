@@ -32,14 +32,9 @@ type ApiCreateGrantRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
 	envID string
 	appID string
-	contentType *string
 	applicationResourceGrant *ApplicationResourceGrant
 }
 
-func (r ApiCreateGrantRequest) ContentType(contentType string) ApiCreateGrantRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateGrantRequest) ApplicationResourceGrant(applicationResourceGrant ApplicationResourceGrant) ApiCreateGrantRequest {
 	r.applicationResourceGrant = &applicationResourceGrant
 	return r
@@ -109,9 +104,6 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGr
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationResourceGrant
@@ -514,14 +506,9 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest struct {
 	envID string
 	appID string
 	grantID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest {
 	r.body = &body
 	return r
@@ -592,9 +579,6 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

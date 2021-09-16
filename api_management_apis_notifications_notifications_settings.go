@@ -241,13 +241,8 @@ type ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsApiService
 	envID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsPutExecute(r)
@@ -308,9 +303,6 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

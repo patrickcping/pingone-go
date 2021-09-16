@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDCustomDomainsPost
 
-> V1EnvironmentsEnvIDCustomDomainsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDCustomDomainsPost(ctx, envID).Body(body).Execute()
 
 CREATE Domain
 
@@ -319,12 +319,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +347,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDCustomD
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost
 
-> V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(ctx, policyID).ContentType(contentType).Body(body).Execute()
+> V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(ctx, policyID).Body(body).Execute()
 
 CREATE Sign-On Policy Action (AGREEMENT)
 
@@ -35,12 +35,11 @@ import (
 
 func main() {
     policyID := "policyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +63,6 @@ Other parameters are passed through a pointer to a apiV1Environments9ad15e9e3ac6
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -235,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(ctx, envID, policyID, actionID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(ctx, envID, policyID, actionID).Body(body).Execute()
 
 UPDATE Sign-On Policy Action
 
@@ -257,12 +255,11 @@ func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,7 +287,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -384,7 +380,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost
 
-> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(ctx, envID, policyID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(ctx, envID, policyID).Body(body).Execute()
 
 CREATE Sign-On Policy Action (IDENTITY_PROVIDER)
 
@@ -405,12 +401,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -436,7 +431,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

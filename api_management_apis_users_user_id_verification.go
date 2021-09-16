@@ -141,13 +141,8 @@ type ApiV1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPostRequest struct {
 	ApiService *ManagementAPIsUsersUserIDVerificationApiService
 	envID string
 	userID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPostRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPostExecute(r)
@@ -211,9 +206,6 @@ func (a *ManagementAPIsUsersUserIDVerificationApiService) V1EnvironmentsEnvIDUse
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationMappingsMappingIDPut
 
-> V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(ctx, envID, mappingID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(ctx, envID, mappingID).Body(body).Execute()
 
 UPDATE Mapping
 
@@ -181,12 +181,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     mappingID := "mappingID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(context.Background(), envID, mappingID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(context.Background(), envID, mappingID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,7 +211,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -310,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost
 
-> V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(ctx, envID, ruleID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(ctx, envID, ruleID).Body(body).Execute()
 
 CREATE Rule Mapping
 
@@ -331,12 +329,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     ruleID := "ruleID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(context.Background(), envID, ruleID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(context.Background(), envID, ruleID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -362,7 +359,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

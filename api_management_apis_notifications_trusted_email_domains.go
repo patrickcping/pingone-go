@@ -681,14 +681,9 @@ type ApiV1EnvironmentsEnvIDEmailDomainsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailDomainsApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDEmailDomainsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDEmailDomainsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDEmailDomainsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDEmailDomainsPostRequest {
 	r.body = &body
 	return r
@@ -753,9 +748,6 @@ func (a *ManagementAPIsNotificationsTrustedEmailDomainsApiService) V1Environment
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

@@ -368,14 +368,9 @@ type ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequ
 	envID string
 	providerID string
 	idpAttrID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest {
 	r.body = &body
 	return r
@@ -447,9 +442,6 @@ func (a *ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApiSe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -495,14 +487,9 @@ type ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPostRequest stru
 	ApiService *ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApiService
 	envID string
 	providerID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPostRequest {
 	r.body = &body
 	return r
@@ -570,9 +557,6 @@ func (a *ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApiSe
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

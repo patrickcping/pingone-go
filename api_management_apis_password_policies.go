@@ -246,14 +246,9 @@ type ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest struct {
 	ApiService *ManagementAPIsPasswordPoliciesApiService
 	envID string
 	passwordPolicyID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest {
 	r.body = &body
 	return r
@@ -321,9 +316,6 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

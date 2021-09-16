@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPlanIDPut
 
-> V1EnvironmentsEnvIDPropagationPlansPlanIDPut(ctx, envID, planID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPlanIDPut(ctx, envID, planID).Body(body).Execute()
 
 UPDATE Plan
 
@@ -251,12 +251,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     planID := "planID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut(context.Background(), envID, planID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut(context.Background(), envID, planID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPlanIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +281,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -305,7 +303,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationPlansPost
 
-> V1EnvironmentsEnvIDPropagationPlansPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationPlansPost(ctx, envID).Body(body).Execute()
 
 CREATE Plan
 
@@ -325,12 +323,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationPlansApi.V1EnvironmentsEnvIDPropagationPlansPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,7 +351,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDPropaga
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

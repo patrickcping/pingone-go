@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut
 
-> V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(ctx, envID, phoneDeliverySettingsId).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(ctx, envID, phoneDeliverySettingsId).Body(body).Execute()
 
 UPDATE Phone Delivery Settings
 
@@ -242,12 +242,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     phoneDeliverySettingsId := "phoneDeliverySettingsId_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(context.Background(), envID, phoneDeliverySettingsId).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(context.Background(), envID, phoneDeliverySettingsId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -273,7 +272,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -296,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost
 
-> V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost(ctx, envID).Body(body).Execute()
 
 CREATE Phone Delivery Settings (Syniverse)
 
@@ -316,12 +314,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsPhoneDeliverySettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,7 +342,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDNotific
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

@@ -272,10 +272,15 @@ type ApiReadAllUsersRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	filter *string
+	limit *int32
 }
 
 func (r ApiReadAllUsersRequest) Filter(filter string) ApiReadAllUsersRequest {
 	r.filter = &filter
+	return r
+}
+func (r ApiReadAllUsersRequest) Limit(limit int32) ApiReadAllUsersRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -326,6 +331,137 @@ func (a *ManagementAPIsUsersUsersApiService) ReadAllUsersExecute(r ApiReadAllUse
 
 	if r.filter != nil {
 		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadUserRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsUsersUsersApiService
+	envID string
+	userID string
+	include *string
+}
+
+func (r ApiReadUserRequest) Include(include string) ApiReadUserRequest {
+	r.include = &include
+	return r
+}
+
+func (r ApiReadUserRequest) Execute() (User, *_nethttp.Response, error) {
+	return r.ApiService.ReadUserExecute(r)
+}
+
+/*
+ReadUser READ User
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param userID
+ @return ApiReadUserRequest
+*/
+func (a *ManagementAPIsUsersUsersApiService) ReadUser(ctx _context.Context, envID string, userID string) ApiReadUserRequest {
+	return ApiReadUserRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		userID: userID,
+	}
+}
+
+// Execute executes the request
+//  @return User
+func (a *ManagementAPIsUsersUsersApiService) ReadUserExecute(r ApiReadUserRequest) (User, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  User
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.ReadUser")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.include != nil {
+		localVarQueryParams.Add("include", parameterToString(*r.include, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -396,20 +532,15 @@ type ApiUpdateUserPatchRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	userID string
-	contentType *string
 	user *User
 }
 
-func (r ApiUpdateUserPatchRequest) ContentType(contentType string) ApiUpdateUserPatchRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateUserPatchRequest) User(user User) ApiUpdateUserPatchRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiUpdateUserPatchRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateUserPatchRequest) Execute() (User, *_nethttp.Response, error) {
 	return r.ApiService.UpdateUserPatchExecute(r)
 }
 
@@ -433,18 +564,20 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPatch(ctx _context.Contex
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUsersApiService) UpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (*_nethttp.Response, error) {
+//  @return User
+func (a *ManagementAPIsUsersUsersApiService) UpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (User, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.UpdateUserPatch")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}"
@@ -472,26 +605,23 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPatchExecute(r ApiUpdateU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.user
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -504,15 +634,24 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPatchExecute(r ApiUpdateU
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateUserPutRequest struct {
@@ -520,20 +659,15 @@ type ApiUpdateUserPutRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	userID string
-	contentType *string
 	user *User
 }
 
-func (r ApiUpdateUserPutRequest) ContentType(contentType string) ApiUpdateUserPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateUserPutRequest) User(user User) ApiUpdateUserPutRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiUpdateUserPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateUserPutRequest) Execute() (User, *_nethttp.Response, error) {
 	return r.ApiService.UpdateUserPutExecute(r)
 }
 
@@ -557,18 +691,20 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPut(ctx _context.Context,
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUsersApiService) UpdateUserPutExecute(r ApiUpdateUserPutRequest) (*_nethttp.Response, error) {
+//  @return User
+func (a *ManagementAPIsUsersUsersApiService) UpdateUserPutExecute(r ApiUpdateUserPutRequest) (User, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUsersApiService.UpdateUserPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}"
@@ -596,26 +732,23 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPutExecute(r ApiUpdateUse
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.user
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -628,15 +761,24 @@ func (a *ManagementAPIsUsersUsersApiService) UpdateUserPutExecute(r ApiUpdateUse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderGetRequest struct {
@@ -753,14 +895,9 @@ type ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderPutRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	userID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDIdentityProviderPutRequest {
 	r.body = &body
 	return r
@@ -829,9 +966,6 @@ func (a *ManagementAPIsUsersUsersApiService) V1EnvironmentsEnvIDUsersUserIDIdent
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -877,13 +1011,8 @@ type ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusGetRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	userID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusGetRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusGetRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusGetRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDVerifyStatusGetExecute(r)
@@ -948,9 +1077,6 @@ func (a *ManagementAPIsUsersUsersApiService) V1EnvironmentsEnvIDUsersUserIDVerif
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -994,14 +1120,9 @@ type ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusPutRequest struct {
 	ApiService *ManagementAPIsUsersUsersApiService
 	envID string
 	userID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDVerifyStatusPutRequest {
 	r.body = &body
 	return r
@@ -1069,9 +1190,6 @@ func (a *ManagementAPIsUsersUsersApiService) V1EnvironmentsEnvIDUsersUserIDVerif
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["content-type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

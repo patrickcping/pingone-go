@@ -351,14 +351,9 @@ type ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDelive
 	ApiService *ManagementAPIsNotificationsPhoneDeliverySettingsApiService
 	envID string
 	phoneDeliverySettingsId string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPutRequest {
 	r.body = &body
 	return r
@@ -427,9 +422,6 @@ func (a *ManagementAPIsNotificationsPhoneDeliverySettingsApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -474,14 +466,9 @@ type ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPostRequest
 	ctx _context.Context
 	ApiService *ManagementAPIsNotificationsPhoneDeliverySettingsApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPostRequest {
 	r.body = &body
 	return r
@@ -546,9 +533,6 @@ func (a *ManagementAPIsNotificationsPhoneDeliverySettingsApiService) V1Environme
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

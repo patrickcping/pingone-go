@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost
 
-> V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(ctx, envID, appID).Body(body).Execute()
 
 CREATE SOP Assignment
 
@@ -106,12 +106,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(context.Background(), envID, appID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +136,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -308,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(ctx, envID, appID, sOPAssignmentID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(ctx, envID, appID, sOPAssignmentID).Body(body).Execute()
 
 UPDATE SOP Assignment
 
@@ -330,12 +328,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     sOPAssignmentID := "sOPAssignmentID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(context.Background(), envID, appID, sOPAssignmentID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(context.Background(), envID, appID, sOPAssignmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +360,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

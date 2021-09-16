@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(ctx, envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(ctx, envID, userID, deviceID).Body(body).Execute()
 
 SEND MFA Device Logs
 
@@ -260,12 +260,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), envID, userID, deviceID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,7 +292,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -316,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(ctx, envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(ctx, envID, userID, deviceID).Body(body).Execute()
 
 UPDATE Device Nickname
 
@@ -338,12 +336,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), envID, userID, deviceID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,7 +368,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

@@ -32,13 +32,8 @@ type ApiV1EnvironmentsEnvIDUsersUserIDPasswordGetRequest struct {
 	ApiService *ManagementAPIsUsersUserPasswordsApiService
 	envID string
 	userID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPasswordGetRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDPasswordGetRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDUsersUserIDPasswordGetRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPasswordGetExecute(r)
@@ -102,9 +97,6 @@ func (a *ManagementAPIsUsersUserPasswordsApiService) V1EnvironmentsEnvIDUsersUse
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

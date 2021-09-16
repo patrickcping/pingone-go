@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateGrant
 
-> ApplicationResourceGrant CreateGrant(ctx, envID, appID).ContentType(contentType).ApplicationResourceGrant(applicationResourceGrant).Execute()
+> ApplicationResourceGrant CreateGrant(ctx, envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
 
 CREATE Grant
 
@@ -35,12 +35,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     applicationResourceGrant := *openapiclient.NewApplicationResourceGrant() // ApplicationResourceGrant |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant(context.Background(), envID, appID).ContentType(contentType).ApplicationResourceGrant(applicationResourceGrant).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant(context.Background(), envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,7 +67,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **applicationResourceGrant** | [**ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | 
 
 ### Return type
@@ -312,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx, envID, appID, grantID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx, envID, appID, grantID).Body(body).Execute()
 
 UPDATE Grant
 
@@ -334,12 +332,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(context.Background(), envID, appID, grantID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(context.Background(), envID, appID, grantID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,7 +364,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

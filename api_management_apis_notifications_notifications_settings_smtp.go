@@ -136,14 +136,9 @@ type ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest 
 	ctx _context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest {
 	r.body = &body
 	return r
@@ -208,9 +203,6 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

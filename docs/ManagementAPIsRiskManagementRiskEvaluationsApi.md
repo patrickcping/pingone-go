@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateRiskEvaluation
 
-> RiskEvaluation CreateRiskEvaluation(ctx, envID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+> RiskEvaluation CreateRiskEvaluation(ctx, envID).RiskEvaluation(riskEvaluation).Execute()
 
 CREATE Risk Evaluation
 
@@ -32,12 +32,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     riskEvaluation := *openapiclient.NewRiskEvaluation() // RiskEvaluation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation(context.Background(), envID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation(context.Background(), envID).RiskEvaluation(riskEvaluation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Other parameters are passed through a pointer to a apiCreateRiskEvaluationReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **riskEvaluation** | [**RiskEvaluation**](RiskEvaluation.md) |  | 
 
 ### Return type
@@ -159,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## UpdateRiskEvaluation
 
-> RiskEvaluation UpdateRiskEvaluation(ctx, envID, riskID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+> RiskEvaluation UpdateRiskEvaluation(ctx, envID, riskID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
 
 UPDATE Risk Evaluation
 
@@ -180,12 +178,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     riskID := "riskID_example" // string | 
-    contentType := "application/json" // string |  (optional)
-    riskEvaluation := *openapiclient.NewRiskEvaluation() // RiskEvaluation |  (optional)
+    riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent() // RiskEvaluationEvent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), envID, riskID).ContentType(contentType).RiskEvaluation(riskEvaluation).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), envID, riskID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,8 +210,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
- **riskEvaluation** | [**RiskEvaluation**](RiskEvaluation.md) |  | 
+ **riskEvaluationEvent** | [**RiskEvaluationEvent**](RiskEvaluationEvent.md) |  | 
 
 ### Return type
 

@@ -32,14 +32,9 @@ type ApiCreateAttributeRequest struct {
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
-	contentType *string
 	schemaAttribute *SchemaAttribute
 }
 
-func (r ApiCreateAttributeRequest) ContentType(contentType string) ApiCreateAttributeRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateAttributeRequest) SchemaAttribute(schemaAttribute SchemaAttribute) ApiCreateAttributeRequest {
 	r.schemaAttribute = &schemaAttribute
 	return r
@@ -110,9 +105,6 @@ func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.schemaAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -168,13 +160,8 @@ type ApiDeleteAttributeRequest struct {
 	envID string
 	schemaID string
 	attributeID string
-	contentType *string
 }
 
-func (r ApiDeleteAttributeRequest) ContentType(contentType string) ApiDeleteAttributeRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiDeleteAttributeRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteAttributeExecute(r)
@@ -241,9 +228,6 @@ func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttr
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -769,20 +753,15 @@ type ApiUpdateAttributePatchRequest struct {
 	envID string
 	schemaID string
 	attributeID string
-	contentType *string
 	schemaAttribute *SchemaAttribute
 }
 
-func (r ApiUpdateAttributePatchRequest) ContentType(contentType string) ApiUpdateAttributePatchRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateAttributePatchRequest) SchemaAttribute(schemaAttribute SchemaAttribute) ApiUpdateAttributePatchRequest {
 	r.schemaAttribute = &schemaAttribute
 	return r
 }
 
-func (r ApiUpdateAttributePatchRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateAttributePatchRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
 	return r.ApiService.UpdateAttributePatchExecute(r)
 }
 
@@ -808,18 +787,20 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatch(ctx _context.Cont
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (*_nethttp.Response, error) {
+//  @return SchemaAttribute
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (SchemaAttribute, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.UpdateAttributePatch")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
@@ -848,26 +829,23 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.schemaAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -880,15 +858,24 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateAttributePutRequest struct {
@@ -897,20 +884,15 @@ type ApiUpdateAttributePutRequest struct {
 	envID string
 	schemaID string
 	attributeID string
-	contentType *string
 	schemaAttribute *SchemaAttribute
 }
 
-func (r ApiUpdateAttributePutRequest) ContentType(contentType string) ApiUpdateAttributePutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateAttributePutRequest) SchemaAttribute(schemaAttribute SchemaAttribute) ApiUpdateAttributePutRequest {
 	r.schemaAttribute = &schemaAttribute
 	return r
 }
 
-func (r ApiUpdateAttributePutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateAttributePutRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
 	return r.ApiService.UpdateAttributePutExecute(r)
 }
 
@@ -936,18 +918,20 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePut(ctx _context.Contex
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (*_nethttp.Response, error) {
+//  @return SchemaAttribute
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (SchemaAttribute, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.UpdateAttributePut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
@@ -976,26 +960,23 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateA
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.schemaAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1008,13 +989,22 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateA
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

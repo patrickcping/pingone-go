@@ -144,15 +144,10 @@ type ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsBrandingBrandingSettingsApiService
 	envID string
-	contentType *string
 	authorization *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) Authorization(authorization string) ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest {
 	r.authorization = &authorization
 	return r
@@ -221,9 +216,6 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	if r.authorization != nil {
 		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")

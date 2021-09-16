@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDDecryptionsPost
 
-> V1EnvironmentsEnvIDDecryptionsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDDecryptionsPost(ctx, envID).Body(body).Execute()
 
 DECRYPT Data
 
@@ -401,12 +401,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -430,7 +429,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDDecrypt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -453,7 +451,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDEncryptionsPost
 
-> V1EnvironmentsEnvIDEncryptionsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDEncryptionsPost(ctx, envID).Body(body).Execute()
 
 ENCRYPT Data
 
@@ -473,12 +471,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -502,7 +499,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDEncrypt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -954,7 +950,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDKeysKeyIDPut
 
-> V1EnvironmentsEnvIDKeysKeyIDPut(ctx, envID, keyID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDKeysKeyIDPut(ctx, envID, keyID).Body(body).Execute()
 
 UPDATE Key
 
@@ -975,12 +971,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1006,7 +1001,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -1103,7 +1097,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDSigningsPost
 
-> V1EnvironmentsEnvIDSigningsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDSigningsPost(ctx, envID).Body(body).Execute()
 
 SIGN Data
 
@@ -1123,12 +1117,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1152,7 +1145,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDSigning
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -1175,7 +1167,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDVerificationsPost
 
-> V1EnvironmentsEnvIDVerificationsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDVerificationsPost(ctx, envID).Body(body).Execute()
 
 VERIFY Signed Data
 
@@ -1195,12 +1187,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1224,7 +1215,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDVerific
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

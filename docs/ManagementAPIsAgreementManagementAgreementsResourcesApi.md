@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAgreementsAgreementIDPut
 
-> V1EnvironmentsEnvIDAgreementsAgreementIDPut(ctx, envID, agreementID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDAgreementsAgreementIDPut(ctx, envID, agreementID).Body(body).Execute()
 
 UPDATE Agreement
 
@@ -177,12 +177,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut(context.Background(), envID, agreementID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut(context.Background(), envID, agreementID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,7 +207,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -299,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDAgreementsPost
 
-> V1EnvironmentsEnvIDAgreementsPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDAgreementsPost(ctx, envID).Body(body).Execute()
 
 CREATE Agreement
 
@@ -319,12 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +345,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDAgreeme
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

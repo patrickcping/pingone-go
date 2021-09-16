@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateResource
 
-> Resource CreateResource(ctx, envID).ContentType(contentType).Resource(resource).Execute()
+> Resource CreateResource(ctx, envID).Resource(resource).Execute()
 
 CREATE Resource
 
@@ -34,12 +34,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     resource := *openapiclient.NewResource() // Resource |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.CreateResource(context.Background(), envID).ContentType(contentType).Resource(resource).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.CreateResource(context.Background(), envID).Resource(resource).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.CreateResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +64,6 @@ Other parameters are passed through a pointer to a apiCreateResourceRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **resource** | [**Resource**](Resource.md) |  | 
 
 ### Return type
@@ -229,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## UpdateResource
 
-> UpdateResource(ctx, envID, resourceID).ContentType(contentType).Resource(resource).Execute()
+> Resource UpdateResource(ctx, envID, resourceID).Resource(resource).Execute()
 
 UPDATE Resource
 
@@ -250,16 +248,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     resource := *openapiclient.NewResource() // Resource |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.UpdateResource(context.Background(), envID, resourceID).ContentType(contentType).Resource(resource).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourcesApi.UpdateResource(context.Background(), envID, resourceID).Resource(resource).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourcesApi.UpdateResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateResource`: Resource
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourcesApi.UpdateResource`: %v\n", resp)
 }
 ```
 
@@ -281,12 +280,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **resource** | [**Resource**](Resource.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Resource**](Resource.md)
 
 ### Authorization
 

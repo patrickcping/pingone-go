@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateGroup
 
-> UpdateGroup(ctx, envID, groupID).Group(group).Execute()
+> Group UpdateGroup(ctx, envID, groupID).Group(group).Execute()
 
 UPDATE Group
 
@@ -336,6 +336,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.UpdateGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.UpdateGroup`: %v\n", resp)
 }
 ```
 
@@ -361,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Group**](Group.md)
 
 ### Authorization
 

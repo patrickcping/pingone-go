@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(ctx, envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(ctx, envID, gatewayID, gatewayRoleAssignmentsID).Body(body).Execute()
 
 UPDATE Gateway Role Assignments
 
@@ -184,12 +184,11 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     gatewayRoleAssignmentsID := "gatewayRoleAssignmentsID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut(context.Background(), envID, gatewayID, gatewayRoleAssignmentsID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +216,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -311,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(ctx, envID, gatewayID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(ctx, envID, gatewayID).Body(body).Execute()
 
 CREATE Gateway Role Assignments
 
@@ -332,12 +330,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(context.Background(), envID, gatewayID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost(context.Background(), envID, gatewayID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.V1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +360,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

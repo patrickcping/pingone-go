@@ -145,13 +145,8 @@ type ApiV1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPostRequest struct {
 	ApiService *ManagementAPIsGatewayManagementGatewayCredentialsApiService
 	envID string
 	gatewayID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPostRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPostExecute(r)
@@ -215,9 +210,6 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) V1Environm
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

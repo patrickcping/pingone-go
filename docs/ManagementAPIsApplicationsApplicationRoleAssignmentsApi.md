@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost
 
-> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(ctx, envID, appID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(ctx, envID, appID).Body(body).Execute()
 
 CREATE Application Role Assignments
 
@@ -105,12 +105,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(context.Background(), envID, appID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(context.Background(), envID, appID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +135,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

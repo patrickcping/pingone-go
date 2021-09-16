@@ -147,14 +147,9 @@ type ApiUpdateBillOfMaterialsRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsBillOfMaterialsBOMApiService
 	envID string
-	contentType *string
 	billOfMaterials *BillOfMaterials
 }
 
-func (r ApiUpdateBillOfMaterialsRequest) ContentType(contentType string) ApiUpdateBillOfMaterialsRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateBillOfMaterialsRequest) BillOfMaterials(billOfMaterials BillOfMaterials) ApiUpdateBillOfMaterialsRequest {
 	r.billOfMaterials = &billOfMaterials
 	return r
@@ -221,9 +216,6 @@ func (a *ManagementAPIsBillOfMaterialsBOMApiService) UpdateBillOfMaterialsExecut
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.billOfMaterials

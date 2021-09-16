@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDBrandingSettingsPut
 
-> V1EnvironmentsEnvIDBrandingSettingsPut(ctx, envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+> V1EnvironmentsEnvIDBrandingSettingsPut(ctx, envID).Authorization(authorization).Body(body).Execute()
 
 UPDATE Branding Settings
 
@@ -101,13 +101,12 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     authorization := "{{jwtToken}}" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut(context.Background(), envID).ContentType(contentType).Authorization(authorization).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut(context.Background(), envID).Authorization(authorization).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +130,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDBrandin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **authorization** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 

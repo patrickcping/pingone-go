@@ -250,14 +250,9 @@ type ApiV1EnvironmentsEnvIDGatewaysGatewayIDPutRequest struct {
 	ApiService *ManagementAPIsGatewayManagementGatewaysApiService
 	envID string
 	gatewayID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDGatewaysGatewayIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGatewaysGatewayIDPutRequest {
 	r.body = &body
 	return r
@@ -325,9 +320,6 @@ func (a *ManagementAPIsGatewayManagementGatewaysApiService) V1EnvironmentsEnvIDG
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -478,14 +470,9 @@ type ApiV1EnvironmentsEnvIDGatewaysPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsGatewayManagementGatewaysApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDGatewaysPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDGatewaysPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDGatewaysPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGatewaysPostRequest {
 	r.body = &body
 	return r
@@ -550,9 +537,6 @@ func (a *ManagementAPIsGatewayManagementGatewaysApiService) V1EnvironmentsEnvIDG
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

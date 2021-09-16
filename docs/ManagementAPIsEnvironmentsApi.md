@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateEnvironmentActiveLicense
 
-> Environment CreateEnvironmentActiveLicense(ctx).ContentType(contentType).Environment(environment).Execute()
+> Environment CreateEnvironmentActiveLicense(ctx).Environment(environment).Execute()
 
 CREATE Environment (Active License)
 
@@ -34,12 +34,11 @@ import (
 )
 
 func main() {
-    contentType := "application/json" // string |  (optional)
     environment := *openapiclient.NewEnvironment() // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense(context.Background()).ContentType(contentType).Environment(environment).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense(context.Background()).Environment(environment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +59,6 @@ Other parameters are passed through a pointer to a apiCreateEnvironmentActiveLic
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contentType** | **string** |  | 
  **environment** | [**Environment**](Environment.md) |  | 
 
 ### Return type
@@ -289,7 +287,7 @@ Name | Type | Description  | Notes
 
 ## UpdateEnvironment
 
-> UpdateEnvironment(ctx, envID).ContentType(contentType).Environment(environment).Execute()
+> Environment UpdateEnvironment(ctx, envID).Environment(environment).Execute()
 
 UPDATE Environment
 
@@ -309,16 +307,17 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     environment := *openapiclient.NewEnvironment() // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironment(context.Background(), envID).ContentType(contentType).Environment(environment).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironment(context.Background(), envID).Environment(environment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateEnvironment`: Environment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsEnvironmentsApi.UpdateEnvironment`: %v\n", resp)
 }
 ```
 
@@ -338,12 +337,11 @@ Other parameters are passed through a pointer to a apiUpdateEnvironmentRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **environment** | [**Environment**](Environment.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -361,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## UpdateEnvironmentType
 
-> UpdateEnvironmentType(ctx, envID).ContentType(contentType).InlineObject2(inlineObject2).Execute()
+> Environment UpdateEnvironmentType(ctx, envID).InlineObject2(inlineObject2).Execute()
 
 UPDATE Environment Type
 
@@ -381,16 +379,17 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironmentType(context.Background(), envID).ContentType(contentType).InlineObject2(inlineObject2).Execute()
+    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironmentType(context.Background(), envID).InlineObject2(inlineObject2).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironmentType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateEnvironmentType`: Environment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsEnvironmentsApi.UpdateEnvironmentType`: %v\n", resp)
 }
 ```
 
@@ -410,12 +409,11 @@ Other parameters are passed through a pointer to a apiUpdateEnvironmentTypeReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 

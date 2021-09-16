@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreatePopulation
 
-> Population CreatePopulation(ctx, envID).Population(population).ContentType(contentType).Execute()
+> Population CreatePopulation(ctx, envID).Population(population).Execute()
 
 CREATE Population
 
@@ -35,11 +35,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     population := *openapiclient.NewPopulation() // Population | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPopulationsApi.CreatePopulation(context.Background(), envID).Population(population).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsPopulationsApi.CreatePopulation(context.Background(), envID).Population(population).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPopulationsApi.CreatePopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **population** | [**Population**](Population.md) |  | 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -306,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePopulation
 
-> UpdatePopulation(ctx, envID, popID).ContentType(contentType).Population(population).Execute()
+> Population UpdatePopulation(ctx, envID, popID).Population(population).Execute()
 
 UPDATE Population
 
@@ -327,16 +325,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     popID := "popID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     population := *openapiclient.NewPopulation() // Population |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPopulationsApi.UpdatePopulation(context.Background(), envID, popID).ContentType(contentType).Population(population).Execute()
+    resp, r, err := api_client.ManagementAPIsPopulationsApi.UpdatePopulation(context.Background(), envID, popID).Population(population).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPopulationsApi.UpdatePopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdatePopulation`: Population
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsPopulationsApi.UpdatePopulation`: %v\n", resp)
 }
 ```
 
@@ -358,12 +357,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **population** | [**Population**](Population.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Population**](Population.md)
 
 ### Authorization
 

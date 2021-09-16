@@ -277,14 +277,9 @@ type ApiV1EnvironmentsEnvIDPropagationRulesPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationRulesPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationRulesPostRequest {
 	r.body = &body
 	return r
@@ -349,9 +344,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -632,14 +624,9 @@ type ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest struct {
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	storeID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest {
 	r.body = &body
 	return r
@@ -707,9 +694,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

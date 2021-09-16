@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut
 
-> V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(ctx, envID, deviceAuthPolicyID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(ctx, envID, deviceAuthPolicyID).Body(body).Execute()
 
 UPDATE Device Authentication Policy
 
@@ -32,12 +32,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

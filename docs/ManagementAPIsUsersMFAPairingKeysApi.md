@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, envID, userID, pairingKeyID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, envID, userID, pairingKeyID).Execute()
 
 READ One MFA Pairing Key
 
@@ -108,11 +108,10 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     pairingKeyID := "pairingKeyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,7 +139,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -162,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDUsersUserIDPairingKeysPost
 
-> V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx, envID, userID).Body(body).Execute()
 
 CREATE MFA Pairing Key
 
@@ -183,12 +181,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,7 +211,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

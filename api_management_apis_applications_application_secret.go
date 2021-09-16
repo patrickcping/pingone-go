@@ -152,13 +152,8 @@ type ApiUpdateApplicationSecretRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationSecretApiService
 	envID string
 	appID string
-	contentType *string
 }
 
-func (r ApiUpdateApplicationSecretRequest) ContentType(contentType string) ApiUpdateApplicationSecretRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiUpdateApplicationSecretRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.UpdateApplicationSecretExecute(r)
@@ -222,9 +217,6 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicatio
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

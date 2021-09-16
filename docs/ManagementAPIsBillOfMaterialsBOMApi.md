@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBillOfMaterials
 
-> BillOfMaterials UpdateBillOfMaterials(ctx, envID).ContentType(contentType).BillOfMaterials(billOfMaterials).Execute()
+> BillOfMaterials UpdateBillOfMaterials(ctx, envID).BillOfMaterials(billOfMaterials).Execute()
 
 UPDATE Bill of Materials
 
@@ -101,12 +101,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     billOfMaterials := *openapiclient.NewBillOfMaterials() // BillOfMaterials |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials(context.Background(), envID).ContentType(contentType).BillOfMaterials(billOfMaterials).Execute()
+    resp, r, err := api_client.ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials(context.Background(), envID).BillOfMaterials(billOfMaterials).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBillOfMaterialsBOMApi.UpdateBillOfMaterials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +131,6 @@ Other parameters are passed through a pointer to a apiUpdateBillOfMaterialsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **billOfMaterials** | [**BillOfMaterials**](BillOfMaterials.md) |  | 
 
 ### Return type

@@ -32,14 +32,9 @@ type ApiCreateApplicationAttributeMappingRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationAttributeMappingApiService
 	envID string
 	appID string
-	contentType *string
 	applicationAttributeMapping *ApplicationAttributeMapping
 }
 
-func (r ApiCreateApplicationAttributeMappingRequest) ContentType(contentType string) ApiCreateApplicationAttributeMappingRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateApplicationAttributeMappingRequest) ApplicationAttributeMapping(applicationAttributeMapping ApplicationAttributeMapping) ApiCreateApplicationAttributeMappingRequest {
 	r.applicationAttributeMapping = &applicationAttributeMapping
 	return r
@@ -109,9 +104,6 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Create
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationAttributeMapping
@@ -525,20 +517,15 @@ type ApiUpdateApplicationAttributeMappingRequest struct {
 	envID string
 	appID string
 	samlAttrID string
-	contentType *string
 	applicationAttributeMapping *ApplicationAttributeMapping
 }
 
-func (r ApiUpdateApplicationAttributeMappingRequest) ContentType(contentType string) ApiUpdateApplicationAttributeMappingRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiUpdateApplicationAttributeMappingRequest) ApplicationAttributeMapping(applicationAttributeMapping ApplicationAttributeMapping) ApiUpdateApplicationAttributeMappingRequest {
 	r.applicationAttributeMapping = &applicationAttributeMapping
 	return r
 }
 
-func (r ApiUpdateApplicationAttributeMappingRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateApplicationAttributeMappingRequest) Execute() (ApplicationAttributeMapping, *_nethttp.Response, error) {
 	return r.ApiService.UpdateApplicationAttributeMappingExecute(r)
 }
 
@@ -564,18 +551,20 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Update
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) UpdateApplicationAttributeMappingExecute(r ApiUpdateApplicationAttributeMappingRequest) (*_nethttp.Response, error) {
+//  @return ApplicationAttributeMapping
+func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) UpdateApplicationAttributeMappingExecute(r ApiUpdateApplicationAttributeMappingRequest) (ApplicationAttributeMapping, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  ApplicationAttributeMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationAttributeMappingApiService.UpdateApplicationAttributeMapping")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}"
@@ -604,26 +593,23 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Update
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.applicationAttributeMapping
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -636,13 +622,22 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Update
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

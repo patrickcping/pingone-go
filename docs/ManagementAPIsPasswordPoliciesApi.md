@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut
 
-> V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(ctx, envID, passwordPolicyID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(ctx, envID, passwordPolicyID).Body(body).Execute()
 
 UPDATE Password Policy
 
@@ -172,12 +172,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     passwordPolicyID := "passwordPolicyID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(context.Background(), envID, passwordPolicyID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(context.Background(), envID, passwordPolicyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,7 +202,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysGatewayIDPut
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDPut(ctx, envID, gatewayID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysGatewayIDPut(ctx, envID, gatewayID).Body(body).Execute()
 
 UPDATE Gateway
 
@@ -177,12 +177,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut(context.Background(), envID, gatewayID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut(context.Background(), envID, gatewayID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysGatewayIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,7 +207,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -299,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDGatewaysPost
 
-> V1EnvironmentsEnvIDGatewaysPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDGatewaysPost(ctx, envID).Body(body).Execute()
 
 CREATE Ping Federate Gateway
 
@@ -319,12 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.V1EnvironmentsEnvIDGatewaysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +345,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGateway
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

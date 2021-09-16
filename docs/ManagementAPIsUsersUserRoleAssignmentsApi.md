@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateUserRoleAssignment
 
-> RoleAssignment CreateUserRoleAssignment(ctx, envID, userID).ContentType(contentType).RoleAssignment(roleAssignment).Execute()
+> RoleAssignment CreateUserRoleAssignment(ctx, envID, userID).RoleAssignment(roleAssignment).Execute()
 
 CREATE User Role Assignment
 
@@ -34,12 +34,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     roleAssignment := *openapiclient.NewRoleAssignment() // RoleAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.CreateUserRoleAssignment(context.Background(), envID, userID).ContentType(contentType).RoleAssignment(roleAssignment).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.CreateUserRoleAssignment(context.Background(), envID, userID).RoleAssignment(roleAssignment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.CreateUserRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +66,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **roleAssignment** | [**RoleAssignment**](RoleAssignment.md) |  | 
 
 ### Return type

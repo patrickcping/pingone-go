@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationRevisionsPost
 
-> V1EnvironmentsEnvIDPropagationRevisionsPost(ctx, envID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDPropagationRevisionsPost(ctx, envID).Execute()
 
 CREATE Revision
 
@@ -102,11 +102,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +129,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDPropaga
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
 
 ### Return type
 

@@ -31,14 +31,9 @@ type ApiCreateRiskEvaluationRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
 	envID string
-	contentType *string
 	riskEvaluation *RiskEvaluation
 }
 
-func (r ApiCreateRiskEvaluationRequest) ContentType(contentType string) ApiCreateRiskEvaluationRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateRiskEvaluationRequest) RiskEvaluation(riskEvaluation RiskEvaluation) ApiCreateRiskEvaluationRequest {
 	r.riskEvaluation = &riskEvaluation
 	return r
@@ -105,9 +100,6 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) CreateRiskEvalua
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.riskEvaluation
@@ -283,16 +275,11 @@ type ApiUpdateRiskEvaluationRequest struct {
 	ApiService *ManagementAPIsRiskManagementRiskEvaluationsApiService
 	envID string
 	riskID string
-	contentType *string
-	riskEvaluation *RiskEvaluation
+	riskEvaluationEvent *RiskEvaluationEvent
 }
 
-func (r ApiUpdateRiskEvaluationRequest) ContentType(contentType string) ApiUpdateRiskEvaluationRequest {
-	r.contentType = &contentType
-	return r
-}
-func (r ApiUpdateRiskEvaluationRequest) RiskEvaluation(riskEvaluation RiskEvaluation) ApiUpdateRiskEvaluationRequest {
-	r.riskEvaluation = &riskEvaluation
+func (r ApiUpdateRiskEvaluationRequest) RiskEvaluationEvent(riskEvaluationEvent RiskEvaluationEvent) ApiUpdateRiskEvaluationRequest {
+	r.riskEvaluationEvent = &riskEvaluationEvent
 	return r
 }
 
@@ -361,11 +348,8 @@ func (a *ManagementAPIsRiskManagementRiskEvaluationsApiService) UpdateRiskEvalua
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
-	localVarPostBody = r.riskEvaluation
+	localVarPostBody = r.riskEvaluationEvent
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

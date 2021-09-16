@@ -31,14 +31,9 @@ type ApiV1EnvironmentsEnvIDPropagationStoreMetadataAqueraPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataAqueraPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationStoreMetadataAqueraPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataAqueraPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationStoreMetadataAqueraPostRequest {
 	r.body = &body
 	return r
@@ -104,9 +99,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -151,14 +143,9 @@ type ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforceContactsPostRequest
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforceContactsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforceContactsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforceContactsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforceContactsPostRequest {
 	r.body = &body
 	return r
@@ -224,9 +211,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -271,14 +255,9 @@ type ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforcePostRequest struct 
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforcePostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforcePostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforcePostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationStoreMetadataSalesforcePostRequest {
 	r.body = &body
 	return r
@@ -344,9 +323,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -391,14 +367,9 @@ type ApiV1EnvironmentsEnvIDPropagationStoreMetadataScimPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataScimPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationStoreMetadataScimPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDPropagationStoreMetadataScimPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDPropagationStoreMetadataScimPostRequest {
 	r.body = &body
 	return r
@@ -463,9 +434,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationStoreMetadataAp
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

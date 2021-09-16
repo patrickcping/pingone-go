@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## V1EnvironmentsEnvIDUsersUserIDPasswordGet
 
-> V1EnvironmentsEnvIDUsersUserIDPasswordGet(ctx, envID, userID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDUsersUserIDPasswordGet(ctx, envID, userID).Execute()
 
 READ Password State
 
@@ -33,11 +33,10 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 

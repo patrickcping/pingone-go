@@ -32,14 +32,9 @@ type ApiCreateUserRoleAssignmentRequest struct {
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
 	userID string
-	contentType *string
 	roleAssignment *RoleAssignment
 }
 
-func (r ApiCreateUserRoleAssignmentRequest) ContentType(contentType string) ApiCreateUserRoleAssignmentRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiCreateUserRoleAssignmentRequest) RoleAssignment(roleAssignment RoleAssignment) ApiCreateUserRoleAssignmentRequest {
 	r.roleAssignment = &roleAssignment
 	return r
@@ -109,9 +104,6 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.roleAssignment

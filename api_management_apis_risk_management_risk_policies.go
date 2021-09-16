@@ -136,14 +136,9 @@ type ApiV1EnvironmentsEnvIDRiskPolicySetsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsRiskManagementRiskPoliciesApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDRiskPolicySetsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDRiskPolicySetsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDRiskPolicySetsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDRiskPolicySetsPostRequest {
 	r.body = &body
 	return r
@@ -208,9 +203,6 @@ func (a *ManagementAPIsRiskManagementRiskPoliciesApiService) V1EnvironmentsEnvID
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -475,14 +467,9 @@ type ApiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest struct {
 	ApiService *ManagementAPIsRiskManagementRiskPoliciesApiService
 	envID string
 	riskPolicySetID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest {
 	r.body = &body
 	return r
@@ -550,9 +537,6 @@ func (a *ManagementAPIsRiskManagementRiskPoliciesApiService) V1EnvironmentsEnvID
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

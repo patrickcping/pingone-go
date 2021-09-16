@@ -478,14 +478,9 @@ type ApiV1EnvironmentsEnvIDCustomDomainsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsCustomDomainsApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDCustomDomainsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDCustomDomainsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDCustomDomainsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDCustomDomainsPostRequest {
 	r.body = &body
 	return r
@@ -550,9 +545,6 @@ func (a *ManagementAPIsCustomDomainsApiService) V1EnvironmentsEnvIDCustomDomains
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

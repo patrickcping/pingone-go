@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDNotificationsSettingsPut
 
-> V1EnvironmentsEnvIDNotificationsSettingsPut(ctx, envID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvIDNotificationsSettingsPut(ctx, envID).Execute()
 
 UPDATE Notifications Settings
 
@@ -168,11 +168,10 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut(context.Background(), envID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,7 +195,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDNotific
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
 
 ### Return type
 

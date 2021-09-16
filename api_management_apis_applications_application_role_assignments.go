@@ -141,14 +141,9 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
 	envID string
 	appID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest {
 	r.body = &body
 	return r
@@ -216,9 +211,6 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

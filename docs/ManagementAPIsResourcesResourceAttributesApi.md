@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesPost
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(ctx, envID, resourceID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(ctx, envID, resourceID).Body(body).Execute()
 
 CREATE Resource Attribute
 
@@ -106,12 +106,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(context.Background(), envID, resourceID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost(context.Background(), envID, resourceID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +136,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -308,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut
 
-> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(ctx, envID, resourceID, resourceAttrID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(ctx, envID, resourceID, resourceAttrID).Body(body).Execute()
 
 UPDATE Resource Attribute
 
@@ -330,12 +328,11 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     resourceAttrID := "resourceAttrID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(context.Background(), envID, resourceID, resourceAttrID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut(context.Background(), envID, resourceID, resourceAttrID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.V1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +360,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

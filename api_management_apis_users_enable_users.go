@@ -141,14 +141,9 @@ type ApiV1EnvironmentsEnvIDUsersUserIDEnabledPutRequest struct {
 	ApiService *ManagementAPIsUsersEnableUsersApiService
 	envID string
 	userID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDEnabledPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDEnabledPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDUsersUserIDEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDEnabledPutRequest {
 	r.body = &body
 	return r
@@ -216,9 +211,6 @@ func (a *ManagementAPIsUsersEnableUsersApiService) V1EnvironmentsEnvIDUsersUserI
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

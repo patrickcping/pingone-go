@@ -251,13 +251,8 @@ type ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGetRequest stru
 	envID string
 	templateName string
 	contentID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGetRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGetRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGetRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGetExecute(r)
@@ -325,9 +320,6 @@ func (a *ManagementAPIsNotificationsNotificationsTemplatesApiService) V1Environm
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -372,14 +364,9 @@ type ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPutRequest stru
 	envID string
 	templateName string
 	contentID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPutRequest {
 	r.body = &body
 	return r
@@ -450,9 +437,6 @@ func (a *ManagementAPIsNotificationsNotificationsTemplatesApiService) V1Environm
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -849,14 +833,9 @@ type ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsPostRequest struct {
 	ApiService *ManagementAPIsNotificationsNotificationsTemplatesApiService
 	envID string
 	templateName string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDTemplatesTemplateNameContentsPostRequest {
 	r.body = &body
 	return r
@@ -924,9 +903,6 @@ func (a *ManagementAPIsNotificationsNotificationsTemplatesApiService) V1Environm
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

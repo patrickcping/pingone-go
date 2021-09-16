@@ -259,14 +259,9 @@ type ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignment
 	envID string
 	gatewayID string
 	gatewayRoleAssignmentsID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPutRequest {
 	r.body = &body
 	return r
@@ -337,9 +332,6 @@ func (a *ManagementAPIsGatewayManagementGatewayRoleAssignmentsApiService) V1Envi
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -495,14 +487,9 @@ type ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPostRequest struct {
 	ApiService *ManagementAPIsGatewayManagementGatewayRoleAssignmentsApiService
 	envID string
 	gatewayID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPostRequest {
 	r.body = &body
 	return r
@@ -570,9 +557,6 @@ func (a *ManagementAPIsGatewayManagementGatewayRoleAssignmentsApiService) V1Envi
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

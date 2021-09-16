@@ -368,14 +368,9 @@ type ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPutRequest st
 	envID string
 	agreementID string
 	languageID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPutRequest {
 	r.body = &body
 	return r
@@ -447,9 +442,6 @@ func (a *ManagementAPIsAgreementManagementAgreementLanguagesResourcesApiService)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -495,14 +487,9 @@ type ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPostRequest struct {
 	ApiService *ManagementAPIsAgreementManagementAgreementLanguagesResourcesApiService
 	envID string
 	agreementID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPostRequest {
 	r.body = &body
 	return r
@@ -570,9 +557,6 @@ func (a *ManagementAPIsAgreementManagementAgreementLanguagesResourcesApiService)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

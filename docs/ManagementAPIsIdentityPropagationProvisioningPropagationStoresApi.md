@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresPost
 
-> V1EnvironmentsEnvIDPropagationStoresPost(ctx, envID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationStoresPost(ctx, envID).Body(body).Execute()
 
 CREATE Store (Aquera)
 
@@ -177,12 +177,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +205,6 @@ Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDPropaga
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -375,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDPropagationStoresStoreIDPut
 
-> V1EnvironmentsEnvIDPropagationStoresStoreIDPut(ctx, envID, storeID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDPropagationStoresStoreIDPut(ctx, envID, storeID).Body(body).Execute()
 
 UPDATE Store
 
@@ -396,12 +394,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,7 +424,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

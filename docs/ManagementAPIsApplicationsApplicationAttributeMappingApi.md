@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationAttributeMapping
 
-> ApplicationAttributeMapping CreateApplicationAttributeMapping(ctx, envID, appID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+> ApplicationAttributeMapping CreateApplicationAttributeMapping(ctx, envID, appID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
 
 CREATE Application Attribute Mapping
 
@@ -35,12 +35,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping(context.Background(), envID, appID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping(context.Background(), envID, appID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,7 +67,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **applicationAttributeMapping** | [**ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | 
 
 ### Return type
@@ -314,7 +312,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplicationAttributeMapping
 
-> UpdateApplicationAttributeMapping(ctx, envID, appID, samlAttrID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+> ApplicationAttributeMapping UpdateApplicationAttributeMapping(ctx, envID, appID, samlAttrID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
 
 UPDATE Application Attribute Mapping
 
@@ -336,16 +334,17 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).ContentType(contentType).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateApplicationAttributeMapping`: ApplicationAttributeMapping
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping`: %v\n", resp)
 }
 ```
 
@@ -369,12 +368,11 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **applicationAttributeMapping** | [**ApplicationAttributeMapping**](ApplicationAttributeMapping.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**ApplicationAttributeMapping**](ApplicationAttributeMapping.md)
 
 ### Authorization
 

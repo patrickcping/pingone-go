@@ -144,13 +144,8 @@ type ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService
 	envID string
-	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 
 func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRevisionsPostExecute(r)
@@ -211,9 +206,6 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

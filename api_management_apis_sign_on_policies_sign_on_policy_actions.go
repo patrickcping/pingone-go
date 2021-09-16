@@ -31,14 +31,9 @@ type ApiV1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActi
 	ctx _context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPolicyActionsApiService
 	policyID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPostRequest) ContentType(contentType string) ApiV1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPostRequest) Body(body map[string]interface{}) ApiV1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPostRequest {
 	r.body = &body
 	return r
@@ -103,9 +98,6 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPolicyActionsApiService) V1Environmen
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -379,14 +371,9 @@ type ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPutRequest struc
 	envID string
 	policyID string
 	actionID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPutRequest {
 	r.body = &body
 	return r
@@ -457,9 +444,6 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPolicyActionsApiService) V1Environmen
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -615,14 +599,9 @@ type ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPostRequest struct {
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPolicyActionsApiService
 	envID string
 	policyID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPostRequest {
 	r.body = &body
 	return r
@@ -690,9 +669,6 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPolicyActionsApiService) V1Environmen
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

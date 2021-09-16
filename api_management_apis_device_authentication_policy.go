@@ -32,14 +32,9 @@ type ApiV1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutReques
 	ApiService *ManagementAPIsDeviceAuthenticationPolicyApiService
 	envID string
 	deviceAuthPolicyID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutRequest {
 	r.body = &body
 	return r
@@ -107,9 +102,6 @@ func (a *ManagementAPIsDeviceAuthenticationPolicyApiService) V1EnvironmentsEnvID
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

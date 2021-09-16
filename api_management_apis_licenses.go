@@ -355,14 +355,9 @@ type ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest struct {
 	ApiService *ManagementAPIsLicensesApiService
 	orgID string
 	licenseID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) ContentType(contentType string) ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) Body(body map[string]interface{}) ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest {
 	r.body = &body
 	return r
@@ -430,9 +425,6 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

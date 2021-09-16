@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateAttribute
 
-> SchemaAttribute CreateAttribute(ctx, envID, schemaID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+> SchemaAttribute CreateAttribute(ctx, envID, schemaID).SchemaAttribute(schemaAttribute).Execute()
 
 CREATE Attribute
 
@@ -38,12 +38,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.CreateAttribute(context.Background(), envID, schemaID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.CreateAttribute(context.Background(), envID, schemaID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.CreateAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,7 +70,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **schemaAttribute** | [**SchemaAttribute**](SchemaAttribute.md) |  | 
 
 ### Return type
@@ -94,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAttribute
 
-> DeleteAttribute(ctx, envID, schemaID, attributeID).ContentType(contentType).Execute()
+> DeleteAttribute(ctx, envID, schemaID, attributeID).Execute()
 
 DELETE Attribute
 
@@ -116,11 +114,10 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.DeleteAttribute(context.Background(), envID, schemaID, attributeID).ContentType(contentType).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.DeleteAttribute(context.Background(), envID, schemaID, attributeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.DeleteAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +145,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
 
 ### Return type
 
@@ -462,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAttributePatch
 
-> UpdateAttributePatch(ctx, envID, schemaID, attributeID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+> SchemaAttribute UpdateAttributePatch(ctx, envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
 
 UPDATE Attribute (Patch)
 
@@ -484,16 +480,17 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePatch(context.Background(), envID, schemaID, attributeID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePatch(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.UpdateAttributePatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateAttributePatch`: SchemaAttribute
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsSchemasApi.UpdateAttributePatch`: %v\n", resp)
 }
 ```
 
@@ -517,12 +514,11 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **schemaAttribute** | [**SchemaAttribute**](SchemaAttribute.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**SchemaAttribute**](SchemaAttribute.md)
 
 ### Authorization
 
@@ -540,7 +536,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAttributePut
 
-> UpdateAttributePut(ctx, envID, schemaID, attributeID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+> SchemaAttribute UpdateAttributePut(ctx, envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
 
 UPDATE Attribute (Put)
 
@@ -562,16 +558,17 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePut(context.Background(), envID, schemaID, attributeID).ContentType(contentType).SchemaAttribute(schemaAttribute).Execute()
+    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePut(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.UpdateAttributePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateAttributePut`: SchemaAttribute
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsSchemasApi.UpdateAttributePut`: %v\n", resp)
 }
 ```
 
@@ -595,12 +592,11 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **schemaAttribute** | [**SchemaAttribute**](SchemaAttribute.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**SchemaAttribute**](SchemaAttribute.md)
 
 ### Authorization
 

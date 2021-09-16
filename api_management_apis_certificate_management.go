@@ -601,14 +601,9 @@ type ApiV1EnvironmentsEnvIDDecryptionsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsCertificateManagementApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDDecryptionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDDecryptionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDDecryptionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDDecryptionsPostRequest {
 	r.body = &body
 	return r
@@ -674,9 +669,6 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDDecry
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -721,14 +713,9 @@ type ApiV1EnvironmentsEnvIDEncryptionsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsCertificateManagementApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDEncryptionsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDEncryptionsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDEncryptionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDEncryptionsPostRequest {
 	r.body = &body
 	return r
@@ -793,9 +780,6 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDEncry
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1516,14 +1500,9 @@ type ApiV1EnvironmentsEnvIDKeysKeyIDPutRequest struct {
 	ApiService *ManagementAPIsCertificateManagementApiService
 	envID string
 	keyID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDKeysKeyIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDKeysKeyIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDKeysKeyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDKeysKeyIDPutRequest {
 	r.body = &body
 	return r
@@ -1591,9 +1570,6 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDKeysK
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1776,14 +1752,9 @@ type ApiV1EnvironmentsEnvIDSigningsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsCertificateManagementApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDSigningsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDSigningsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDSigningsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDSigningsPostRequest {
 	r.body = &body
 	return r
@@ -1849,9 +1820,6 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDSigni
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -1896,14 +1864,9 @@ type ApiV1EnvironmentsEnvIDVerificationsPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsCertificateManagementApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDVerificationsPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDVerificationsPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDVerificationsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDVerificationsPostRequest {
 	r.body = &body
 	return r
@@ -1968,9 +1931,6 @@ func (a *ManagementAPIsCertificateManagementApiService) V1EnvironmentsEnvIDVerif
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

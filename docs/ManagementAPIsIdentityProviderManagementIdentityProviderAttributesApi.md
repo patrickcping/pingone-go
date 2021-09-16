@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut
 
-> V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut(ctx, envID, providerID, idpAttrID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut(ctx, envID, providerID, idpAttrID).Body(body).Execute()
 
 UPDATE Identity Provider Attribute
 
@@ -255,12 +255,11 @@ func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
     idpAttrID := "idpAttrID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut(context.Background(), envID, providerID, idpAttrID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut(context.Background(), envID, providerID, idpAttrID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesIdpAttrIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,7 +287,6 @@ Name | Type | Description  | Notes
 
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -311,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost
 
-> V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost(ctx, envID, providerID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost(ctx, envID, providerID).Body(body).Execute()
 
 CREATE Identity Provider Attribute (SAML)
 
@@ -332,12 +330,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
-    contentType := "application/json" // string |  (optional)
     body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost(context.Background(), envID, providerID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost(context.Background(), envID, providerID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProviderAttributesApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDAttributesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +360,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

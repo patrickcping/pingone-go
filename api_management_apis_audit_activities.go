@@ -253,14 +253,9 @@ type ApiV1EnvironmentsEnvIDActivitiesPostRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsAuditActivitiesApiService
 	envID string
-	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDActivitiesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDActivitiesPostRequest {
-	r.contentType = &contentType
-	return r
-}
 func (r ApiV1EnvironmentsEnvIDActivitiesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDActivitiesPostRequest {
 	r.body = &body
 	return r
@@ -325,9 +320,6 @@ func (a *ManagementAPIsAuditActivitiesApiService) V1EnvironmentsEnvIDActivitiesP
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
