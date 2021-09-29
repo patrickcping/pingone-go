@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UserAgent** | Pointer to **string** |  | [optional] 
+**Cookie** | Pointer to **string** |  | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
 **ColorDepth** | Pointer to **float32** |  | [optional] 
 **DeviceMemory** | Pointer to **float32** |  | [optional] 
@@ -75,6 +76,31 @@ SetUserAgent sets UserAgent field to given value.
 `func (o *RiskEvaluationEventBrowser) HasUserAgent() bool`
 
 HasUserAgent returns a boolean if a field has been set.
+
+### GetCookie
+
+`func (o *RiskEvaluationEventBrowser) GetCookie() string`
+
+GetCookie returns the Cookie field if non-nil, zero value otherwise.
+
+### GetCookieOk
+
+`func (o *RiskEvaluationEventBrowser) GetCookieOk() (*string, bool)`
+
+GetCookieOk returns a tuple with the Cookie field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCookie
+
+`func (o *RiskEvaluationEventBrowser) SetCookie(v string)`
+
+SetCookie sets Cookie field to given value.
+
+### HasCookie
+
+`func (o *RiskEvaluationEventBrowser) HasCookie() bool`
+
+HasCookie returns a boolean if a field has been set.
 
 ### GetLanguage
 

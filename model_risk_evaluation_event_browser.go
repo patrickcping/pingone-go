@@ -17,6 +17,7 @@ import (
 // RiskEvaluationEventBrowser An object that specifies the browser fingerprint attributes. Browser data can be retrieved using browser fingerprint JS. For more information, see Overview of the PingOne Risk Integration Kit.
 type RiskEvaluationEventBrowser struct {
 	UserAgent *string `json:"userAgent,omitempty"`
+	Cookie *string `json:"cookie,omitempty"`
 	Language *string `json:"language,omitempty"`
 	ColorDepth *float32 `json:"colorDepth,omitempty"`
 	DeviceMemory *float32 `json:"deviceMemory,omitempty"`
@@ -92,6 +93,38 @@ func (o *RiskEvaluationEventBrowser) HasUserAgent() bool {
 // SetUserAgent gets a reference to the given string and assigns it to the UserAgent field.
 func (o *RiskEvaluationEventBrowser) SetUserAgent(v string) {
 	o.UserAgent = &v
+}
+
+// GetCookie returns the Cookie field value if set, zero value otherwise.
+func (o *RiskEvaluationEventBrowser) GetCookie() string {
+	if o == nil || o.Cookie == nil {
+		var ret string
+		return ret
+	}
+	return *o.Cookie
+}
+
+// GetCookieOk returns a tuple with the Cookie field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskEvaluationEventBrowser) GetCookieOk() (*string, bool) {
+	if o == nil || o.Cookie == nil {
+		return nil, false
+	}
+	return o.Cookie, true
+}
+
+// HasCookie returns a boolean if a field has been set.
+func (o *RiskEvaluationEventBrowser) HasCookie() bool {
+	if o != nil && o.Cookie != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCookie gets a reference to the given string and assigns it to the Cookie field.
+func (o *RiskEvaluationEventBrowser) SetCookie(v string) {
+	o.Cookie = &v
 }
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
@@ -930,6 +963,9 @@ func (o RiskEvaluationEventBrowser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.UserAgent != nil {
 		toSerialize["userAgent"] = o.UserAgent
+	}
+	if o.Cookie != nil {
+		toSerialize["cookie"] = o.Cookie
 	}
 	if o.Language != nil {
 		toSerialize["language"] = o.Language

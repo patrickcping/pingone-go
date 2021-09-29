@@ -13878,6 +13878,7 @@ components:
             openDatabase: true
             adBlock: true
             webglVendorAndRenderer: webglVendorAndRenderer
+            cookie: cookie
             cpuClass: cpuClass
             hasLiedOs: true
             userAgent: userAgent
@@ -14073,6 +14074,7 @@ components:
           openDatabase: true
           adBlock: true
           webglVendorAndRenderer: webglVendorAndRenderer
+          cookie: cookie
           cpuClass: cpuClass
           hasLiedOs: true
           userAgent: userAgent
@@ -15865,6 +15867,7 @@ components:
         openDatabase: true
         adBlock: true
         webglVendorAndRenderer: webglVendorAndRenderer
+        cookie: cookie
         cpuClass: cpuClass
         hasLiedOs: true
         userAgent: userAgent
@@ -15875,6 +15878,8 @@ components:
         colorDepth: 1.2315135367772556
       properties:
         userAgent:
+          type: string
+        cookie:
           type: string
         language:
           type: string
