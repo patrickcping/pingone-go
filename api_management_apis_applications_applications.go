@@ -28,18 +28,18 @@ var (
 type ManagementAPIsApplicationsApplicationsApiService service
 
 type ApiCreateApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationsApiService
-	envID string
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	ctx                                 _context.Context
+	ApiService                          *ManagementAPIsApplicationsApplicationsApiService
+	envID                               string
+	oneOfApplicationSAMLApplicationOIDC interface{}
 }
 
-func (r ApiCreateApplicationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiCreateApplicationRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiCreateApplicationRequest) OneOfApplicationSAMLApplicationOIDC(oneOfApplicationSAMLApplicationOIDC interface{}) ApiCreateApplicationRequest {
+	r.oneOfApplicationSAMLApplicationOIDC = &oneOfApplicationSAMLApplicationOIDC
 	return r
 }
 
-func (r ApiCreateApplicationRequest) Execute() (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (r ApiCreateApplicationRequest) Execute() (interface{}, *_nethttp.Response, error) {
 	return r.ApiService.CreateApplicationExecute(r)
 }
 
@@ -55,21 +55,21 @@ By design, PingOne requests solely comprise this collection. For complete docume
 func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplication(ctx _context.Context, envID string) ApiCreateApplicationRequest {
 	return ApiCreateApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
+		ctx:        ctx,
+		envID:      envID,
 	}
 }
 
 // Execute executes the request
 //  @return OneOfApplicationSAMLApplicationOIDC
-func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OneOfApplicationSAMLApplicationOIDC
+		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationsApiService.CreateApplication")
@@ -102,7 +102,7 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplicationExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.oneOfApplicationSAMLApplicationOIDC
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -151,12 +151,11 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) CreateApplicationExec
 }
 
 type ApiDeleteApplicationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
-	envID string
-	appID string
+	envID      string
+	appID      string
 }
-
 
 func (r ApiDeleteApplicationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteApplicationExecute(r)
@@ -175,9 +174,9 @@ By design, PingOne requests solely comprise this collection. For complete docume
 func (a *ManagementAPIsApplicationsApplicationsApiService) DeleteApplication(ctx _context.Context, envID string, appID string) ApiDeleteApplicationRequest {
 	return ApiDeleteApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 	}
 }
 
@@ -260,11 +259,10 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) DeleteApplicationExec
 }
 
 type ApiReadAllApplicationsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
-	envID string
+	envID      string
 }
-
 
 func (r ApiReadAllApplicationsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
 	return r.ApiService.ReadAllApplicationsExecute(r)
@@ -282,8 +280,8 @@ By design, PingOne requests solely comprise this collection. For complete docume
 func (a *ManagementAPIsApplicationsApplicationsApiService) ReadAllApplications(ctx _context.Context, envID string) ApiReadAllApplicationsRequest {
 	return ApiReadAllApplicationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
+		ctx:        ctx,
+		envID:      envID,
 	}
 }
 
@@ -376,14 +374,13 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) ReadAllApplicationsEx
 }
 
 type ApiReadOneApplicationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationsApiService
-	envID string
-	appID string
+	envID      string
+	appID      string
 }
 
-
-func (r ApiReadOneApplicationRequest) Execute() (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (r ApiReadOneApplicationRequest) Execute() (interface{}, *_nethttp.Response, error) {
 	return r.ApiService.ReadOneApplicationExecute(r)
 }
 
@@ -400,22 +397,22 @@ By design, PingOne requests solely comprise this collection. For complete docume
 func (a *ManagementAPIsApplicationsApplicationsApiService) ReadOneApplication(ctx _context.Context, envID string, appID string) ApiReadOneApplicationRequest {
 	return ApiReadOneApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 	}
 }
 
 // Execute executes the request
 //  @return OneOfApplicationSAMLApplicationOIDC
-func (a *ManagementAPIsApplicationsApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicationRequest) (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicationRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OneOfApplicationSAMLApplicationOIDC
+		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationsApiService.ReadOneApplication")
@@ -496,19 +493,19 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) ReadOneApplicationExe
 }
 
 type ApiUpdateApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationsApiService
-	envID string
-	appID string
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	ctx                                 _context.Context
+	ApiService                          *ManagementAPIsApplicationsApplicationsApiService
+	envID                               string
+	appID                               string
+	oneOfApplicationSAMLApplicationOIDC interface{}
 }
 
-func (r ApiUpdateApplicationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiUpdateApplicationRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiUpdateApplicationRequest) OneOfApplicationSAMLApplicationOIDC(oneOfApplicationSAMLApplicationOIDC interface{}) ApiUpdateApplicationRequest {
+	r.oneOfApplicationSAMLApplicationOIDC = oneOfApplicationSAMLApplicationOIDC
 	return r
 }
 
-func (r ApiUpdateApplicationRequest) Execute() (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (r ApiUpdateApplicationRequest) Execute() (interface{}, *_nethttp.Response, error) {
 	return r.ApiService.UpdateApplicationExecute(r)
 }
 
@@ -525,22 +522,22 @@ By design, PingOne requests solely comprise this collection. For complete docume
 func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplication(ctx _context.Context, envID string, appID string) ApiUpdateApplicationRequest {
 	return ApiUpdateApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 	}
 }
 
 // Execute executes the request
 //  @return OneOfApplicationSAMLApplicationOIDC
-func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (OneOfApplicationSAMLApplicationOIDC, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OneOfApplicationSAMLApplicationOIDC
+		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationsApiService.UpdateApplication")
@@ -574,7 +571,7 @@ func (a *ManagementAPIsApplicationsApplicationsApiService) UpdateApplicationExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.oneOfApplicationSAMLApplicationOIDC
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
