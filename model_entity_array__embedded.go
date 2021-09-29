@@ -16,18 +16,18 @@ import (
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Attributes *[]OneOfApplicationAttributeMappingSchemaAttribute `json:"attributes,omitempty"`
-	Applications *[]AnyOfApplicationSAMLApplicationOIDC `json:"applications,omitempty"`
-	Environments *[]Environment `json:"environments,omitempty"`
-	Grants *[]ApplicationResourceGrant `json:"grants,omitempty"`
-	Groups *[]Group `json:"groups,omitempty"`
-	GroupMemberships *[]GroupMembership `json:"groupMemberships,omitempty"`
-	Populations *[]Population `json:"populations,omitempty"`
-	Resources *[]Resource `json:"resources,omitempty"`
-	RoleAssignments *[]RoleAssignment `json:"roleAssignments,omitempty"`
-	Roles *[]Role `json:"roles,omitempty"`
-	Schemas *[]Schema `json:"schemas,omitempty"`
-	Users *[]User `json:"users,omitempty"`
+	Attributes       *[]interface{}              `json:"attributes,omitempty"`
+	Applications     *[]interface{}              `json:"applications,omitempty"`
+	Environments     *[]Environment              `json:"environments,omitempty"`
+	Grants           *[]ApplicationResourceGrant `json:"grants,omitempty"`
+	Groups           *[]Group                    `json:"groups,omitempty"`
+	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
+	Populations      *[]Population               `json:"populations,omitempty"`
+	Resources        *[]Resource                 `json:"resources,omitempty"`
+	RoleAssignments  *[]RoleAssignment           `json:"roleAssignments,omitempty"`
+	Roles            *[]Role                     `json:"roles,omitempty"`
+	Schemas          *[]Schema                   `json:"schemas,omitempty"`
+	Users            *[]User                     `json:"users,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -48,9 +48,9 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttribute {
+func (o *EntityArrayEmbedded) GetAttributes() []interface{} {
 	if o == nil || o.Attributes == nil {
-		var ret []OneOfApplicationAttributeMappingSchemaAttribute
+		var ret []interface{}
 		return ret
 	}
 	return *o.Attributes
@@ -58,7 +58,7 @@ func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMapping
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttribute, bool) {
+func (o *EntityArrayEmbedded) GetAttributesOk() (*[]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -75,14 +75,14 @@ func (o *EntityArrayEmbedded) HasAttributes() bool {
 }
 
 // SetAttributes gets a reference to the given []OneOfApplicationAttributeMappingSchemaAttribute and assigns it to the Attributes field.
-func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttribute) {
+func (o *EntityArrayEmbedded) SetAttributes(v []interface{}) {
 	o.Attributes = &v
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetApplications() []AnyOfApplicationSAMLApplicationOIDC {
+func (o *EntityArrayEmbedded) GetApplications() []interface{} {
 	if o == nil || o.Applications == nil {
-		var ret []AnyOfApplicationSAMLApplicationOIDC
+		var ret []interface{}
 		return ret
 	}
 	return *o.Applications
@@ -90,7 +90,7 @@ func (o *EntityArrayEmbedded) GetApplications() []AnyOfApplicationSAMLApplicatio
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]AnyOfApplicationSAMLApplicationOIDC, bool) {
+func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]interface{}, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -107,7 +107,7 @@ func (o *EntityArrayEmbedded) HasApplications() bool {
 }
 
 // SetApplications gets a reference to the given []AnyOfApplicationSAMLApplicationOIDC and assigns it to the Applications field.
-func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC) {
+func (o *EntityArrayEmbedded) SetApplications(v []interface{}) {
 	o.Applications = &v
 }
 
@@ -507,5 +507,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
