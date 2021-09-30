@@ -22,6 +22,7 @@ type BillOfMaterialsProducts struct {
 	Type *string `json:"type,omitempty"`
 	// A string that specifies the description of the product or standalone service
 	Description *string `json:"description,omitempty"`
+	Console *BillOfMaterialsConsole `json:"console,omitempty"`
 	// Optional array of custom bookmarks. Maximum of five bookmarks per product.
 	Bookmarks *[]BillOfMaterialsBookmarks `json:"bookmarks,omitempty"`
 }
@@ -139,6 +140,38 @@ func (o *BillOfMaterialsProducts) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetConsole returns the Console field value if set, zero value otherwise.
+func (o *BillOfMaterialsProducts) GetConsole() BillOfMaterialsConsole {
+	if o == nil || o.Console == nil {
+		var ret BillOfMaterialsConsole
+		return ret
+	}
+	return *o.Console
+}
+
+// GetConsoleOk returns a tuple with the Console field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillOfMaterialsProducts) GetConsoleOk() (*BillOfMaterialsConsole, bool) {
+	if o == nil || o.Console == nil {
+		return nil, false
+	}
+	return o.Console, true
+}
+
+// HasConsole returns a boolean if a field has been set.
+func (o *BillOfMaterialsProducts) HasConsole() bool {
+	if o != nil && o.Console != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConsole gets a reference to the given BillOfMaterialsConsole and assigns it to the Console field.
+func (o *BillOfMaterialsProducts) SetConsole(v BillOfMaterialsConsole) {
+	o.Console = &v
+}
+
 // GetBookmarks returns the Bookmarks field value if set, zero value otherwise.
 func (o *BillOfMaterialsProducts) GetBookmarks() []BillOfMaterialsBookmarks {
 	if o == nil || o.Bookmarks == nil {
@@ -181,6 +214,9 @@ func (o BillOfMaterialsProducts) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Console != nil {
+		toSerialize["console"] = o.Console
 	}
 	if o.Bookmarks != nil {
 		toSerialize["bookmarks"] = o.Bookmarks

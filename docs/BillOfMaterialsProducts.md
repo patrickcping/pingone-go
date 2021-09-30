@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the BOM ID | [optional] [readonly] 
 **Type** | Pointer to **string** | A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL | [optional] 
-**Description** | Pointer to **string** | A string that specifies the description of the product or standalone service | [optional] 
+**Description** | Pointer to **string** | A string that specifies the description of the product or standalone service | [optional] [readonly] 
+**Console** | Pointer to [**BillOfMaterialsConsole**](BillOfMaterialsConsole.md) |  | [optional] 
 **Bookmarks** | Pointer to [**[]BillOfMaterialsBookmarks**](BillOfMaterialsBookmarks.md) | Optional array of custom bookmarks. Maximum of five bookmarks per product. | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetDescription sets Description field to given value.
 `func (o *BillOfMaterialsProducts) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetConsole
+
+`func (o *BillOfMaterialsProducts) GetConsole() BillOfMaterialsConsole`
+
+GetConsole returns the Console field if non-nil, zero value otherwise.
+
+### GetConsoleOk
+
+`func (o *BillOfMaterialsProducts) GetConsoleOk() (*BillOfMaterialsConsole, bool)`
+
+GetConsoleOk returns a tuple with the Console field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsole
+
+`func (o *BillOfMaterialsProducts) SetConsole(v BillOfMaterialsConsole)`
+
+SetConsole sets Console field to given value.
+
+### HasConsole
+
+`func (o *BillOfMaterialsProducts) HasConsole() bool`
+
+HasConsole returns a boolean if a field has been set.
 
 ### GetBookmarks
 

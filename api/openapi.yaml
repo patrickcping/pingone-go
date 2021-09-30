@@ -13594,6 +13594,8 @@ components:
             href: href
           - name: name
             href: href
+          console:
+            href: href
           description: description
           id: id
           type: PING_ONE_MFA
@@ -13601,6 +13603,8 @@ components:
           - name: name
             href: href
           - name: name
+            href: href
+          console:
             href: href
           description: description
           id: id
@@ -15407,6 +15411,14 @@ components:
             \ with this grant. This is a required property."
           type: string
       type: object
+    BillOfMaterials_console:
+      example:
+        href: href
+      properties:
+        href:
+          description: Primary console link for certain products
+          type: string
+      type: object
     BillOfMaterials_bookmarks:
       example:
         name: name
@@ -15426,6 +15438,8 @@ components:
         - name: name
           href: href
         - name: name
+          href: href
+        console:
           href: href
         description: description
         id: id
@@ -15462,7 +15476,10 @@ components:
         description:
           description: A string that specifies the description of the product or standalone
             service
+          readOnly: true
           type: string
+        console:
+          $ref: '#/components/schemas/BillOfMaterials_console'
         bookmarks:
           description: Optional array of custom bookmarks. Maximum of five bookmarks
             per product.
