@@ -108,7 +108,7 @@ func (o *EntityArrayEmbedded) HasApplications() bool {
 }
 
 // SetApplications gets a reference to the given []AnyOfApplicationSAMLApplicationOIDC and assigns it to the Applications field.
-func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC) {
+func (o *EntityArrayEmbedded) SetApplications(v []interface{}) {
 	o.Applications = &v
 }
 
