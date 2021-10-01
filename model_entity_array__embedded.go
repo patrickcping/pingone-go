@@ -24,6 +24,7 @@ type EntityArrayEmbedded struct {
 	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
 	Populations      *[]Population               `json:"populations,omitempty"`
 	Resources        *[]Resource                 `json:"resources,omitempty"`
+	RiskPredictors   *[]RiskPredictor            `json:"riskPredictors,omitempty"`
 	RoleAssignments  *[]RoleAssignment           `json:"roleAssignments,omitempty"`
 	Roles            *[]Role                     `json:"roles,omitempty"`
 	Schemas          *[]Schema                   `json:"schemas,omitempty"`
@@ -107,7 +108,7 @@ func (o *EntityArrayEmbedded) HasApplications() bool {
 }
 
 // SetApplications gets a reference to the given []AnyOfApplicationSAMLApplicationOIDC and assigns it to the Applications field.
-func (o *EntityArrayEmbedded) SetApplications(v []interface{}) {
+func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC) {
 	o.Applications = &v
 }
 
@@ -303,6 +304,38 @@ func (o *EntityArrayEmbedded) SetResources(v []Resource) {
 	o.Resources = &v
 }
 
+// GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
+	if o == nil || o.RiskPredictors == nil {
+		var ret []RiskPredictor
+		return ret
+	}
+	return *o.RiskPredictors
+}
+
+// GetRiskPredictorsOk returns a tuple with the RiskPredictors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRiskPredictorsOk() (*[]RiskPredictor, bool) {
+	if o == nil || o.RiskPredictors == nil {
+		return nil, false
+	}
+	return o.RiskPredictors, true
+}
+
+// HasRiskPredictors returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRiskPredictors() bool {
+	if o != nil && o.RiskPredictors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskPredictors gets a reference to the given []RiskPredictor and assigns it to the RiskPredictors field.
+func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor) {
+	o.RiskPredictors = &v
+}
+
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment {
 	if o == nil || o.RoleAssignments == nil {
@@ -456,6 +489,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
+	}
+	if o.RiskPredictors != nil {
+		toSerialize["riskPredictors"] = o.RiskPredictors
 	}
 	if o.RoleAssignments != nil {
 		toSerialize["roleAssignments"] = o.RoleAssignments

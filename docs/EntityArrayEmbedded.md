@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
+**RiskPredictors** | Pointer to [**[]RiskPredictor**](RiskPredictor.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
@@ -235,6 +236,31 @@ SetResources sets Resources field to given value.
 `func (o *EntityArrayEmbedded) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetRiskPredictors
+
+`func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor`
+
+GetRiskPredictors returns the RiskPredictors field if non-nil, zero value otherwise.
+
+### GetRiskPredictorsOk
+
+`func (o *EntityArrayEmbedded) GetRiskPredictorsOk() (*[]RiskPredictor, bool)`
+
+GetRiskPredictorsOk returns a tuple with the RiskPredictors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskPredictors
+
+`func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor)`
+
+SetRiskPredictors sets RiskPredictors field to given value.
+
+### HasRiskPredictors
+
+`func (o *EntityArrayEmbedded) HasRiskPredictors() bool`
+
+HasRiskPredictors returns a boolean if a field has been set.
 
 ### GetRoleAssignments
 

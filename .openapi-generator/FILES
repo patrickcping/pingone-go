@@ -223,6 +223,11 @@ docs/RiskEvaluationEventUser.md
 docs/RiskEvaluationEventUserGroups.md
 docs/RiskEvaluationResult.md
 docs/RiskEvaluationRiskPolicySet.md
+docs/RiskPredictor.md
+docs/RiskPredictorDefault.md
+docs/RiskPredictorDefaultResult.md
+docs/RiskPredictorMap.md
+docs/RiskPredictorMapBetween.md
 docs/Role.md
 docs/RoleAssignment.md
 docs/RoleAssignmentRole.md
@@ -313,6 +318,11 @@ model_risk_evaluation_event_user.go
 model_risk_evaluation_event_user_groups.go
 model_risk_evaluation_result.go
 model_risk_evaluation_risk_policy_set.go
+model_risk_predictor.go
+model_risk_predictor_default.go
+model_risk_predictor_default_result.go
+model_risk_predictor_map.go
+model_risk_predictor_map_between.go
 model_role.go
 model_role_assignment.go
 model_role_assignment_role.go

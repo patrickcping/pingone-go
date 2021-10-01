@@ -9730,6 +9730,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllRiskPredictors
       parameters:
       - explode: false
         in: path
@@ -9747,15 +9748,82 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Risk Predictors
       tags:
       - Management APIs > Risk Management > Risk Advanced Predictors
+    post:
+      description: By design, PingOne requests solely comprise this collection. For
+        complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createRiskPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPredictor'
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
+          description: Successful response
+      summary: CREATE Risk Predictor
+      tags:
+      - Management APIs > Risk Management > Risk Advanced Predictors
   /v1/environments/{envID}/riskPredictors/{riskPredictorID}:
+    delete:
+      description: By design, PingOne requests solely comprise this collection. For
+        complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteRiskAdvancedPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPredictorID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "204":
+          description: Successful response
+      summary: DELETE Risk Advanced Predictor
+      tags:
+      - Management APIs > Risk Management > Risk Advanced Predictors
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneRiskPredictor
       parameters:
       - explode: false
         in: path
@@ -9780,9 +9848,51 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
           description: Successful response
       summary: READ One Risk Predictor
+      tags:
+      - Management APIs > Risk Management > Risk Advanced Predictors
+    put:
+      description: By design, PingOne requests solely comprise this collection. For
+        complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateRiskPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPredictorID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPredictor'
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
+          description: Successful response
+      summary: UPDATE Risk Predictor
       tags:
       - Management APIs > Risk Management > Risk Advanced Predictors
   /v1/roles:
@@ -12998,7 +13108,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.061401241503109
+        size: 2.027123023002322
         _embedded:
           grants:
           - createdAt: createdAt
@@ -13067,6 +13177,282 @@ components:
             - applicableTo
             - applicableTo
             id: id
+          riskPredictors:
+          - createdAt: createdAt
+            default:
+              result:
+                level: HIGH
+                type: VALUE
+              weight: 5
+            name: name
+            description: description
+            id: id
+            type: VELOCITY
+            compactName: compactName
+            map:
+              high:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+              low:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+              medium:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            default:
+              result:
+                level: HIGH
+                type: VALUE
+              weight: 5
+            name: name
+            description: description
+            id: id
+            type: VELOCITY
+            compactName: compactName
+            map:
+              high:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+              low:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+              medium:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2
+                  maxScore: 7
+            updatedAt: updatedAt
+          groups:
+          - directMemberCounts:
+              users: 0
+            environment:
+              id: id
+            name: name
+            description: description
+            externalId: externalId
+            userFilter: userFilter
+            customData: '{}'
+            id: id
+            totalMemberCounts:
+              users: 6
+            population:
+              id: id
+          - directMemberCounts:
+              users: 0
+            environment:
+              id: id
+            name: name
+            description: description
+            externalId: externalId
+            userFilter: userFilter
+            customData: '{}'
+            id: id
+            totalMemberCounts:
+              users: 6
+            population:
+              id: id
+          resources:
+          - createdAt: createdAt
+            audience: audience
+            environment:
+              id: id
+            accessTokenValiditySeconds: 5
+            name: name
+            description: description
+            id: id
+            type: OPENID_CONNECT
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            audience: audience
+            environment:
+              id: id
+            accessTokenValiditySeconds: 5
+            name: name
+            description: description
+            id: id
+            type: OPENID_CONNECT
+            updatedAt: updatedAt
+          users:
+          - preferredLanguage: preferredLanguage
+            timezone: timezone
+            lastSignOn:
+              at: at
+              remoteIp: remoteIp
+            locale: locale
+            title: title
+            type: type
+            enabled: true
+            identityProvider:
+              id: id
+              type: type
+            lifecycle:
+              status: status
+            createdAt: createdAt
+            password:
+              external:
+                gateway:
+                  id: id
+                  userType:
+                    id: id
+                  correlationAttributes: '{}'
+                  type: type
+              forceChange: true
+              value: value
+            verifyStatus: NOT_INITIATED
+            nickname: nickname
+            mfaEnabled: true
+            id: id
+            email: email
+            updatedAt: updatedAt
+            memberOfGroupIDs:
+            - memberOfGroupIDs
+            - memberOfGroupIDs
+            address:
+              streetAddress: streetAddress
+              countryCode: countryCode
+              postalCode: postalCode
+              locality: locality
+              region: region
+            externalId: externalId
+            photo:
+              href: href
+            memberOfGroupNames:
+            - memberOfGroupNames
+            - memberOfGroupNames
+            population:
+              id: id
+            primaryPhone: primaryPhone
+            environment:
+              id: id
+            mobilePhone: mobilePhone
+            name:
+              given: given
+              honorificSuffix: honorificSuffix
+              middle: middle
+              formatted: formatted
+              honorificPrefix: honorificPrefix
+              family: family
+            account:
+              canAuthenticate: true
+              lockedAt: lockedAt
+              secondsUntilUnlock: 9
+              unlockAt: unlockAt
+              status: status
+            username: username
+          - preferredLanguage: preferredLanguage
+            timezone: timezone
+            lastSignOn:
+              at: at
+              remoteIp: remoteIp
+            locale: locale
+            title: title
+            type: type
+            enabled: true
+            identityProvider:
+              id: id
+              type: type
+            lifecycle:
+              status: status
+            createdAt: createdAt
+            password:
+              external:
+                gateway:
+                  id: id
+                  userType:
+                    id: id
+                  correlationAttributes: '{}'
+                  type: type
+              forceChange: true
+              value: value
+            verifyStatus: NOT_INITIATED
+            nickname: nickname
+            mfaEnabled: true
+            id: id
+            email: email
+            updatedAt: updatedAt
+            memberOfGroupIDs:
+            - memberOfGroupIDs
+            - memberOfGroupIDs
+            address:
+              streetAddress: streetAddress
+              countryCode: countryCode
+              postalCode: postalCode
+              locality: locality
+              region: region
+            externalId: externalId
+            photo:
+              href: href
+            memberOfGroupNames:
+            - memberOfGroupNames
+            - memberOfGroupNames
+            population:
+              id: id
+            primaryPhone: primaryPhone
+            environment:
+              id: id
+            mobilePhone: mobilePhone
+            name:
+              given: given
+              honorificSuffix: honorificSuffix
+              middle: middle
+              formatted: formatted
+              honorificPrefix: honorificPrefix
+              family: family
+            account:
+              canAuthenticate: true
+              lockedAt: lockedAt
+              secondsUntilUnlock: 9
+              unlockAt: unlockAt
+              status: status
+            username: username
           schemas:
           - environment:
               id: id
@@ -13140,59 +13526,9 @@ components:
               ldapAttribute: ldapAttribute
               multiValued: true
             id: id
-          groups:
-          - directMemberCounts:
-              users: 0
-            environment:
-              id: id
-            name: name
-            description: description
-            externalId: externalId
-            userFilter: userFilter
-            customData: '{}'
-            id: id
-            totalMemberCounts:
-              users: 6
-            population:
-              id: id
-          - directMemberCounts:
-              users: 0
-            environment:
-              id: id
-            name: name
-            description: description
-            externalId: externalId
-            userFilter: userFilter
-            customData: '{}'
-            id: id
-            totalMemberCounts:
-              users: 6
-            population:
-              id: id
           groupMemberships:
           - id: id
           - id: id
-          resources:
-          - createdAt: createdAt
-            audience: audience
-            environment:
-              id: id
-            accessTokenValiditySeconds: 5
-            name: name
-            description: description
-            id: id
-            type: OPENID_CONNECT
-            updatedAt: updatedAt
-          - createdAt: createdAt
-            audience: audience
-            environment:
-              id: id
-            accessTokenValiditySeconds: 5
-            name: name
-            description: description
-            id: id
-            type: OPENID_CONNECT
-            updatedAt: updatedAt
           attributes:
           - ""
           - ""
@@ -13228,143 +13564,10 @@ components:
             description: description
             id: id
             updatedAt: updatedAt
-          users:
-          - preferredLanguage: preferredLanguage
-            timezone: timezone
-            lastSignOn:
-              at: at
-              remoteIp: remoteIp
-            locale: locale
-            title: title
-            type: type
-            enabled: true
-            identityProvider:
-              id: id
-              type: type
-            lifecycle:
-              status: status
-            createdAt: createdAt
-            password:
-              external:
-                gateway:
-                  id: id
-                  userType:
-                    id: id
-                  correlationAttributes: '{}'
-                  type: type
-              forceChange: true
-              value: value
-            verifyStatus: NOT_INITIATED
-            nickname: nickname
-            mfaEnabled: true
-            id: id
-            email: email
-            updatedAt: updatedAt
-            memberOfGroupIDs:
-            - memberOfGroupIDs
-            - memberOfGroupIDs
-            address:
-              streetAddress: streetAddress
-              countryCode: countryCode
-              postalCode: postalCode
-              locality: locality
-              region: region
-            externalId: externalId
-            photo:
-              href: href
-            memberOfGroupNames:
-            - memberOfGroupNames
-            - memberOfGroupNames
-            population:
-              id: id
-            primaryPhone: primaryPhone
-            environment:
-              id: id
-            mobilePhone: mobilePhone
-            name:
-              given: given
-              honorificSuffix: honorificSuffix
-              middle: middle
-              formatted: formatted
-              honorificPrefix: honorificPrefix
-              family: family
-            account:
-              canAuthenticate: true
-              lockedAt: lockedAt
-              secondsUntilUnlock: 5
-              unlockAt: unlockAt
-              status: status
-            username: username
-          - preferredLanguage: preferredLanguage
-            timezone: timezone
-            lastSignOn:
-              at: at
-              remoteIp: remoteIp
-            locale: locale
-            title: title
-            type: type
-            enabled: true
-            identityProvider:
-              id: id
-              type: type
-            lifecycle:
-              status: status
-            createdAt: createdAt
-            password:
-              external:
-                gateway:
-                  id: id
-                  userType:
-                    id: id
-                  correlationAttributes: '{}'
-                  type: type
-              forceChange: true
-              value: value
-            verifyStatus: NOT_INITIATED
-            nickname: nickname
-            mfaEnabled: true
-            id: id
-            email: email
-            updatedAt: updatedAt
-            memberOfGroupIDs:
-            - memberOfGroupIDs
-            - memberOfGroupIDs
-            address:
-              streetAddress: streetAddress
-              countryCode: countryCode
-              postalCode: postalCode
-              locality: locality
-              region: region
-            externalId: externalId
-            photo:
-              href: href
-            memberOfGroupNames:
-            - memberOfGroupNames
-            - memberOfGroupNames
-            population:
-              id: id
-            primaryPhone: primaryPhone
-            environment:
-              id: id
-            mobilePhone: mobilePhone
-            name:
-              given: given
-              honorificSuffix: honorificSuffix
-              middle: middle
-              formatted: formatted
-              honorificPrefix: honorificPrefix
-              family: family
-            account:
-              canAuthenticate: true
-              lockedAt: lockedAt
-              secondsUntilUnlock: 5
-              unlockAt: unlockAt
-              status: status
-            username: username
           applications:
           - ""
           - ""
-        count: 2.3021358869347655
+        count: 3.616076749251911
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -14170,6 +14373,125 @@ components:
           readOnly: true
           type: string
       type: object
+    RiskPredictor:
+      example:
+        createdAt: createdAt
+        default:
+          result:
+            level: HIGH
+            type: VALUE
+          weight: 5
+        name: name
+        description: description
+        id: id
+        type: VELOCITY
+        compactName: compactName
+        map:
+          high:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2
+              maxScore: 7
+          low:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2
+              maxScore: 7
+          medium:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2
+              maxScore: 7
+        updatedAt: updatedAt
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string type. A unique, friendly name for the predictor. This
+            name is displayed in the Risk Policies UI, when the admin is asked to
+            define the overrides and weights.
+          type: string
+        compactName:
+          description: A string type. A unique name for the predictor. This property
+            is immutable; it cannot be modified after initial creation. The value
+            must be alpha-numeric, with no special characters or spaces. This name
+            is used in the API both for policy configuration, and in the Risk Evaluation
+            response (under details).
+          type: string
+        type:
+          description: A string type. This specifies the desription of the risk predictor.
+            Maximum length is 1024 characters.
+          enum:
+          - VELOCITY
+          - USER_RISK_BEHAVIOR
+          - MAP
+          type: string
+        description:
+          description: A string type. This specifies the desription of the risk predictor.
+            Maximum length is 1024 characters.
+          type: string
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was updated.
+          readOnly: true
+          type: string
+        default:
+          $ref: '#/components/schemas/RiskPredictor_default'
+        map:
+          $ref: '#/components/schemas/RiskPredictor_map'
+      type: object
+    RiskPredictorMap:
+      example:
+        contains: contains
+        ipRange:
+        - ipRange
+        - ipRange
+        list:
+        - list
+        - list
+        between:
+          minScore: 2
+          maxScore: 7
+      properties:
+        contains:
+          type: string
+        ipRange:
+          description: List of CIDRs to include
+          items:
+            type: string
+          type: array
+        between:
+          $ref: '#/components/schemas/RiskPredictorMap_between'
+        list:
+          description: An array that specifies the list of entities that represent
+            the risk conditions.
+          items:
+            type: string
+          type: array
+      type: object
     Resource:
       example:
         createdAt: createdAt
@@ -14510,7 +14832,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 5
+          secondsUntilUnlock: 9
           unlockAt: unlockAt
           status: status
         username: username
@@ -14790,6 +15112,282 @@ components:
           - applicableTo
           - applicableTo
           id: id
+        riskPredictors:
+        - createdAt: createdAt
+          default:
+            result:
+              level: HIGH
+              type: VALUE
+            weight: 5
+          name: name
+          description: description
+          id: id
+          type: VELOCITY
+          compactName: compactName
+          map:
+            high:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+            low:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+            medium:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default:
+            result:
+              level: HIGH
+              type: VALUE
+            weight: 5
+          name: name
+          description: description
+          id: id
+          type: VELOCITY
+          compactName: compactName
+          map:
+            high:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+            low:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+            medium:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2
+                maxScore: 7
+          updatedAt: updatedAt
+        groups:
+        - directMemberCounts:
+            users: 0
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: '{}'
+          id: id
+          totalMemberCounts:
+            users: 6
+          population:
+            id: id
+        - directMemberCounts:
+            users: 0
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: '{}'
+          id: id
+          totalMemberCounts:
+            users: 6
+          population:
+            id: id
+        resources:
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          accessTokenValiditySeconds: 5
+          name: name
+          description: description
+          id: id
+          type: OPENID_CONNECT
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          accessTokenValiditySeconds: 5
+          name: name
+          description: description
+          id: id
+          type: OPENID_CONNECT
+          updatedAt: updatedAt
+        users:
+        - preferredLanguage: preferredLanguage
+          timezone: timezone
+          lastSignOn:
+            at: at
+            remoteIp: remoteIp
+          locale: locale
+          title: title
+          type: type
+          enabled: true
+          identityProvider:
+            id: id
+            type: type
+          lifecycle:
+            status: status
+          createdAt: createdAt
+          password:
+            external:
+              gateway:
+                id: id
+                userType:
+                  id: id
+                correlationAttributes: '{}'
+                type: type
+            forceChange: true
+            value: value
+          verifyStatus: NOT_INITIATED
+          nickname: nickname
+          mfaEnabled: true
+          id: id
+          email: email
+          updatedAt: updatedAt
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
+          address:
+            streetAddress: streetAddress
+            countryCode: countryCode
+            postalCode: postalCode
+            locality: locality
+            region: region
+          externalId: externalId
+          photo:
+            href: href
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
+          population:
+            id: id
+          primaryPhone: primaryPhone
+          environment:
+            id: id
+          mobilePhone: mobilePhone
+          name:
+            given: given
+            honorificSuffix: honorificSuffix
+            middle: middle
+            formatted: formatted
+            honorificPrefix: honorificPrefix
+            family: family
+          account:
+            canAuthenticate: true
+            lockedAt: lockedAt
+            secondsUntilUnlock: 9
+            unlockAt: unlockAt
+            status: status
+          username: username
+        - preferredLanguage: preferredLanguage
+          timezone: timezone
+          lastSignOn:
+            at: at
+            remoteIp: remoteIp
+          locale: locale
+          title: title
+          type: type
+          enabled: true
+          identityProvider:
+            id: id
+            type: type
+          lifecycle:
+            status: status
+          createdAt: createdAt
+          password:
+            external:
+              gateway:
+                id: id
+                userType:
+                  id: id
+                correlationAttributes: '{}'
+                type: type
+            forceChange: true
+            value: value
+          verifyStatus: NOT_INITIATED
+          nickname: nickname
+          mfaEnabled: true
+          id: id
+          email: email
+          updatedAt: updatedAt
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
+          address:
+            streetAddress: streetAddress
+            countryCode: countryCode
+            postalCode: postalCode
+            locality: locality
+            region: region
+          externalId: externalId
+          photo:
+            href: href
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
+          population:
+            id: id
+          primaryPhone: primaryPhone
+          environment:
+            id: id
+          mobilePhone: mobilePhone
+          name:
+            given: given
+            honorificSuffix: honorificSuffix
+            middle: middle
+            formatted: formatted
+            honorificPrefix: honorificPrefix
+            family: family
+          account:
+            canAuthenticate: true
+            lockedAt: lockedAt
+            secondsUntilUnlock: 9
+            unlockAt: unlockAt
+            status: status
+          username: username
         schemas:
         - environment:
             id: id
@@ -14863,59 +15461,9 @@ components:
             ldapAttribute: ldapAttribute
             multiValued: true
           id: id
-        groups:
-        - directMemberCounts:
-            users: 0
-          environment:
-            id: id
-          name: name
-          description: description
-          externalId: externalId
-          userFilter: userFilter
-          customData: '{}'
-          id: id
-          totalMemberCounts:
-            users: 6
-          population:
-            id: id
-        - directMemberCounts:
-            users: 0
-          environment:
-            id: id
-          name: name
-          description: description
-          externalId: externalId
-          userFilter: userFilter
-          customData: '{}'
-          id: id
-          totalMemberCounts:
-            users: 6
-          population:
-            id: id
         groupMemberships:
         - id: id
         - id: id
-        resources:
-        - createdAt: createdAt
-          audience: audience
-          environment:
-            id: id
-          accessTokenValiditySeconds: 5
-          name: name
-          description: description
-          id: id
-          type: OPENID_CONNECT
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          audience: audience
-          environment:
-            id: id
-          accessTokenValiditySeconds: 5
-          name: name
-          description: description
-          id: id
-          type: OPENID_CONNECT
-          updatedAt: updatedAt
         attributes:
         - ""
         - ""
@@ -14951,139 +15499,6 @@ components:
           description: description
           id: id
           updatedAt: updatedAt
-        users:
-        - preferredLanguage: preferredLanguage
-          timezone: timezone
-          lastSignOn:
-            at: at
-            remoteIp: remoteIp
-          locale: locale
-          title: title
-          type: type
-          enabled: true
-          identityProvider:
-            id: id
-            type: type
-          lifecycle:
-            status: status
-          createdAt: createdAt
-          password:
-            external:
-              gateway:
-                id: id
-                userType:
-                  id: id
-                correlationAttributes: '{}'
-                type: type
-            forceChange: true
-            value: value
-          verifyStatus: NOT_INITIATED
-          nickname: nickname
-          mfaEnabled: true
-          id: id
-          email: email
-          updatedAt: updatedAt
-          memberOfGroupIDs:
-          - memberOfGroupIDs
-          - memberOfGroupIDs
-          address:
-            streetAddress: streetAddress
-            countryCode: countryCode
-            postalCode: postalCode
-            locality: locality
-            region: region
-          externalId: externalId
-          photo:
-            href: href
-          memberOfGroupNames:
-          - memberOfGroupNames
-          - memberOfGroupNames
-          population:
-            id: id
-          primaryPhone: primaryPhone
-          environment:
-            id: id
-          mobilePhone: mobilePhone
-          name:
-            given: given
-            honorificSuffix: honorificSuffix
-            middle: middle
-            formatted: formatted
-            honorificPrefix: honorificPrefix
-            family: family
-          account:
-            canAuthenticate: true
-            lockedAt: lockedAt
-            secondsUntilUnlock: 5
-            unlockAt: unlockAt
-            status: status
-          username: username
-        - preferredLanguage: preferredLanguage
-          timezone: timezone
-          lastSignOn:
-            at: at
-            remoteIp: remoteIp
-          locale: locale
-          title: title
-          type: type
-          enabled: true
-          identityProvider:
-            id: id
-            type: type
-          lifecycle:
-            status: status
-          createdAt: createdAt
-          password:
-            external:
-              gateway:
-                id: id
-                userType:
-                  id: id
-                correlationAttributes: '{}'
-                type: type
-            forceChange: true
-            value: value
-          verifyStatus: NOT_INITIATED
-          nickname: nickname
-          mfaEnabled: true
-          id: id
-          email: email
-          updatedAt: updatedAt
-          memberOfGroupIDs:
-          - memberOfGroupIDs
-          - memberOfGroupIDs
-          address:
-            streetAddress: streetAddress
-            countryCode: countryCode
-            postalCode: postalCode
-            locality: locality
-            region: region
-          externalId: externalId
-          photo:
-            href: href
-          memberOfGroupNames:
-          - memberOfGroupNames
-          - memberOfGroupNames
-          population:
-            id: id
-          primaryPhone: primaryPhone
-          environment:
-            id: id
-          mobilePhone: mobilePhone
-          name:
-            given: given
-            honorificSuffix: honorificSuffix
-            middle: middle
-            formatted: formatted
-            honorificPrefix: honorificPrefix
-            family: family
-          account:
-            canAuthenticate: true
-            lockedAt: lockedAt
-            secondsUntilUnlock: 5
-            unlockAt: unlockAt
-            status: status
-          username: username
         applications:
         - ""
         - ""
@@ -15123,6 +15538,10 @@ components:
         resources:
           items:
             $ref: '#/components/schemas/Resource'
+          type: array
+        riskPredictors:
+          items:
+            $ref: '#/components/schemas/RiskPredictor'
           type: array
         roleAssignments:
           items:
@@ -16050,6 +16469,99 @@ components:
             $ref: '#/components/schemas/RiskEvaluationEvent_user_groups'
           type: array
       type: object
+    RiskPredictor_default_result:
+      description: 'This specifies the result assigned to the predictor if the predictor
+        could not be calculated during the risk evaluation. If this field is not provided,
+        and the predictor could not be calculated during risk evaluation, the following
+        options are: If the predictor is used in an override, the override is skipped.
+        In the weighted policy, the predictor will have a weight of 0.'
+      example:
+        level: HIGH
+        type: VALUE
+      properties:
+        level:
+          description: A string that identifies the risk level. Options are HIGH,
+            MEDIUM, and LOW.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          type: string
+        type:
+          enum:
+          - VALUE
+          type: string
+      type: object
+    RiskPredictor_default:
+      example:
+        result:
+          level: HIGH
+          type: VALUE
+        weight: 5
+      properties:
+        weight:
+          description: An integer type. This specifies the weight assigned to the
+            risk predictor in a new policy by default.
+          type: integer
+        result:
+          $ref: '#/components/schemas/RiskPredictor_default_result'
+      type: object
+    RiskPredictor_map:
+      description: An object that defines the mapping of risk levels for the list
+        of all results.
+      example:
+        high:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2
+            maxScore: 7
+        low:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2
+            maxScore: 7
+        medium:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2
+            maxScore: 7
+      properties:
+        high:
+          $ref: '#/components/schemas/RiskPredictorMap'
+        medium:
+          $ref: '#/components/schemas/RiskPredictorMap'
+        low:
+          $ref: '#/components/schemas/RiskPredictorMap'
+      type: object
+    RiskPredictorMap_between:
+      description: Minimum and maximum boundaries
+      example:
+        minScore: 2
+        maxScore: 7
+      properties:
+        minScore:
+          type: integer
+        maxScore:
+          type: integer
+      type: object
     Role_permissions:
       example:
         classifier: classifier
@@ -16105,7 +16617,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 5
+        secondsUntilUnlock: 9
         unlockAt: unlockAt
         status: status
       properties:
