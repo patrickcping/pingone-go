@@ -22,7 +22,7 @@ type RiskPredictor struct {
 	Name *string `json:"name,omitempty"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
 	CompactName *string `json:"compactName,omitempty"`
-	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
+	// An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
 	Type *string `json:"type,omitempty"`
 	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`

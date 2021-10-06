@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
+**RiskPolicySets** | Pointer to [**[]RiskPolicySet**](RiskPolicySet.md) |  | [optional] 
 **RiskPredictors** | Pointer to [**[]RiskPredictor**](RiskPredictor.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
@@ -236,6 +237,31 @@ SetResources sets Resources field to given value.
 `func (o *EntityArrayEmbedded) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetRiskPolicySets
+
+`func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet`
+
+GetRiskPolicySets returns the RiskPolicySets field if non-nil, zero value otherwise.
+
+### GetRiskPolicySetsOk
+
+`func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() (*[]RiskPolicySet, bool)`
+
+GetRiskPolicySetsOk returns a tuple with the RiskPolicySets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskPolicySets
+
+`func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet)`
+
+SetRiskPolicySets sets RiskPolicySets field to given value.
+
+### HasRiskPolicySets
+
+`func (o *EntityArrayEmbedded) HasRiskPolicySets() bool`
+
+HasRiskPolicySets returns a boolean if a field has been set.
 
 ### GetRiskPredictors
 

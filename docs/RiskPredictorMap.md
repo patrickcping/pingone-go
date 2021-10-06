@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**High** | Pointer to [**RiskPredictorMap**](RiskPredictorMap.md) |  | [optional] 
-**Medium** | Pointer to [**RiskPredictorMap**](RiskPredictorMap.md) |  | [optional] 
-**Low** | Pointer to [**RiskPredictorMap**](RiskPredictorMap.md) |  | [optional] 
+**High** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
+**Medium** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
+**Low** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHigh
 
-`func (o *RiskPredictorMap) GetHigh() RiskPredictorMap`
+`func (o *RiskPredictorMap) GetHigh() RiskPredictorItemMap`
 
 GetHigh returns the High field if non-nil, zero value otherwise.
 
 ### GetHighOk
 
-`func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorMap, bool)`
+`func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorItemMap, bool)`
 
 GetHighOk returns a tuple with the High field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHigh
 
-`func (o *RiskPredictorMap) SetHigh(v RiskPredictorMap)`
+`func (o *RiskPredictorMap) SetHigh(v RiskPredictorItemMap)`
 
 SetHigh sets High field to given value.
 
@@ -54,20 +54,20 @@ HasHigh returns a boolean if a field has been set.
 
 ### GetMedium
 
-`func (o *RiskPredictorMap) GetMedium() RiskPredictorMap`
+`func (o *RiskPredictorMap) GetMedium() RiskPredictorItemMap`
 
 GetMedium returns the Medium field if non-nil, zero value otherwise.
 
 ### GetMediumOk
 
-`func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorMap, bool)`
+`func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorItemMap, bool)`
 
 GetMediumOk returns a tuple with the Medium field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedium
 
-`func (o *RiskPredictorMap) SetMedium(v RiskPredictorMap)`
+`func (o *RiskPredictorMap) SetMedium(v RiskPredictorItemMap)`
 
 SetMedium sets Medium field to given value.
 
@@ -79,20 +79,20 @@ HasMedium returns a boolean if a field has been set.
 
 ### GetLow
 
-`func (o *RiskPredictorMap) GetLow() RiskPredictorMap`
+`func (o *RiskPredictorMap) GetLow() RiskPredictorItemMap`
 
 GetLow returns the Low field if non-nil, zero value otherwise.
 
 ### GetLowOk
 
-`func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorMap, bool)`
+`func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorItemMap, bool)`
 
 GetLowOk returns a tuple with the Low field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLow
 
-`func (o *RiskPredictorMap) SetLow(v RiskPredictorMap)`
+`func (o *RiskPredictorMap) SetLow(v RiskPredictorItemMap)`
 
 SetLow sets Low field to given value.
 

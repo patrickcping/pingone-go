@@ -24,6 +24,7 @@ type EntityArrayEmbedded struct {
 	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
 	Populations      *[]Population               `json:"populations,omitempty"`
 	Resources        *[]Resource                 `json:"resources,omitempty"`
+	RiskPolicySets   *[]RiskPolicySet            `json:"riskPolicySets,omitempty"`
 	RiskPredictors   *[]RiskPredictor            `json:"riskPredictors,omitempty"`
 	RoleAssignments  *[]RoleAssignment           `json:"roleAssignments,omitempty"`
 	Roles            *[]Role                     `json:"roles,omitempty"`
@@ -304,6 +305,38 @@ func (o *EntityArrayEmbedded) SetResources(v []Resource) {
 	o.Resources = &v
 }
 
+// GetRiskPolicySets returns the RiskPolicySets field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
+	if o == nil || o.RiskPolicySets == nil {
+		var ret []RiskPolicySet
+		return ret
+	}
+	return *o.RiskPolicySets
+}
+
+// GetRiskPolicySetsOk returns a tuple with the RiskPolicySets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() (*[]RiskPolicySet, bool) {
+	if o == nil || o.RiskPolicySets == nil {
+		return nil, false
+	}
+	return o.RiskPolicySets, true
+}
+
+// HasRiskPolicySets returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRiskPolicySets() bool {
+	if o != nil && o.RiskPolicySets != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskPolicySets gets a reference to the given []RiskPolicySet and assigns it to the RiskPolicySets field.
+func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet) {
+	o.RiskPolicySets = &v
+}
+
 // GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
 	if o == nil || o.RiskPredictors == nil {
@@ -489,6 +522,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
+	}
+	if o.RiskPolicySets != nil {
+		toSerialize["riskPolicySets"] = o.RiskPolicySets
 	}
 	if o.RiskPredictors != nil {
 		toSerialize["riskPredictors"] = o.RiskPredictors

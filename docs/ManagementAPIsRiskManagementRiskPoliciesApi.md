@@ -4,85 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDRiskPolicySetsGet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#V1EnvironmentsEnvIDRiskPolicySetsGet) | **Get** /v1/environments/{envID}/riskPolicySets | READ Risk Policy Sets
-[**V1EnvironmentsEnvIDRiskPolicySetsPost**](ManagementAPIsRiskManagementRiskPoliciesApi.md#V1EnvironmentsEnvIDRiskPolicySetsPost) | **Post** /v1/environments/{envID}/riskPolicySets | CREATE Risk Policy Set
-[**V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete**](ManagementAPIsRiskManagementRiskPoliciesApi.md#V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete) | **Delete** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | DELETE Risk Policy Set 
-[**V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet) | **Get** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | READ One Risk Policy Set
-[**V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut**](ManagementAPIsRiskManagementRiskPoliciesApi.md#V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut) | **Put** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | UPDATE Risk Policy Set
+[**CreateRiskPolicySet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#CreateRiskPolicySet) | **Post** /v1/environments/{envID}/riskPolicySets | CREATE Risk Policy Set
+[**DeleteRiskPolicySet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#DeleteRiskPolicySet) | **Delete** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | DELETE Risk Policy Set 
+[**ReadOneRiskPolicySet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#ReadOneRiskPolicySet) | **Get** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | READ One Risk Policy Set
+[**ReadRiskPolicySets**](ManagementAPIsRiskManagementRiskPoliciesApi.md#ReadRiskPolicySets) | **Get** /v1/environments/{envID}/riskPolicySets | READ Risk Policy Sets
+[**UpdateRiskPolicySet**](ManagementAPIsRiskManagementRiskPoliciesApi.md#UpdateRiskPolicySet) | **Put** /v1/environments/{envID}/riskPolicySets/{riskPolicySetID} | UPDATE Risk Policy Set
 
 
 
-## V1EnvironmentsEnvIDRiskPolicySetsGet
+## CreateRiskPolicySet
 
-> V1EnvironmentsEnvIDRiskPolicySetsGet(ctx, envID).Execute()
-
-READ Risk Policy Sets
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsGet(context.Background(), envID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskPolicySetsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDRiskPolicySetsPost
-
-> V1EnvironmentsEnvIDRiskPolicySetsPost(ctx, envID).Body(body).Execute()
+> RiskPolicySet CreateRiskPolicySet(ctx, envID).RiskPolicySet(riskPolicySet).Execute()
 
 CREATE Risk Policy Set
 
@@ -102,15 +34,17 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    riskPolicySet := *openapiclient.NewRiskPolicySet() // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsPost(context.Background(), envID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet(context.Background(), envID).RiskPolicySet(riskPolicySet).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateRiskPolicySet`: RiskPolicySet
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet`: %v\n", resp)
 }
 ```
 
@@ -124,17 +58,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskPolicySetsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRiskPolicySetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
+ **riskPolicySet** | [**RiskPolicySet**](RiskPolicySet.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**RiskPolicySet**](RiskPolicySet.md)
 
 ### Authorization
 
@@ -150,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete
+## DeleteRiskPolicySet
 
-> V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete(ctx, envID, riskPolicySetID).Execute()
+> DeleteRiskPolicySet(ctx, envID, riskPolicySetID).Execute()
 
 DELETE Risk Policy Set 
 
@@ -176,9 +110,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete(context.Background(), envID, riskPolicySetID).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.DeleteRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.DeleteRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -195,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRiskPolicySetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -221,9 +155,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet
+## ReadOneRiskPolicySet
 
-> V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet(ctx, envID, riskPolicySetID).Execute()
+> RiskPolicySet ReadOneRiskPolicySet(ctx, envID, riskPolicySetID).Execute()
 
 READ One Risk Policy Set
 
@@ -247,11 +181,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet(context.Background(), envID, riskPolicySetID).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneRiskPolicySet`: RiskPolicySet
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet`: %v\n", resp)
 }
 ```
 
@@ -266,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneRiskPolicySetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -276,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**RiskPolicySet**](RiskPolicySet.md)
 
 ### Authorization
 
@@ -292,9 +228,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut
+## ReadRiskPolicySets
 
-> V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut(ctx, envID, riskPolicySetID).Body(body).Execute()
+> EntityArray ReadRiskPolicySets(ctx, envID).Execute()
+
+READ Risk Policy Sets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets(context.Background(), envID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadRiskPolicySets`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadRiskPolicySetsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateRiskPolicySet
+
+> RiskPolicySet UpdateRiskPolicySet(ctx, envID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
 
 UPDATE Risk Policy Set
 
@@ -315,15 +321,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     riskPolicySetID := "riskPolicySetID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    riskPolicySet := *openapiclient.NewRiskPolicySet() // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut(context.Background(), envID, riskPolicySetID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet(context.Background(), envID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.V1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateRiskPolicySet`: RiskPolicySet
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet`: %v\n", resp)
 }
 ```
 
@@ -338,18 +346,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRiskPolicySetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **riskPolicySet** | [**RiskPolicySet**](RiskPolicySet.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**RiskPolicySet**](RiskPolicySet.md)
 
 ### Authorization
 

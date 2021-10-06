@@ -16,9 +16,9 @@ import (
 
 // RiskPredictorMap An object that defines the mapping of risk levels for the list of all results.
 type RiskPredictorMap struct {
-	High *RiskPredictorMap `json:"high,omitempty"`
-	Medium *RiskPredictorMap `json:"medium,omitempty"`
-	Low *RiskPredictorMap `json:"low,omitempty"`
+	High *RiskPredictorItemMap `json:"high,omitempty"`
+	Medium *RiskPredictorItemMap `json:"medium,omitempty"`
+	Low *RiskPredictorItemMap `json:"low,omitempty"`
 }
 
 // NewRiskPredictorMap instantiates a new RiskPredictorMap object
@@ -39,9 +39,9 @@ func NewRiskPredictorMapWithDefaults() *RiskPredictorMap {
 }
 
 // GetHigh returns the High field value if set, zero value otherwise.
-func (o *RiskPredictorMap) GetHigh() RiskPredictorMap {
+func (o *RiskPredictorMap) GetHigh() RiskPredictorItemMap {
 	if o == nil || o.High == nil {
-		var ret RiskPredictorMap
+		var ret RiskPredictorItemMap
 		return ret
 	}
 	return *o.High
@@ -49,7 +49,7 @@ func (o *RiskPredictorMap) GetHigh() RiskPredictorMap {
 
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorMap, bool) {
+func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorItemMap, bool) {
 	if o == nil || o.High == nil {
 		return nil, false
 	}
@@ -65,15 +65,15 @@ func (o *RiskPredictorMap) HasHigh() bool {
 	return false
 }
 
-// SetHigh gets a reference to the given RiskPredictorMap and assigns it to the High field.
-func (o *RiskPredictorMap) SetHigh(v RiskPredictorMap) {
+// SetHigh gets a reference to the given RiskPredictorItemMap and assigns it to the High field.
+func (o *RiskPredictorMap) SetHigh(v RiskPredictorItemMap) {
 	o.High = &v
 }
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
-func (o *RiskPredictorMap) GetMedium() RiskPredictorMap {
+func (o *RiskPredictorMap) GetMedium() RiskPredictorItemMap {
 	if o == nil || o.Medium == nil {
-		var ret RiskPredictorMap
+		var ret RiskPredictorItemMap
 		return ret
 	}
 	return *o.Medium
@@ -81,7 +81,7 @@ func (o *RiskPredictorMap) GetMedium() RiskPredictorMap {
 
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorMap, bool) {
+func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorItemMap, bool) {
 	if o == nil || o.Medium == nil {
 		return nil, false
 	}
@@ -97,15 +97,15 @@ func (o *RiskPredictorMap) HasMedium() bool {
 	return false
 }
 
-// SetMedium gets a reference to the given RiskPredictorMap and assigns it to the Medium field.
-func (o *RiskPredictorMap) SetMedium(v RiskPredictorMap) {
+// SetMedium gets a reference to the given RiskPredictorItemMap and assigns it to the Medium field.
+func (o *RiskPredictorMap) SetMedium(v RiskPredictorItemMap) {
 	o.Medium = &v
 }
 
 // GetLow returns the Low field value if set, zero value otherwise.
-func (o *RiskPredictorMap) GetLow() RiskPredictorMap {
+func (o *RiskPredictorMap) GetLow() RiskPredictorItemMap {
 	if o == nil || o.Low == nil {
-		var ret RiskPredictorMap
+		var ret RiskPredictorItemMap
 		return ret
 	}
 	return *o.Low
@@ -113,7 +113,7 @@ func (o *RiskPredictorMap) GetLow() RiskPredictorMap {
 
 // GetLowOk returns a tuple with the Low field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorMap, bool) {
+func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorItemMap, bool) {
 	if o == nil || o.Low == nil {
 		return nil, false
 	}
@@ -129,8 +129,8 @@ func (o *RiskPredictorMap) HasLow() bool {
 	return false
 }
 
-// SetLow gets a reference to the given RiskPredictorMap and assigns it to the Low field.
-func (o *RiskPredictorMap) SetLow(v RiskPredictorMap) {
+// SetLow gets a reference to the given RiskPredictorItemMap and assigns it to the Low field.
+func (o *RiskPredictorMap) SetLow(v RiskPredictorItemMap) {
 	o.Low = &v
 }
 
