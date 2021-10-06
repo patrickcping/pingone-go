@@ -115,6 +115,7 @@ docs/EnvironmentOrganization.md
 docs/Group.md
 docs/GroupDirectMemberCounts.md
 docs/GroupMembership.md
+docs/GroupPopulation.md
 docs/GroupTotalMemberCounts.md
 docs/InlineObject2.md
 docs/InlineObject3.md
@@ -287,6 +288,7 @@ model_environment_organization.go
 model_group.go
 model_group_direct_member_counts.go
 model_group_membership.go
+model_group_population.go
 model_group_total_member_counts.go
 model_inline_object_2.go
 model_inline_object_3.go

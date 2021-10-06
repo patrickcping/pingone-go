@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{envID}/users/{userID}?include&#x3D;memberOfGroupIDs. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Population** | Pointer to [**ObjectPopulation**](ObjectPopulation.md) |  | [optional] 
+**Population** | Pointer to [**GroupPopulation**](GroupPopulation.md) |  | [optional] 
 **Name** | Pointer to **string** | The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group names associated with a user with GET /environments/{envID}/users/{userID}?include&#x3D;memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions. | [optional] 
 **UserFilter** | Pointer to **string** | A SCIM filter that determines which users are dynamically added to the group. For more information, see Adding users to a group and Removing users from a group. | [optional] 
 **Description** | Pointer to **string** | The group description. | [optional] 
@@ -86,20 +86,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetPopulation
 
-`func (o *Group) GetPopulation() ObjectPopulation`
+`func (o *Group) GetPopulation() GroupPopulation`
 
 GetPopulation returns the Population field if non-nil, zero value otherwise.
 
 ### GetPopulationOk
 
-`func (o *Group) GetPopulationOk() (*ObjectPopulation, bool)`
+`func (o *Group) GetPopulationOk() (*GroupPopulation, bool)`
 
 GetPopulationOk returns a tuple with the Population field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopulation
 
-`func (o *Group) SetPopulation(v ObjectPopulation)`
+`func (o *Group) SetPopulation(v GroupPopulation)`
 
 SetPopulation sets Population field to given value.
 

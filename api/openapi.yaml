@@ -13162,6 +13162,7 @@ components:
               description: description
             - classifier: classifier
               description: description
+            name: name
             description: description
             applicableTo:
             - applicableTo
@@ -13172,6 +13173,7 @@ components:
               description: description
             - classifier: classifier
               description: description
+            name: name
             description: description
             applicableTo:
             - applicableTo
@@ -13588,8 +13590,6 @@ components:
       readOnly: true
       type: object
     ObjectPopulation:
-      example:
-        id: id
       properties:
         id:
           description: A string that specifies the population associated with the
@@ -13911,7 +13911,7 @@ components:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         population:
-          $ref: '#/components/schemas/ObjectPopulation'
+          $ref: '#/components/schemas/Group_population'
         name:
           description: The group name. A group name can be reused across populations,
             but the same user cannot belong to multiple groups with the same group
@@ -14555,6 +14555,7 @@ components:
           description: description
         - classifier: classifier
           description: description
+        name: name
         description: description
         applicableTo:
         - applicableTo
@@ -14574,6 +14575,9 @@ components:
         id:
           description: A string that specifies the ID of the role.
           readOnly: true
+          type: string
+        name:
+          description: The name of the role
           type: string
         permissions:
           description: A string that specifies the set of permissions assigned to
@@ -15097,6 +15101,7 @@ components:
             description: description
           - classifier: classifier
             description: description
+          name: name
           description: description
           applicableTo:
           - applicableTo
@@ -15107,6 +15112,7 @@ components:
             description: description
           - classifier: classifier
             description: description
+          name: name
           description: description
           applicableTo:
           - applicableTo
@@ -15919,6 +15925,15 @@ components:
         id:
           description: A string that specifies the organization resource’s unique
             identifier associated with the environment.
+          type: string
+      type: object
+    Group_population:
+      description: The population to assign the group to
+      example:
+        id: id
+      properties:
+        id:
+          description: The population ID
           type: string
       type: object
     Group_directMemberCounts:

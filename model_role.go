@@ -22,6 +22,8 @@ type Role struct {
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the ID of the role.
 	Id *string `json:"id,omitempty"`
+	// The name of the role
+	Name *string `json:"name,omitempty"`
 	// A string that specifies the set of permissions assigned to the role.
 	Permissions *[]RolePermissions `json:"permissions,omitempty"`
 }
@@ -139,6 +141,38 @@ func (o *Role) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Role) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Role) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Role) SetName(v string) {
+	o.Name = &v
+}
+
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *Role) GetPermissions() []RolePermissions {
 	if o == nil || o.Permissions == nil {
@@ -181,6 +215,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Permissions != nil {
 		toSerialize["permissions"] = o.Permissions

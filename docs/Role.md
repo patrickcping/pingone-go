@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ApplicableTo** | Pointer to **[]string** | A string that specifies the scope to which the role applies. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the role. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the ID of the role. | [optional] [readonly] 
+**Name** | Pointer to **string** | The name of the role | [optional] 
 **Permissions** | Pointer to [**[]RolePermissions**](RolePermissions.md) | A string that specifies the set of permissions assigned to the role. | [optional] [readonly] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetId sets Id field to given value.
 `func (o *Role) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *Role) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Role) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Role) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *Role) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetPermissions
 

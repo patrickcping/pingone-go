@@ -19,7 +19,7 @@ type Group struct {
 	// The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupIDs.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Population *ObjectPopulation `json:"population,omitempty"`
+	Population *GroupPopulation `json:"population,omitempty"`
 	// The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group names associated with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions.
 	Name *string `json:"name,omitempty"`
 	// A SCIM filter that determines which users are dynamically added to the group. For more information, see Adding users to a group and Removing users from a group.
@@ -116,9 +116,9 @@ func (o *Group) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
-func (o *Group) GetPopulation() ObjectPopulation {
+func (o *Group) GetPopulation() GroupPopulation {
 	if o == nil || o.Population == nil {
-		var ret ObjectPopulation
+		var ret GroupPopulation
 		return ret
 	}
 	return *o.Population
@@ -126,7 +126,7 @@ func (o *Group) GetPopulation() ObjectPopulation {
 
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetPopulationOk() (*ObjectPopulation, bool) {
+func (o *Group) GetPopulationOk() (*GroupPopulation, bool) {
 	if o == nil || o.Population == nil {
 		return nil, false
 	}
@@ -142,8 +142,8 @@ func (o *Group) HasPopulation() bool {
 	return false
 }
 
-// SetPopulation gets a reference to the given ObjectPopulation and assigns it to the Population field.
-func (o *Group) SetPopulation(v ObjectPopulation) {
+// SetPopulation gets a reference to the given GroupPopulation and assigns it to the Population field.
+func (o *Group) SetPopulation(v GroupPopulation) {
 	o.Population = &v
 }
 
