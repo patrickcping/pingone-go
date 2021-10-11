@@ -101,20 +101,24 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.2.0/go",
+		UserAgent:        "OpenAPI-Generator/1.2.1/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.pingone.eu",
-				Description: "PingOne EU API",
-			},
-			{
-				URL: "https://api.pingone.com",
-				Description: "PingOne US API",
-			},
-			{
-				URL: "https://api.pingone.asia",
-				Description: "PingOne APAC API",
+				URL: "https://api.pingone.{suffix}",
+				Description: "PingOne API",
+				Variables: map[string]ServerVariable{
+					"suffix": ServerVariable{
+						Description: "No description provided",
+						DefaultValue: "eu",
+						EnumValues: []string{
+							"eu",
+							"com",
+							"asia",
+							"ca",
+						},
+					},
+				},
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
