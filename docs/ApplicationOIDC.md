@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
-**Enabled** | Pointer to **string** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
+**Enabled** | Pointer to **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**ApplicationIcon**](ApplicationIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
@@ -18,16 +18,18 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
 **Type** | Pointer to **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
-**Mobile** | Pointer to [**ApplicationMobile**](ApplicationMobile.md) |  | [optional] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
-**GrantTypes** | Pointer to **string** | A string that specifies the grant type for the authorization request. This is a required property. Options are authorization_code, implicit, refresh_token, and client_credentials. | [optional] 
+**Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
+**BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
+**PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
+**GrantTypes** | Pointer to **[]string** | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **PkceEnforcement** | Pointer to **string** | A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256. | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
-**ResponseTypes** | Pointer to **string** | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
+**ResponseTypes** | Pointer to **[]string** | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
 **TokenEndpointAuthMethod** | Pointer to **string** | A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST. | [optional] 
 
 ## Methods
@@ -151,20 +153,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *ApplicationOIDC) GetEnabled() string`
+`func (o *ApplicationOIDC) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *ApplicationOIDC) GetEnabledOk() (*string, bool)`
+`func (o *ApplicationOIDC) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *ApplicationOIDC) SetEnabled(v string)`
+`func (o *ApplicationOIDC) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
@@ -399,31 +401,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### GetMobile
-
-`func (o *ApplicationOIDC) GetMobile() ApplicationMobile`
-
-GetMobile returns the Mobile field if non-nil, zero value otherwise.
-
-### GetMobileOk
-
-`func (o *ApplicationOIDC) GetMobileOk() (*ApplicationMobile, bool)`
-
-GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMobile
-
-`func (o *ApplicationOIDC) SetMobile(v ApplicationMobile)`
-
-SetMobile sets Mobile field to given value.
-
-### HasMobile
-
-`func (o *ApplicationOIDC) HasMobile() bool`
-
-HasMobile returns a boolean if a field has been set.
-
 ### GetSupportUnsignedRequestObject
 
 `func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool`
@@ -449,22 +426,97 @@ SetSupportUnsignedRequestObject sets SupportUnsignedRequestObject field to given
 
 HasSupportUnsignedRequestObject returns a boolean if a field has been set.
 
+### GetMobile
+
+`func (o *ApplicationOIDC) GetMobile() ApplicationOIDCAllOfMobile`
+
+GetMobile returns the Mobile field if non-nil, zero value otherwise.
+
+### GetMobileOk
+
+`func (o *ApplicationOIDC) GetMobileOk() (*ApplicationOIDCAllOfMobile, bool)`
+
+GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMobile
+
+`func (o *ApplicationOIDC) SetMobile(v ApplicationOIDCAllOfMobile)`
+
+SetMobile sets Mobile field to given value.
+
+### HasMobile
+
+`func (o *ApplicationOIDC) HasMobile() bool`
+
+HasMobile returns a boolean if a field has been set.
+
+### GetBundleId
+
+`func (o *ApplicationOIDC) GetBundleId() string`
+
+GetBundleId returns the BundleId field if non-nil, zero value otherwise.
+
+### GetBundleIdOk
+
+`func (o *ApplicationOIDC) GetBundleIdOk() (*string, bool)`
+
+GetBundleIdOk returns a tuple with the BundleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBundleId
+
+`func (o *ApplicationOIDC) SetBundleId(v string)`
+
+SetBundleId sets BundleId field to given value.
+
+### HasBundleId
+
+`func (o *ApplicationOIDC) HasBundleId() bool`
+
+HasBundleId returns a boolean if a field has been set.
+
+### GetPackageName
+
+`func (o *ApplicationOIDC) GetPackageName() string`
+
+GetPackageName returns the PackageName field if non-nil, zero value otherwise.
+
+### GetPackageNameOk
+
+`func (o *ApplicationOIDC) GetPackageNameOk() (*string, bool)`
+
+GetPackageNameOk returns a tuple with the PackageName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPackageName
+
+`func (o *ApplicationOIDC) SetPackageName(v string)`
+
+SetPackageName sets PackageName field to given value.
+
+### HasPackageName
+
+`func (o *ApplicationOIDC) HasPackageName() bool`
+
+HasPackageName returns a boolean if a field has been set.
+
 ### GetGrantTypes
 
-`func (o *ApplicationOIDC) GetGrantTypes() string`
+`func (o *ApplicationOIDC) GetGrantTypes() []string`
 
 GetGrantTypes returns the GrantTypes field if non-nil, zero value otherwise.
 
 ### GetGrantTypesOk
 
-`func (o *ApplicationOIDC) GetGrantTypesOk() (*string, bool)`
+`func (o *ApplicationOIDC) GetGrantTypesOk() (*[]string, bool)`
 
 GetGrantTypesOk returns a tuple with the GrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantTypes
 
-`func (o *ApplicationOIDC) SetGrantTypes(v string)`
+`func (o *ApplicationOIDC) SetGrantTypes(v []string)`
 
 SetGrantTypes sets GrantTypes field to given value.
 
@@ -626,20 +678,20 @@ HasRefreshTokenRollingDuration returns a boolean if a field has been set.
 
 ### GetResponseTypes
 
-`func (o *ApplicationOIDC) GetResponseTypes() string`
+`func (o *ApplicationOIDC) GetResponseTypes() []string`
 
 GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
 
 ### GetResponseTypesOk
 
-`func (o *ApplicationOIDC) GetResponseTypesOk() (*string, bool)`
+`func (o *ApplicationOIDC) GetResponseTypesOk() (*[]string, bool)`
 
 GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseTypes
 
-`func (o *ApplicationOIDC) SetResponseTypes(v string)`
+`func (o *ApplicationOIDC) SetResponseTypes(v []string)`
 
 SetResponseTypes sets ResponseTypes field to given value.
 

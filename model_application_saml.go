@@ -24,7 +24,7 @@ type ApplicationSAML struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *string `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -41,7 +41,6 @@ type ApplicationSAML struct {
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	Mobile *ApplicationMobile `json:"mobile,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
@@ -212,9 +211,9 @@ func (o *ApplicationSAML) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetEnabled() string {
+func (o *ApplicationSAML) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Enabled
@@ -222,7 +221,7 @@ func (o *ApplicationSAML) GetEnabled() string {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetEnabledOk() (*string, bool) {
+func (o *ApplicationSAML) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -238,8 +237,8 @@ func (o *ApplicationSAML) HasEnabled() bool {
 	return false
 }
 
-// SetEnabled gets a reference to the given string and assigns it to the Enabled field.
-func (o *ApplicationSAML) SetEnabled(v string) {
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *ApplicationSAML) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
@@ -529,38 +528,6 @@ func (o *ApplicationSAML) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
 func (o *ApplicationSAML) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
-}
-
-// GetMobile returns the Mobile field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetMobile() ApplicationMobile {
-	if o == nil || o.Mobile == nil {
-		var ret ApplicationMobile
-		return ret
-	}
-	return *o.Mobile
-}
-
-// GetMobileOk returns a tuple with the Mobile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetMobileOk() (*ApplicationMobile, bool) {
-	if o == nil || o.Mobile == nil {
-		return nil, false
-	}
-	return o.Mobile, true
-}
-
-// HasMobile returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasMobile() bool {
-	if o != nil && o.Mobile != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMobile gets a reference to the given ApplicationMobile and assigns it to the Mobile field.
-func (o *ApplicationSAML) SetMobile(v ApplicationMobile) {
-	o.Mobile = &v
 }
 
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
@@ -990,9 +957,6 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if o.Mobile != nil {
-		toSerialize["mobile"] = o.Mobile
 	}
 	if o.SupportUnsignedRequestObject != nil {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject

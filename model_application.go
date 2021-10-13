@@ -24,7 +24,7 @@ type Application struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *string `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -41,7 +41,6 @@ type Application struct {
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	Mobile *ApplicationMobile `json:"mobile,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 }
@@ -192,9 +191,9 @@ func (o *Application) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *Application) GetEnabled() string {
+func (o *Application) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Enabled
@@ -202,7 +201,7 @@ func (o *Application) GetEnabled() string {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Application) GetEnabledOk() (*string, bool) {
+func (o *Application) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -218,8 +217,8 @@ func (o *Application) HasEnabled() bool {
 	return false
 }
 
-// SetEnabled gets a reference to the given string and assigns it to the Enabled field.
-func (o *Application) SetEnabled(v string) {
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *Application) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
@@ -511,38 +510,6 @@ func (o *Application) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
-// GetMobile returns the Mobile field value if set, zero value otherwise.
-func (o *Application) GetMobile() ApplicationMobile {
-	if o == nil || o.Mobile == nil {
-		var ret ApplicationMobile
-		return ret
-	}
-	return *o.Mobile
-}
-
-// GetMobileOk returns a tuple with the Mobile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Application) GetMobileOk() (*ApplicationMobile, bool) {
-	if o == nil || o.Mobile == nil {
-		return nil, false
-	}
-	return o.Mobile, true
-}
-
-// HasMobile returns a boolean if a field has been set.
-func (o *Application) HasMobile() bool {
-	if o != nil && o.Mobile != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMobile gets a reference to the given ApplicationMobile and assigns it to the Mobile field.
-func (o *Application) SetMobile(v ApplicationMobile) {
-	o.Mobile = &v
-}
-
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *Application) GetSupportUnsignedRequestObject() bool {
 	if o == nil || o.SupportUnsignedRequestObject == nil {
@@ -618,9 +585,6 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if o.Mobile != nil {
-		toSerialize["mobile"] = o.Mobile
 	}
 	if o.SupportUnsignedRequestObject != nil {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject

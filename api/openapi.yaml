@@ -13643,10 +13643,7 @@ components:
         enabled:
           description: A string that specifies the current enabled state of the application.
             Options are ENABLED or DISABLED.
-          enum:
-          - ENABLED
-          - DISABLED
-          type: string
+          type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         icon:
@@ -13699,8 +13696,6 @@ components:
           description: The time the resource was last updated.
           readOnly: true
           type: string
-        mobile:
-          $ref: '#/components/schemas/Application_mobile'
         supportUnsignedRequestObject:
           description: A boolean that specifies whether the request query parameter
             JWT is allowed to be unsigned. If false or null (default), an unsigned
@@ -15868,52 +15863,6 @@ components:
         href:
           type: string
       type: object
-    Application_mobile_integrityDetection_cacheDuration:
-      properties:
-        amount:
-          description: An integer that specifies the number of minutes or hours that
-            specify the duration between successful integrity detection calls. Every
-            attestation request entails a certain time tradeoff. You can choose to
-            cache successful integrity detection calls for a predefined duration,
-            between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode
-            is ENABLED, the cache duration must be set.
-          type: integer
-        units:
-          description: A string that specifies the time units of the mobile.integrityDetection.cacheDuration.amount
-            :MINUTES, HOURS
-          enum:
-          - MINUTES
-          - HOURS
-          type: string
-      type: object
-    Application_mobile_integrityDetection:
-      properties:
-        mode:
-          description: A string that specifies whether device integrity detection
-            takes place on mobile devices, for the application's enrollment and authentication
-            events ENABLED, DISABLED
-          enum:
-          - ENABLED
-          - DISABLED
-          type: string
-        cacheDuration:
-          $ref: '#/components/schemas/Application_mobile_integrityDetection_cacheDuration'
-      type: object
-    Application_mobile:
-      properties:
-        bundleId:
-          description: A string that specifies the bundle associated with the application,
-            for push notifications in native apps. The value of the bundleId property
-            is unique per environment, and once defined, is immutable.
-          type: string
-        packageName:
-          description: A string that specifies the package name associated with the
-            application, for push notifications in native apps. The value of the mobile.packageName
-            property is unique per environment, and once defined, is immutable.
-          type: string
-        integrityDetection:
-          $ref: '#/components/schemas/Application_mobile_integrityDetection'
-      type: object
     ApplicationSAML_allOf_idpSigningtype_key:
       properties:
         id:
@@ -15995,18 +15944,80 @@ components:
         spVerification:
           $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
       type: object
+    ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration:
+      properties:
+        amount:
+          description: An integer that specifies the number of minutes or hours that
+            specify the duration between successful integrity detection calls. Every
+            attestation request entails a certain time tradeoff. You can choose to
+            cache successful integrity detection calls for a predefined duration,
+            between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode
+            is ENABLED, the cache duration must be set.
+          type: integer
+        units:
+          description: A string that specifies the time units of the mobile.integrityDetection.cacheDuration.amount
+            :MINUTES, HOURS
+          enum:
+          - MINUTES
+          - HOURS
+          type: string
+      type: object
+    ApplicationOIDC_allOf_mobile_integrityDetection:
+      properties:
+        mode:
+          description: A string that specifies whether device integrity detection
+            takes place on mobile devices, for the application's enrollment and authentication
+            events ENABLED, DISABLED
+          enum:
+          - ENABLED
+          - DISABLED
+          type: string
+        cacheDuration:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration'
+      type: object
+    ApplicationOIDC_allOf_mobile:
+      properties:
+        bundleId:
+          description: A string that specifies the bundle associated with the application,
+            for push notifications in native apps. The value of the bundleId property
+            is unique per environment, and once defined, is immutable.  this setting
+            overrides the top-level bundleId field
+          type: string
+        packageName:
+          description: A string that specifies the package name associated with the
+            application, for push notifications in native apps. The value of the mobile.packageName
+            property is unique per environment, and once defined, is immutable.  this
+            setting overrides the top-level packageName field.
+          type: string
+        integrityDetection:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
+      type: object
     ApplicationOIDC_allOf:
       properties:
+        mobile:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
+        bundleId:
+          description: A string that specifies the bundle associated with the application,
+            for push notifications in native apps. The value of the bundleId property
+            is unique per environment, and once defined, is immutable.
+          type: string
+        packageName:
+          description: A string that specifies the package name associated with the
+            application, for push notifications in native apps. The value of the mobile.packageName
+            property is unique per environment, and once defined, is immutable.
+          type: string
         grantTypes:
           description: A string that specifies the grant type for the authorization
-            request. This is a required property. Options are authorization_code,
-            implicit, refresh_token, and client_credentials.
-          enum:
-          - authorization_code
-          - implicit
-          - refresh_token
-          - client_credentials
-          type: string
+            request. This is a required property. Options are AUTHORIZATION_CODE,
+            IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
+          items:
+            enum:
+            - AUTHORIZATION_CODE
+            - IMPLICIT
+            - REFRESH_TOKEN
+            - CLIENT_CREDENTIALS
+            type: string
+          type: array
         homePageUrl:
           description: A string that specifies the custom home page URL for the application.
           type: string
@@ -16055,11 +16066,13 @@ components:
             an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note
             that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN
             because PingOne does not currently support OIDC hybrid flows.
-          enum:
-          - TOKEN
-          - ID_TOKEN
-          - CODE
-          type: string
+          items:
+            enum:
+            - TOKEN
+            - ID_TOKEN
+            - CODE
+            type: string
+          type: array
         tokenEndpointAuthMethod:
           description: A string that specifies the client authentication methods supported
             by the token endpoint. This is a required property. Options are NONE,

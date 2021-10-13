@@ -24,7 +24,7 @@ type ApplicationOIDC struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *string `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -41,11 +41,15 @@ type ApplicationOIDC struct {
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	Mobile *ApplicationMobile `json:"mobile,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
-	// A string that specifies the grant type for the authorization request. This is a required property. Options are authorization_code, implicit, refresh_token, and client_credentials.
-	GrantTypes *string `json:"grantTypes,omitempty"`
+	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
+	// A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
+	BundleId *string `json:"bundleId,omitempty"`
+	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
+	PackageName *string `json:"packageName,omitempty"`
+	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
+	GrantTypes *[]string `json:"grantTypes,omitempty"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256.
@@ -59,7 +63,7 @@ type ApplicationOIDC struct {
 	// An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
-	ResponseTypes *string `json:"responseTypes,omitempty"`
+	ResponseTypes *[]string `json:"responseTypes,omitempty"`
 	// A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
 	TokenEndpointAuthMethod *string `json:"tokenEndpointAuthMethod,omitempty"`
 }
@@ -210,9 +214,9 @@ func (o *ApplicationOIDC) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetEnabled() string {
+func (o *ApplicationOIDC) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Enabled
@@ -220,7 +224,7 @@ func (o *ApplicationOIDC) GetEnabled() string {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetEnabledOk() (*string, bool) {
+func (o *ApplicationOIDC) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -236,8 +240,8 @@ func (o *ApplicationOIDC) HasEnabled() bool {
 	return false
 }
 
-// SetEnabled gets a reference to the given string and assigns it to the Enabled field.
-func (o *ApplicationOIDC) SetEnabled(v string) {
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *ApplicationOIDC) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
@@ -529,38 +533,6 @@ func (o *ApplicationOIDC) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
-// GetMobile returns the Mobile field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetMobile() ApplicationMobile {
-	if o == nil || o.Mobile == nil {
-		var ret ApplicationMobile
-		return ret
-	}
-	return *o.Mobile
-}
-
-// GetMobileOk returns a tuple with the Mobile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetMobileOk() (*ApplicationMobile, bool) {
-	if o == nil || o.Mobile == nil {
-		return nil, false
-	}
-	return o.Mobile, true
-}
-
-// HasMobile returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasMobile() bool {
-	if o != nil && o.Mobile != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMobile gets a reference to the given ApplicationMobile and assigns it to the Mobile field.
-func (o *ApplicationOIDC) SetMobile(v ApplicationMobile) {
-	o.Mobile = &v
-}
-
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
 	if o == nil || o.SupportUnsignedRequestObject == nil {
@@ -593,10 +565,106 @@ func (o *ApplicationOIDC) SetSupportUnsignedRequestObject(v bool) {
 	o.SupportUnsignedRequestObject = &v
 }
 
-// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetGrantTypes() string {
-	if o == nil || o.GrantTypes == nil {
+// GetMobile returns the Mobile field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetMobile() ApplicationOIDCAllOfMobile {
+	if o == nil || o.Mobile == nil {
+		var ret ApplicationOIDCAllOfMobile
+		return ret
+	}
+	return *o.Mobile
+}
+
+// GetMobileOk returns a tuple with the Mobile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetMobileOk() (*ApplicationOIDCAllOfMobile, bool) {
+	if o == nil || o.Mobile == nil {
+		return nil, false
+	}
+	return o.Mobile, true
+}
+
+// HasMobile returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasMobile() bool {
+	if o != nil && o.Mobile != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMobile gets a reference to the given ApplicationOIDCAllOfMobile and assigns it to the Mobile field.
+func (o *ApplicationOIDC) SetMobile(v ApplicationOIDCAllOfMobile) {
+	o.Mobile = &v
+}
+
+// GetBundleId returns the BundleId field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetBundleId() string {
+	if o == nil || o.BundleId == nil {
 		var ret string
+		return ret
+	}
+	return *o.BundleId
+}
+
+// GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetBundleIdOk() (*string, bool) {
+	if o == nil || o.BundleId == nil {
+		return nil, false
+	}
+	return o.BundleId, true
+}
+
+// HasBundleId returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasBundleId() bool {
+	if o != nil && o.BundleId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleId gets a reference to the given string and assigns it to the BundleId field.
+func (o *ApplicationOIDC) SetBundleId(v string) {
+	o.BundleId = &v
+}
+
+// GetPackageName returns the PackageName field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetPackageName() string {
+	if o == nil || o.PackageName == nil {
+		var ret string
+		return ret
+	}
+	return *o.PackageName
+}
+
+// GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetPackageNameOk() (*string, bool) {
+	if o == nil || o.PackageName == nil {
+		return nil, false
+	}
+	return o.PackageName, true
+}
+
+// HasPackageName returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasPackageName() bool {
+	if o != nil && o.PackageName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
+func (o *ApplicationOIDC) SetPackageName(v string) {
+	o.PackageName = &v
+}
+
+// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetGrantTypes() []string {
+	if o == nil || o.GrantTypes == nil {
+		var ret []string
 		return ret
 	}
 	return *o.GrantTypes
@@ -604,7 +672,7 @@ func (o *ApplicationOIDC) GetGrantTypes() string {
 
 // GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetGrantTypesOk() (*string, bool) {
+func (o *ApplicationOIDC) GetGrantTypesOk() (*[]string, bool) {
 	if o == nil || o.GrantTypes == nil {
 		return nil, false
 	}
@@ -620,8 +688,8 @@ func (o *ApplicationOIDC) HasGrantTypes() bool {
 	return false
 }
 
-// SetGrantTypes gets a reference to the given string and assigns it to the GrantTypes field.
-func (o *ApplicationOIDC) SetGrantTypes(v string) {
+// SetGrantTypes gets a reference to the given []string and assigns it to the GrantTypes field.
+func (o *ApplicationOIDC) SetGrantTypes(v []string) {
 	o.GrantTypes = &v
 }
 
@@ -818,9 +886,9 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingDuration(v int32) {
 }
 
 // GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetResponseTypes() string {
+func (o *ApplicationOIDC) GetResponseTypes() []string {
 	if o == nil || o.ResponseTypes == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 	return *o.ResponseTypes
@@ -828,7 +896,7 @@ func (o *ApplicationOIDC) GetResponseTypes() string {
 
 // GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetResponseTypesOk() (*string, bool) {
+func (o *ApplicationOIDC) GetResponseTypesOk() (*[]string, bool) {
 	if o == nil || o.ResponseTypes == nil {
 		return nil, false
 	}
@@ -844,8 +912,8 @@ func (o *ApplicationOIDC) HasResponseTypes() bool {
 	return false
 }
 
-// SetResponseTypes gets a reference to the given string and assigns it to the ResponseTypes field.
-func (o *ApplicationOIDC) SetResponseTypes(v string) {
+// SetResponseTypes gets a reference to the given []string and assigns it to the ResponseTypes field.
+func (o *ApplicationOIDC) SetResponseTypes(v []string) {
 	o.ResponseTypes = &v
 }
 
@@ -925,11 +993,17 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
+	if o.SupportUnsignedRequestObject != nil {
+		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
+	}
 	if o.Mobile != nil {
 		toSerialize["mobile"] = o.Mobile
 	}
-	if o.SupportUnsignedRequestObject != nil {
-		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
+	if o.BundleId != nil {
+		toSerialize["bundleId"] = o.BundleId
+	}
+	if o.PackageName != nil {
+		toSerialize["packageName"] = o.PackageName
 	}
 	if o.GrantTypes != nil {
 		toSerialize["grantTypes"] = o.GrantTypes

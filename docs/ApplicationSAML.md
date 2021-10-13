@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
-**Enabled** | Pointer to **string** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
+**Enabled** | Pointer to **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**ApplicationIcon**](ApplicationIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
 **Type** | Pointer to **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
-**Mobile** | Pointer to [**ApplicationMobile**](ApplicationMobile.md) |  | [optional] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **AcsUrls** | Pointer to **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | [optional] 
 **AssertionDuration** | Pointer to **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | [optional] 
@@ -153,20 +152,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *ApplicationSAML) GetEnabled() string`
+`func (o *ApplicationSAML) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *ApplicationSAML) GetEnabledOk() (*string, bool)`
+`func (o *ApplicationSAML) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *ApplicationSAML) SetEnabled(v string)`
+`func (o *ApplicationSAML) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
@@ -400,31 +399,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *ApplicationSAML) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetMobile
-
-`func (o *ApplicationSAML) GetMobile() ApplicationMobile`
-
-GetMobile returns the Mobile field if non-nil, zero value otherwise.
-
-### GetMobileOk
-
-`func (o *ApplicationSAML) GetMobileOk() (*ApplicationMobile, bool)`
-
-GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMobile
-
-`func (o *ApplicationSAML) SetMobile(v ApplicationMobile)`
-
-SetMobile sets Mobile field to given value.
-
-### HasMobile
-
-`func (o *ApplicationSAML) HasMobile() bool`
-
-HasMobile returns a boolean if a field has been set.
 
 ### GetSupportUnsignedRequestObject
 
