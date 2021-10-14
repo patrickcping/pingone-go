@@ -159,7 +159,7 @@ type ApiDeleteApplicationAttributeMappingRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationAttributeMappingApiService
 	envID string
 	appID string
-	samlAttrID string
+	attrMappingID string
 }
 
 
@@ -175,16 +175,16 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @param samlAttrID
+ @param attrMappingID
  @return ApiDeleteApplicationAttributeMappingRequest
 */
-func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) DeleteApplicationAttributeMapping(ctx _context.Context, envID string, appID string, samlAttrID string) ApiDeleteApplicationAttributeMappingRequest {
+func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) DeleteApplicationAttributeMapping(ctx _context.Context, envID string, appID string, attrMappingID string) ApiDeleteApplicationAttributeMappingRequest {
 	return ApiDeleteApplicationAttributeMappingRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
 		appID: appID,
-		samlAttrID: samlAttrID,
+		attrMappingID: attrMappingID,
 	}
 }
 
@@ -203,10 +203,10 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Delete
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}"
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"samlAttrID"+"}", _neturl.PathEscape(parameterToString(r.samlAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", _neturl.PathEscape(parameterToString(r.attrMappingID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -392,7 +392,7 @@ type ApiReadOneApplicationAttributeMappingRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationAttributeMappingApiService
 	envID string
 	appID string
-	samlAttrID string
+	attrMappingID string
 }
 
 
@@ -408,16 +408,16 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @param samlAttrID
+ @param attrMappingID
  @return ApiReadOneApplicationAttributeMappingRequest
 */
-func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) ReadOneApplicationAttributeMapping(ctx _context.Context, envID string, appID string, samlAttrID string) ApiReadOneApplicationAttributeMappingRequest {
+func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) ReadOneApplicationAttributeMapping(ctx _context.Context, envID string, appID string, attrMappingID string) ApiReadOneApplicationAttributeMappingRequest {
 	return ApiReadOneApplicationAttributeMappingRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
 		appID: appID,
-		samlAttrID: samlAttrID,
+		attrMappingID: attrMappingID,
 	}
 }
 
@@ -438,10 +438,10 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) ReadOn
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}"
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"samlAttrID"+"}", _neturl.PathEscape(parameterToString(r.samlAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", _neturl.PathEscape(parameterToString(r.attrMappingID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -516,7 +516,7 @@ type ApiUpdateApplicationAttributeMappingRequest struct {
 	ApiService *ManagementAPIsApplicationsApplicationAttributeMappingApiService
 	envID string
 	appID string
-	samlAttrID string
+	attrMappingID string
 	applicationAttributeMapping *ApplicationAttributeMapping
 }
 
@@ -537,16 +537,16 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @param samlAttrID
+ @param attrMappingID
  @return ApiUpdateApplicationAttributeMappingRequest
 */
-func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) UpdateApplicationAttributeMapping(ctx _context.Context, envID string, appID string, samlAttrID string) ApiUpdateApplicationAttributeMappingRequest {
+func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) UpdateApplicationAttributeMapping(ctx _context.Context, envID string, appID string, attrMappingID string) ApiUpdateApplicationAttributeMappingRequest {
 	return ApiUpdateApplicationAttributeMappingRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
 		appID: appID,
-		samlAttrID: samlAttrID,
+		attrMappingID: attrMappingID,
 	}
 }
 
@@ -567,10 +567,10 @@ func (a *ManagementAPIsApplicationsApplicationAttributeMappingApiService) Update
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}"
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"samlAttrID"+"}", _neturl.PathEscape(parameterToString(r.samlAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", _neturl.PathEscape(parameterToString(r.attrMappingID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

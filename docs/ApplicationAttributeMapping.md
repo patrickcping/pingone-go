@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to **string** | A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted. | [optional] 
 **Name** | **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewApplicationAttributeMappingWithDefaults instantiates a new ApplicationAttributeMapping object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ApplicationAttributeMapping) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ApplicationAttributeMapping) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ApplicationAttributeMapping) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ApplicationAttributeMapping) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

@@ -5,10 +5,10 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#CreateApplicationAttributeMapping) | **Post** /v1/environments/{envID}/applications/{appID}/attributes | CREATE Application Attribute Mapping
-[**DeleteApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#DeleteApplicationAttributeMapping) | **Delete** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | DELETE Application Attribute Mapping
+[**DeleteApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#DeleteApplicationAttributeMapping) | **Delete** /v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID} | DELETE Application Attribute Mapping
 [**ReadAllApplicationAttributeMappings**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#ReadAllApplicationAttributeMappings) | **Get** /v1/environments/{envID}/applications/{appID}/attributes | READ All Application Attribute Mappings
-[**ReadOneApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#ReadOneApplicationAttributeMapping) | **Get** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | READ One Application Attribute Mapping
-[**UpdateApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#UpdateApplicationAttributeMapping) | **Put** /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID} | UPDATE Application Attribute Mapping
+[**ReadOneApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#ReadOneApplicationAttributeMapping) | **Get** /v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID} | READ One Application Attribute Mapping
+[**UpdateApplicationAttributeMapping**](ManagementAPIsApplicationsApplicationAttributeMappingApi.md#UpdateApplicationAttributeMapping) | **Put** /v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID} | UPDATE Application Attribute Mapping
 
 
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApplicationAttributeMapping
 
-> DeleteApplicationAttributeMapping(ctx, envID, appID, samlAttrID).Execute()
+> DeleteApplicationAttributeMapping(ctx, envID, appID, attrMappingID).Execute()
 
 DELETE Application Attribute Mapping
 
@@ -110,11 +110,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    samlAttrID := "samlAttrID_example" // string | 
+    attrMappingID := "attrMappingID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **envID** | **string** |  | 
 **appID** | **string** |  | 
-**samlAttrID** | **string** |  | 
+**attrMappingID** | **string** |  | 
 
 ### Other Parameters
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneApplicationAttributeMapping
 
-> ApplicationAttributeMapping ReadOneApplicationAttributeMapping(ctx, envID, appID, samlAttrID).Execute()
+> ApplicationAttributeMapping ReadOneApplicationAttributeMapping(ctx, envID, appID, attrMappingID).Execute()
 
 READ One Application Attribute Mapping
 
@@ -257,11 +257,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    samlAttrID := "samlAttrID_example" // string | 
+    attrMappingID := "attrMappingID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **envID** | **string** |  | 
 **appID** | **string** |  | 
-**samlAttrID** | **string** |  | 
+**attrMappingID** | **string** |  | 
 
 ### Other Parameters
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplicationAttributeMapping
 
-> ApplicationAttributeMapping UpdateApplicationAttributeMapping(ctx, envID, appID, samlAttrID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+> ApplicationAttributeMapping UpdateApplicationAttributeMapping(ctx, envID, appID, attrMappingID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
 
 UPDATE Application Attribute Mapping
 
@@ -333,12 +333,12 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    samlAttrID := "samlAttrID_example" // string | 
+    attrMappingID := "attrMappingID_example" // string | 
     applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping("Name_example", false, "Value_example") // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, samlAttrID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **envID** | **string** |  | 
 **appID** | **string** |  | 
-**samlAttrID** | **string** |  | 
+**attrMappingID** | **string** |  | 
 
 ### Other Parameters
 

@@ -1397,7 +1397,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: readAllGrantsForAnApplication
+      operationId: readAllApplicationGrants
       parameters:
       - explode: false
         in: path
@@ -1432,7 +1432,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: createGrant
+      operationId: createApplicationGrant
       parameters:
       - explode: false
         in: path
@@ -1473,6 +1473,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteApplicationGrant
       parameters:
       - explode: false
         in: path
@@ -1510,6 +1511,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneApplicationGrant
       parameters:
       - explode: false
         in: path
@@ -1541,7 +1543,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourceGrant'
           description: Successful response
       summary: READ One Grant for an Application
       tags:
@@ -1549,6 +1553,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateApplicationGrant
       parameters:
       - explode: false
         in: path
@@ -1575,13 +1580,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                resource:
-                  id: '{{resourceID}}'
-                scopes:
-                - id: '{{OIDCscopeID}}'
-                - id: '{{anotherOIDCscopeID}}'
-              type: object
+              $ref: '#/components/schemas/ApplicationResourceGrant'
       responses:
         "401":
           content:
@@ -1591,7 +1590,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourceGrant'
           description: Successful response
       summary: UPDATE Grant
       tags:
@@ -2024,7 +2025,7 @@ paths:
       summary: CREATE Application Attribute Mapping
       tags:
       - Management APIs > Applications > Application Attribute Mapping
-  /v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}:
+  /v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
@@ -2046,7 +2047,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: samlAttrID
+        name: attrMappingID
         required: true
         schema:
           type: string
@@ -2084,7 +2085,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: samlAttrID
+        name: attrMappingID
         required: true
         schema:
           type: string
@@ -2126,7 +2127,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: samlAttrID
+        name: attrMappingID
         required: true
         schema:
           type: string
@@ -13745,10 +13746,15 @@ components:
         createdAt: createdAt
         mappingType: CORE
         name: name
+        id: id
         value: value
         required: true
         updatedAt: updatedAt
       properties:
+        id:
+          description: A string that specifies the application ID.
+          readOnly: true
+          type: string
         createdAt:
           description: The time the resource was created.
           readOnly: true

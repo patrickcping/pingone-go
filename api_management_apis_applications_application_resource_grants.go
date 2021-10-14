@@ -27,7 +27,7 @@ var (
 // ManagementAPIsApplicationsApplicationResourceGrantsApiService ManagementAPIsApplicationsApplicationResourceGrantsApi service
 type ManagementAPIsApplicationsApplicationResourceGrantsApiService service
 
-type ApiCreateGrantRequest struct {
+type ApiCreateApplicationGrantRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
 	envID string
@@ -35,27 +35,27 @@ type ApiCreateGrantRequest struct {
 	applicationResourceGrant *ApplicationResourceGrant
 }
 
-func (r ApiCreateGrantRequest) ApplicationResourceGrant(applicationResourceGrant ApplicationResourceGrant) ApiCreateGrantRequest {
+func (r ApiCreateApplicationGrantRequest) ApplicationResourceGrant(applicationResourceGrant ApplicationResourceGrant) ApiCreateApplicationGrantRequest {
 	r.applicationResourceGrant = &applicationResourceGrant
 	return r
 }
 
-func (r ApiCreateGrantRequest) Execute() (ApplicationResourceGrant, *_nethttp.Response, error) {
-	return r.ApiService.CreateGrantExecute(r)
+func (r ApiCreateApplicationGrantRequest) Execute() (ApplicationResourceGrant, *_nethttp.Response, error) {
+	return r.ApiService.CreateApplicationGrantExecute(r)
 }
 
 /*
-CreateGrant CREATE Grant
+CreateApplicationGrant CREATE Grant
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiCreateGrantRequest
+ @return ApiCreateApplicationGrantRequest
 */
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGrant(ctx _context.Context, envID string, appID string) ApiCreateGrantRequest {
-	return ApiCreateGrantRequest{
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateApplicationGrant(ctx _context.Context, envID string, appID string) ApiCreateApplicationGrantRequest {
+	return ApiCreateApplicationGrantRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -65,7 +65,7 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGr
 
 // Execute executes the request
 //  @return ApplicationResourceGrant
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGrantExecute(r ApiCreateGrantRequest) (ApplicationResourceGrant, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (ApplicationResourceGrant, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGr
 		localVarReturnValue  ApplicationResourceGrant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.CreateGrant")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.CreateApplicationGrant")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -154,7 +154,120 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) CreateGr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReadAllGrantsForAnApplicationRequest struct {
+type ApiDeleteApplicationGrantRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
+	envID string
+	appID string
+	grantID string
+}
+
+
+func (r ApiDeleteApplicationGrantRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteApplicationGrantExecute(r)
+}
+
+/*
+DeleteApplicationGrant DELETE Grant
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param appID
+ @param grantID
+ @return ApiDeleteApplicationGrantRequest
+*/
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) DeleteApplicationGrant(ctx _context.Context, envID string, appID string, grantID string) ApiDeleteApplicationGrantRequest {
+	return ApiDeleteApplicationGrantRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		appID: appID,
+		grantID: grantID,
+	}
+}
+
+// Execute executes the request
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) DeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.DeleteApplicationGrant")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/grants/{grantID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"grantID"+"}", _neturl.PathEscape(parameterToString(r.grantID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllApplicationGrantsRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
 	envID string
@@ -162,22 +275,22 @@ type ApiReadAllGrantsForAnApplicationRequest struct {
 }
 
 
-func (r ApiReadAllGrantsForAnApplicationRequest) Execute() (EntityArray, *_nethttp.Response, error) {
-	return r.ApiService.ReadAllGrantsForAnApplicationExecute(r)
+func (r ApiReadAllApplicationGrantsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllApplicationGrantsExecute(r)
 }
 
 /*
-ReadAllGrantsForAnApplication READ All Grants for an Application
+ReadAllApplicationGrants READ All Grants for an Application
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiReadAllGrantsForAnApplicationRequest
+ @return ApiReadAllApplicationGrantsRequest
 */
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllGrantsForAnApplication(ctx _context.Context, envID string, appID string) ApiReadAllGrantsForAnApplicationRequest {
-	return ApiReadAllGrantsForAnApplicationRequest{
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllApplicationGrants(ctx _context.Context, envID string, appID string) ApiReadAllApplicationGrantsRequest {
+	return ApiReadAllApplicationGrantsRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -187,7 +300,7 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllG
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllGrantsForAnApplicationExecute(r ApiReadAllGrantsForAnApplicationRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (EntityArray, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -197,7 +310,7 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllG
 		localVarReturnValue  EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.ReadAllGrantsForAnApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.ReadAllApplicationGrants")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,7 +387,7 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadAllG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest struct {
+type ApiReadOneApplicationGrantRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
 	envID string
@@ -283,12 +396,12 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest struct {
 }
 
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteExecute(r)
+func (r ApiReadOneApplicationGrantRequest) Execute() (ApplicationResourceGrant, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneApplicationGrantExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete DELETE Grant
+ReadOneApplicationGrant READ One Grant for an Application
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -296,10 +409,10 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param grantID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest
+ @return ApiReadOneApplicationGrantRequest
 */
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(ctx _context.Context, envID string, appID string, grantID string) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest{
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadOneApplicationGrant(ctx _context.Context, envID string, appID string, grantID string) ApiReadOneApplicationGrantRequest {
+	return ApiReadOneApplicationGrantRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -309,131 +422,20 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/grants/{grantID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"grantID"+"}", _neturl.PathEscape(parameterToString(r.grantID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
-	envID string
-	appID string
-	grantID string
-}
-
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet READ One Grant for an Application
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param appID
- @param grantID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest
-*/
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(ctx _context.Context, envID string, appID string, grantID string) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
-		grantID: grantID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest) (*_nethttp.Response, error) {
+//  @return ApplicationResourceGrant
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) ReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (ApplicationResourceGrant, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  ApplicationResourceGrant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.ReadOneApplicationGrant")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/grants/{grantID}"
@@ -464,19 +466,19 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -489,37 +491,46 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest struct {
+type ApiUpdateApplicationGrantRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationResourceGrantsApiService
 	envID string
 	appID string
 	grantID string
-	body *map[string]interface{}
+	applicationResourceGrant *ApplicationResourceGrant
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest {
-	r.body = &body
+func (r ApiUpdateApplicationGrantRequest) ApplicationResourceGrant(applicationResourceGrant ApplicationResourceGrant) ApiUpdateApplicationGrantRequest {
+	r.applicationResourceGrant = &applicationResourceGrant
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutExecute(r)
+func (r ApiUpdateApplicationGrantRequest) Execute() (ApplicationResourceGrant, *_nethttp.Response, error) {
+	return r.ApiService.UpdateApplicationGrantExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut UPDATE Grant
+UpdateApplicationGrant UPDATE Grant
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -527,10 +538,10 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param grantID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest
+ @return ApiUpdateApplicationGrantRequest
 */
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx _context.Context, envID string, appID string, grantID string) ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest{
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) UpdateApplicationGrant(ctx _context.Context, envID string, appID string, grantID string) ApiUpdateApplicationGrantRequest {
+	return ApiUpdateApplicationGrantRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -540,18 +551,20 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest) (*_nethttp.Response, error) {
+//  @return ApplicationResourceGrant
+func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) UpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (ApplicationResourceGrant, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  ApplicationResourceGrant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationResourceGrantsApiService.UpdateApplicationGrant")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/grants/{grantID}"
@@ -581,22 +594,22 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.applicationResourceGrant
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -609,13 +622,22 @@ func (a *ManagementAPIsApplicationsApplicationResourceGrantsApiService) V1Enviro
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

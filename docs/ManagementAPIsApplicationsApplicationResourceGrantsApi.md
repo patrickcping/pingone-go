@@ -4,17 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGrant**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#CreateGrant) | **Post** /v1/environments/{envID}/applications/{appID}/grants | CREATE Grant
-[**ReadAllGrantsForAnApplication**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#ReadAllGrantsForAnApplication) | **Get** /v1/environments/{envID}/applications/{appID}/grants | READ All Grants for an Application
-[**V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete) | **Delete** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | DELETE Grant
-[**V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet) | **Get** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | READ One Grant for an Application
-[**V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut) | **Put** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | UPDATE Grant
+[**CreateApplicationGrant**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#CreateApplicationGrant) | **Post** /v1/environments/{envID}/applications/{appID}/grants | CREATE Grant
+[**DeleteApplicationGrant**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#DeleteApplicationGrant) | **Delete** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | DELETE Grant
+[**ReadAllApplicationGrants**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#ReadAllApplicationGrants) | **Get** /v1/environments/{envID}/applications/{appID}/grants | READ All Grants for an Application
+[**ReadOneApplicationGrant**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#ReadOneApplicationGrant) | **Get** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | READ One Grant for an Application
+[**UpdateApplicationGrant**](ManagementAPIsApplicationsApplicationResourceGrantsApi.md#UpdateApplicationGrant) | **Put** /v1/environments/{envID}/applications/{appID}/grants/{grantID} | UPDATE Grant
 
 
 
-## CreateGrant
+## CreateApplicationGrant
 
-> ApplicationResourceGrant CreateGrant(ctx, envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
+> ApplicationResourceGrant CreateApplicationGrant(ctx, envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
 
 CREATE Grant
 
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant(context.Background(), envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant(context.Background(), envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateGrant`: ApplicationResourceGrant
-    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateGrant`: %v\n", resp)
+    // response from `CreateApplicationGrant`: ApplicationResourceGrant
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant`: %v\n", resp)
 }
 ```
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateGrantRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateApplicationGrantRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -87,9 +87,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadAllGrantsForAnApplication
+## DeleteApplicationGrant
 
-> EntityArray ReadAllGrantsForAnApplication(ctx, envID, appID).Execute()
+> DeleteApplicationGrant(ctx, envID, appID, grantID).Execute()
+
+DELETE Grant
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    appID := "appID_example" // string | 
+    grantID := "grantID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.DeleteApplicationGrant(context.Background(), envID, appID, grantID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.DeleteApplicationGrant``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**appID** | **string** |  | 
+**grantID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteApplicationGrantRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAllApplicationGrants
+
+> EntityArray ReadAllApplicationGrants(ctx, envID, appID).Execute()
 
 READ All Grants for an Application
 
@@ -113,13 +187,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllGrantsForAnApplication(context.Background(), envID, appID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants(context.Background(), envID, appID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllGrantsForAnApplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllGrantsForAnApplication`: EntityArray
-    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllGrantsForAnApplication`: %v\n", resp)
+    // response from `ReadAllApplicationGrants`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants`: %v\n", resp)
 }
 ```
 
@@ -134,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadAllGrantsForAnApplicationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllApplicationGrantsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -160,83 +234,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete
+## ReadOneApplicationGrant
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(ctx, envID, appID, grantID).Execute()
-
-DELETE Grant
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    appID := "appID_example" // string | 
-    grantID := "grantID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete(context.Background(), envID, appID, grantID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**appID** | **string** |  | 
-**grantID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet
-
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(ctx, envID, appID, grantID).Execute()
+> ApplicationResourceGrant ReadOneApplicationGrant(ctx, envID, appID, grantID).Execute()
 
 READ One Grant for an Application
 
@@ -261,11 +261,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet(context.Background(), envID, appID, grantID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant(context.Background(), envID, appID, grantID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneApplicationGrant`: ApplicationResourceGrant
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant`: %v\n", resp)
 }
 ```
 
@@ -281,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneApplicationGrantRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ApplicationResourceGrant**](ApplicationResourceGrant.md)
 
 ### Authorization
 
@@ -308,9 +310,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut
+## UpdateApplicationGrant
 
-> V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(ctx, envID, appID, grantID).Body(body).Execute()
+> ApplicationResourceGrant UpdateApplicationGrant(ctx, envID, appID, grantID).ApplicationResourceGrant(applicationResourceGrant).Execute()
 
 UPDATE Grant
 
@@ -332,15 +334,17 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopes{*openapiclient.NewApplicationResourceGrantScopes("Id_example")}) // ApplicationResourceGrant |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut(context.Background(), envID, appID, grantID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant(context.Background(), envID, appID, grantID).ApplicationResourceGrant(applicationResourceGrant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.V1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateApplicationGrant`: ApplicationResourceGrant
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant`: %v\n", resp)
 }
 ```
 
@@ -356,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateApplicationGrantRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -364,11 +368,11 @@ Name | Type | Description  | Notes
 
 
 
- **body** | **map[string]interface{}** |  | 
+ **applicationResourceGrant** | [**ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**ApplicationResourceGrant**](ApplicationResourceGrant.md)
 
 ### Authorization
 
