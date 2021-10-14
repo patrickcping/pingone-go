@@ -25,6 +25,7 @@ type Resource struct {
 	// A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Resource *ResourceResource `json:"resource,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
@@ -213,6 +214,38 @@ func (o *Resource) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
+// GetResource returns the Resource field value if set, zero value otherwise.
+func (o *Resource) GetResource() ResourceResource {
+	if o == nil || o.Resource == nil {
+		var ret ResourceResource
+		return ret
+	}
+	return *o.Resource
+}
+
+// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Resource) GetResourceOk() (*ResourceResource, bool) {
+	if o == nil || o.Resource == nil {
+		return nil, false
+	}
+	return o.Resource, true
+}
+
+// HasResource returns a boolean if a field has been set.
+func (o *Resource) HasResource() bool {
+	if o != nil && o.Resource != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResource gets a reference to the given ResourceResource and assigns it to the Resource field.
+func (o *Resource) SetResource(v ResourceResource) {
+	o.Resource = &v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Resource) GetId() string {
 	if o == nil || o.Id == nil {
@@ -349,6 +382,9 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
+	}
+	if o.Resource != nil {
+		toSerialize["resource"] = o.Resource
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id

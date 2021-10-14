@@ -19,14 +19,14 @@ type ApplicationAccessControlGroup struct {
 	// A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
 	Type string `json:"type"`
 	// A set that specifies the group IDs for the groups the actor must belong to for access to the application.
-	Groups []string `json:"groups"`
+	Groups []ApplicationAccessControlGroupGroups `json:"groups"`
 }
 
 // NewApplicationAccessControlGroup instantiates a new ApplicationAccessControlGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAccessControlGroup(type_ string, groups []string) *ApplicationAccessControlGroup {
+func NewApplicationAccessControlGroup(type_ string, groups []ApplicationAccessControlGroupGroups) *ApplicationAccessControlGroup {
 	this := ApplicationAccessControlGroup{}
 	this.Type = type_
 	this.Groups = groups
@@ -66,9 +66,9 @@ func (o *ApplicationAccessControlGroup) SetType(v string) {
 }
 
 // GetGroups returns the Groups field value
-func (o *ApplicationAccessControlGroup) GetGroups() []string {
+func (o *ApplicationAccessControlGroup) GetGroups() []ApplicationAccessControlGroupGroups {
 	if o == nil {
-		var ret []string
+		var ret []ApplicationAccessControlGroupGroups
 		return ret
 	}
 
@@ -77,7 +77,7 @@ func (o *ApplicationAccessControlGroup) GetGroups() []string {
 
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationAccessControlGroup) GetGroupsOk() (*[]string, bool) {
+func (o *ApplicationAccessControlGroup) GetGroupsOk() (*[]ApplicationAccessControlGroupGroups, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *ApplicationAccessControlGroup) GetGroupsOk() (*[]string, bool) {
 }
 
 // SetGroups sets field value
-func (o *ApplicationAccessControlGroup) SetGroups(v []string) {
+func (o *ApplicationAccessControlGroup) SetGroups(v []ApplicationAccessControlGroupGroups) {
 	o.Groups = v
 }
 

@@ -1,49 +1,54 @@
-# GroupPopulation
+# ResourceResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The population ID | 
+**Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
-### NewGroupPopulation
+### NewResourceResource
 
-`func NewGroupPopulation(id string, ) *GroupPopulation`
+`func NewResourceResource() *ResourceResource`
 
-NewGroupPopulation instantiates a new GroupPopulation object
+NewResourceResource instantiates a new ResourceResource object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGroupPopulationWithDefaults
+### NewResourceResourceWithDefaults
 
-`func NewGroupPopulationWithDefaults() *GroupPopulation`
+`func NewResourceResourceWithDefaults() *ResourceResource`
 
-NewGroupPopulationWithDefaults instantiates a new GroupPopulation object
+NewResourceResourceWithDefaults instantiates a new ResourceResource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GroupPopulation) GetId() string`
+`func (o *ResourceResource) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GroupPopulation) GetIdOk() (*string, bool)`
+`func (o *ResourceResource) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GroupPopulation) SetId(v string)`
+`func (o *ResourceResource) SetId(v string)`
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *ResourceResource) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -84,6 +84,7 @@ configuration.go
 docs/Application.md
 docs/ApplicationAccessControl.md
 docs/ApplicationAccessControlGroup.md
+docs/ApplicationAccessControlGroupGroups.md
 docs/ApplicationAccessControlRole.md
 docs/ApplicationAttributeMapping.md
 docs/ApplicationIcon.md
@@ -202,6 +203,9 @@ docs/P1Error.md
 docs/P1ErrorDetails.md
 docs/Population.md
 docs/Resource.md
+docs/ResourceAttribute.md
+docs/ResourceResource.md
+docs/ResourceScope.md
 docs/RiskEvaluation.md
 docs/RiskEvaluationDetails.md
 docs/RiskEvaluationDetailsIpAddressReputation.md
@@ -264,6 +268,7 @@ go.sum
 model_application.go
 model_application_access_control.go
 model_application_access_control_group.go
+model_application_access_control_group_groups.go
 model_application_access_control_role.go
 model_application_attribute_mapping.go
 model_application_icon.go
@@ -305,6 +310,9 @@ model_p1_error.go
 model_p1_error_details.go
 model_population.go
 model_resource.go
+model_resource_attribute.go
+model_resource_resource.go
+model_resource_scope.go
 model_risk_evaluation.go
 model_risk_evaluation_details.go
 model_risk_evaluation_details_ip_address_reputation.go

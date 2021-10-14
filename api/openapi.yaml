@@ -8879,6 +8879,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneResource
       parameters:
       - explode: false
         in: path
@@ -8954,6 +8955,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllResourceScopes
       parameters:
       - explode: false
         in: path
@@ -8978,7 +8980,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Scopes (Resource)
       tags:
@@ -8986,6 +8990,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createResourceScope
       parameters:
       - explode: false
         in: path
@@ -9005,13 +9010,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: p1:update:user:name-only
-                description: Access control scope to limit update to name only
-                schemaAttributes:
-                - name.family
-                - name.given
-              type: object
+              $ref: '#/components/schemas/ResourceScope'
       responses:
         "401":
           content:
@@ -9021,7 +9020,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
           description: Successful response
       summary: CREATE PingOne access control scope
       tags:
@@ -9030,6 +9031,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteResourceScope
       parameters:
       - explode: false
         in: path
@@ -9067,6 +9069,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneResourceScope
       parameters:
       - explode: false
         in: path
@@ -9098,7 +9101,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
           description: Successful response
       summary: READ One Scope
       tags:
@@ -9106,6 +9111,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateResourceScope
       parameters:
       - explode: false
         in: path
@@ -9132,22 +9138,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: p1:update:user
-                description: An UPDATED access control scope that includes only the
-                  user schema attributes listed in the schemaAttributes property
-                schemaAttributes:
-                - name.family
-                - name.given
-                - email
-                - address.streetAddress
-                - address.locality
-                - address.region
-                - address.postalCode
-                - address.countryCode
-                - primaryPhone
-                - mobilePhone
-              type: object
+              $ref: '#/components/schemas/ResourceScope'
       responses:
         "401":
           content:
@@ -9157,7 +9148,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
           description: Successful response
       summary: UPDATE PingOne access control scope
       tags:
@@ -9166,6 +9159,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllResourceAttributes
       parameters:
       - explode: false
         in: path
@@ -9190,7 +9184,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Resource Attributes
       tags:
@@ -9198,6 +9194,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createResourceAttribute
       parameters:
       - explode: false
         in: path
@@ -9217,10 +9214,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: firstName
-                value: ${user.name.given}
-              type: object
+              $ref: '#/components/schemas/ResourceAttribute'
       responses:
         "401":
           content:
@@ -9230,7 +9224,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAttribute'
           description: Successful response
       summary: CREATE Resource Attribute
       tags:
@@ -9239,6 +9235,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteResourceAttribute
       parameters:
       - explode: false
         in: path
@@ -9276,6 +9273,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneResourceAttribute
       parameters:
       - explode: false
         in: path
@@ -9307,7 +9305,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAttribute'
           description: Successful response
       summary: READ One Resource Attribute
       tags:
@@ -9315,6 +9315,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateResourceAttribute
       parameters:
       - explode: false
         in: path
@@ -9341,10 +9342,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: nickname
-                value: ${user.nickname}
-              type: object
+              $ref: '#/components/schemas/ResourceAttribute'
       responses:
         "401":
           content:
@@ -9354,7 +9352,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAttribute'
           description: Successful response
       summary: UPDATE Resource Attribute
       tags:
@@ -13332,6 +13332,8 @@ components:
             audience: audience
             environment:
               id: id
+            resource:
+              id: id
             accessTokenValiditySeconds: 5
             name: name
             description: description
@@ -13341,6 +13343,8 @@ components:
           - createdAt: createdAt
             audience: audience
             environment:
+              id: id
+            resource:
               id: id
             accessTokenValiditySeconds: 5
             name: name
@@ -13560,6 +13564,27 @@ components:
           attributes:
           - ""
           - ""
+          scopes:
+          - createdAt: createdAt
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            schemaAttributes:
+            - schemaAttributes
+            - schemaAttributes
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            schemaAttributes:
+            - schemaAttributes
+            - schemaAttributes
+            updatedAt: updatedAt
           roleAssignments:
           - environment:
               id: id
@@ -14676,6 +14701,8 @@ components:
         audience: audience
         environment:
           id: id
+        resource:
+          id: id
         accessTokenValiditySeconds: 5
         name: name
         description: description
@@ -14703,6 +14730,8 @@ components:
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        resource:
+          $ref: '#/components/schemas/Resource_resource'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -14720,6 +14749,99 @@ components:
           - OPENID_CONNECT
           - PING_ONE_API
           - CUSTOM
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      required:
+      - name
+      type: object
+    ResourceAttribute:
+      example:
+        environment:
+          id: id
+        resource:
+          id: id
+        name: name
+        id: id
+        type: CORE
+        value: value
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the name of the custom resource attribute
+            to be included in the access token
+          type: string
+        type:
+          description: A string that specifies the type of resource attribute. Options
+            are CORE - The claim is required and cannot not be removed., CUSTOM -
+            The claim is not a CORE attribute. All created attributes are of this
+            type.
+          enum:
+          - CORE
+          - CUSTOM
+          type: string
+        value:
+          description: A string that specifies the value of the custom resource attribute.
+            This value can be a placeholder that references an attribute in the user
+            schema, expressed as “${user.path.to.value}”, or it can be a static string.
+            Placeholders must be valid, enabled attributes in the environment’s user
+            schema. Examples fo valid values are “${user.email}”, “${user.name.family}”,
+            and “myClaimValueString”
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        resource:
+          $ref: '#/components/schemas/Resource_resource'
+      required:
+      - name
+      - value
+      type: object
+    ResourceScope:
+      example:
+        createdAt: createdAt
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+        schemaAttributes:
+        - schemaAttributes
+        - schemaAttributes
+        updatedAt: updatedAt
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the resource scope name.
+          type: string
+        description:
+          description: A string that specifies the description of the scope.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        schemaAttributes:
+          description: An array that specifies the user schema attributes that can
+            be read or updated for the specified PingOne access control scope. The
+            value is an array of schema attribute paths (such as username, name.given,
+            shirtSize) that the scope controls. This property is supported only for
+            the p1:read:user, p1:update:user and p1:read:user:{suffix} and p1:update:user:{suffix}
+            scopes. No other PingOne platform scopes allow this behavior. Any attributes
+            not listed in the attribute array are excluded from the read or update
+            action. The wildcard path (*) in the array includes all attributes and
+            cannot be used in conjunction with any other user schema attribute paths
+          items:
+            type: string
+          type: array
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
           type: string
         updatedAt:
           description: The time the resource was last updated.
@@ -15549,6 +15671,8 @@ components:
           audience: audience
           environment:
             id: id
+          resource:
+            id: id
           accessTokenValiditySeconds: 5
           name: name
           description: description
@@ -15558,6 +15682,8 @@ components:
         - createdAt: createdAt
           audience: audience
           environment:
+            id: id
+          resource:
             id: id
           accessTokenValiditySeconds: 5
           name: name
@@ -15777,6 +15903,27 @@ components:
         attributes:
         - ""
         - ""
+        scopes:
+        - createdAt: createdAt
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          schemaAttributes:
+          - schemaAttributes
+          - schemaAttributes
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          schemaAttributes:
+          - schemaAttributes
+          - schemaAttributes
+          updatedAt: updatedAt
         roleAssignments:
         - environment:
             id: id
@@ -15818,6 +15965,7 @@ components:
             oneOf:
             - $ref: '#/components/schemas/ApplicationAttributeMapping'
             - $ref: '#/components/schemas/SchemaAttribute'
+            - $ref: '#/components/schemas/ResourceAttribute'
           type: array
         applications:
           items:
@@ -15848,6 +15996,10 @@ components:
         resources:
           items:
             $ref: '#/components/schemas/Resource'
+          type: array
+        scopes:
+          items:
+            $ref: '#/components/schemas/ResourceScope'
           type: array
         riskPolicySets:
           items:
@@ -15885,6 +16037,13 @@ components:
       required:
       - type
       type: object
+    Application_accessControl_group_groups:
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
     Application_accessControl_group:
       properties:
         type:
@@ -15898,7 +16057,7 @@ components:
           description: A set that specifies the group IDs for the groups the actor
             must belong to for access to the application.
           items:
-            type: string
+            $ref: '#/components/schemas/Application_accessControl_group_groups'
           type: array
       required:
       - groups
@@ -16295,6 +16454,8 @@ components:
         id:
           description: The population ID
           type: string
+      required:
+      - id
       type: object
     Group_directMemberCounts:
       description: An object containing a users (int) property. This property lists
@@ -17065,6 +17226,14 @@ components:
       required:
       - maxScore
       - minScore
+      type: object
+    Resource_resource:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      readOnly: true
       type: object
     Role_permissions:
       example:

@@ -4,88 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDResourcesResourceIDScopesGet**](ManagementAPIsResourcesResourceScopesApi.md#V1EnvironmentsEnvIDResourcesResourceIDScopesGet) | **Get** /v1/environments/{envID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
-[**V1EnvironmentsEnvIDResourcesResourceIDScopesPost**](ManagementAPIsResourcesResourceScopesApi.md#V1EnvironmentsEnvIDResourcesResourceIDScopesPost) | **Post** /v1/environments/{envID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
-[**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete**](ManagementAPIsResourcesResourceScopesApi.md#V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete) | **Delete** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
-[**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet**](ManagementAPIsResourcesResourceScopesApi.md#V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet) | **Get** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | READ One Scope
-[**V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut**](ManagementAPIsResourcesResourceScopesApi.md#V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut) | **Put** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | UPDATE PingOne access control scope
+[**CreateResourceScope**](ManagementAPIsResourcesResourceScopesApi.md#CreateResourceScope) | **Post** /v1/environments/{envID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
+[**DeleteResourceScope**](ManagementAPIsResourcesResourceScopesApi.md#DeleteResourceScope) | **Delete** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
+[**ReadAllResourceScopes**](ManagementAPIsResourcesResourceScopesApi.md#ReadAllResourceScopes) | **Get** /v1/environments/{envID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
+[**ReadOneResourceScope**](ManagementAPIsResourcesResourceScopesApi.md#ReadOneResourceScope) | **Get** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | READ One Scope
+[**UpdateResourceScope**](ManagementAPIsResourcesResourceScopesApi.md#UpdateResourceScope) | **Put** /v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID} | UPDATE PingOne access control scope
 
 
 
-## V1EnvironmentsEnvIDResourcesResourceIDScopesGet
+## CreateResourceScope
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesGet(ctx, envID, resourceID).Execute()
-
-READ All Scopes (Resource)
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    resourceID := "resourceID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesGet(context.Background(), envID, resourceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**resourceID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDScopesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDResourcesResourceIDScopesPost
-
-> V1EnvironmentsEnvIDResourcesResourceIDScopesPost(ctx, envID, resourceID).Body(body).Execute()
+> ResourceScope CreateResourceScope(ctx, envID, resourceID).ResourceScope(resourceScope).Execute()
 
 CREATE PingOne access control scope
 
@@ -106,15 +35,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    resourceScope := *openapiclient.NewResourceScope("Name_example") // ResourceScope |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesPost(context.Background(), envID, resourceID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.CreateResourceScope(context.Background(), envID, resourceID).ResourceScope(resourceScope).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.CreateResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateResourceScope`: ResourceScope
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourceScopesApi.CreateResourceScope`: %v\n", resp)
 }
 ```
 
@@ -129,18 +60,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDScopesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateResourceScopeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **resourceScope** | [**ResourceScope**](ResourceScope.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**ResourceScope**](ResourceScope.md)
 
 ### Authorization
 
@@ -156,9 +87,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete
+## DeleteResourceScope
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(ctx, envID, resourceID, scopeID).Execute()
+> DeleteResourceScope(ctx, envID, resourceID, scopeID).Execute()
 
 DELETE Scope
 
@@ -183,9 +114,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete(context.Background(), envID, resourceID, scopeID).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.DeleteResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.DeleteResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -203,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteResourceScopeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -230,9 +161,82 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet
+## ReadAllResourceScopes
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(ctx, envID, resourceID, scopeID).Execute()
+> EntityArray ReadAllResourceScopes(ctx, envID, resourceID).Execute()
+
+READ All Scopes (Resource)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    resourceID := "resourceID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes(context.Background(), envID, resourceID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllResourceScopes`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**resourceID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllResourceScopesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneResourceScope
+
+> ResourceScope ReadOneResourceScope(ctx, envID, resourceID, scopeID).Execute()
 
 READ One Scope
 
@@ -257,11 +261,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet(context.Background(), envID, resourceID, scopeID).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneResourceScope`: ResourceScope
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope`: %v\n", resp)
 }
 ```
 
@@ -277,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneResourceScopeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ResourceScope**](ResourceScope.md)
 
 ### Authorization
 
@@ -304,9 +310,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut
+## UpdateResourceScope
 
-> V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(ctx, envID, resourceID, scopeID).Body(body).Execute()
+> ResourceScope UpdateResourceScope(ctx, envID, resourceID, scopeID).ResourceScope(resourceScope).Execute()
 
 UPDATE PingOne access control scope
 
@@ -328,15 +334,17 @@ func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
     scopeID := "scopeID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    resourceScope := *openapiclient.NewResourceScope("Name_example") // ResourceScope |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut(context.Background(), envID, resourceID, scopeID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope(context.Background(), envID, resourceID, scopeID).ResourceScope(resourceScope).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.V1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateResourceScope`: ResourceScope
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope`: %v\n", resp)
 }
 ```
 
@@ -352,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateResourceScopeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -360,11 +368,11 @@ Name | Type | Description  | Notes
 
 
 
- **body** | **map[string]interface{}** |  | 
+ **resourceScope** | [**ResourceScope**](ResourceScope.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**ResourceScope**](ResourceScope.md)
 
 ### Authorization
 

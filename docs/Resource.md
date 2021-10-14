@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
 **Type** | Pointer to **string** | A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne. | [optional] 
@@ -157,6 +158,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *Resource) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetResource
+
+`func (o *Resource) GetResource() ResourceResource`
+
+GetResource returns the Resource field if non-nil, zero value otherwise.
+
+### GetResourceOk
+
+`func (o *Resource) GetResourceOk() (*ResourceResource, bool)`
+
+GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResource
+
+`func (o *Resource) SetResource(v ResourceResource)`
+
+SetResource sets Resource field to given value.
+
+### HasResource
+
+`func (o *Resource) HasResource() bool`
+
+HasResource returns a boolean if a field has been set.
 
 ### GetId
 

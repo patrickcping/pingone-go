@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**[]OneOfApplicationAttributeMappingSchemaAttribute**](OneOfApplicationAttributeMappingSchemaAttribute.md) |  | [optional] 
+**Attributes** | Pointer to [**[]OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute**](OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute.md) |  | [optional] 
 **Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
+**Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **RiskPolicySets** | Pointer to [**[]RiskPolicySet**](RiskPolicySet.md) |  | [optional] 
 **RiskPredictors** | Pointer to [**[]RiskPredictor**](RiskPredictor.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
@@ -40,20 +41,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAttributes
 
-`func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttribute`
+`func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttribute, bool)`
+`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttribute)`
+`func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -237,6 +238,31 @@ SetResources sets Resources field to given value.
 `func (o *EntityArrayEmbedded) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetScopes
+
+`func (o *EntityArrayEmbedded) GetScopes() []ResourceScope`
+
+GetScopes returns the Scopes field if non-nil, zero value otherwise.
+
+### GetScopesOk
+
+`func (o *EntityArrayEmbedded) GetScopesOk() (*[]ResourceScope, bool)`
+
+GetScopesOk returns a tuple with the Scopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopes
+
+`func (o *EntityArrayEmbedded) SetScopes(v []ResourceScope)`
+
+SetScopes sets Scopes field to given value.
+
+### HasScopes
+
+`func (o *EntityArrayEmbedded) HasScopes() bool`
+
+HasScopes returns a boolean if a field has been set.
 
 ### GetRiskPolicySets
 

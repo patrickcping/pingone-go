@@ -24,6 +24,7 @@ type EntityArrayEmbedded struct {
 	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
 	Populations      *[]Population               `json:"populations,omitempty"`
 	Resources        *[]Resource                 `json:"resources,omitempty"`
+	Scopes           *[]ResourceScope            `json:"scopes,omitempty"`
 	RiskPolicySets   *[]RiskPolicySet            `json:"riskPolicySets,omitempty"`
 	RiskPredictors   *[]RiskPredictor            `json:"riskPredictors,omitempty"`
 	RoleAssignments  *[]RoleAssignment           `json:"roleAssignments,omitempty"`
@@ -76,7 +77,7 @@ func (o *EntityArrayEmbedded) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []OneOfApplicationAttributeMappingSchemaAttribute and assigns it to the Attributes field.
+// SetAttributes gets a reference to the given []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute and assigns it to the Attributes field.
 func (o *EntityArrayEmbedded) SetAttributes(v []interface{}) {
 	o.Attributes = &v
 }
@@ -305,6 +306,38 @@ func (o *EntityArrayEmbedded) SetResources(v []Resource) {
 	o.Resources = &v
 }
 
+// GetScopes returns the Scopes field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetScopes() []ResourceScope {
+	if o == nil || o.Scopes == nil {
+		var ret []ResourceScope
+		return ret
+	}
+	return *o.Scopes
+}
+
+// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetScopesOk() (*[]ResourceScope, bool) {
+	if o == nil || o.Scopes == nil {
+		return nil, false
+	}
+	return o.Scopes, true
+}
+
+// HasScopes returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasScopes() bool {
+	if o != nil && o.Scopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScopes gets a reference to the given []ResourceScope and assigns it to the Scopes field.
+func (o *EntityArrayEmbedded) SetScopes(v []ResourceScope) {
+	o.Scopes = &v
+}
+
 // GetRiskPolicySets returns the RiskPolicySets field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
 	if o == nil || o.RiskPolicySets == nil {
@@ -522,6 +555,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
+	}
+	if o.Scopes != nil {
+		toSerialize["scopes"] = o.Scopes
 	}
 	if o.RiskPolicySets != nil {
 		toSerialize["riskPolicySets"] = o.RiskPolicySets
