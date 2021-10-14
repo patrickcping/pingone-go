@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** | A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW. | [optional] 
+**Level** | **string** | A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW. | 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewRiskPredictorDefaultResult
 
-`func NewRiskPredictorDefaultResult() *RiskPredictorDefaultResult`
+`func NewRiskPredictorDefaultResult(level string, ) *RiskPredictorDefaultResult`
 
 NewRiskPredictorDefaultResult instantiates a new RiskPredictorDefaultResult object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetLevel sets Level field to given value.
 
-### HasLevel
-
-`func (o *RiskPredictorDefaultResult) HasLevel() bool`
-
-HasLevel returns a boolean if a field has been set.
 
 ### GetType
 

@@ -19,7 +19,7 @@ type BillOfMaterialsProducts struct {
 	// A string that specifies the BOM ID
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// A string that specifies the description of the product or standalone service
 	Description *string `json:"description,omitempty"`
 	Console *BillOfMaterialsConsole `json:"console,omitempty"`
@@ -31,8 +31,9 @@ type BillOfMaterialsProducts struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillOfMaterialsProducts() *BillOfMaterialsProducts {
+func NewBillOfMaterialsProducts(type_ string) *BillOfMaterialsProducts {
 	this := BillOfMaterialsProducts{}
+	this.Type = type_
 	return &this
 }
 
@@ -76,36 +77,28 @@ func (o *BillOfMaterialsProducts) SetId(v string) {
 	o.Id = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *BillOfMaterialsProducts) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProducts) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *BillOfMaterialsProducts) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *BillOfMaterialsProducts) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -209,7 +202,7 @@ func (o BillOfMaterialsProducts) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.Description != nil {

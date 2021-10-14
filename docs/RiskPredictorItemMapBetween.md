@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MinScore** | Pointer to **int32** |  | [optional] 
-**MaxScore** | Pointer to **int32** |  | [optional] 
+**MinScore** | **int32** |  | 
+**MaxScore** | **int32** |  | 
 
 ## Methods
 
 ### NewRiskPredictorItemMapBetween
 
-`func NewRiskPredictorItemMapBetween() *RiskPredictorItemMapBetween`
+`func NewRiskPredictorItemMapBetween(minScore int32, maxScore int32, ) *RiskPredictorItemMapBetween`
 
 NewRiskPredictorItemMapBetween instantiates a new RiskPredictorItemMapBetween object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetMinScore sets MinScore field to given value.
 
-### HasMinScore
-
-`func (o *RiskPredictorItemMapBetween) HasMinScore() bool`
-
-HasMinScore returns a boolean if a field has been set.
 
 ### GetMaxScore
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetMaxScore sets MaxScore field to given value.
 
-### HasMaxScore
-
-`func (o *RiskPredictorItemMapBetween) HasMaxScore() bool`
-
-HasMaxScore returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

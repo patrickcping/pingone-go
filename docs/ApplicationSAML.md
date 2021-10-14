@@ -8,19 +8,19 @@ Name | Type | Description | Notes
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
-**Enabled** | Pointer to **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
+**Enabled** | **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**ApplicationIcon**](ApplicationIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **LoginPageUrl** | Pointer to **string** | A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains. | [optional] 
-**Name** | Pointer to **string** | A string that specifies the name of the application. This is a required property. | [optional] 
-**Protocol** | Pointer to **string** | A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML. | [optional] 
+**Name** | **string** | A string that specifies the name of the application. This is a required property. | 
+**Protocol** | **string** | A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML. | 
 **Tags** | Pointer to **[]string** | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
-**Type** | Pointer to **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | [optional] 
+**Type** | **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
-**AcsUrls** | Pointer to **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | [optional] 
-**AssertionDuration** | Pointer to **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | [optional] 
+**AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
+**AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
 **IdpSigningtype** | Pointer to [**ApplicationSAMLAllOfIdpSigningtype**](ApplicationSAMLAllOfIdpSigningtype.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
@@ -28,14 +28,14 @@ Name | Type | Description | Notes
 **SloBinding** | Pointer to **string** | A string that specifies the binding protocol to be used for the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST; existing configurations with no data default to HTTP_POST. This is an optional property. | [optional] 
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
-**SpEntityId** | Pointer to **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | [optional] 
+**SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplicationSAML
 
-`func NewApplicationSAML() *ApplicationSAML`
+`func NewApplicationSAML(enabled bool, name string, protocol string, type_ string, acsUrls []string, assertionDuration int32, spEntityId string, ) *ApplicationSAML`
 
 NewApplicationSAML instantiates a new ApplicationSAML object
 This constructor will assign default values to properties that have it defined,
@@ -169,11 +169,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *ApplicationSAML) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -294,11 +289,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ApplicationSAML) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetProtocol
 
@@ -319,11 +309,6 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
-### HasProtocol
-
-`func (o *ApplicationSAML) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -369,11 +354,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ApplicationSAML) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -444,11 +424,6 @@ and a boolean to check if the value has been set.
 
 SetAcsUrls sets AcsUrls field to given value.
 
-### HasAcsUrls
-
-`func (o *ApplicationSAML) HasAcsUrls() bool`
-
-HasAcsUrls returns a boolean if a field has been set.
 
 ### GetAssertionDuration
 
@@ -469,11 +444,6 @@ and a boolean to check if the value has been set.
 
 SetAssertionDuration sets AssertionDuration field to given value.
 
-### HasAssertionDuration
-
-`func (o *ApplicationSAML) HasAssertionDuration() bool`
-
-HasAssertionDuration returns a boolean if a field has been set.
 
 ### GetAssertionSigned
 
@@ -669,11 +639,6 @@ and a boolean to check if the value has been set.
 
 SetSpEntityId sets SpEntityId field to given value.
 
-### HasSpEntityId
-
-`func (o *ApplicationSAML) HasSpEntityId() bool`
-
-HasSpEntityId returns a boolean if a field has been set.
 
 ### GetSpVerification
 

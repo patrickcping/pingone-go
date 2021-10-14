@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the custom bookmark. The name must be unique among the product bookmarks and be 50 characters or fewer. | [optional] 
-**Href** | Pointer to **string** | A valid URL for the bookmark. | [optional] 
+**Name** | **string** | Name of the custom bookmark. The name must be unique among the product bookmarks and be 50 characters or fewer. | 
+**Href** | **string** | A valid URL for the bookmark. | 
 
 ## Methods
 
 ### NewBillOfMaterialsBookmarks
 
-`func NewBillOfMaterialsBookmarks() *BillOfMaterialsBookmarks`
+`func NewBillOfMaterialsBookmarks(name string, href string, ) *BillOfMaterialsBookmarks`
 
 NewBillOfMaterialsBookmarks instantiates a new BillOfMaterialsBookmarks object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *BillOfMaterialsBookmarks) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetHref
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetHref sets Href field to given value.
 
-### HasHref
-
-`func (o *BillOfMaterialsBookmarks) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

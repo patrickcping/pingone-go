@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies a description for this policy set. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters. | [optional] 
+**Name** | **string** | A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters. | 
 **RiskPolicies** | Pointer to [**[]RiskPolicySetRiskPolicies**](RiskPolicySetRiskPolicies.md) | An array of policies related to this policy set. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated (format ISO-8061). | [optional] [readonly] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPolicySet
 
-`func NewRiskPolicySet() *RiskPolicySet`
+`func NewRiskPolicySet(name string, ) *RiskPolicySet`
 
 NewRiskPolicySet instantiates a new RiskPolicySet object
 This constructor will assign default values to properties that have it defined,
@@ -202,11 +202,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *RiskPolicySet) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetRiskPolicies
 

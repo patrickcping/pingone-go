@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer. | [optional] 
+**Type** | **string** | A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer. | 
 
 ## Methods
 
 ### NewApplicationAccessControlRole
 
-`func NewApplicationAccessControlRole() *ApplicationAccessControlRole`
+`func NewApplicationAccessControlRole(type_ string, ) *ApplicationAccessControlRole`
 
 NewApplicationAccessControlRole instantiates a new ApplicationAccessControlRole object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ApplicationAccessControlRole) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,7 +21,7 @@ type User struct {
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format.
-	Email *string `json:"email,omitempty"`
+	Email string `json:"email"`
 	// A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created.
 	Enabled *bool `json:"enabled,omitempty"`
 	Environment *UserEnvironment `json:"environment,omitempty"`
@@ -47,7 +47,7 @@ type User struct {
 	Nickname *string `json:"nickname,omitempty"`
 	Password *UserPassword `json:"password,omitempty"`
 	Photo *UserPhoto `json:"photo,omitempty"`
-	Population *UserPopulation `json:"population,omitempty"`
+	Population UserPopulation `json:"population"`
 	// A string that specifies the user’s preferred written or spoken languages, which are optional. This may be explicitly set to null when updating a user to unset it. If provided, the format of the value must be a valid language range and the same as the HTTP Accept-Language header field (not including Accept-Language:) and is specified in Section 5.3.5 of RFC 7231. For example en-US, en-gb;q=0.8, en;q=0.7.
 	PreferredLanguage *string `json:"preferredLanguage,omitempty"`
 	// A string that specifies the user’s primary phone number, which is optional. This might also match the mobilePhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32.
@@ -61,7 +61,7 @@ type User struct {
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128 characters (min/max=1/128).
-	Username *string `json:"username,omitempty"`
+	Username string `json:"username"`
 	// Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
 	VerifyStatus *string `json:"verifyStatus,omitempty"`
 }
@@ -70,8 +70,11 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser() *User {
+func NewUser(email string, population UserPopulation, username string) *User {
 	this := User{}
+	this.Email = email
+	this.Population = population
+	this.Username = username
 	return &this
 }
 
@@ -179,36 +182,28 @@ func (o *User) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value
 func (o *User) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+
+	return o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *User) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Email, true
+	return &o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *User) HasEmail() bool {
-	if o != nil && o.Email != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail sets field value
 func (o *User) SetEmail(v string) {
-	o.Email = &v
+	o.Email = v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -723,36 +718,28 @@ func (o *User) SetPhoto(v UserPhoto) {
 	o.Photo = &v
 }
 
-// GetPopulation returns the Population field value if set, zero value otherwise.
+// GetPopulation returns the Population field value
 func (o *User) GetPopulation() UserPopulation {
-	if o == nil || o.Population == nil {
+	if o == nil {
 		var ret UserPopulation
 		return ret
 	}
-	return *o.Population
+
+	return o.Population
 }
 
-// GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
+// GetPopulationOk returns a tuple with the Population field value
 // and a boolean to check if the value has been set.
 func (o *User) GetPopulationOk() (*UserPopulation, bool) {
-	if o == nil || o.Population == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Population, true
+	return &o.Population, true
 }
 
-// HasPopulation returns a boolean if a field has been set.
-func (o *User) HasPopulation() bool {
-	if o != nil && o.Population != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPopulation gets a reference to the given UserPopulation and assigns it to the Population field.
+// SetPopulation sets field value
 func (o *User) SetPopulation(v UserPopulation) {
-	o.Population = &v
+	o.Population = v
 }
 
 // GetPreferredLanguage returns the PreferredLanguage field value if set, zero value otherwise.
@@ -947,36 +934,28 @@ func (o *User) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value
 func (o *User) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Username
+
+	return o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *User) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Username, true
+	return &o.Username, true
 }
 
-// HasUsername returns a boolean if a field has been set.
-func (o *User) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername sets field value
 func (o *User) SetUsername(v string) {
-	o.Username = &v
+	o.Username = v
 }
 
 // GetVerifyStatus returns the VerifyStatus field value if set, zero value otherwise.
@@ -1022,7 +1001,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Email != nil {
+	if true {
 		toSerialize["email"] = o.Email
 	}
 	if o.Enabled != nil {
@@ -1073,7 +1052,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Photo != nil {
 		toSerialize["photo"] = o.Photo
 	}
-	if o.Population != nil {
+	if true {
 		toSerialize["population"] = o.Population
 	}
 	if o.PreferredLanguage != nil {
@@ -1094,7 +1073,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.Username != nil {
+	if true {
 		toSerialize["username"] = o.Username
 	}
 	if o.VerifyStatus != nil {

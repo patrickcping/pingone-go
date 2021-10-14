@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Href** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
+**Href** | **string** |  | 
 
 ## Methods
 
 ### NewApplicationIcon
 
-`func NewApplicationIcon() *ApplicationIcon`
+`func NewApplicationIcon(id string, href string, ) *ApplicationIcon`
 
 NewApplicationIcon instantiates a new ApplicationIcon object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ApplicationIcon) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetHref
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetHref sets Href field to given value.
 
-### HasHref
-
-`func (o *ApplicationIcon) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

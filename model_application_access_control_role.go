@@ -17,15 +17,16 @@ import (
 // ApplicationAccessControlRole struct for ApplicationAccessControlRole
 type ApplicationAccessControlRole struct {
 	// A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 }
 
 // NewApplicationAccessControlRole instantiates a new ApplicationAccessControlRole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAccessControlRole() *ApplicationAccessControlRole {
+func NewApplicationAccessControlRole(type_ string) *ApplicationAccessControlRole {
 	this := ApplicationAccessControlRole{}
+	this.Type = type_
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewApplicationAccessControlRoleWithDefaults() *ApplicationAccessControlRole
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ApplicationAccessControlRole) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlRole) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApplicationAccessControlRole) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ApplicationAccessControlRole) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o ApplicationAccessControlRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

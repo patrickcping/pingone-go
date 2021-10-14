@@ -24,7 +24,7 @@ type ApplicationOIDC struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -32,13 +32,13 @@ type ApplicationOIDC struct {
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
-	Protocol *string `json:"protocol,omitempty"`
+	Protocol string `json:"protocol"`
 	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
 	Tags *[]string `json:"tags,omitempty"`
 	// A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
@@ -49,7 +49,7 @@ type ApplicationOIDC struct {
 	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
 	PackageName *string `json:"packageName,omitempty"`
 	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
-	GrantTypes *[]string `json:"grantTypes,omitempty"`
+	GrantTypes []string `json:"grantTypes"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256.
@@ -65,15 +65,21 @@ type ApplicationOIDC struct {
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
 	ResponseTypes *[]string `json:"responseTypes,omitempty"`
 	// A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
-	TokenEndpointAuthMethod *string `json:"tokenEndpointAuthMethod,omitempty"`
+	TokenEndpointAuthMethod string `json:"tokenEndpointAuthMethod"`
 }
 
 // NewApplicationOIDC instantiates a new ApplicationOIDC object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationOIDC() *ApplicationOIDC {
+func NewApplicationOIDC(enabled bool, name string, protocol string, type_ string, grantTypes []string, tokenEndpointAuthMethod string) *ApplicationOIDC {
 	this := ApplicationOIDC{}
+	this.Enabled = enabled
+	this.Name = name
+	this.Protocol = protocol
+	this.Type = type_
+	this.GrantTypes = grantTypes
+	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
 	return &this
 }
 
@@ -213,36 +219,28 @@ func (o *ApplicationOIDC) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *ApplicationOIDC) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *ApplicationOIDC) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -373,68 +371,52 @@ func (o *ApplicationOIDC) SetLoginPageUrl(v string) {
 	o.LoginPageUrl = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ApplicationOIDC) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ApplicationOIDC) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value
 func (o *ApplicationOIDC) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Protocol
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Protocol, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *ApplicationOIDC) SetProtocol(v string) {
-	o.Protocol = &v
+	o.Protocol = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -469,36 +451,28 @@ func (o *ApplicationOIDC) SetTags(v []string) {
 	o.Tags = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ApplicationOIDC) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ApplicationOIDC) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -661,36 +635,28 @@ func (o *ApplicationOIDC) SetPackageName(v string) {
 	o.PackageName = &v
 }
 
-// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
+// GetGrantTypes returns the GrantTypes field value
 func (o *ApplicationOIDC) GetGrantTypes() []string {
-	if o == nil || o.GrantTypes == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.GrantTypes
+
+	return o.GrantTypes
 }
 
-// GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
+// GetGrantTypesOk returns a tuple with the GrantTypes field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetGrantTypesOk() (*[]string, bool) {
-	if o == nil || o.GrantTypes == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.GrantTypes, true
+	return &o.GrantTypes, true
 }
 
-// HasGrantTypes returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasGrantTypes() bool {
-	if o != nil && o.GrantTypes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGrantTypes gets a reference to the given []string and assigns it to the GrantTypes field.
+// SetGrantTypes sets field value
 func (o *ApplicationOIDC) SetGrantTypes(v []string) {
-	o.GrantTypes = &v
+	o.GrantTypes = v
 }
 
 // GetHomePageUrl returns the HomePageUrl field value if set, zero value otherwise.
@@ -917,36 +883,28 @@ func (o *ApplicationOIDC) SetResponseTypes(v []string) {
 	o.ResponseTypes = &v
 }
 
-// GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value if set, zero value otherwise.
+// GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value
 func (o *ApplicationOIDC) GetTokenEndpointAuthMethod() string {
-	if o == nil || o.TokenEndpointAuthMethod == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenEndpointAuthMethod
+
+	return o.TokenEndpointAuthMethod
 }
 
-// GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value if set, nil otherwise
+// GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTokenEndpointAuthMethodOk() (*string, bool) {
-	if o == nil || o.TokenEndpointAuthMethod == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TokenEndpointAuthMethod, true
+	return &o.TokenEndpointAuthMethod, true
 }
 
-// HasTokenEndpointAuthMethod returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasTokenEndpointAuthMethod() bool {
-	if o != nil && o.TokenEndpointAuthMethod != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenEndpointAuthMethod gets a reference to the given string and assigns it to the TokenEndpointAuthMethod field.
+// SetTokenEndpointAuthMethod sets field value
 func (o *ApplicationOIDC) SetTokenEndpointAuthMethod(v string) {
-	o.TokenEndpointAuthMethod = &v
+	o.TokenEndpointAuthMethod = v
 }
 
 func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
@@ -963,7 +921,7 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Environment != nil {
@@ -978,16 +936,16 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if o.LoginPageUrl != nil {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Protocol != nil {
+	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.UpdatedAt != nil {
@@ -1005,7 +963,7 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if o.PackageName != nil {
 		toSerialize["packageName"] = o.PackageName
 	}
-	if o.GrantTypes != nil {
+	if true {
 		toSerialize["grantTypes"] = o.GrantTypes
 	}
 	if o.HomePageUrl != nil {
@@ -1029,7 +987,7 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if o.ResponseTypes != nil {
 		toSerialize["responseTypes"] = o.ResponseTypes
 	}
-	if o.TokenEndpointAuthMethod != nil {
+	if true {
 		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	}
 	return json.Marshal(toSerialize)

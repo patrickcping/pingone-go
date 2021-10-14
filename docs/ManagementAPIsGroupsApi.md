@@ -34,7 +34,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    group := *openapiclient.NewGroup() // Group |  (optional)
+    group := *openapiclient.NewGroup("Name_example") // Group |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -327,7 +327,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     groupID := "groupID_example" // string | 
-    group := *openapiclient.NewGroup() // Group |  (optional)
+    group := *openapiclient.NewGroup("Name_example") // Group |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

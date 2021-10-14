@@ -21,16 +21,18 @@ type RoleAssignment struct {
 	Id *string `json:"id,omitempty"`
 	// A boolean that specifies whether this role assignment can be deleted by the current actor.
 	ReadOnly *bool `json:"readOnly,omitempty"`
-	Role *RoleAssignmentRole `json:"role,omitempty"`
-	Scope *RoleAssignmentScope `json:"scope,omitempty"`
+	Role RoleAssignmentRole `json:"role"`
+	Scope RoleAssignmentScope `json:"scope"`
 }
 
 // NewRoleAssignment instantiates a new RoleAssignment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleAssignment() *RoleAssignment {
+func NewRoleAssignment(role RoleAssignmentRole, scope RoleAssignmentScope) *RoleAssignment {
 	this := RoleAssignment{}
+	this.Role = role
+	this.Scope = scope
 	return &this
 }
 
@@ -138,68 +140,52 @@ func (o *RoleAssignment) SetReadOnly(v bool) {
 	o.ReadOnly = &v
 }
 
-// GetRole returns the Role field value if set, zero value otherwise.
+// GetRole returns the Role field value
 func (o *RoleAssignment) GetRole() RoleAssignmentRole {
-	if o == nil || o.Role == nil {
+	if o == nil {
 		var ret RoleAssignmentRole
 		return ret
 	}
-	return *o.Role
+
+	return o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetRoleOk() (*RoleAssignmentRole, bool) {
-	if o == nil || o.Role == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Role, true
+	return &o.Role, true
 }
 
-// HasRole returns a boolean if a field has been set.
-func (o *RoleAssignment) HasRole() bool {
-	if o != nil && o.Role != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRole gets a reference to the given RoleAssignmentRole and assigns it to the Role field.
+// SetRole sets field value
 func (o *RoleAssignment) SetRole(v RoleAssignmentRole) {
-	o.Role = &v
+	o.Role = v
 }
 
-// GetScope returns the Scope field value if set, zero value otherwise.
+// GetScope returns the Scope field value
 func (o *RoleAssignment) GetScope() RoleAssignmentScope {
-	if o == nil || o.Scope == nil {
+	if o == nil {
 		var ret RoleAssignmentScope
 		return ret
 	}
-	return *o.Scope
+
+	return o.Scope
 }
 
-// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
+// GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetScopeOk() (*RoleAssignmentScope, bool) {
-	if o == nil || o.Scope == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Scope, true
+	return &o.Scope, true
 }
 
-// HasScope returns a boolean if a field has been set.
-func (o *RoleAssignment) HasScope() bool {
-	if o != nil && o.Scope != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScope gets a reference to the given RoleAssignmentScope and assigns it to the Scope field.
+// SetScope sets field value
 func (o *RoleAssignment) SetScope(v RoleAssignmentScope) {
-	o.Scope = &v
+	o.Scope = v
 }
 
 func (o RoleAssignment) MarshalJSON() ([]byte, error) {
@@ -213,10 +199,10 @@ func (o RoleAssignment) MarshalJSON() ([]byte, error) {
 	if o.ReadOnly != nil {
 		toSerialize["readOnly"] = o.ReadOnly
 	}
-	if o.Role != nil {
+	if true {
 		toSerialize["role"] = o.Role
 	}
-	if o.Scope != nil {
+	if true {
 		toSerialize["scope"] = o.Scope
 	}
 	return json.Marshal(toSerialize)

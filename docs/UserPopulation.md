@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies the identifier of the population resource associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{envID}}/users/{{userID}}. However, it can be updated using PUT /environments/{{envID}}/users/{{userID}}/population. | [optional] 
+**Id** | **string** | A string that specifies the identifier of the population resource associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{envID}}/users/{{userID}}. However, it can be updated using PUT /environments/{{envID}}/users/{{userID}}/population. | 
 
 ## Methods
 
 ### NewUserPopulation
 
-`func NewUserPopulation() *UserPopulation`
+`func NewUserPopulation(id string, ) *UserPopulation`
 
 NewUserPopulation instantiates a new UserPopulation object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *UserPopulation) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

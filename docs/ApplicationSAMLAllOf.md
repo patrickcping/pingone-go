@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcsUrls** | Pointer to **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | [optional] 
-**AssertionDuration** | Pointer to **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | [optional] 
+**AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
+**AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
 **IdpSigningtype** | Pointer to [**ApplicationSAMLAllOfIdpSigningtype**](ApplicationSAMLAllOfIdpSigningtype.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **SloBinding** | Pointer to **string** | A string that specifies the binding protocol to be used for the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST; existing configurations with no data default to HTTP_POST. This is an optional property. | [optional] 
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
-**SpEntityId** | Pointer to **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | [optional] 
+**SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplicationSAMLAllOf
 
-`func NewApplicationSAMLAllOf() *ApplicationSAMLAllOf`
+`func NewApplicationSAMLAllOf(acsUrls []string, assertionDuration int32, spEntityId string, ) *ApplicationSAMLAllOf`
 
 NewApplicationSAMLAllOf instantiates a new ApplicationSAMLAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -54,11 +54,6 @@ and a boolean to check if the value has been set.
 
 SetAcsUrls sets AcsUrls field to given value.
 
-### HasAcsUrls
-
-`func (o *ApplicationSAMLAllOf) HasAcsUrls() bool`
-
-HasAcsUrls returns a boolean if a field has been set.
 
 ### GetAssertionDuration
 
@@ -79,11 +74,6 @@ and a boolean to check if the value has been set.
 
 SetAssertionDuration sets AssertionDuration field to given value.
 
-### HasAssertionDuration
-
-`func (o *ApplicationSAMLAllOf) HasAssertionDuration() bool`
-
-HasAssertionDuration returns a boolean if a field has been set.
 
 ### GetAssertionSigned
 
@@ -279,11 +269,6 @@ and a boolean to check if the value has been set.
 
 SetSpEntityId sets SpEntityId field to given value.
 
-### HasSpEntityId
-
-`func (o *ApplicationSAMLAllOf) HasSpEntityId() bool`
-
-HasSpEntityId returns a boolean if a field has been set.
 
 ### GetSpVerification
 

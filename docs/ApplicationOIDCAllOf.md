@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
-**GrantTypes** | Pointer to **[]string** | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
+**GrantTypes** | **[]string** | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **PkceEnforcement** | Pointer to **string** | A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256. | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **ResponseTypes** | Pointer to **[]string** | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
-**TokenEndpointAuthMethod** | Pointer to **string** | A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST. | [optional] 
+**TokenEndpointAuthMethod** | **string** | A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST. | 
 
 ## Methods
 
 ### NewApplicationOIDCAllOf
 
-`func NewApplicationOIDCAllOf() *ApplicationOIDCAllOf`
+`func NewApplicationOIDCAllOf(grantTypes []string, tokenEndpointAuthMethod string, ) *ApplicationOIDCAllOf`
 
 NewApplicationOIDCAllOf instantiates a new ApplicationOIDCAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -130,11 +130,6 @@ and a boolean to check if the value has been set.
 
 SetGrantTypes sets GrantTypes field to given value.
 
-### HasGrantTypes
-
-`func (o *ApplicationOIDCAllOf) HasGrantTypes() bool`
-
-HasGrantTypes returns a boolean if a field has been set.
 
 ### GetHomePageUrl
 
@@ -330,11 +325,6 @@ and a boolean to check if the value has been set.
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 
-### HasTokenEndpointAuthMethod
-
-`func (o *ApplicationOIDCAllOf) HasTokenEndpointAuthMethod() bool`
-
-HasTokenEndpointAuthMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** | A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space. | [optional] 
 **DisplayName** | Pointer to **string** | A string that specifies an optional property that specifies the display name of the attribute such as &#39;T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | [optional] 
-**Enabled** | Pointer to **bool** | A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read. | [optional] 
+**Enabled** | **bool** | A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **LdapAttribute** | Pointer to **string** | A string that specifies the LDAP attribute. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens. | [optional] 
+**Name** | **string** | A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens. | 
 **Required** | Pointer to **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | [optional] 
 **Schema** | Pointer to [**SchemaAttributeSchema**](SchemaAttributeSchema.md) |  | [optional] 
 **SchemaType** | Pointer to **string** | A string that specifies the schema type of the attribute. It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present out-of-the-box. Core attributes may not be updated or deleted. Standard attributes may not be deleted, but their mutable properties may be updated. Custom attributes may be deleted, and their mutable properties may be updated. New attributes are created with a schema type of CUSTOM. | [optional] 
-**Type** | Pointer to **string** | A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB). | [optional] 
+**Type** | **string** | A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB). | 
 **Unique** | Pointer to **bool** | A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. | [optional] 
 **MultiValued** | Pointer to **bool** | A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000. | [optional] 
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewSchemaAttribute
 
-`func NewSchemaAttribute() *SchemaAttribute`
+`func NewSchemaAttribute(enabled bool, name string, type_ string, ) *SchemaAttribute`
 
 NewSchemaAttribute instantiates a new SchemaAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -106,11 +106,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *SchemaAttribute) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -206,11 +201,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *SchemaAttribute) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetRequired
 
@@ -306,11 +296,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *SchemaAttribute) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUnique
 

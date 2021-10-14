@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Contains** | Pointer to **string** |  | [optional] 
+**Contains** | **string** |  | 
 **IpRange** | Pointer to **[]string** | List of CIDRs to include | [optional] 
 **Between** | Pointer to [**RiskPredictorItemMapBetween**](RiskPredictorItemMapBetween.md) |  | [optional] 
 **List** | Pointer to **[]string** | An array that specifies the list of entities that represent the risk conditions. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictorItemMap
 
-`func NewRiskPredictorItemMap() *RiskPredictorItemMap`
+`func NewRiskPredictorItemMap(contains string, ) *RiskPredictorItemMap`
 
 NewRiskPredictorItemMap instantiates a new RiskPredictorItemMap object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetContains sets Contains field to given value.
 
-### HasContains
-
-`func (o *RiskPredictorItemMap) HasContains() bool`
-
-HasContains returns a boolean if a field has been set.
 
 ### GetIpRange
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | [optional] 
+**Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
 **Type** | Pointer to **string** | A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewResource
 
-`func NewResource() *Resource`
+`func NewResource(name string, ) *Resource`
 
 NewResource instantiates a new Resource object
 This constructor will assign default values to properties that have it defined,
@@ -202,11 +202,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Resource) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetType
 

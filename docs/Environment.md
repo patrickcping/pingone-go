@@ -8,18 +8,18 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**License** | Pointer to [**EnvironmentLicense**](EnvironmentLicense.md) |  | [optional] 
-**Name** | Pointer to **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | [optional] 
+**License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
+**Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
 **Organization** | Pointer to [**EnvironmentOrganization**](EnvironmentOrganization.md) |  | [optional] 
-**Region** | Pointer to **string** | A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated. Options are NA, EU, and AP. | [optional] 
-**Type** | Pointer to **string** | A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX. | [optional] 
+**Region** | **string** | A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated. Options are NA, EU, and AP. | 
+**Type** | **string** | A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewEnvironment
 
-`func NewEnvironment() *Environment`
+`func NewEnvironment(license EnvironmentLicense, name string, region string, type_ string, ) *Environment`
 
 NewEnvironment instantiates a new Environment object
 This constructor will assign default values to properties that have it defined,
@@ -153,11 +153,6 @@ and a boolean to check if the value has been set.
 
 SetLicense sets License field to given value.
 
-### HasLicense
-
-`func (o *Environment) HasLicense() bool`
-
-HasLicense returns a boolean if a field has been set.
 
 ### GetName
 
@@ -178,11 +173,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Environment) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetOrganization
 
@@ -228,11 +218,6 @@ and a boolean to check if the value has been set.
 
 SetRegion sets Region field to given value.
 
-### HasRegion
-
-`func (o *Environment) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
 
 ### GetType
 
@@ -253,11 +238,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *Environment) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

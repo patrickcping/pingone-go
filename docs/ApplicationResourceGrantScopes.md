@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | id A array that specifies the IDs of the scopes associated with this grant. This is a required property. | [optional] 
+**Id** | **string** | id A array that specifies the IDs of the scopes associated with this grant. This is a required property. | 
 
 ## Methods
 
 ### NewApplicationResourceGrantScopes
 
-`func NewApplicationResourceGrantScopes() *ApplicationResourceGrantScopes`
+`func NewApplicationResourceGrantScopes(id string, ) *ApplicationResourceGrantScopes`
 
 NewApplicationResourceGrantScopes instantiates a new ApplicationResourceGrantScopes object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ApplicationResourceGrantScopes) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

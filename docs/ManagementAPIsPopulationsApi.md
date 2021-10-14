@@ -34,7 +34,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    population := *openapiclient.NewPopulation() // Population | 
+    population := *openapiclient.NewPopulation("Name_example") // Population | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -325,7 +325,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     popID := "popID_example" // string | 
-    population := *openapiclient.NewPopulation() // Population |  (optional)
+    population := *openapiclient.NewPopulation("Name_example") // Population |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -16,15 +16,16 @@ import (
 
 // ApplicationSAMLAllOfSpVerification struct for ApplicationSAMLAllOfSpVerification
 type ApplicationSAMLAllOfSpVerification struct {
-	Certificates *[]ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates,omitempty"`
+	Certificates []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
 }
 
 // NewApplicationSAMLAllOfSpVerification instantiates a new ApplicationSAMLAllOfSpVerification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationSAMLAllOfSpVerification() *ApplicationSAMLAllOfSpVerification {
+func NewApplicationSAMLAllOfSpVerification(certificates []ApplicationSAMLAllOfSpVerificationCertificates) *ApplicationSAMLAllOfSpVerification {
 	this := ApplicationSAMLAllOfSpVerification{}
+	this.Certificates = certificates
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewApplicationSAMLAllOfSpVerificationWithDefaults() *ApplicationSAMLAllOfSp
 	return &this
 }
 
-// GetCertificates returns the Certificates field value if set, zero value otherwise.
+// GetCertificates returns the Certificates field value
 func (o *ApplicationSAMLAllOfSpVerification) GetCertificates() []ApplicationSAMLAllOfSpVerificationCertificates {
-	if o == nil || o.Certificates == nil {
+	if o == nil {
 		var ret []ApplicationSAMLAllOfSpVerificationCertificates
 		return ret
 	}
-	return *o.Certificates
+
+	return o.Certificates
 }
 
-// GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
+// GetCertificatesOk returns a tuple with the Certificates field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOfSpVerification) GetCertificatesOk() (*[]ApplicationSAMLAllOfSpVerificationCertificates, bool) {
-	if o == nil || o.Certificates == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Certificates, true
+	return &o.Certificates, true
 }
 
-// HasCertificates returns a boolean if a field has been set.
-func (o *ApplicationSAMLAllOfSpVerification) HasCertificates() bool {
-	if o != nil && o.Certificates != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCertificates gets a reference to the given []ApplicationSAMLAllOfSpVerificationCertificates and assigns it to the Certificates field.
+// SetCertificates sets field value
 func (o *ApplicationSAMLAllOfSpVerification) SetCertificates(v []ApplicationSAMLAllOfSpVerificationCertificates) {
-	o.Certificates = &v
+	o.Certificates = v
 }
 
 func (o ApplicationSAMLAllOfSpVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Certificates != nil {
+	if true {
 		toSerialize["certificates"] = o.Certificates
 	}
 	return json.Marshal(toSerialize)

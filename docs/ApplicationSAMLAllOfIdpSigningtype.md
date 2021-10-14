@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to [**ApplicationSAMLAllOfIdpSigningtypeKey**](ApplicationSAMLAllOfIdpSigningtypeKey.md) |  | [optional] 
+**Key** | [**ApplicationSAMLAllOfIdpSigningtypeKey**](ApplicationSAMLAllOfIdpSigningtypeKey.md) |  | 
 
 ## Methods
 
 ### NewApplicationSAMLAllOfIdpSigningtype
 
-`func NewApplicationSAMLAllOfIdpSigningtype() *ApplicationSAMLAllOfIdpSigningtype`
+`func NewApplicationSAMLAllOfIdpSigningtype(key ApplicationSAMLAllOfIdpSigningtypeKey, ) *ApplicationSAMLAllOfIdpSigningtype`
 
 NewApplicationSAMLAllOfIdpSigningtype instantiates a new ApplicationSAMLAllOfIdpSigningtype object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
-### HasKey
-
-`func (o *ApplicationSAMLAllOfIdpSigningtype) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Condition** | Pointer to [**RiskPolicySetCondition**](RiskPolicySetCondition.md) |  | [optional] 
+**Condition** | [**RiskPolicySetCondition**](RiskPolicySetCondition.md) |  | 
 **CreatedAt** | Pointer to **string** | The time the resource was first created (format ISO-8061). | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters. | [optional] 
+**Name** | **string** | A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters. | 
 **Priority** | Pointer to **int32** | An integer that specifies priority of the policy inside a risk policy set, designating which policy should run first. This is a read-only value. The priority is determined by the order in which policies are listed in the policy set. The first policy in the list is assigned priority 1 and is evaluated first. The next policy in the list is assigned priority 2 and so on. | [optional] 
-**Result** | Pointer to [**RiskPolicyResult**](RiskPolicyResult.md) |  | [optional] 
+**Result** | [**RiskPolicyResult**](RiskPolicyResult.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated (format ISO-8061). | [optional] [readonly] 
 
 ## Methods
 
 ### NewRiskPolicySetRiskPolicies
 
-`func NewRiskPolicySetRiskPolicies() *RiskPolicySetRiskPolicies`
+`func NewRiskPolicySetRiskPolicies(condition RiskPolicySetCondition, name string, result RiskPolicyResult, ) *RiskPolicySetRiskPolicies`
 
 NewRiskPolicySetRiskPolicies instantiates a new RiskPolicySetRiskPolicies object
 This constructor will assign default values to properties that have it defined,
@@ -52,11 +52,6 @@ and a boolean to check if the value has been set.
 
 SetCondition sets Condition field to given value.
 
-### HasCondition
-
-`func (o *RiskPolicySetRiskPolicies) HasCondition() bool`
-
-HasCondition returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -177,11 +172,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *RiskPolicySetRiskPolicies) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetPriority
 
@@ -227,11 +217,6 @@ and a boolean to check if the value has been set.
 
 SetResult sets Result field to given value.
 
-### HasResult
-
-`func (o *RiskPolicySetRiskPolicies) HasResult() bool`
-
-HasResult returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

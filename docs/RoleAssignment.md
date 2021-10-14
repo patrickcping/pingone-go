@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user role assignment ID. | [optional] [readonly] 
 **ReadOnly** | Pointer to **bool** | A boolean that specifies whether this role assignment can be deleted by the current actor. | [optional] [readonly] 
-**Role** | Pointer to [**RoleAssignmentRole**](RoleAssignmentRole.md) |  | [optional] 
-**Scope** | Pointer to [**RoleAssignmentScope**](RoleAssignmentScope.md) |  | [optional] 
+**Role** | [**RoleAssignmentRole**](RoleAssignmentRole.md) |  | 
+**Scope** | [**RoleAssignmentScope**](RoleAssignmentScope.md) |  | 
 
 ## Methods
 
 ### NewRoleAssignment
 
-`func NewRoleAssignment() *RoleAssignment`
+`func NewRoleAssignment(role RoleAssignmentRole, scope RoleAssignmentScope, ) *RoleAssignment`
 
 NewRoleAssignment instantiates a new RoleAssignment object
 This constructor will assign default values to properties that have it defined,
@@ -123,11 +123,6 @@ and a boolean to check if the value has been set.
 
 SetRole sets Role field to given value.
 
-### HasRole
-
-`func (o *RoleAssignment) HasRole() bool`
-
-HasRole returns a boolean if a field has been set.
 
 ### GetScope
 
@@ -148,11 +143,6 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
-### HasScope
-
-`func (o *RoleAssignment) HasScope() bool`
-
-HasScope returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

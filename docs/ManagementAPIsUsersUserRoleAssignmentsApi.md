@@ -34,7 +34,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    roleAssignment := *openapiclient.NewRoleAssignment() // RoleAssignment |  (optional)
+    roleAssignment := *openapiclient.NewRoleAssignment(*openapiclient.NewRoleAssignmentRole("Id_example"), *openapiclient.NewRoleAssignmentScope("Id_example", "Type_example")) // RoleAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

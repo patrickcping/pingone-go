@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property). | [optional] 
-**Groups** | Pointer to **[]string** | A set that specifies the group IDs for the groups the actor must belong to for access to the application. | [optional] 
+**Type** | **string** | A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property). | 
+**Groups** | **[]string** | A set that specifies the group IDs for the groups the actor must belong to for access to the application. | 
 
 ## Methods
 
 ### NewApplicationAccessControlGroup
 
-`func NewApplicationAccessControlGroup() *ApplicationAccessControlGroup`
+`func NewApplicationAccessControlGroup(type_ string, groups []string, ) *ApplicationAccessControlGroup`
 
 NewApplicationAccessControlGroup instantiates a new ApplicationAccessControlGroup object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ApplicationAccessControlGroup) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetGroups
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetGroups sets Groups field to given value.
 
-### HasGroups
-
-`func (o *ApplicationAccessControlGroup) HasGroups() bool`
-
-HasGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

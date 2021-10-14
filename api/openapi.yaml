@@ -13063,7 +13063,7 @@ components:
                   value: value
                 - weight: 5
                   value: value
-                equals: '{}'
+                equals: ""
                 value: value
                 between:
                   minScore: 2
@@ -13085,7 +13085,7 @@ components:
                   value: value
                 - weight: 5
                   value: value
-                equals: '{}'
+                equals: ""
                 value: value
                 between:
                   minScore: 2
@@ -13119,7 +13119,7 @@ components:
                   value: value
                 - weight: 5
                   value: value
-                equals: '{}'
+                equals: ""
                 value: value
                 between:
                   minScore: 2
@@ -13141,7 +13141,7 @@ components:
                   value: value
                 - weight: 5
                   value: value
-                equals: '{}'
+                equals: ""
                 value: value
                 between:
                   minScore: 2
@@ -13701,6 +13701,11 @@ components:
             JWT is allowed to be unsigned. If false or null (default), an unsigned
             request object is not allowed.
           type: boolean
+      required:
+      - enabled
+      - name
+      - protocol
+      - type
       type: object
     ApplicationSAML:
       allOf:
@@ -13759,6 +13764,10 @@ components:
             format is ${<source>.<attribute_path>}. The only supported source is user
             (for example, ${user.id}). This is a required property.
           type: string
+      required:
+      - name
+      - required
+      - value
       type: object
     ApplicationResourceGrant:
       example:
@@ -13793,6 +13802,9 @@ components:
           description: The time the resource was last updated.
           readOnly: true
           type: string
+      required:
+      - resource
+      - scopes
       type: object
     ApplicationSecret:
       example:
@@ -13905,6 +13917,11 @@ components:
           description: The time the resource was last updated.
           readOnly: true
           type: string
+      required:
+      - license
+      - name
+      - region
+      - type
       type: object
     Group:
       example:
@@ -13964,6 +13981,8 @@ components:
           $ref: '#/components/schemas/Group_directMemberCounts'
         totalMemberCounts:
           $ref: '#/components/schemas/Group_totalMemberCounts'
+      required:
+      - name
       type: object
     GroupMembership:
       example:
@@ -13972,6 +13991,8 @@ components:
         id:
           description: ID of the group to assign
           type: string
+      required:
+      - id
       type: object
     Population:
       example:
@@ -14005,6 +14026,8 @@ components:
           description: The number of users that belong to the population
           readOnly: true
           type: integer
+      required:
+      - name
       type: object
     RiskEvaluation:
       example:
@@ -14155,6 +14178,8 @@ components:
           description: The time the resource was last updated (format ISO-8061).
           readOnly: true
           type: string
+      required:
+      - event
       type: object
     RiskEvaluationDetails:
       example:
@@ -14365,6 +14390,9 @@ components:
           - SHARED
           - PRIVATE
           type: string
+      required:
+      - ip
+      - user
       type: object
     RiskEvaluationResult:
       example:
@@ -14414,7 +14442,7 @@ components:
               value: value
             - weight: 5
               value: value
-            equals: '{}'
+            equals: ""
             value: value
             between:
               minScore: 2
@@ -14436,7 +14464,7 @@ components:
               value: value
             - weight: 5
               value: value
-            equals: '{}'
+            equals: ""
             value: value
             between:
               minScore: 2
@@ -14496,6 +14524,8 @@ components:
           description: The time the resource was last updated (format ISO-8061).
           readOnly: true
           type: string
+      required:
+      - name
       type: object
     RiskPolicyResult:
       example:
@@ -14512,6 +14542,8 @@ components:
           enum:
           - VALUE
           type: string
+      required:
+      - level
       type: object
     RiskPredictor:
       example:
@@ -14602,6 +14634,10 @@ components:
           $ref: '#/components/schemas/RiskPredictor_default'
         map:
           $ref: '#/components/schemas/RiskPredictor_map'
+      required:
+      - compactName
+      - name
+      - type
       type: object
     RiskPredictorItemMap:
       example:
@@ -14631,6 +14667,8 @@ components:
           items:
             type: string
           type: array
+      required:
+      - contains
       type: object
     Resource:
       example:
@@ -14687,6 +14725,8 @@ components:
           description: The time the resource was last updated.
           readOnly: true
           type: string
+      required:
+      - name
       type: object
     Role:
       example:
@@ -14754,6 +14794,9 @@ components:
           $ref: '#/components/schemas/RoleAssignment_role'
         scope:
           $ref: '#/components/schemas/RoleAssignment_scope'
+      required:
+      - role
+      - scope
       type: object
     Schema:
       example:
@@ -14911,6 +14954,10 @@ components:
             as changing from true to false is not allowed. Maximum number of values
             stored is 1,000.
           type: boolean
+      required:
+      - enabled
+      - name
+      - type
       type: object
     User:
       example:
@@ -15139,6 +15186,10 @@ components:
           - ENABLED
           - DISABLED
           type: string
+      required:
+      - email
+      - population
+      - username
       type: object
     inline_object:
       properties:
@@ -15229,7 +15280,7 @@ components:
                 value: value
               - weight: 5
                 value: value
-              equals: '{}'
+              equals: ""
               value: value
               between:
                 minScore: 2
@@ -15251,7 +15302,7 @@ components:
                 value: value
               - weight: 5
                 value: value
-              equals: '{}'
+              equals: ""
               value: value
               between:
                 minScore: 2
@@ -15285,7 +15336,7 @@ components:
                 value: value
               - weight: 5
                 value: value
-              equals: '{}'
+              equals: ""
               value: value
               between:
                 minScore: 2
@@ -15307,7 +15358,7 @@ components:
                 value: value
               - weight: 5
                 value: value
-              equals: '{}'
+              equals: ""
               value: value
               between:
                 minScore: 2
@@ -15831,6 +15882,8 @@ components:
             the user has one or more of the following roles Organization Admin, Environment
             Admin, Identity Data Admin, or Client Application Developer.
           type: string
+      required:
+      - type
       type: object
     Application_accessControl_group:
       properties:
@@ -15847,6 +15900,9 @@ components:
           items:
             type: string
           type: array
+      required:
+      - groups
+      - type
       type: object
     Application_accessControl:
       properties:
@@ -15862,6 +15918,9 @@ components:
           type: string
         href:
           type: string
+      required:
+      - href
+      - id
       type: object
     ApplicationSAML_allOf_idpSigningtype_key:
       properties:
@@ -15870,11 +15929,15 @@ components:
             provider to sign assertions and responses. If this property is omitted,
             the default signing certificate for the environment is used.
           type: string
+      required:
+      - id
       type: object
     ApplicationSAML_allOf_idpSigningtype:
       properties:
         key:
           $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigningtype_key'
+      required:
+      - key
       type: object
     ApplicationSAML_allOf_spVerification_certificates:
       properties:
@@ -15889,6 +15952,8 @@ components:
           items:
             $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification_certificates'
           type: array
+      required:
+      - certificates
       type: object
     ApplicationSAML_allOf:
       properties:
@@ -15943,6 +16008,10 @@ components:
           type: string
         spVerification:
           $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
+      required:
+      - acsUrls
+      - assertionDuration
+      - spEntityId
       type: object
     ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration:
       properties:
@@ -16082,6 +16151,9 @@ components:
           - CLIENT_SECRET_BASIC
           - CLIENT_SECRET_POST
           type: string
+      required:
+      - grantTypes
+      - tokenEndpointAuthMethod
       type: object
     ApplicationResourceGrant_application:
       example:
@@ -16101,6 +16173,8 @@ components:
           description: A string that specifies the ID of the protected resource associated
             with this grant. This is a required property.
           type: string
+      required:
+      - id
       type: object
     ApplicationResourceGrant_scopes:
       example:
@@ -16110,6 +16184,8 @@ components:
           description: "id\tA array that specifies the IDs of the scopes associated\
             \ with this grant. This is a required property."
           type: string
+      required:
+      - id
       type: object
     BillOfMaterials_console:
       example:
@@ -16118,6 +16194,8 @@ components:
         href:
           description: Primary console link for certain products
           type: string
+      required:
+      - href
       type: object
     BillOfMaterials_bookmarks:
       example:
@@ -16131,6 +16209,9 @@ components:
         href:
           description: A valid URL for the bookmark.
           type: string
+      required:
+      - href
+      - name
       type: object
     BillOfMaterials_products:
       example:
@@ -16186,6 +16267,8 @@ components:
           items:
             $ref: '#/components/schemas/BillOfMaterials_bookmarks'
           type: array
+      required:
+      - type
       type: object
     Environment_license:
       properties:
@@ -16194,6 +16277,8 @@ components:
             this environment. This property is required only if your organization
             has more than one active license.
           type: string
+      required:
+      - id
       type: object
     Environment_organization:
       properties:
@@ -16708,6 +16793,8 @@ components:
           description: A string that specifies a unique session ID associated with
             the event.
           type: string
+      required:
+      - id
       type: object
     RiskEvaluationEvent_targetResource:
       example:
@@ -16758,6 +16845,9 @@ components:
           items:
             $ref: '#/components/schemas/RiskEvaluationEvent_user_groups'
           type: array
+      required:
+      - id
+      - type
       type: object
     RiskPolicySet_condition_aggregatedWeights:
       example:
@@ -16788,7 +16878,7 @@ components:
           value: value
         - weight: 5
           value: value
-        equals: '{}'
+        equals: ""
         value: value
         between:
           minScore: 2
@@ -16797,7 +16887,9 @@ components:
         value:
           type: string
         equals:
-          type: object
+          oneOf:
+          - type: string
+          - type: boolean
         aggregatedWeights:
           items:
             $ref: '#/components/schemas/RiskPolicySet_condition_aggregatedWeights'
@@ -16817,7 +16909,7 @@ components:
             value: value
           - weight: 5
             value: value
-          equals: '{}'
+          equals: ""
           value: value
           between:
             minScore: 2
@@ -16868,6 +16960,10 @@ components:
           description: The time the resource was last updated (format ISO-8061).
           readOnly: true
           type: string
+      required:
+      - condition
+      - name
+      - result
       type: object
     RiskPredictor_default_result:
       description: 'This specifies the result assigned to the predictor if the predictor
@@ -16891,6 +16987,8 @@ components:
           enum:
           - VALUE
           type: string
+      required:
+      - level
       type: object
     RiskPredictor_default:
       example:
@@ -16905,6 +17003,9 @@ components:
           type: integer
         result:
           $ref: '#/components/schemas/RiskPredictor_default_result'
+      required:
+      - result
+      - weight
       type: object
     RiskPredictor_map:
       description: An object that defines the mapping of risk levels for the list
@@ -16961,6 +17062,9 @@ components:
           type: integer
         maxScore:
           type: integer
+      required:
+      - maxScore
+      - minScore
       type: object
     Role_permissions:
       example:
@@ -16985,6 +17089,8 @@ components:
         id:
           description: A string that specifies the role ID.
           type: string
+      required:
+      - id
       type: object
     RoleAssignment_scope:
       example:
@@ -17002,6 +17108,9 @@ components:
           - ENVIRONMENT
           - POPULATION
           type: string
+      required:
+      - id
+      - type
       type: object
     SchemaAttribute_schema:
       example:
@@ -17307,6 +17416,8 @@ components:
             associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{envID}}/users/{{userID}}.
             However, it can be updated using PUT /environments/{{envID}}/users/{{userID}}/population.
           type: string
+      required:
+      - id
       type: object
   securitySchemes:
     bearer:

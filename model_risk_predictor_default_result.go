@@ -17,7 +17,7 @@ import (
 // RiskPredictorDefaultResult This specifies the result assigned to the predictor if the predictor could not be calculated during the risk evaluation. If this field is not provided, and the predictor could not be calculated during risk evaluation, the following options are: If the predictor is used in an override, the override is skipped. In the weighted policy, the predictor will have a weight of 0.
 type RiskPredictorDefaultResult struct {
 	// A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW.
-	Level *string `json:"level,omitempty"`
+	Level string `json:"level"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -25,8 +25,9 @@ type RiskPredictorDefaultResult struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorDefaultResult() *RiskPredictorDefaultResult {
+func NewRiskPredictorDefaultResult(level string) *RiskPredictorDefaultResult {
 	this := RiskPredictorDefaultResult{}
+	this.Level = level
 	return &this
 }
 
@@ -38,36 +39,28 @@ func NewRiskPredictorDefaultResultWithDefaults() *RiskPredictorDefaultResult {
 	return &this
 }
 
-// GetLevel returns the Level field value if set, zero value otherwise.
+// GetLevel returns the Level field value
 func (o *RiskPredictorDefaultResult) GetLevel() string {
-	if o == nil || o.Level == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Level
+
+	return o.Level
 }
 
-// GetLevelOk returns a tuple with the Level field value if set, nil otherwise
+// GetLevelOk returns a tuple with the Level field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefaultResult) GetLevelOk() (*string, bool) {
-	if o == nil || o.Level == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Level, true
+	return &o.Level, true
 }
 
-// HasLevel returns a boolean if a field has been set.
-func (o *RiskPredictorDefaultResult) HasLevel() bool {
-	if o != nil && o.Level != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLevel gets a reference to the given string and assigns it to the Level field.
+// SetLevel sets field value
 func (o *RiskPredictorDefaultResult) SetLevel(v string) {
-	o.Level = &v
+	o.Level = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -104,7 +97,7 @@ func (o *RiskPredictorDefaultResult) SetType(v string) {
 
 func (o RiskPredictorDefaultResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Level != nil {
+	if true {
 		toSerialize["level"] = o.Level
 	}
 	if o.Type != nil {

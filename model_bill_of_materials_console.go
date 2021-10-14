@@ -17,15 +17,16 @@ import (
 // BillOfMaterialsConsole struct for BillOfMaterialsConsole
 type BillOfMaterialsConsole struct {
 	// Primary console link for certain products
-	Href *string `json:"href,omitempty"`
+	Href string `json:"href"`
 }
 
 // NewBillOfMaterialsConsole instantiates a new BillOfMaterialsConsole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillOfMaterialsConsole() *BillOfMaterialsConsole {
+func NewBillOfMaterialsConsole(href string) *BillOfMaterialsConsole {
 	this := BillOfMaterialsConsole{}
+	this.Href = href
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewBillOfMaterialsConsoleWithDefaults() *BillOfMaterialsConsole {
 	return &this
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
+// GetHref returns the Href field value
 func (o *BillOfMaterialsConsole) GetHref() string {
-	if o == nil || o.Href == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Href
+
+	return o.Href
 }
 
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsConsole) GetHrefOk() (*string, bool) {
-	if o == nil || o.Href == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Href, true
+	return &o.Href, true
 }
 
-// HasHref returns a boolean if a field has been set.
-func (o *BillOfMaterialsConsole) HasHref() bool {
-	if o != nil && o.Href != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
+// SetHref sets field value
 func (o *BillOfMaterialsConsole) SetHref(v string) {
-	o.Href = &v
+	o.Href = v
 }
 
 func (o BillOfMaterialsConsole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Href != nil {
+	if true {
 		toSerialize["href"] = o.Href
 	}
 	return json.Marshal(toSerialize)

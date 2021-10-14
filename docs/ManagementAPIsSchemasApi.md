@@ -38,7 +38,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -480,7 +480,7 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -558,7 +558,7 @@ func main() {
     envID := "envID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute() // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

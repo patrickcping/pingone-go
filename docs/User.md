@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Account** | Pointer to [**UserAccount**](UserAccount.md) |  | [optional] 
 **Address** | Pointer to [**UserAddress**](UserAddress.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] 
-**Email** | Pointer to **string** | A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format. | [optional] 
+**Email** | **string** | A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format. | 
 **Enabled** | Pointer to **bool** | A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created. | [optional] [readonly] 
 **Environment** | Pointer to [**UserEnvironment**](UserEnvironment.md) |  | [optional] 
 **ExternalId** | Pointer to **string** | A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max&#x3D;1/1024). | [optional] 
@@ -24,21 +24,21 @@ Name | Type | Description | Notes
 **Nickname** | Pointer to **string** | A string that specifies the user’s nickname, which is optional. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
 **Password** | Pointer to [**UserPassword**](UserPassword.md) |  | [optional] 
 **Photo** | Pointer to [**UserPhoto**](UserPhoto.md) |  | [optional] 
-**Population** | Pointer to [**UserPopulation**](UserPopulation.md) |  | [optional] 
+**Population** | [**UserPopulation**](UserPopulation.md) |  | 
 **PreferredLanguage** | Pointer to **string** | A string that specifies the user’s preferred written or spoken languages, which are optional. This may be explicitly set to null when updating a user to unset it. If provided, the format of the value must be a valid language range and the same as the HTTP Accept-Language header field (not including Accept-Language:) and is specified in Section 5.3.5 of RFC 7231. For example en-US, en-gb;q&#x3D;0.8, en;q&#x3D;0.7. | [optional] 
 **PrimaryPhone** | Pointer to **string** | A string that specifies the user’s primary phone number, which is optional. This might also match the mobilePhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32. | [optional] 
 **Timezone** | Pointer to **string** | A string that specifies the user’s time zone, which is optional. This can be explicitly set to null when updating a user to unset it. If provided, it must conform with the IANA Time Zone database format [RFC6557], also known as the “Olson” time zone database format [Olson-TZ] for example, “America/Los_Angeles” (regex ^\\w+/\\w+$). | [optional] 
 **Title** | Pointer to **string** | A string that specifies the user’s title, which is optional, such as \&quot;Vice President\&quot;. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
 **Type** | Pointer to **string** | A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \&quot;Contractor\&quot;, \&quot;Employee\&quot;, \&quot;Intern\&quot;, \&quot;Temp\&quot;, \&quot;External\&quot;, and “Unknown”. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] 
-**Username** | Pointer to **string** | A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128 characters (min/max&#x3D;1/128). | [optional] 
+**Username** | **string** | A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128 characters (min/max&#x3D;1/128). | 
 **VerifyStatus** | Pointer to **string** | Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED. | [optional] 
 
 ## Methods
 
 ### NewUser
 
-`func NewUser() *User`
+`func NewUser(email string, population UserPopulation, username string, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -147,11 +147,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-### HasEmail
-
-`func (o *User) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetEnabled
 
@@ -572,11 +567,6 @@ and a boolean to check if the value has been set.
 
 SetPopulation sets Population field to given value.
 
-### HasPopulation
-
-`func (o *User) HasPopulation() bool`
-
-HasPopulation returns a boolean if a field has been set.
 
 ### GetPreferredLanguage
 
@@ -747,11 +737,6 @@ and a boolean to check if the value has been set.
 
 SetUsername sets Username field to given value.
 
-### HasUsername
-
-`func (o *User) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetVerifyStatus
 

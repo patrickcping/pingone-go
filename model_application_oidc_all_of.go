@@ -22,7 +22,7 @@ type ApplicationOIDCAllOf struct {
 	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
 	PackageName *string `json:"packageName,omitempty"`
 	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
-	GrantTypes *[]string `json:"grantTypes,omitempty"`
+	GrantTypes []string `json:"grantTypes"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256.
@@ -38,15 +38,17 @@ type ApplicationOIDCAllOf struct {
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
 	ResponseTypes *[]string `json:"responseTypes,omitempty"`
 	// A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
-	TokenEndpointAuthMethod *string `json:"tokenEndpointAuthMethod,omitempty"`
+	TokenEndpointAuthMethod string `json:"tokenEndpointAuthMethod"`
 }
 
 // NewApplicationOIDCAllOf instantiates a new ApplicationOIDCAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationOIDCAllOf() *ApplicationOIDCAllOf {
+func NewApplicationOIDCAllOf(grantTypes []string, tokenEndpointAuthMethod string) *ApplicationOIDCAllOf {
 	this := ApplicationOIDCAllOf{}
+	this.GrantTypes = grantTypes
+	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
 	return &this
 }
 
@@ -154,36 +156,28 @@ func (o *ApplicationOIDCAllOf) SetPackageName(v string) {
 	o.PackageName = &v
 }
 
-// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
+// GetGrantTypes returns the GrantTypes field value
 func (o *ApplicationOIDCAllOf) GetGrantTypes() []string {
-	if o == nil || o.GrantTypes == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.GrantTypes
+
+	return o.GrantTypes
 }
 
-// GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
+// GetGrantTypesOk returns a tuple with the GrantTypes field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOf) GetGrantTypesOk() (*[]string, bool) {
-	if o == nil || o.GrantTypes == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.GrantTypes, true
+	return &o.GrantTypes, true
 }
 
-// HasGrantTypes returns a boolean if a field has been set.
-func (o *ApplicationOIDCAllOf) HasGrantTypes() bool {
-	if o != nil && o.GrantTypes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGrantTypes gets a reference to the given []string and assigns it to the GrantTypes field.
+// SetGrantTypes sets field value
 func (o *ApplicationOIDCAllOf) SetGrantTypes(v []string) {
-	o.GrantTypes = &v
+	o.GrantTypes = v
 }
 
 // GetHomePageUrl returns the HomePageUrl field value if set, zero value otherwise.
@@ -410,36 +404,28 @@ func (o *ApplicationOIDCAllOf) SetResponseTypes(v []string) {
 	o.ResponseTypes = &v
 }
 
-// GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value if set, zero value otherwise.
+// GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value
 func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethod() string {
-	if o == nil || o.TokenEndpointAuthMethod == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenEndpointAuthMethod
+
+	return o.TokenEndpointAuthMethod
 }
 
-// GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value if set, nil otherwise
+// GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethodOk() (*string, bool) {
-	if o == nil || o.TokenEndpointAuthMethod == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TokenEndpointAuthMethod, true
+	return &o.TokenEndpointAuthMethod, true
 }
 
-// HasTokenEndpointAuthMethod returns a boolean if a field has been set.
-func (o *ApplicationOIDCAllOf) HasTokenEndpointAuthMethod() bool {
-	if o != nil && o.TokenEndpointAuthMethod != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenEndpointAuthMethod gets a reference to the given string and assigns it to the TokenEndpointAuthMethod field.
+// SetTokenEndpointAuthMethod sets field value
 func (o *ApplicationOIDCAllOf) SetTokenEndpointAuthMethod(v string) {
-	o.TokenEndpointAuthMethod = &v
+	o.TokenEndpointAuthMethod = v
 }
 
 func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
@@ -453,7 +439,7 @@ func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 	if o.PackageName != nil {
 		toSerialize["packageName"] = o.PackageName
 	}
-	if o.GrantTypes != nil {
+	if true {
 		toSerialize["grantTypes"] = o.GrantTypes
 	}
 	if o.HomePageUrl != nil {
@@ -477,7 +463,7 @@ func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 	if o.ResponseTypes != nil {
 		toSerialize["responseTypes"] = o.ResponseTypes
 	}
-	if o.TokenEndpointAuthMethod != nil {
+	if true {
 		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	}
 	return json.Marshal(toSerialize)

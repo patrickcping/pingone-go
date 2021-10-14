@@ -19,11 +19,11 @@ type RiskPredictor struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName *string `json:"compactName,omitempty"`
+	CompactName string `json:"compactName"`
 	// An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -38,8 +38,11 @@ type RiskPredictor struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictor() *RiskPredictor {
+func NewRiskPredictor(name string, compactName string, type_ string) *RiskPredictor {
 	this := RiskPredictor{}
+	this.Name = name
+	this.CompactName = compactName
+	this.Type = type_
 	return &this
 }
 
@@ -83,100 +86,76 @@ func (o *RiskPredictor) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *RiskPredictor) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *RiskPredictor) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *RiskPredictor) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetCompactName returns the CompactName field value if set, zero value otherwise.
+// GetCompactName returns the CompactName field value
 func (o *RiskPredictor) GetCompactName() string {
-	if o == nil || o.CompactName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CompactName
+
+	return o.CompactName
 }
 
-// GetCompactNameOk returns a tuple with the CompactName field value if set, nil otherwise
+// GetCompactNameOk returns a tuple with the CompactName field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetCompactNameOk() (*string, bool) {
-	if o == nil || o.CompactName == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.CompactName, true
+	return &o.CompactName, true
 }
 
-// HasCompactName returns a boolean if a field has been set.
-func (o *RiskPredictor) HasCompactName() bool {
-	if o != nil && o.CompactName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCompactName gets a reference to the given string and assigns it to the CompactName field.
+// SetCompactName sets field value
 func (o *RiskPredictor) SetCompactName(v string) {
-	o.CompactName = &v
+	o.CompactName = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *RiskPredictor) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *RiskPredictor) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *RiskPredictor) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -344,13 +323,13 @@ func (o RiskPredictor) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.CompactName != nil {
+	if true {
 		toSerialize["compactName"] = o.CompactName
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.Description != nil {

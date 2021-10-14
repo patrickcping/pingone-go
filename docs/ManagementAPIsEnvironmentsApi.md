@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    environment := *openapiclient.NewEnvironment() // Environment |  (optional)
+    environment := *openapiclient.NewEnvironment(*openapiclient.NewEnvironmentLicense("Id_example"), "Name_example", "Region_example", "Type_example") // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -307,7 +307,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    environment := *openapiclient.NewEnvironment() // Environment |  (optional)
+    environment := *openapiclient.NewEnvironment(*openapiclient.NewEnvironmentLicense("Id_example"), "Name_example", "Region_example", "Type_example") // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -17,7 +17,7 @@ import (
 // RiskPolicySetCondition The condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
 type RiskPolicySetCondition struct {
 	Value *string `json:"value,omitempty"`
-	Equals *map[string]interface{} `json:"equals,omitempty"`
+	Equals *OneOfstringboolean `json:"equals,omitempty"`
 	AggregatedWeights *[]RiskPolicySetConditionAggregatedWeights `json:"aggregatedWeights,omitempty"`
 	Between *RiskPolicySetConditionBetween `json:"between,omitempty"`
 }
@@ -72,9 +72,9 @@ func (o *RiskPolicySetCondition) SetValue(v string) {
 }
 
 // GetEquals returns the Equals field value if set, zero value otherwise.
-func (o *RiskPolicySetCondition) GetEquals() map[string]interface{} {
+func (o *RiskPolicySetCondition) GetEquals() OneOfstringboolean {
 	if o == nil || o.Equals == nil {
-		var ret map[string]interface{}
+		var ret OneOfstringboolean
 		return ret
 	}
 	return *o.Equals
@@ -82,7 +82,7 @@ func (o *RiskPolicySetCondition) GetEquals() map[string]interface{} {
 
 // GetEqualsOk returns a tuple with the Equals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetCondition) GetEqualsOk() (*map[string]interface{}, bool) {
+func (o *RiskPolicySetCondition) GetEqualsOk() (*OneOfstringboolean, bool) {
 	if o == nil || o.Equals == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *RiskPolicySetCondition) HasEquals() bool {
 	return false
 }
 
-// SetEquals gets a reference to the given map[string]interface{} and assigns it to the Equals field.
-func (o *RiskPolicySetCondition) SetEquals(v map[string]interface{}) {
+// SetEquals gets a reference to the given OneOfstringboolean and assigns it to the Equals field.
+func (o *RiskPolicySetCondition) SetEquals(v OneOfstringboolean) {
 	o.Equals = &v
 }
 

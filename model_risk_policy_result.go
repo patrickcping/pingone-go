@@ -16,7 +16,7 @@ import (
 
 // RiskPolicyResult struct for RiskPolicyResult
 type RiskPolicyResult struct {
-	Level *string `json:"level,omitempty"`
+	Level string `json:"level"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -24,8 +24,9 @@ type RiskPolicyResult struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicyResult() *RiskPolicyResult {
+func NewRiskPolicyResult(level string) *RiskPolicyResult {
 	this := RiskPolicyResult{}
+	this.Level = level
 	return &this
 }
 
@@ -37,36 +38,28 @@ func NewRiskPolicyResultWithDefaults() *RiskPolicyResult {
 	return &this
 }
 
-// GetLevel returns the Level field value if set, zero value otherwise.
+// GetLevel returns the Level field value
 func (o *RiskPolicyResult) GetLevel() string {
-	if o == nil || o.Level == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Level
+
+	return o.Level
 }
 
-// GetLevelOk returns a tuple with the Level field value if set, nil otherwise
+// GetLevelOk returns a tuple with the Level field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetLevelOk() (*string, bool) {
-	if o == nil || o.Level == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Level, true
+	return &o.Level, true
 }
 
-// HasLevel returns a boolean if a field has been set.
-func (o *RiskPolicyResult) HasLevel() bool {
-	if o != nil && o.Level != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLevel gets a reference to the given string and assigns it to the Level field.
+// SetLevel sets field value
 func (o *RiskPolicyResult) SetLevel(v string) {
-	o.Level = &v
+	o.Level = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -103,7 +96,7 @@ func (o *RiskPolicyResult) SetType(v string) {
 
 func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Level != nil {
+	if true {
 		toSerialize["level"] = o.Level
 	}
 	if o.Type != nil {

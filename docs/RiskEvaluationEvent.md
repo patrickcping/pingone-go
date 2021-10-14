@@ -7,19 +7,19 @@ Name | Type | Description | Notes
 **Browser** | Pointer to [**RiskEvaluationEventBrowser**](RiskEvaluationEventBrowser.md) |  | [optional] 
 **CompletionStatus** | Pointer to **string** | A string that specifies the state of the transaction. Options are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the value defaults to IN_PROGRESS. The value of this property can be changed only if its current state is IN_PROGRESS. | [optional] 
 **EvaluatedFactors** | Pointer to [**RiskEvaluationEventEvaluatedFactors**](RiskEvaluationEventEvaluatedFactors.md) |  | [optional] 
-**Ip** | Pointer to **string** | A string that specifies the origin IP address of the authentication flow. This is a required property. | [optional] 
+**Ip** | **string** | A string that specifies the origin IP address of the authentication flow. This is a required property. | 
 **Flow** | Pointer to [**RiskEvaluationEventFlow**](RiskEvaluationEventFlow.md) |  | [optional] 
 **Origin** | Pointer to **string** | A string that specifies the calling service. | [optional] 
 **Session** | Pointer to [**RiskEvaluationEventSession**](RiskEvaluationEventSession.md) |  | [optional] 
 **TargetResource** | Pointer to [**RiskEvaluationEventTargetResource**](RiskEvaluationEventTargetResource.md) |  | [optional] 
-**User** | Pointer to [**RiskEvaluationEventUser**](RiskEvaluationEventUser.md) |  | [optional] 
+**User** | [**RiskEvaluationEventUser**](RiskEvaluationEventUser.md) |  | 
 **SharingType** | Pointer to **string** | A string that specifies the device sharing type. Options are UNSPECIFIED, SHARED, and PRIVATE. | [optional] 
 
 ## Methods
 
 ### NewRiskEvaluationEvent
 
-`func NewRiskEvaluationEvent() *RiskEvaluationEvent`
+`func NewRiskEvaluationEvent(ip string, user RiskEvaluationEventUser, ) *RiskEvaluationEvent`
 
 NewRiskEvaluationEvent instantiates a new RiskEvaluationEvent object
 This constructor will assign default values to properties that have it defined,
@@ -128,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetIp sets Ip field to given value.
 
-### HasIp
-
-`func (o *RiskEvaluationEvent) HasIp() bool`
-
-HasIp returns a boolean if a field has been set.
 
 ### GetFlow
 
@@ -253,11 +248,6 @@ and a boolean to check if the value has been set.
 
 SetUser sets User field to given value.
 
-### HasUser
-
-`func (o *RiskEvaluationEvent) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
 
 ### GetSharingType
 

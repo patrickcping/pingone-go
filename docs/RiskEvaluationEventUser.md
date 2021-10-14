@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property. | [optional] 
+**Id** | **string** | A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property. | 
 **Name** | Pointer to **string** | A string that specifies the name of the user associated with the event (maximum size 1024 characters). | [optional] 
-**Type** | Pointer to **string** | A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property. | [optional] 
+**Type** | **string** | A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property. | 
 **Groups** | Pointer to [**[]RiskEvaluationEventUserGroups**](RiskEvaluationEventUserGroups.md) | An array of group names. | [optional] 
 
 ## Methods
 
 ### NewRiskEvaluationEventUser
 
-`func NewRiskEvaluationEventUser() *RiskEvaluationEventUser`
+`func NewRiskEvaluationEventUser(id string, type_ string, ) *RiskEvaluationEventUser`
 
 NewRiskEvaluationEventUser instantiates a new RiskEvaluationEventUser object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *RiskEvaluationEventUser) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -97,11 +92,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RiskEvaluationEventUser) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetGroups
 

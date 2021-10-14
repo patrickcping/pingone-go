@@ -21,8 +21,8 @@ type ApplicationResourceGrant struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the application resource grant ID.
 	Id *string `json:"id,omitempty"`
-	Resource *ApplicationResourceGrantResource `json:"resource,omitempty"`
-	Scopes *[]ApplicationResourceGrantScopes `json:"scopes,omitempty"`
+	Resource ApplicationResourceGrantResource `json:"resource"`
+	Scopes []ApplicationResourceGrantScopes `json:"scopes"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -31,8 +31,10 @@ type ApplicationResourceGrant struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResourceGrant() *ApplicationResourceGrant {
+func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopes) *ApplicationResourceGrant {
 	this := ApplicationResourceGrant{}
+	this.Resource = resource
+	this.Scopes = scopes
 	return &this
 }
 
@@ -140,68 +142,52 @@ func (o *ApplicationResourceGrant) SetId(v string) {
 	o.Id = &v
 }
 
-// GetResource returns the Resource field value if set, zero value otherwise.
+// GetResource returns the Resource field value
 func (o *ApplicationResourceGrant) GetResource() ApplicationResourceGrantResource {
-	if o == nil || o.Resource == nil {
+	if o == nil {
 		var ret ApplicationResourceGrantResource
 		return ret
 	}
-	return *o.Resource
+
+	return o.Resource
 }
 
-// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
+// GetResourceOk returns a tuple with the Resource field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResourceGrant) GetResourceOk() (*ApplicationResourceGrantResource, bool) {
-	if o == nil || o.Resource == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Resource, true
+	return &o.Resource, true
 }
 
-// HasResource returns a boolean if a field has been set.
-func (o *ApplicationResourceGrant) HasResource() bool {
-	if o != nil && o.Resource != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResource gets a reference to the given ApplicationResourceGrantResource and assigns it to the Resource field.
+// SetResource sets field value
 func (o *ApplicationResourceGrant) SetResource(v ApplicationResourceGrantResource) {
-	o.Resource = &v
+	o.Resource = v
 }
 
-// GetScopes returns the Scopes field value if set, zero value otherwise.
+// GetScopes returns the Scopes field value
 func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopes {
-	if o == nil || o.Scopes == nil {
+	if o == nil {
 		var ret []ApplicationResourceGrantScopes
 		return ret
 	}
-	return *o.Scopes
+
+	return o.Scopes
 }
 
-// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// GetScopesOk returns a tuple with the Scopes field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResourceGrant) GetScopesOk() (*[]ApplicationResourceGrantScopes, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Scopes, true
+	return &o.Scopes, true
 }
 
-// HasScopes returns a boolean if a field has been set.
-func (o *ApplicationResourceGrant) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScopes gets a reference to the given []ApplicationResourceGrantScopes and assigns it to the Scopes field.
+// SetScopes sets field value
 func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopes) {
-	o.Scopes = &v
+	o.Scopes = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -247,10 +233,10 @@ func (o ApplicationResourceGrant) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Resource != nil {
+	if true {
 		toSerialize["resource"] = o.Resource
 	}
-	if o.Scopes != nil {
+	if true {
 		toSerialize["scopes"] = o.Scopes
 	}
 	if o.UpdatedAt != nil {

@@ -23,14 +23,14 @@ type Environment struct {
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
-	License *EnvironmentLicense `json:"license,omitempty"`
+	License EnvironmentLicense `json:"license"`
 	// A string that specifies the environment name, which must be provided and must be unique within an organization.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	Organization *EnvironmentOrganization `json:"organization,omitempty"`
 	// A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated. Options are NA, EU, and AP.
-	Region *string `json:"region,omitempty"`
+	Region string `json:"region"`
 	// A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -39,8 +39,12 @@ type Environment struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironment() *Environment {
+func NewEnvironment(license EnvironmentLicense, name string, region string, type_ string) *Environment {
 	this := Environment{}
+	this.License = license
+	this.Name = name
+	this.Region = region
+	this.Type = type_
 	return &this
 }
 
@@ -180,68 +184,52 @@ func (o *Environment) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLicense returns the License field value if set, zero value otherwise.
+// GetLicense returns the License field value
 func (o *Environment) GetLicense() EnvironmentLicense {
-	if o == nil || o.License == nil {
+	if o == nil {
 		var ret EnvironmentLicense
 		return ret
 	}
-	return *o.License
+
+	return o.License
 }
 
-// GetLicenseOk returns a tuple with the License field value if set, nil otherwise
+// GetLicenseOk returns a tuple with the License field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetLicenseOk() (*EnvironmentLicense, bool) {
-	if o == nil || o.License == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.License, true
+	return &o.License, true
 }
 
-// HasLicense returns a boolean if a field has been set.
-func (o *Environment) HasLicense() bool {
-	if o != nil && o.License != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLicense gets a reference to the given EnvironmentLicense and assigns it to the License field.
+// SetLicense sets field value
 func (o *Environment) SetLicense(v EnvironmentLicense) {
-	o.License = &v
+	o.License = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Environment) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Environment) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Environment) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
@@ -276,68 +264,52 @@ func (o *Environment) SetOrganization(v EnvironmentOrganization) {
 	o.Organization = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value
 func (o *Environment) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Region
+
+	return o.Region
 }
 
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Region, true
+	return &o.Region, true
 }
 
-// HasRegion returns a boolean if a field has been set.
-func (o *Environment) HasRegion() bool {
-	if o != nil && o.Region != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given string and assigns it to the Region field.
+// SetRegion sets field value
 func (o *Environment) SetRegion(v string) {
-	o.Region = &v
+	o.Region = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *Environment) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Environment) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *Environment) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -386,19 +358,19 @@ func (o Environment) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.License != nil {
+	if true {
 		toSerialize["license"] = o.License
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Organization != nil {
 		toSerialize["organization"] = o.Organization
 	}
-	if o.Region != nil {
+	if true {
 		toSerialize["region"] = o.Region
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.UpdatedAt != nil {

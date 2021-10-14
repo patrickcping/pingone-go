@@ -34,7 +34,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    riskPredictor := *openapiclient.NewRiskPredictor() // RiskPredictor |  (optional)
+    riskPredictor := *openapiclient.NewRiskPredictor("Name_example", "CompactName_example", "Type_example") // RiskPredictor |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -321,7 +321,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     riskPredictorID := "riskPredictorID_example" // string | 
-    riskPredictor := *openapiclient.NewRiskPredictor() // RiskPredictor |  (optional)
+    riskPredictor := *openapiclient.NewRiskPredictor("Name_example", "CompactName_example", "Type_example") // RiskPredictor |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

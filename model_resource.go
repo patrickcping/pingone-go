@@ -28,7 +28,7 @@ type Resource struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne.
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
@@ -39,8 +39,9 @@ type Resource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResource() *Resource {
+func NewResource(name string) *Resource {
 	this := Resource{}
+	this.Name = name
 	return &this
 }
 
@@ -244,36 +245,28 @@ func (o *Resource) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Resource) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Resource) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Resource) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Resource) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -360,7 +353,7 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Type != nil {

@@ -16,16 +16,18 @@ import (
 
 // ApplicationIcon The HREF and the ID for the application icon.
 type ApplicationIcon struct {
-	Id *string `json:"id,omitempty"`
-	Href *string `json:"href,omitempty"`
+	Id string `json:"id"`
+	Href string `json:"href"`
 }
 
 // NewApplicationIcon instantiates a new ApplicationIcon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationIcon() *ApplicationIcon {
+func NewApplicationIcon(id string, href string) *ApplicationIcon {
 	this := ApplicationIcon{}
+	this.Id = id
+	this.Href = href
 	return &this
 }
 
@@ -37,76 +39,60 @@ func NewApplicationIconWithDefaults() *ApplicationIcon {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ApplicationIcon) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ApplicationIcon) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *ApplicationIcon) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
+// GetHref returns the Href field value
 func (o *ApplicationIcon) GetHref() string {
-	if o == nil || o.Href == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Href
+
+	return o.Href
 }
 
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetHrefOk() (*string, bool) {
-	if o == nil || o.Href == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Href, true
+	return &o.Href, true
 }
 
-// HasHref returns a boolean if a field has been set.
-func (o *ApplicationIcon) HasHref() bool {
-	if o != nil && o.Href != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
+// SetHref sets field value
 func (o *ApplicationIcon) SetHref(v string) {
-	o.Href = &v
+	o.Href = v
 }
 
 func (o ApplicationIcon) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.Href != nil {
+	if true {
 		toSerialize["href"] = o.Href
 	}
 	return json.Marshal(toSerialize)

@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Application** | Pointer to [**ApplicationResourceGrantApplication**](ApplicationResourceGrantApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the application resource grant ID. | [optional] [readonly] 
-**Resource** | Pointer to [**ApplicationResourceGrantResource**](ApplicationResourceGrantResource.md) |  | [optional] 
-**Scopes** | Pointer to [**[]ApplicationResourceGrantScopes**](ApplicationResourceGrantScopes.md) |  | [optional] 
+**Resource** | [**ApplicationResourceGrantResource**](ApplicationResourceGrantResource.md) |  | 
+**Scopes** | [**[]ApplicationResourceGrantScopes**](ApplicationResourceGrantScopes.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewApplicationResourceGrant
 
-`func NewApplicationResourceGrant() *ApplicationResourceGrant`
+`func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopes, ) *ApplicationResourceGrant`
 
 NewApplicationResourceGrant instantiates a new ApplicationResourceGrant object
 This constructor will assign default values to properties that have it defined,
@@ -124,11 +124,6 @@ and a boolean to check if the value has been set.
 
 SetResource sets Resource field to given value.
 
-### HasResource
-
-`func (o *ApplicationResourceGrant) HasResource() bool`
-
-HasResource returns a boolean if a field has been set.
 
 ### GetScopes
 
@@ -149,11 +144,6 @@ and a boolean to check if the value has been set.
 
 SetScopes sets Scopes field to given value.
 
-### HasScopes
-
-`func (o *ApplicationResourceGrant) HasScopes() bool`
-
-HasScopes returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created (format ISO-8061). | [optional] [readonly] 
 **Details** | Pointer to [**RiskEvaluationDetails**](RiskEvaluationDetails.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Event** | Pointer to [**RiskEvaluationEvent**](RiskEvaluationEvent.md) |  | [optional] 
+**Event** | [**RiskEvaluationEvent**](RiskEvaluationEvent.md) |  | 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **RiskPolicySet** | Pointer to [**RiskEvaluationRiskPolicySet**](RiskEvaluationRiskPolicySet.md) |  | [optional] 
 **Result** | Pointer to [**RiskEvaluationResult**](RiskEvaluationResult.md) |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRiskEvaluation
 
-`func NewRiskEvaluation() *RiskEvaluation`
+`func NewRiskEvaluation(event RiskEvaluationEvent, ) *RiskEvaluation`
 
 NewRiskEvaluation instantiates a new RiskEvaluation object
 This constructor will assign default values to properties that have it defined,
@@ -126,11 +126,6 @@ and a boolean to check if the value has been set.
 
 SetEvent sets Event field to given value.
 
-### HasEvent
-
-`func (o *RiskEvaluation) HasEvent() bool`
-
-HasEvent returns a boolean if a field has been set.
 
 ### GetId
 

@@ -17,9 +17,9 @@ import (
 // ApplicationSAMLAllOf struct for ApplicationSAMLAllOf
 type ApplicationSAMLAllOf struct {
 	// A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
-	AcsUrls *[]string `json:"acsUrls,omitempty"`
+	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
-	AssertionDuration *int32 `json:"assertionDuration,omitempty"`
+	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
 	IdpSigningtype *ApplicationSAMLAllOfIdpSigningtype `json:"idpSigningtype,omitempty"`
@@ -34,7 +34,7 @@ type ApplicationSAMLAllOf struct {
 	// A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response.
 	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
-	SpEntityId *string `json:"spEntityId,omitempty"`
+	SpEntityId string `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
 }
 
@@ -42,8 +42,11 @@ type ApplicationSAMLAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationSAMLAllOf() *ApplicationSAMLAllOf {
+func NewApplicationSAMLAllOf(acsUrls []string, assertionDuration int32, spEntityId string) *ApplicationSAMLAllOf {
 	this := ApplicationSAMLAllOf{}
+	this.AcsUrls = acsUrls
+	this.AssertionDuration = assertionDuration
+	this.SpEntityId = spEntityId
 	return &this
 }
 
@@ -55,68 +58,52 @@ func NewApplicationSAMLAllOfWithDefaults() *ApplicationSAMLAllOf {
 	return &this
 }
 
-// GetAcsUrls returns the AcsUrls field value if set, zero value otherwise.
+// GetAcsUrls returns the AcsUrls field value
 func (o *ApplicationSAMLAllOf) GetAcsUrls() []string {
-	if o == nil || o.AcsUrls == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.AcsUrls
+
+	return o.AcsUrls
 }
 
-// GetAcsUrlsOk returns a tuple with the AcsUrls field value if set, nil otherwise
+// GetAcsUrlsOk returns a tuple with the AcsUrls field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOf) GetAcsUrlsOk() (*[]string, bool) {
-	if o == nil || o.AcsUrls == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AcsUrls, true
+	return &o.AcsUrls, true
 }
 
-// HasAcsUrls returns a boolean if a field has been set.
-func (o *ApplicationSAMLAllOf) HasAcsUrls() bool {
-	if o != nil && o.AcsUrls != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAcsUrls gets a reference to the given []string and assigns it to the AcsUrls field.
+// SetAcsUrls sets field value
 func (o *ApplicationSAMLAllOf) SetAcsUrls(v []string) {
-	o.AcsUrls = &v
+	o.AcsUrls = v
 }
 
-// GetAssertionDuration returns the AssertionDuration field value if set, zero value otherwise.
+// GetAssertionDuration returns the AssertionDuration field value
 func (o *ApplicationSAMLAllOf) GetAssertionDuration() int32 {
-	if o == nil || o.AssertionDuration == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.AssertionDuration
+
+	return o.AssertionDuration
 }
 
-// GetAssertionDurationOk returns a tuple with the AssertionDuration field value if set, nil otherwise
+// GetAssertionDurationOk returns a tuple with the AssertionDuration field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOf) GetAssertionDurationOk() (*int32, bool) {
-	if o == nil || o.AssertionDuration == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AssertionDuration, true
+	return &o.AssertionDuration, true
 }
 
-// HasAssertionDuration returns a boolean if a field has been set.
-func (o *ApplicationSAMLAllOf) HasAssertionDuration() bool {
-	if o != nil && o.AssertionDuration != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAssertionDuration gets a reference to the given int32 and assigns it to the AssertionDuration field.
+// SetAssertionDuration sets field value
 func (o *ApplicationSAMLAllOf) SetAssertionDuration(v int32) {
-	o.AssertionDuration = &v
+	o.AssertionDuration = v
 }
 
 // GetAssertionSigned returns the AssertionSigned field value if set, zero value otherwise.
@@ -343,36 +330,28 @@ func (o *ApplicationSAMLAllOf) SetSloResponseEndpoint(v string) {
 	o.SloResponseEndpoint = &v
 }
 
-// GetSpEntityId returns the SpEntityId field value if set, zero value otherwise.
+// GetSpEntityId returns the SpEntityId field value
 func (o *ApplicationSAMLAllOf) GetSpEntityId() string {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SpEntityId
+
+	return o.SpEntityId
 }
 
-// GetSpEntityIdOk returns a tuple with the SpEntityId field value if set, nil otherwise
+// GetSpEntityIdOk returns a tuple with the SpEntityId field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOf) GetSpEntityIdOk() (*string, bool) {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.SpEntityId, true
+	return &o.SpEntityId, true
 }
 
-// HasSpEntityId returns a boolean if a field has been set.
-func (o *ApplicationSAMLAllOf) HasSpEntityId() bool {
-	if o != nil && o.SpEntityId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSpEntityId gets a reference to the given string and assigns it to the SpEntityId field.
+// SetSpEntityId sets field value
 func (o *ApplicationSAMLAllOf) SetSpEntityId(v string) {
-	o.SpEntityId = &v
+	o.SpEntityId = v
 }
 
 // GetSpVerification returns the SpVerification field value if set, zero value otherwise.
@@ -409,10 +388,10 @@ func (o *ApplicationSAMLAllOf) SetSpVerification(v ApplicationSAMLAllOfSpVerific
 
 func (o ApplicationSAMLAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AcsUrls != nil {
+	if true {
 		toSerialize["acsUrls"] = o.AcsUrls
 	}
-	if o.AssertionDuration != nil {
+	if true {
 		toSerialize["assertionDuration"] = o.AssertionDuration
 	}
 	if o.AssertionSigned != nil {
@@ -436,7 +415,7 @@ func (o ApplicationSAMLAllOf) MarshalJSON() ([]byte, error) {
 	if o.SloResponseEndpoint != nil {
 		toSerialize["sloResponseEndpoint"] = o.SloResponseEndpoint
 	}
-	if o.SpEntityId != nil {
+	if true {
 		toSerialize["spEntityId"] = o.SpEntityId
 	}
 	if o.SpVerification != nil {

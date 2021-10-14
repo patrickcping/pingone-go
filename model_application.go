@@ -24,7 +24,7 @@ type Application struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -32,13 +32,13 @@ type Application struct {
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
-	Protocol *string `json:"protocol,omitempty"`
+	Protocol string `json:"protocol"`
 	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
 	Tags *[]string `json:"tags,omitempty"`
 	// A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
@@ -49,8 +49,12 @@ type Application struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication() *Application {
+func NewApplication(enabled bool, name string, protocol string, type_ string) *Application {
 	this := Application{}
+	this.Enabled = enabled
+	this.Name = name
+	this.Protocol = protocol
+	this.Type = type_
 	return &this
 }
 
@@ -190,36 +194,28 @@ func (o *Application) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *Application) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *Application) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *Application) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -350,68 +346,52 @@ func (o *Application) SetLoginPageUrl(v string) {
 	o.LoginPageUrl = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Application) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Application) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Application) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value
 func (o *Application) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Protocol
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Protocol, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Application) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *Application) SetProtocol(v string) {
-	o.Protocol = &v
+	o.Protocol = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -446,36 +426,28 @@ func (o *Application) SetTags(v []string) {
 	o.Tags = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *Application) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Application) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *Application) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -556,7 +528,7 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Environment != nil {
@@ -571,16 +543,16 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.LoginPageUrl != nil {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Protocol != nil {
+	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.UpdatedAt != nil {

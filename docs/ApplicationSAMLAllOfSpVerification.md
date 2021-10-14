@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certificates** | Pointer to [**[]ApplicationSAMLAllOfSpVerificationCertificates**](ApplicationSAMLAllOfSpVerificationCertificates.md) |  | [optional] 
+**Certificates** | [**[]ApplicationSAMLAllOfSpVerificationCertificates**](ApplicationSAMLAllOfSpVerificationCertificates.md) |  | 
 
 ## Methods
 
 ### NewApplicationSAMLAllOfSpVerification
 
-`func NewApplicationSAMLAllOfSpVerification() *ApplicationSAMLAllOfSpVerification`
+`func NewApplicationSAMLAllOfSpVerification(certificates []ApplicationSAMLAllOfSpVerificationCertificates, ) *ApplicationSAMLAllOfSpVerification`
 
 NewApplicationSAMLAllOfSpVerification instantiates a new ApplicationSAMLAllOfSpVerification object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetCertificates sets Certificates field to given value.
 
-### HasCertificates
-
-`func (o *ApplicationSAMLAllOfSpVerification) HasCertificates() bool`
-
-HasCertificates returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

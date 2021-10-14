@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the group to assign | [optional] 
+**Id** | **string** | ID of the group to assign | 
 
 ## Methods
 
 ### NewGroupMembership
 
-`func NewGroupMembership() *GroupMembership`
+`func NewGroupMembership(id string, ) *GroupMembership`
 
 NewGroupMembership instantiates a new GroupMembership object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *GroupMembership) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

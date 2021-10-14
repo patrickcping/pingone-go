@@ -21,13 +21,13 @@ type RiskEvaluationEvent struct {
 	CompletionStatus *string `json:"completionStatus,omitempty"`
 	EvaluatedFactors *RiskEvaluationEventEvaluatedFactors `json:"evaluatedFactors,omitempty"`
 	// A string that specifies the origin IP address of the authentication flow. This is a required property.
-	Ip *string `json:"ip,omitempty"`
+	Ip string `json:"ip"`
 	Flow *RiskEvaluationEventFlow `json:"flow,omitempty"`
 	// A string that specifies the calling service.
 	Origin *string `json:"origin,omitempty"`
 	Session *RiskEvaluationEventSession `json:"session,omitempty"`
 	TargetResource *RiskEvaluationEventTargetResource `json:"targetResource,omitempty"`
-	User *RiskEvaluationEventUser `json:"user,omitempty"`
+	User RiskEvaluationEventUser `json:"user"`
 	// A string that specifies the device sharing type. Options are UNSPECIFIED, SHARED, and PRIVATE.
 	SharingType *string `json:"sharingType,omitempty"`
 }
@@ -36,8 +36,10 @@ type RiskEvaluationEvent struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskEvaluationEvent() *RiskEvaluationEvent {
+func NewRiskEvaluationEvent(ip string, user RiskEvaluationEventUser) *RiskEvaluationEvent {
 	this := RiskEvaluationEvent{}
+	this.Ip = ip
+	this.User = user
 	return &this
 }
 
@@ -145,36 +147,28 @@ func (o *RiskEvaluationEvent) SetEvaluatedFactors(v RiskEvaluationEventEvaluated
 	o.EvaluatedFactors = &v
 }
 
-// GetIp returns the Ip field value if set, zero value otherwise.
+// GetIp returns the Ip field value
 func (o *RiskEvaluationEvent) GetIp() string {
-	if o == nil || o.Ip == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Ip
+
+	return o.Ip
 }
 
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
+// GetIpOk returns a tuple with the Ip field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetIpOk() (*string, bool) {
-	if o == nil || o.Ip == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Ip, true
+	return &o.Ip, true
 }
 
-// HasIp returns a boolean if a field has been set.
-func (o *RiskEvaluationEvent) HasIp() bool {
-	if o != nil && o.Ip != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIp gets a reference to the given string and assigns it to the Ip field.
+// SetIp sets field value
 func (o *RiskEvaluationEvent) SetIp(v string) {
-	o.Ip = &v
+	o.Ip = v
 }
 
 // GetFlow returns the Flow field value if set, zero value otherwise.
@@ -305,36 +299,28 @@ func (o *RiskEvaluationEvent) SetTargetResource(v RiskEvaluationEventTargetResou
 	o.TargetResource = &v
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
+// GetUser returns the User field value
 func (o *RiskEvaluationEvent) GetUser() RiskEvaluationEventUser {
-	if o == nil || o.User == nil {
+	if o == nil {
 		var ret RiskEvaluationEventUser
 		return ret
 	}
-	return *o.User
+
+	return o.User
 }
 
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetUserOk() (*RiskEvaluationEventUser, bool) {
-	if o == nil || o.User == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
-// HasUser returns a boolean if a field has been set.
-func (o *RiskEvaluationEvent) HasUser() bool {
-	if o != nil && o.User != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given RiskEvaluationEventUser and assigns it to the User field.
+// SetUser sets field value
 func (o *RiskEvaluationEvent) SetUser(v RiskEvaluationEventUser) {
-	o.User = &v
+	o.User = v
 }
 
 // GetSharingType returns the SharingType field value if set, zero value otherwise.
@@ -380,7 +366,7 @@ func (o RiskEvaluationEvent) MarshalJSON() ([]byte, error) {
 	if o.EvaluatedFactors != nil {
 		toSerialize["evaluatedFactors"] = o.EvaluatedFactors
 	}
-	if o.Ip != nil {
+	if true {
 		toSerialize["ip"] = o.Ip
 	}
 	if o.Flow != nil {
@@ -395,7 +381,7 @@ func (o RiskEvaluationEvent) MarshalJSON() ([]byte, error) {
 	if o.TargetResource != nil {
 		toSerialize["targetResource"] = o.TargetResource
 	}
-	if o.User != nil {
+	if true {
 		toSerialize["user"] = o.User
 	}
 	if o.SharingType != nil {

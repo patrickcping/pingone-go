@@ -20,7 +20,7 @@ type RiskEvaluation struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	Details *RiskEvaluationDetails `json:"details,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Event *RiskEvaluationEvent `json:"event,omitempty"`
+	Event RiskEvaluationEvent `json:"event"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	RiskPolicySet *RiskEvaluationRiskPolicySet `json:"riskPolicySet,omitempty"`
@@ -33,8 +33,9 @@ type RiskEvaluation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskEvaluation() *RiskEvaluation {
+func NewRiskEvaluation(event RiskEvaluationEvent) *RiskEvaluation {
 	this := RiskEvaluation{}
+	this.Event = event
 	return &this
 }
 
@@ -142,36 +143,28 @@ func (o *RiskEvaluation) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
-// GetEvent returns the Event field value if set, zero value otherwise.
+// GetEvent returns the Event field value
 func (o *RiskEvaluation) GetEvent() RiskEvaluationEvent {
-	if o == nil || o.Event == nil {
+	if o == nil {
 		var ret RiskEvaluationEvent
 		return ret
 	}
-	return *o.Event
+
+	return o.Event
 }
 
-// GetEventOk returns a tuple with the Event field value if set, nil otherwise
+// GetEventOk returns a tuple with the Event field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluation) GetEventOk() (*RiskEvaluationEvent, bool) {
-	if o == nil || o.Event == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Event, true
+	return &o.Event, true
 }
 
-// HasEvent returns a boolean if a field has been set.
-func (o *RiskEvaluation) HasEvent() bool {
-	if o != nil && o.Event != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEvent gets a reference to the given RiskEvaluationEvent and assigns it to the Event field.
+// SetEvent sets field value
 func (o *RiskEvaluation) SetEvent(v RiskEvaluationEvent) {
-	o.Event = &v
+	o.Event = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -313,7 +306,7 @@ func (o RiskEvaluation) MarshalJSON() ([]byte, error) {
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Event != nil {
+	if true {
 		toSerialize["event"] = o.Event
 	}
 	if o.Id != nil {

@@ -17,17 +17,19 @@ import (
 // BillOfMaterialsBookmarks struct for BillOfMaterialsBookmarks
 type BillOfMaterialsBookmarks struct {
 	// Name of the custom bookmark. The name must be unique among the product bookmarks and be 50 characters or fewer.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A valid URL for the bookmark.
-	Href *string `json:"href,omitempty"`
+	Href string `json:"href"`
 }
 
 // NewBillOfMaterialsBookmarks instantiates a new BillOfMaterialsBookmarks object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillOfMaterialsBookmarks() *BillOfMaterialsBookmarks {
+func NewBillOfMaterialsBookmarks(name string, href string) *BillOfMaterialsBookmarks {
 	this := BillOfMaterialsBookmarks{}
+	this.Name = name
+	this.Href = href
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewBillOfMaterialsBookmarksWithDefaults() *BillOfMaterialsBookmarks {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *BillOfMaterialsBookmarks) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsBookmarks) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *BillOfMaterialsBookmarks) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *BillOfMaterialsBookmarks) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
+// GetHref returns the Href field value
 func (o *BillOfMaterialsBookmarks) GetHref() string {
-	if o == nil || o.Href == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Href
+
+	return o.Href
 }
 
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsBookmarks) GetHrefOk() (*string, bool) {
-	if o == nil || o.Href == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Href, true
+	return &o.Href, true
 }
 
-// HasHref returns a boolean if a field has been set.
-func (o *BillOfMaterialsBookmarks) HasHref() bool {
-	if o != nil && o.Href != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
+// SetHref sets field value
 func (o *BillOfMaterialsBookmarks) SetHref(v string) {
-	o.Href = &v
+	o.Href = v
 }
 
 func (o BillOfMaterialsBookmarks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Href != nil {
+	if true {
 		toSerialize["href"] = o.Href
 	}
 	return json.Marshal(toSerialize)

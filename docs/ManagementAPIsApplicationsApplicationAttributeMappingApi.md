@@ -35,7 +35,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
+    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping("Name_example", false, "Value_example") // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -334,7 +334,7 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     samlAttrID := "samlAttrID_example" // string | 
-    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping() // ApplicationAttributeMapping |  (optional)
+    applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping("Name_example", false, "Value_example") // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

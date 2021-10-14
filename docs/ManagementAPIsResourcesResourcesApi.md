@@ -34,7 +34,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    resource := *openapiclient.NewResource() // Resource |  (optional)
+    resource := *openapiclient.NewResource("Name_example") // Resource |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -248,7 +248,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     resourceID := "resourceID_example" // string | 
-    resource := *openapiclient.NewResource() // Resource |  (optional)
+    resource := *openapiclient.NewResource("Name_example") // Resource |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

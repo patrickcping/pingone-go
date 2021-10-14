@@ -16,15 +16,16 @@ import (
 
 // ApplicationSAMLAllOfIdpSigningtype struct for ApplicationSAMLAllOfIdpSigningtype
 type ApplicationSAMLAllOfIdpSigningtype struct {
-	Key *ApplicationSAMLAllOfIdpSigningtypeKey `json:"key,omitempty"`
+	Key ApplicationSAMLAllOfIdpSigningtypeKey `json:"key"`
 }
 
 // NewApplicationSAMLAllOfIdpSigningtype instantiates a new ApplicationSAMLAllOfIdpSigningtype object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationSAMLAllOfIdpSigningtype() *ApplicationSAMLAllOfIdpSigningtype {
+func NewApplicationSAMLAllOfIdpSigningtype(key ApplicationSAMLAllOfIdpSigningtypeKey) *ApplicationSAMLAllOfIdpSigningtype {
 	this := ApplicationSAMLAllOfIdpSigningtype{}
+	this.Key = key
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewApplicationSAMLAllOfIdpSigningtypeWithDefaults() *ApplicationSAMLAllOfId
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value
 func (o *ApplicationSAMLAllOfIdpSigningtype) GetKey() ApplicationSAMLAllOfIdpSigningtypeKey {
-	if o == nil || o.Key == nil {
+	if o == nil {
 		var ret ApplicationSAMLAllOfIdpSigningtypeKey
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOfIdpSigningtype) GetKeyOk() (*ApplicationSAMLAllOfIdpSigningtypeKey, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *ApplicationSAMLAllOfIdpSigningtype) HasKey() bool {
-	if o != nil && o.Key != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given ApplicationSAMLAllOfIdpSigningtypeKey and assigns it to the Key field.
+// SetKey sets field value
 func (o *ApplicationSAMLAllOfIdpSigningtype) SetKey(v ApplicationSAMLAllOfIdpSigningtypeKey) {
-	o.Key = &v
+	o.Key = v
 }
 
 func (o ApplicationSAMLAllOfIdpSigningtype) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Key != nil {
+	if true {
 		toSerialize["key"] = o.Key
 	}
 	return json.Marshal(toSerialize)

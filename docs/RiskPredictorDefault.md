@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Weight** | Pointer to **int32** | An integer type. This specifies the weight assigned to the risk predictor in a new policy by default. | [optional] 
-**Result** | Pointer to [**RiskPredictorDefaultResult**](RiskPredictorDefaultResult.md) |  | [optional] 
+**Weight** | **int32** | An integer type. This specifies the weight assigned to the risk predictor in a new policy by default. | 
+**Result** | [**RiskPredictorDefaultResult**](RiskPredictorDefaultResult.md) |  | 
 
 ## Methods
 
 ### NewRiskPredictorDefault
 
-`func NewRiskPredictorDefault() *RiskPredictorDefault`
+`func NewRiskPredictorDefault(weight int32, result RiskPredictorDefaultResult, ) *RiskPredictorDefault`
 
 NewRiskPredictorDefault instantiates a new RiskPredictorDefault object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetWeight sets Weight field to given value.
 
-### HasWeight
-
-`func (o *RiskPredictorDefault) HasWeight() bool`
-
-HasWeight returns a boolean if a field has been set.
 
 ### GetResult
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetResult sets Result field to given value.
 
-### HasResult
-
-`func (o *RiskPredictorDefault) HasResult() bool`
-
-HasResult returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

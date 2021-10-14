@@ -34,7 +34,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    riskPolicySet := *openapiclient.NewRiskPolicySet() // RiskPolicySet |  (optional)
+    riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -321,7 +321,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     riskPolicySetID := "riskPolicySetID_example" // string | 
-    riskPolicySet := *openapiclient.NewRiskPolicySet() // RiskPolicySet |  (optional)
+    riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

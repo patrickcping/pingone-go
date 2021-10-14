@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies the certificate to be used by the identity provider to sign assertions and responses. If this property is omitted, the default signing certificate for the environment is used. | [optional] 
+**Id** | **string** | A string that specifies the certificate to be used by the identity provider to sign assertions and responses. If this property is omitted, the default signing certificate for the environment is used. | 
 
 ## Methods
 
 ### NewApplicationSAMLAllOfIdpSigningtypeKey
 
-`func NewApplicationSAMLAllOfIdpSigningtypeKey() *ApplicationSAMLAllOfIdpSigningtypeKey`
+`func NewApplicationSAMLAllOfIdpSigningtypeKey(id string, ) *ApplicationSAMLAllOfIdpSigningtypeKey`
 
 NewApplicationSAMLAllOfIdpSigningtypeKey instantiates a new ApplicationSAMLAllOfIdpSigningtypeKey object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ApplicationSAMLAllOfIdpSigningtypeKey) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

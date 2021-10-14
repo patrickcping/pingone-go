@@ -16,16 +16,18 @@ import (
 
 // RiskPredictorItemMapBetween Minimum and maximum boundaries
 type RiskPredictorItemMapBetween struct {
-	MinScore *int32 `json:"minScore,omitempty"`
-	MaxScore *int32 `json:"maxScore,omitempty"`
+	MinScore int32 `json:"minScore"`
+	MaxScore int32 `json:"maxScore"`
 }
 
 // NewRiskPredictorItemMapBetween instantiates a new RiskPredictorItemMapBetween object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorItemMapBetween() *RiskPredictorItemMapBetween {
+func NewRiskPredictorItemMapBetween(minScore int32, maxScore int32) *RiskPredictorItemMapBetween {
 	this := RiskPredictorItemMapBetween{}
+	this.MinScore = minScore
+	this.MaxScore = maxScore
 	return &this
 }
 
@@ -37,76 +39,60 @@ func NewRiskPredictorItemMapBetweenWithDefaults() *RiskPredictorItemMapBetween {
 	return &this
 }
 
-// GetMinScore returns the MinScore field value if set, zero value otherwise.
+// GetMinScore returns the MinScore field value
 func (o *RiskPredictorItemMapBetween) GetMinScore() int32 {
-	if o == nil || o.MinScore == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MinScore
+
+	return o.MinScore
 }
 
-// GetMinScoreOk returns a tuple with the MinScore field value if set, nil otherwise
+// GetMinScoreOk returns a tuple with the MinScore field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*int32, bool) {
-	if o == nil || o.MinScore == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MinScore, true
+	return &o.MinScore, true
 }
 
-// HasMinScore returns a boolean if a field has been set.
-func (o *RiskPredictorItemMapBetween) HasMinScore() bool {
-	if o != nil && o.MinScore != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMinScore gets a reference to the given int32 and assigns it to the MinScore field.
+// SetMinScore sets field value
 func (o *RiskPredictorItemMapBetween) SetMinScore(v int32) {
-	o.MinScore = &v
+	o.MinScore = v
 }
 
-// GetMaxScore returns the MaxScore field value if set, zero value otherwise.
+// GetMaxScore returns the MaxScore field value
 func (o *RiskPredictorItemMapBetween) GetMaxScore() int32 {
-	if o == nil || o.MaxScore == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaxScore
+
+	return o.MaxScore
 }
 
-// GetMaxScoreOk returns a tuple with the MaxScore field value if set, nil otherwise
+// GetMaxScoreOk returns a tuple with the MaxScore field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*int32, bool) {
-	if o == nil || o.MaxScore == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MaxScore, true
+	return &o.MaxScore, true
 }
 
-// HasMaxScore returns a boolean if a field has been set.
-func (o *RiskPredictorItemMapBetween) HasMaxScore() bool {
-	if o != nil && o.MaxScore != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxScore gets a reference to the given int32 and assigns it to the MaxScore field.
+// SetMaxScore sets field value
 func (o *RiskPredictorItemMapBetween) SetMaxScore(v int32) {
-	o.MaxScore = &v
+	o.MaxScore = v
 }
 
 func (o RiskPredictorItemMapBetween) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MinScore != nil {
+	if true {
 		toSerialize["minScore"] = o.MinScore
 	}
-	if o.MaxScore != nil {
+	if true {
 		toSerialize["maxScore"] = o.MaxScore
 	}
 	return json.Marshal(toSerialize)

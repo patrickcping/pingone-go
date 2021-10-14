@@ -35,7 +35,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant() // ApplicationResourceGrant |  (optional)
+    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopes{*openapiclient.NewApplicationResourceGrantScopes("Id_example")}) // ApplicationResourceGrant |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

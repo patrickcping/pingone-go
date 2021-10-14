@@ -17,17 +17,19 @@ import (
 // ApplicationAccessControlGroup struct for ApplicationAccessControlGroup
 type ApplicationAccessControlGroup struct {
 	// A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// A set that specifies the group IDs for the groups the actor must belong to for access to the application.
-	Groups *[]string `json:"groups,omitempty"`
+	Groups []string `json:"groups"`
 }
 
 // NewApplicationAccessControlGroup instantiates a new ApplicationAccessControlGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAccessControlGroup() *ApplicationAccessControlGroup {
+func NewApplicationAccessControlGroup(type_ string, groups []string) *ApplicationAccessControlGroup {
 	this := ApplicationAccessControlGroup{}
+	this.Type = type_
+	this.Groups = groups
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewApplicationAccessControlGroupWithDefaults() *ApplicationAccessControlGro
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ApplicationAccessControlGroup) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlGroup) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApplicationAccessControlGroup) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ApplicationAccessControlGroup) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetGroups returns the Groups field value if set, zero value otherwise.
+// GetGroups returns the Groups field value
 func (o *ApplicationAccessControlGroup) GetGroups() []string {
-	if o == nil || o.Groups == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.Groups
+
+	return o.Groups
 }
 
-// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlGroup) GetGroupsOk() (*[]string, bool) {
-	if o == nil || o.Groups == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Groups, true
+	return &o.Groups, true
 }
 
-// HasGroups returns a boolean if a field has been set.
-func (o *ApplicationAccessControlGroup) HasGroups() bool {
-	if o != nil && o.Groups != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroups gets a reference to the given []string and assigns it to the Groups field.
+// SetGroups sets field value
 func (o *ApplicationAccessControlGroup) SetGroups(v []string) {
-	o.Groups = &v
+	o.Groups = v
 }
 
 func (o ApplicationAccessControlGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.Groups != nil {
+	if true {
 		toSerialize["groups"] = o.Groups
 	}
 	return json.Marshal(toSerialize)

@@ -24,7 +24,7 @@ type ApplicationSAML struct {
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
@@ -32,21 +32,21 @@ type ApplicationSAML struct {
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
-	Protocol *string `json:"protocol,omitempty"`
+	Protocol string `json:"protocol"`
 	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
 	Tags *[]string `json:"tags,omitempty"`
 	// A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
-	AcsUrls *[]string `json:"acsUrls,omitempty"`
+	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
-	AssertionDuration *int32 `json:"assertionDuration,omitempty"`
+	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
 	IdpSigningtype *ApplicationSAMLAllOfIdpSigningtype `json:"idpSigningtype,omitempty"`
@@ -61,7 +61,7 @@ type ApplicationSAML struct {
 	// A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response.
 	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
-	SpEntityId *string `json:"spEntityId,omitempty"`
+	SpEntityId string `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
 }
 
@@ -69,8 +69,15 @@ type ApplicationSAML struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationSAML() *ApplicationSAML {
+func NewApplicationSAML(enabled bool, name string, protocol string, type_ string, acsUrls []string, assertionDuration int32, spEntityId string) *ApplicationSAML {
 	this := ApplicationSAML{}
+	this.Enabled = enabled
+	this.Name = name
+	this.Protocol = protocol
+	this.Type = type_
+	this.AcsUrls = acsUrls
+	this.AssertionDuration = assertionDuration
+	this.SpEntityId = spEntityId
 	return &this
 }
 
@@ -210,36 +217,28 @@ func (o *ApplicationSAML) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *ApplicationSAML) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *ApplicationSAML) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -370,68 +369,52 @@ func (o *ApplicationSAML) SetLoginPageUrl(v string) {
 	o.LoginPageUrl = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ApplicationSAML) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ApplicationSAML) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value
 func (o *ApplicationSAML) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Protocol
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Protocol, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *ApplicationSAML) SetProtocol(v string) {
-	o.Protocol = &v
+	o.Protocol = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -466,36 +449,28 @@ func (o *ApplicationSAML) SetTags(v []string) {
 	o.Tags = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ApplicationSAML) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ApplicationSAML) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -562,68 +537,52 @@ func (o *ApplicationSAML) SetSupportUnsignedRequestObject(v bool) {
 	o.SupportUnsignedRequestObject = &v
 }
 
-// GetAcsUrls returns the AcsUrls field value if set, zero value otherwise.
+// GetAcsUrls returns the AcsUrls field value
 func (o *ApplicationSAML) GetAcsUrls() []string {
-	if o == nil || o.AcsUrls == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.AcsUrls
+
+	return o.AcsUrls
 }
 
-// GetAcsUrlsOk returns a tuple with the AcsUrls field value if set, nil otherwise
+// GetAcsUrlsOk returns a tuple with the AcsUrls field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAcsUrlsOk() (*[]string, bool) {
-	if o == nil || o.AcsUrls == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AcsUrls, true
+	return &o.AcsUrls, true
 }
 
-// HasAcsUrls returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasAcsUrls() bool {
-	if o != nil && o.AcsUrls != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAcsUrls gets a reference to the given []string and assigns it to the AcsUrls field.
+// SetAcsUrls sets field value
 func (o *ApplicationSAML) SetAcsUrls(v []string) {
-	o.AcsUrls = &v
+	o.AcsUrls = v
 }
 
-// GetAssertionDuration returns the AssertionDuration field value if set, zero value otherwise.
+// GetAssertionDuration returns the AssertionDuration field value
 func (o *ApplicationSAML) GetAssertionDuration() int32 {
-	if o == nil || o.AssertionDuration == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.AssertionDuration
+
+	return o.AssertionDuration
 }
 
-// GetAssertionDurationOk returns a tuple with the AssertionDuration field value if set, nil otherwise
+// GetAssertionDurationOk returns a tuple with the AssertionDuration field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAssertionDurationOk() (*int32, bool) {
-	if o == nil || o.AssertionDuration == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AssertionDuration, true
+	return &o.AssertionDuration, true
 }
 
-// HasAssertionDuration returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasAssertionDuration() bool {
-	if o != nil && o.AssertionDuration != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAssertionDuration gets a reference to the given int32 and assigns it to the AssertionDuration field.
+// SetAssertionDuration sets field value
 func (o *ApplicationSAML) SetAssertionDuration(v int32) {
-	o.AssertionDuration = &v
+	o.AssertionDuration = v
 }
 
 // GetAssertionSigned returns the AssertionSigned field value if set, zero value otherwise.
@@ -850,36 +809,28 @@ func (o *ApplicationSAML) SetSloResponseEndpoint(v string) {
 	o.SloResponseEndpoint = &v
 }
 
-// GetSpEntityId returns the SpEntityId field value if set, zero value otherwise.
+// GetSpEntityId returns the SpEntityId field value
 func (o *ApplicationSAML) GetSpEntityId() string {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SpEntityId
+
+	return o.SpEntityId
 }
 
-// GetSpEntityIdOk returns a tuple with the SpEntityId field value if set, nil otherwise
+// GetSpEntityIdOk returns a tuple with the SpEntityId field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSpEntityIdOk() (*string, bool) {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.SpEntityId, true
+	return &o.SpEntityId, true
 }
 
-// HasSpEntityId returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasSpEntityId() bool {
-	if o != nil && o.SpEntityId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSpEntityId gets a reference to the given string and assigns it to the SpEntityId field.
+// SetSpEntityId sets field value
 func (o *ApplicationSAML) SetSpEntityId(v string) {
-	o.SpEntityId = &v
+	o.SpEntityId = v
 }
 
 // GetSpVerification returns the SpVerification field value if set, zero value otherwise.
@@ -928,7 +879,7 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Environment != nil {
@@ -943,16 +894,16 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if o.LoginPageUrl != nil {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Protocol != nil {
+	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.UpdatedAt != nil {
@@ -961,10 +912,10 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if o.SupportUnsignedRequestObject != nil {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
-	if o.AcsUrls != nil {
+	if true {
 		toSerialize["acsUrls"] = o.AcsUrls
 	}
-	if o.AssertionDuration != nil {
+	if true {
 		toSerialize["assertionDuration"] = o.AssertionDuration
 	}
 	if o.AssertionSigned != nil {
@@ -988,7 +939,7 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if o.SloResponseEndpoint != nil {
 		toSerialize["sloResponseEndpoint"] = o.SloResponseEndpoint
 	}
-	if o.SpEntityId != nil {
+	if true {
 		toSerialize["spEntityId"] = o.SpEntityId
 	}
 	if o.SpVerification != nil {

@@ -17,11 +17,11 @@ import (
 // RiskEvaluationEventUser struct for RiskEvaluationEventUser
 type RiskEvaluationEventUser struct {
 	// A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// A string that specifies the name of the user associated with the event (maximum size 1024 characters).
 	Name *string `json:"name,omitempty"`
 	// A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// An array of group names.
 	Groups *[]RiskEvaluationEventUserGroups `json:"groups,omitempty"`
 }
@@ -30,8 +30,10 @@ type RiskEvaluationEventUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskEvaluationEventUser() *RiskEvaluationEventUser {
+func NewRiskEvaluationEventUser(id string, type_ string) *RiskEvaluationEventUser {
 	this := RiskEvaluationEventUser{}
+	this.Id = id
+	this.Type = type_
 	return &this
 }
 
@@ -43,36 +45,28 @@ func NewRiskEvaluationEventUserWithDefaults() *RiskEvaluationEventUser {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *RiskEvaluationEventUser) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *RiskEvaluationEventUser) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *RiskEvaluationEventUser) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -107,36 +101,28 @@ func (o *RiskEvaluationEventUser) SetName(v string) {
 	o.Name = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *RiskEvaluationEventUser) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *RiskEvaluationEventUser) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *RiskEvaluationEventUser) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
@@ -173,13 +159,13 @@ func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroups) {
 
 func (o RiskEvaluationEventUser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.Groups != nil {

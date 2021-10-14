@@ -17,15 +17,16 @@ import (
 // RoleAssignmentRole struct for RoleAssignmentRole
 type RoleAssignmentRole struct {
 	// A string that specifies the role ID.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 }
 
 // NewRoleAssignmentRole instantiates a new RoleAssignmentRole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleAssignmentRole() *RoleAssignmentRole {
+func NewRoleAssignmentRole(id string) *RoleAssignmentRole {
 	this := RoleAssignmentRole{}
+	this.Id = id
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewRoleAssignmentRoleWithDefaults() *RoleAssignmentRole {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *RoleAssignmentRole) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentRole) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *RoleAssignmentRole) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *RoleAssignmentRole) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 func (o RoleAssignmentRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)

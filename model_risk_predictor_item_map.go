@@ -16,7 +16,7 @@ import (
 
 // RiskPredictorItemMap struct for RiskPredictorItemMap
 type RiskPredictorItemMap struct {
-	Contains *string `json:"contains,omitempty"`
+	Contains string `json:"contains"`
 	// List of CIDRs to include
 	IpRange *[]string `json:"ipRange,omitempty"`
 	Between *RiskPredictorItemMapBetween `json:"between,omitempty"`
@@ -28,8 +28,9 @@ type RiskPredictorItemMap struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorItemMap() *RiskPredictorItemMap {
+func NewRiskPredictorItemMap(contains string) *RiskPredictorItemMap {
 	this := RiskPredictorItemMap{}
+	this.Contains = contains
 	return &this
 }
 
@@ -41,36 +42,28 @@ func NewRiskPredictorItemMapWithDefaults() *RiskPredictorItemMap {
 	return &this
 }
 
-// GetContains returns the Contains field value if set, zero value otherwise.
+// GetContains returns the Contains field value
 func (o *RiskPredictorItemMap) GetContains() string {
-	if o == nil || o.Contains == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Contains
+
+	return o.Contains
 }
 
-// GetContainsOk returns a tuple with the Contains field value if set, nil otherwise
+// GetContainsOk returns a tuple with the Contains field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetContainsOk() (*string, bool) {
-	if o == nil || o.Contains == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Contains, true
+	return &o.Contains, true
 }
 
-// HasContains returns a boolean if a field has been set.
-func (o *RiskPredictorItemMap) HasContains() bool {
-	if o != nil && o.Contains != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetContains gets a reference to the given string and assigns it to the Contains field.
+// SetContains sets field value
 func (o *RiskPredictorItemMap) SetContains(v string) {
-	o.Contains = &v
+	o.Contains = v
 }
 
 // GetIpRange returns the IpRange field value if set, zero value otherwise.
@@ -171,7 +164,7 @@ func (o *RiskPredictorItemMap) SetList(v []string) {
 
 func (o RiskPredictorItemMap) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Contains != nil {
+	if true {
 		toSerialize["contains"] = o.Contains
 	}
 	if o.IpRange != nil {

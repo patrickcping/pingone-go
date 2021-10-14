@@ -21,21 +21,21 @@ type SchemaAttribute struct {
 	// A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	DisplayName *string `json:"displayName,omitempty"`
 	// A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the LDAP attribute.
 	LdapAttribute *string `json:"ldapAttribute,omitempty"`
 	// A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
 	Required *bool `json:"required,omitempty"`
 	Schema *SchemaAttributeSchema `json:"schema,omitempty"`
 	// A string that specifies the schema type of the attribute. It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present out-of-the-box. Core attributes may not be updated or deleted. Standard attributes may not be deleted, but their mutable properties may be updated. Custom attributes may be deleted, and their mutable properties may be updated. New attributes are created with a schema type of CUSTOM.
 	SchemaType *string `json:"schemaType,omitempty"`
 	// A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB).
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
 	Unique *bool `json:"unique,omitempty"`
 	// A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
@@ -46,8 +46,11 @@ type SchemaAttribute struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSchemaAttribute() *SchemaAttribute {
+func NewSchemaAttribute(enabled bool, name string, type_ string) *SchemaAttribute {
 	this := SchemaAttribute{}
+	this.Enabled = enabled
+	this.Name = name
+	this.Type = type_
 	return &this
 }
 
@@ -123,36 +126,28 @@ func (o *SchemaAttribute) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *SchemaAttribute) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *SchemaAttribute) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *SchemaAttribute) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -251,36 +246,28 @@ func (o *SchemaAttribute) SetLdapAttribute(v string) {
 	o.LdapAttribute = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *SchemaAttribute) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SchemaAttribute) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *SchemaAttribute) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetRequired returns the Required field value if set, zero value otherwise.
@@ -379,36 +366,28 @@ func (o *SchemaAttribute) SetSchemaType(v string) {
 	o.SchemaType = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *SchemaAttribute) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *SchemaAttribute) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *SchemaAttribute) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUnique returns the Unique field value if set, zero value otherwise.
@@ -483,7 +462,7 @@ func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
 	if o.DisplayName != nil {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Environment != nil {
@@ -495,7 +474,7 @@ func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
 	if o.LdapAttribute != nil {
 		toSerialize["ldapAttribute"] = o.LdapAttribute
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Required != nil {
@@ -507,7 +486,7 @@ func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
 	if o.SchemaType != nil {
 		toSerialize["schemaType"] = o.SchemaType
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.Unique != nil {

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string that specifies the population name, which must be provided and must be unique within an environment. | [optional] 
+**Name** | **string** | A string that specifies the population name, which must be provided and must be unique within an environment. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **UserCount** | Pointer to **int32** | The number of users that belong to the population | [optional] [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewPopulation
 
-`func NewPopulation() *Population`
+`func NewPopulation(name string, ) *Population`
 
 NewPopulation instantiates a new Population object
 This constructor will assign default values to properties that have it defined,
@@ -124,11 +124,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Population) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

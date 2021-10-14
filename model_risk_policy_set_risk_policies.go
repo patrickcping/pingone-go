@@ -16,7 +16,7 @@ import (
 
 // RiskPolicySetRiskPolicies struct for RiskPolicySetRiskPolicies
 type RiskPolicySetRiskPolicies struct {
-	Condition *RiskPolicySetCondition `json:"condition,omitempty"`
+	Condition RiskPolicySetCondition `json:"condition"`
 	// The time the resource was first created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
@@ -25,10 +25,10 @@ type RiskPolicySetRiskPolicies struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// An integer that specifies priority of the policy inside a risk policy set, designating which policy should run first. This is a read-only value. The priority is determined by the order in which policies are listed in the policy set. The first policy in the list is assigned priority 1 and is evaluated first. The next policy in the list is assigned priority 2 and so on.
 	Priority *int32 `json:"priority,omitempty"`
-	Result *RiskPolicyResult `json:"result,omitempty"`
+	Result RiskPolicyResult `json:"result"`
 	// The time the resource was last updated (format ISO-8061).
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -37,8 +37,11 @@ type RiskPolicySetRiskPolicies struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicySetRiskPolicies() *RiskPolicySetRiskPolicies {
+func NewRiskPolicySetRiskPolicies(condition RiskPolicySetCondition, name string, result RiskPolicyResult) *RiskPolicySetRiskPolicies {
 	this := RiskPolicySetRiskPolicies{}
+	this.Condition = condition
+	this.Name = name
+	this.Result = result
 	return &this
 }
 
@@ -50,36 +53,28 @@ func NewRiskPolicySetRiskPoliciesWithDefaults() *RiskPolicySetRiskPolicies {
 	return &this
 }
 
-// GetCondition returns the Condition field value if set, zero value otherwise.
+// GetCondition returns the Condition field value
 func (o *RiskPolicySetRiskPolicies) GetCondition() RiskPolicySetCondition {
-	if o == nil || o.Condition == nil {
+	if o == nil {
 		var ret RiskPolicySetCondition
 		return ret
 	}
-	return *o.Condition
+
+	return o.Condition
 }
 
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// GetConditionOk returns a tuple with the Condition field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPolicies) GetConditionOk() (*RiskPolicySetCondition, bool) {
-	if o == nil || o.Condition == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Condition, true
+	return &o.Condition, true
 }
 
-// HasCondition returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPolicies) HasCondition() bool {
-	if o != nil && o.Condition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCondition gets a reference to the given RiskPolicySetCondition and assigns it to the Condition field.
+// SetCondition sets field value
 func (o *RiskPolicySetRiskPolicies) SetCondition(v RiskPolicySetCondition) {
-	o.Condition = &v
+	o.Condition = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -210,36 +205,28 @@ func (o *RiskPolicySetRiskPolicies) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *RiskPolicySetRiskPolicies) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPolicies) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPolicies) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *RiskPolicySetRiskPolicies) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
@@ -274,36 +261,28 @@ func (o *RiskPolicySetRiskPolicies) SetPriority(v int32) {
 	o.Priority = &v
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
+// GetResult returns the Result field value
 func (o *RiskPolicySetRiskPolicies) GetResult() RiskPolicyResult {
-	if o == nil || o.Result == nil {
+	if o == nil {
 		var ret RiskPolicyResult
 		return ret
 	}
-	return *o.Result
+
+	return o.Result
 }
 
-// GetResultOk returns a tuple with the Result field value if set, nil otherwise
+// GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPolicies) GetResultOk() (*RiskPolicyResult, bool) {
-	if o == nil || o.Result == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Result, true
+	return &o.Result, true
 }
 
-// HasResult returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPolicies) HasResult() bool {
-	if o != nil && o.Result != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResult gets a reference to the given RiskPolicyResult and assigns it to the Result field.
+// SetResult sets field value
 func (o *RiskPolicySetRiskPolicies) SetResult(v RiskPolicyResult) {
-	o.Result = &v
+	o.Result = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -340,7 +319,7 @@ func (o *RiskPolicySetRiskPolicies) SetUpdatedAt(v string) {
 
 func (o RiskPolicySetRiskPolicies) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Condition != nil {
+	if true {
 		toSerialize["condition"] = o.Condition
 	}
 	if o.CreatedAt != nil {
@@ -355,13 +334,13 @@ func (o RiskPolicySetRiskPolicies) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Priority != nil {
 		toSerialize["priority"] = o.Priority
 	}
-	if o.Result != nil {
+	if true {
 		toSerialize["result"] = o.Result
 	}
 	if o.UpdatedAt != nil {

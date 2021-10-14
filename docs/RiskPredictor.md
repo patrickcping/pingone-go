@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | Pointer to **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | [optional] 
-**CompactName** | Pointer to **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | [optional] 
-**Type** | Pointer to **string** | An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP | [optional] 
+**Name** | **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | 
+**CompactName** | **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | 
+**Type** | **string** | An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP | 
 **Description** | Pointer to **string** | A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was updated. | [optional] [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor() *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ string, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -77,11 +77,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *RiskPredictor) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetCompactName
 
@@ -102,11 +97,6 @@ and a boolean to check if the value has been set.
 
 SetCompactName sets CompactName field to given value.
 
-### HasCompactName
-
-`func (o *RiskPredictor) HasCompactName() bool`
-
-HasCompactName returns a boolean if a field has been set.
 
 ### GetType
 
@@ -127,11 +117,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RiskPredictor) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetDescription
 

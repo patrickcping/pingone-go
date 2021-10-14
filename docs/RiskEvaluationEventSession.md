@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies a unique session ID associated with the event. | [optional] 
+**Id** | **string** | A string that specifies a unique session ID associated with the event. | 
 
 ## Methods
 
 ### NewRiskEvaluationEventSession
 
-`func NewRiskEvaluationEventSession() *RiskEvaluationEventSession`
+`func NewRiskEvaluationEventSession(id string, ) *RiskEvaluationEventSession`
 
 NewRiskEvaluationEventSession instantiates a new RiskEvaluationEventSession object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *RiskEvaluationEventSession) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

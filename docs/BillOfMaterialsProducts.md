@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the BOM ID | [optional] [readonly] 
-**Type** | Pointer to **string** | A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL | [optional] 
+**Type** | **string** | A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL | 
 **Description** | Pointer to **string** | A string that specifies the description of the product or standalone service | [optional] [readonly] 
 **Console** | Pointer to [**BillOfMaterialsConsole**](BillOfMaterialsConsole.md) |  | [optional] 
 **Bookmarks** | Pointer to [**[]BillOfMaterialsBookmarks**](BillOfMaterialsBookmarks.md) | Optional array of custom bookmarks. Maximum of five bookmarks per product. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewBillOfMaterialsProducts
 
-`func NewBillOfMaterialsProducts() *BillOfMaterialsProducts`
+`func NewBillOfMaterialsProducts(type_ string, ) *BillOfMaterialsProducts`
 
 NewBillOfMaterialsProducts instantiates a new BillOfMaterialsProducts object
 This constructor will assign default values to properties that have it defined,
@@ -73,11 +73,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *BillOfMaterialsProducts) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetDescription
 

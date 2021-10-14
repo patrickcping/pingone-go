@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to **string** | A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted. | [optional] 
-**Name** | Pointer to **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | [optional] 
-**Required** | Pointer to **bool** | A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token. | [optional] 
+**Name** | **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | 
+**Required** | **bool** | A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was updated. | [optional] [readonly] 
-**Value** | Pointer to **string** | A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${&lt;source&gt;.&lt;attribute_path&gt;}. The only supported source is user (for example, ${user.id}). This is a required property. | [optional] 
+**Value** | **string** | A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${&lt;source&gt;.&lt;attribute_path&gt;}. The only supported source is user (for example, ${user.id}). This is a required property. | 
 
 ## Methods
 
 ### NewApplicationAttributeMapping
 
-`func NewApplicationAttributeMapping() *ApplicationAttributeMapping`
+`func NewApplicationAttributeMapping(name string, required bool, value string, ) *ApplicationAttributeMapping`
 
 NewApplicationAttributeMapping instantiates a new ApplicationAttributeMapping object
 This constructor will assign default values to properties that have it defined,
@@ -99,11 +99,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ApplicationAttributeMapping) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetRequired
 
@@ -124,11 +119,6 @@ and a boolean to check if the value has been set.
 
 SetRequired sets Required field to given value.
 
-### HasRequired
-
-`func (o *ApplicationAttributeMapping) HasRequired() bool`
-
-HasRequired returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -174,11 +164,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-### HasValue
-
-`func (o *ApplicationAttributeMapping) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

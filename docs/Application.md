@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
-**Enabled** | Pointer to **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | [optional] 
+**Enabled** | **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**ApplicationIcon**](ApplicationIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **LoginPageUrl** | Pointer to **string** | A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains. | [optional] 
-**Name** | Pointer to **string** | A string that specifies the name of the application. This is a required property. | [optional] 
-**Protocol** | Pointer to **string** | A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML. | [optional] 
+**Name** | **string** | A string that specifies the name of the application. This is a required property. | 
+**Protocol** | **string** | A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML. | 
 **Tags** | Pointer to **[]string** | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
-**Type** | Pointer to **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | [optional] 
+**Type** | **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication() *Application`
+`func NewApplication(enabled bool, name string, protocol string, type_ string, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -158,11 +158,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *Application) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -283,11 +278,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Application) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetProtocol
 
@@ -308,11 +298,6 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
-### HasProtocol
-
-`func (o *Application) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -358,11 +343,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *Application) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** |  | [optional] 
+**Level** | **string** |  | 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewRiskPolicyResult
 
-`func NewRiskPolicyResult() *RiskPolicyResult`
+`func NewRiskPolicyResult(level string, ) *RiskPolicyResult`
 
 NewRiskPolicyResult instantiates a new RiskPolicyResult object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetLevel sets Level field to given value.
 
-### HasLevel
-
-`func (o *RiskPolicyResult) HasLevel() bool`
-
-HasLevel returns a boolean if a field has been set.
 
 ### GetType
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Value** | Pointer to **string** |  | [optional] 
-**Equals** | Pointer to **map[string]interface{}** |  | [optional] 
+**Equals** | Pointer to [**OneOfstringboolean**](oneOf&lt;string,boolean&gt;.md) |  | [optional] 
 **AggregatedWeights** | Pointer to [**[]RiskPolicySetConditionAggregatedWeights**](RiskPolicySetConditionAggregatedWeights.md) |  | [optional] 
 **Between** | Pointer to [**RiskPolicySetConditionBetween**](RiskPolicySetConditionBetween.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetEquals
 
-`func (o *RiskPolicySetCondition) GetEquals() map[string]interface{}`
+`func (o *RiskPolicySetCondition) GetEquals() OneOfstringboolean`
 
 GetEquals returns the Equals field if non-nil, zero value otherwise.
 
 ### GetEqualsOk
 
-`func (o *RiskPolicySetCondition) GetEqualsOk() (*map[string]interface{}, bool)`
+`func (o *RiskPolicySetCondition) GetEqualsOk() (*OneOfstringboolean, bool)`
 
 GetEqualsOk returns a tuple with the Equals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEquals
 
-`func (o *RiskPolicySetCondition) SetEquals(v map[string]interface{})`
+`func (o *RiskPolicySetCondition) SetEquals(v OneOfstringboolean)`
 
 SetEquals sets Equals field to given value.
 

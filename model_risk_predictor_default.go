@@ -17,16 +17,18 @@ import (
 // RiskPredictorDefault struct for RiskPredictorDefault
 type RiskPredictorDefault struct {
 	// An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
-	Weight *int32 `json:"weight,omitempty"`
-	Result *RiskPredictorDefaultResult `json:"result,omitempty"`
+	Weight int32 `json:"weight"`
+	Result RiskPredictorDefaultResult `json:"result"`
 }
 
 // NewRiskPredictorDefault instantiates a new RiskPredictorDefault object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorDefault() *RiskPredictorDefault {
+func NewRiskPredictorDefault(weight int32, result RiskPredictorDefaultResult) *RiskPredictorDefault {
 	this := RiskPredictorDefault{}
+	this.Weight = weight
+	this.Result = result
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewRiskPredictorDefaultWithDefaults() *RiskPredictorDefault {
 	return &this
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// GetWeight returns the Weight field value
 func (o *RiskPredictorDefault) GetWeight() int32 {
-	if o == nil || o.Weight == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Weight
+
+	return o.Weight
 }
 
-// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetWeightOk() (*int32, bool) {
-	if o == nil || o.Weight == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Weight, true
+	return &o.Weight, true
 }
 
-// HasWeight returns a boolean if a field has been set.
-func (o *RiskPredictorDefault) HasWeight() bool {
-	if o != nil && o.Weight != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWeight gets a reference to the given int32 and assigns it to the Weight field.
+// SetWeight sets field value
 func (o *RiskPredictorDefault) SetWeight(v int32) {
-	o.Weight = &v
+	o.Weight = v
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
+// GetResult returns the Result field value
 func (o *RiskPredictorDefault) GetResult() RiskPredictorDefaultResult {
-	if o == nil || o.Result == nil {
+	if o == nil {
 		var ret RiskPredictorDefaultResult
 		return ret
 	}
-	return *o.Result
+
+	return o.Result
 }
 
-// GetResultOk returns a tuple with the Result field value if set, nil otherwise
+// GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetResultOk() (*RiskPredictorDefaultResult, bool) {
-	if o == nil || o.Result == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Result, true
+	return &o.Result, true
 }
 
-// HasResult returns a boolean if a field has been set.
-func (o *RiskPredictorDefault) HasResult() bool {
-	if o != nil && o.Result != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResult gets a reference to the given RiskPredictorDefaultResult and assigns it to the Result field.
+// SetResult sets field value
 func (o *RiskPredictorDefault) SetResult(v RiskPredictorDefaultResult) {
-	o.Result = &v
+	o.Result = v
 }
 
 func (o RiskPredictorDefault) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Weight != nil {
+	if true {
 		toSerialize["weight"] = o.Weight
 	}
-	if o.Result != nil {
+	if true {
 		toSerialize["result"] = o.Result
 	}
 	return json.Marshal(toSerialize)
