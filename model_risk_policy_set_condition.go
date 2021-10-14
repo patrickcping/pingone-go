@@ -16,10 +16,10 @@ import (
 
 // RiskPolicySetCondition The condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
 type RiskPolicySetCondition struct {
-	Value *string `json:"value,omitempty"`
-	Equals *OneOfstringboolean `json:"equals,omitempty"`
+	Value             *string                                    `json:"value,omitempty"`
+	Equals            *interface{}                               `json:"equals,omitempty"`
 	AggregatedWeights *[]RiskPolicySetConditionAggregatedWeights `json:"aggregatedWeights,omitempty"`
-	Between *RiskPolicySetConditionBetween `json:"between,omitempty"`
+	Between           *RiskPolicySetConditionBetween             `json:"between,omitempty"`
 }
 
 // NewRiskPolicySetCondition instantiates a new RiskPolicySetCondition object
@@ -72,9 +72,9 @@ func (o *RiskPolicySetCondition) SetValue(v string) {
 }
 
 // GetEquals returns the Equals field value if set, zero value otherwise.
-func (o *RiskPolicySetCondition) GetEquals() OneOfstringboolean {
+func (o *RiskPolicySetCondition) GetEquals() interface{} {
 	if o == nil || o.Equals == nil {
-		var ret OneOfstringboolean
+		var ret interface{}
 		return ret
 	}
 	return *o.Equals
@@ -82,7 +82,7 @@ func (o *RiskPolicySetCondition) GetEquals() OneOfstringboolean {
 
 // GetEqualsOk returns a tuple with the Equals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetCondition) GetEqualsOk() (*OneOfstringboolean, bool) {
+func (o *RiskPolicySetCondition) GetEqualsOk() (*interface{}, bool) {
 	if o == nil || o.Equals == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *RiskPolicySetCondition) HasEquals() bool {
 }
 
 // SetEquals gets a reference to the given OneOfstringboolean and assigns it to the Equals field.
-func (o *RiskPolicySetCondition) SetEquals(v OneOfstringboolean) {
+func (o *RiskPolicySetCondition) SetEquals(v interface{}) {
 	o.Equals = &v
 }
 
@@ -219,5 +219,3 @@ func (v *NullableRiskPolicySetCondition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
