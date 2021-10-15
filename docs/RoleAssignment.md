@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Gateway** | Pointer to [**GatewayInstanceGateway**](GatewayInstanceGateway.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user role assignment ID. | [optional] [readonly] 
 **ReadOnly** | Pointer to **bool** | A boolean that specifies whether this role assignment can be deleted by the current actor. | [optional] [readonly] 
 **Role** | [**RoleAssignmentRole**](RoleAssignmentRole.md) |  | 
@@ -53,6 +54,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *RoleAssignment) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetGateway
+
+`func (o *RoleAssignment) GetGateway() GatewayInstanceGateway`
+
+GetGateway returns the Gateway field if non-nil, zero value otherwise.
+
+### GetGatewayOk
+
+`func (o *RoleAssignment) GetGatewayOk() (*GatewayInstanceGateway, bool)`
+
+GetGatewayOk returns a tuple with the Gateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGateway
+
+`func (o *RoleAssignment) SetGateway(v GatewayInstanceGateway)`
+
+SetGateway sets Gateway field to given value.
+
+### HasGateway
+
+`func (o *RoleAssignment) HasGateway() bool`
+
+HasGateway returns a boolean if a field has been set.
 
 ### GetId
 

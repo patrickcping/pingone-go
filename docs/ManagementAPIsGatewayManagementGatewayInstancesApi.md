@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet**](ManagementAPIsGatewayManagementGatewayInstancesApi.md#V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet) | **Get** /v1/environments/{envID}/gateways/{gatewayID}/instances | READ All Gateway Instances
-[**V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet**](ManagementAPIsGatewayManagementGatewayInstancesApi.md#V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet) | **Get** /v1/environments/{envID}/gateways/{gatewayID}/instances/{instanceID} | READ One Gateway Instance
+[**ReadAllGatewayInstances**](ManagementAPIsGatewayManagementGatewayInstancesApi.md#ReadAllGatewayInstances) | **Get** /v1/environments/{envID}/gateways/{gatewayID}/instances | READ All Gateway Instances
+[**ReadOneGatewayInstance**](ManagementAPIsGatewayManagementGatewayInstancesApi.md#ReadOneGatewayInstance) | **Get** /v1/environments/{envID}/gateways/{gatewayID}/instances/{instanceID} | READ One Gateway Instance
 
 
 
-## V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet
+## ReadAllGatewayInstances
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet(ctx, envID, gatewayID).Execute()
+> EntityArray ReadAllGatewayInstances(ctx, envID, gatewayID).Execute()
 
 READ All Gateway Instances
 
@@ -35,11 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet(context.Background(), envID, gatewayID).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances(context.Background(), envID, gatewayID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.V1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllGatewayInstances`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances`: %v\n", resp)
 }
 ```
 
@@ -54,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGatewaysGatewayIDInstancesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllGatewayInstancesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -80,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet
+## ReadOneGatewayInstance
 
-> V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet(ctx, envID, gatewayID, instanceID).Execute()
+> GatewayInstance ReadOneGatewayInstance(ctx, envID, gatewayID, instanceID).Execute()
 
 READ One Gateway Instance
 
@@ -107,11 +109,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet(context.Background(), envID, gatewayID, instanceID).Execute()
+    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance(context.Background(), envID, gatewayID, instanceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.V1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneGatewayInstance`: GatewayInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance`: %v\n", resp)
 }
 ```
 
@@ -127,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneGatewayInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -138,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GatewayInstance**](GatewayInstance.md)
 
 ### Authorization
 

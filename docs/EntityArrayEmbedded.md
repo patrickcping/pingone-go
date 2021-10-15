@@ -6,7 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attributes** | Pointer to [**[]OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute**](OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute.md) |  | [optional] 
 **Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
+**Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
+**Gateways** | Pointer to [**[]AnyOfGatewayGatewayLDAP**](AnyOfGatewayGatewayLDAP.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
@@ -89,6 +92,31 @@ SetApplications sets Applications field to given value.
 
 HasApplications returns a boolean if a field has been set.
 
+### GetCredentials
+
+`func (o *EntityArrayEmbedded) GetCredentials() []GatewayCredential`
+
+GetCredentials returns the Credentials field if non-nil, zero value otherwise.
+
+### GetCredentialsOk
+
+`func (o *EntityArrayEmbedded) GetCredentialsOk() (*[]GatewayCredential, bool)`
+
+GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentials
+
+`func (o *EntityArrayEmbedded) SetCredentials(v []GatewayCredential)`
+
+SetCredentials sets Credentials field to given value.
+
+### HasCredentials
+
+`func (o *EntityArrayEmbedded) HasCredentials() bool`
+
+HasCredentials returns a boolean if a field has been set.
+
 ### GetEnvironments
 
 `func (o *EntityArrayEmbedded) GetEnvironments() []Environment`
@@ -113,6 +141,56 @@ SetEnvironments sets Environments field to given value.
 `func (o *EntityArrayEmbedded) HasEnvironments() bool`
 
 HasEnvironments returns a boolean if a field has been set.
+
+### GetGatewayInstances
+
+`func (o *EntityArrayEmbedded) GetGatewayInstances() []GatewayInstance`
+
+GetGatewayInstances returns the GatewayInstances field if non-nil, zero value otherwise.
+
+### GetGatewayInstancesOk
+
+`func (o *EntityArrayEmbedded) GetGatewayInstancesOk() (*[]GatewayInstance, bool)`
+
+GetGatewayInstancesOk returns a tuple with the GatewayInstances field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayInstances
+
+`func (o *EntityArrayEmbedded) SetGatewayInstances(v []GatewayInstance)`
+
+SetGatewayInstances sets GatewayInstances field to given value.
+
+### HasGatewayInstances
+
+`func (o *EntityArrayEmbedded) HasGatewayInstances() bool`
+
+HasGatewayInstances returns a boolean if a field has been set.
+
+### GetGateways
+
+`func (o *EntityArrayEmbedded) GetGateways() []AnyOfGatewayGatewayLDAP`
+
+GetGateways returns the Gateways field if non-nil, zero value otherwise.
+
+### GetGatewaysOk
+
+`func (o *EntityArrayEmbedded) GetGatewaysOk() (*[]AnyOfGatewayGatewayLDAP, bool)`
+
+GetGatewaysOk returns a tuple with the Gateways field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGateways
+
+`func (o *EntityArrayEmbedded) SetGateways(v []AnyOfGatewayGatewayLDAP)`
+
+SetGateways sets Gateways field to given value.
+
+### HasGateways
+
+`func (o *EntityArrayEmbedded) HasGateways() bool`
+
+HasGateways returns a boolean if a field has been set.
 
 ### GetGrants
 

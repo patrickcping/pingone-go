@@ -17,6 +17,7 @@ import (
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
 	// A string that specifies the user role assignment ID.
 	Id *string `json:"id,omitempty"`
 	// A boolean that specifies whether this role assignment can be deleted by the current actor.
@@ -74,6 +75,38 @@ func (o *RoleAssignment) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *RoleAssignment) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetGateway returns the Gateway field value if set, zero value otherwise.
+func (o *RoleAssignment) GetGateway() GatewayInstanceGateway {
+	if o == nil || o.Gateway == nil {
+		var ret GatewayInstanceGateway
+		return ret
+	}
+	return *o.Gateway
+}
+
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAssignment) GetGatewayOk() (*GatewayInstanceGateway, bool) {
+	if o == nil || o.Gateway == nil {
+		return nil, false
+	}
+	return o.Gateway, true
+}
+
+// HasGateway returns a boolean if a field has been set.
+func (o *RoleAssignment) HasGateway() bool {
+	if o != nil && o.Gateway != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given GatewayInstanceGateway and assigns it to the Gateway field.
+func (o *RoleAssignment) SetGateway(v GatewayInstanceGateway) {
+	o.Gateway = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -192,6 +225,9 @@ func (o RoleAssignment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
+	}
+	if o.Gateway != nil {
+		toSerialize["gateway"] = o.Gateway
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id

@@ -18,7 +18,10 @@ import (
 type EntityArrayEmbedded struct {
 	Attributes       *[]interface{}              `json:"attributes,omitempty"`
 	Applications     *[]interface{}              `json:"applications,omitempty"`
+	Credentials      *[]GatewayCredential        `json:"credentials,omitempty"`
 	Environments     *[]Environment              `json:"environments,omitempty"`
+	GatewayInstances *[]GatewayInstance          `json:"gatewayInstances,omitempty"`
+	Gateways         *[]interface{}              `json:"gateways,omitempty"`
 	Grants           *[]ApplicationResourceGrant `json:"grants,omitempty"`
 	Groups           *[]Group                    `json:"groups,omitempty"`
 	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
@@ -114,6 +117,38 @@ func (o *EntityArrayEmbedded) SetApplications(v []interface{}) {
 	o.Applications = &v
 }
 
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetCredentials() []GatewayCredential {
+	if o == nil || o.Credentials == nil {
+		var ret []GatewayCredential
+		return ret
+	}
+	return *o.Credentials
+}
+
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetCredentialsOk() (*[]GatewayCredential, bool) {
+	if o == nil || o.Credentials == nil {
+		return nil, false
+	}
+	return o.Credentials, true
+}
+
+// HasCredentials returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasCredentials() bool {
+	if o != nil && o.Credentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
+func (o *EntityArrayEmbedded) SetCredentials(v []GatewayCredential) {
+	o.Credentials = &v
+}
+
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetEnvironments() []Environment {
 	if o == nil || o.Environments == nil {
@@ -144,6 +179,70 @@ func (o *EntityArrayEmbedded) HasEnvironments() bool {
 // SetEnvironments gets a reference to the given []Environment and assigns it to the Environments field.
 func (o *EntityArrayEmbedded) SetEnvironments(v []Environment) {
 	o.Environments = &v
+}
+
+// GetGatewayInstances returns the GatewayInstances field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetGatewayInstances() []GatewayInstance {
+	if o == nil || o.GatewayInstances == nil {
+		var ret []GatewayInstance
+		return ret
+	}
+	return *o.GatewayInstances
+}
+
+// GetGatewayInstancesOk returns a tuple with the GatewayInstances field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetGatewayInstancesOk() (*[]GatewayInstance, bool) {
+	if o == nil || o.GatewayInstances == nil {
+		return nil, false
+	}
+	return o.GatewayInstances, true
+}
+
+// HasGatewayInstances returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasGatewayInstances() bool {
+	if o != nil && o.GatewayInstances != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayInstances gets a reference to the given []GatewayInstance and assigns it to the GatewayInstances field.
+func (o *EntityArrayEmbedded) SetGatewayInstances(v []GatewayInstance) {
+	o.GatewayInstances = &v
+}
+
+// GetGateways returns the Gateways field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetGateways() []interface{} {
+	if o == nil || o.Gateways == nil {
+		var ret []interface{}
+		return ret
+	}
+	return *o.Gateways
+}
+
+// GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetGatewaysOk() (*[]interface{}, bool) {
+	if o == nil || o.Gateways == nil {
+		return nil, false
+	}
+	return o.Gateways, true
+}
+
+// HasGateways returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasGateways() bool {
+	if o != nil && o.Gateways != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateways gets a reference to the given []AnyOfGatewayGatewayLDAP and assigns it to the Gateways field.
+func (o *EntityArrayEmbedded) SetGateways(v []interface{}) {
+	o.Gateways = &v
 }
 
 // GetGrants returns the Grants field value if set, zero value otherwise.
@@ -538,8 +637,17 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
 	}
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
+	}
 	if o.Environments != nil {
 		toSerialize["environments"] = o.Environments
+	}
+	if o.GatewayInstances != nil {
+		toSerialize["gatewayInstances"] = o.GatewayInstances
+	}
+	if o.Gateways != nil {
+		toSerialize["gateways"] = o.Gateways
 	}
 	if o.Grants != nil {
 		toSerialize["grants"] = o.Grants
