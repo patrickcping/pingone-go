@@ -1800,6 +1800,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readApplicationRoleAssignments
       parameters:
       - explode: false
         in: path
@@ -1824,7 +1825,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ Application Role Assignments
       tags:
@@ -1832,6 +1835,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createApplicationRoleAssignment
       parameters:
       - explode: false
         in: path
@@ -1851,13 +1855,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                role:
-                  id: '{{roleID}}'
-                scope:
-                  id: '{{envID}}'
-                  type: ENVIRONMENT
-              type: object
+              $ref: '#/components/schemas/RoleAssignment'
       responses:
         "401":
           content:
@@ -1867,7 +1865,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleAssignment'
           description: Successful response
       summary: CREATE Application Role Assignments
       tags:
@@ -1876,6 +1876,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteApplicationRoleAssignment
       parameters:
       - explode: false
         in: path
@@ -1913,6 +1914,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneApplicationRoleAssignment
       parameters:
       - explode: false
         in: path
@@ -1944,7 +1946,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleAssignment'
           description: Successful response
       summary: READ One Application Role Assignment
       tags:
@@ -12544,7 +12548,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-      operationId: readOneRoleAssignment
+      operationId: readOneUserRoleAssignment
       parameters:
       - explode: false
         in: path

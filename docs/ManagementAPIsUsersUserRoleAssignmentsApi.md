@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateUserRoleAssignment**](ManagementAPIsUsersUserRoleAssignmentsApi.md#CreateUserRoleAssignment) | **Post** /v1/environments/{envID}/users/{userID}/roleAssignments | CREATE User Role Assignment
 [**DeleteUserRoleAssignment**](ManagementAPIsUsersUserRoleAssignmentsApi.md#DeleteUserRoleAssignment) | **Delete** /v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID} | DELETE User&#39;s Role Assignment
-[**ReadOneRoleAssignment**](ManagementAPIsUsersUserRoleAssignmentsApi.md#ReadOneRoleAssignment) | **Get** /v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID} | READ One Role Assignment
+[**ReadOneUserRoleAssignment**](ManagementAPIsUsersUserRoleAssignmentsApi.md#ReadOneUserRoleAssignment) | **Get** /v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID} | READ One Role Assignment
 [**ReadUserRoleAssignments**](ManagementAPIsUsersUserRoleAssignmentsApi.md#ReadUserRoleAssignments) | **Get** /v1/environments/{envID}/users/{userID}/roleAssignments | READ Role Assignments
 
 
@@ -160,9 +160,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadOneRoleAssignment
+## ReadOneUserRoleAssignment
 
-> RoleAssignment ReadOneRoleAssignment(ctx, envID, userID, roleAssignmentID).Execute()
+> RoleAssignment ReadOneUserRoleAssignment(ctx, envID, userID, roleAssignmentID).Execute()
 
 READ One Role Assignment
 
@@ -187,13 +187,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneRoleAssignment(context.Background(), envID, userID, roleAssignmentID).Execute()
+    resp, r, err := api_client.ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneUserRoleAssignment(context.Background(), envID, userID, roleAssignmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneRoleAssignment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneUserRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneRoleAssignment`: RoleAssignment
-    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneRoleAssignment`: %v\n", resp)
+    // response from `ReadOneUserRoleAssignment`: RoleAssignment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsUsersUserRoleAssignmentsApi.ReadOneUserRoleAssignment`: %v\n", resp)
 }
 ```
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadOneRoleAssignmentRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneUserRoleAssignmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -27,144 +27,35 @@ var (
 // ManagementAPIsApplicationsApplicationRoleAssignmentsApiService ManagementAPIsApplicationsApplicationRoleAssignmentsApi service
 type ManagementAPIsApplicationsApplicationRoleAssignmentsApiService service
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest struct {
+type ApiCreateApplicationRoleAssignmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
 	envID string
 	appID string
+	roleAssignment *RoleAssignment
 }
 
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet READ Application Role Assignments
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest
-*/
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
-	envID string
-	appID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest {
-	r.body = &body
+func (r ApiCreateApplicationRoleAssignmentRequest) RoleAssignment(roleAssignment RoleAssignment) ApiCreateApplicationRoleAssignmentRequest {
+	r.roleAssignment = &roleAssignment
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostExecute(r)
+func (r ApiCreateApplicationRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
+	return r.ApiService.CreateApplicationRoleAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost CREATE Application Role Assignments
+CreateApplicationRoleAssignment CREATE Application Role Assignments
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest
+ @return ApiCreateApplicationRoleAssignmentRequest
 */
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest{
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) CreateApplicationRoleAssignment(ctx _context.Context, envID string, appID string) ApiCreateApplicationRoleAssignmentRequest {
+	return ApiCreateApplicationRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -173,18 +64,20 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest) (*_nethttp.Response, error) {
+//  @return RoleAssignment
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) CreateApplicationRoleAssignmentExecute(r ApiCreateApplicationRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  RoleAssignment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.CreateApplicationRoleAssignment")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/roleAssignments"
@@ -213,22 +106,22 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.roleAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -241,18 +134,27 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest struct {
+type ApiDeleteApplicationRoleAssignmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
 	envID string
@@ -261,12 +163,12 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelet
 }
 
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteExecute(r)
+func (r ApiDeleteApplicationRoleAssignmentRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteApplicationRoleAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete DELETE Application Role Assignment
+DeleteApplicationRoleAssignment DELETE Application Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -274,10 +176,10 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param roleAssignmentID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest
+ @return ApiDeleteApplicationRoleAssignmentRequest
 */
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete(ctx _context.Context, envID string, appID string, roleAssignmentID string) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest{
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) DeleteApplicationRoleAssignment(ctx _context.Context, envID string, appID string, roleAssignmentID string) ApiDeleteApplicationRoleAssignmentRequest {
+	return ApiDeleteApplicationRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -287,7 +189,7 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) DeleteApplicationRoleAssignmentExecute(r ApiDeleteApplicationRoleAssignmentRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -296,7 +198,7 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.DeleteApplicationRoleAssignment")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -365,7 +267,127 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest struct {
+type ApiReadApplicationRoleAssignmentsRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
+	envID string
+	appID string
+}
+
+
+func (r ApiReadApplicationRoleAssignmentsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadApplicationRoleAssignmentsExecute(r)
+}
+
+/*
+ReadApplicationRoleAssignments READ Application Role Assignments
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param appID
+ @return ApiReadApplicationRoleAssignmentsRequest
+*/
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ctx _context.Context, envID string, appID string) ApiReadApplicationRoleAssignmentsRequest {
+	return ApiReadApplicationRoleAssignmentsRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		appID: appID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) (EntityArray, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.ReadApplicationRoleAssignments")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/roleAssignments"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneApplicationRoleAssignmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService
 	envID string
@@ -374,12 +396,12 @@ type ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRe
 }
 
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetExecute(r)
+func (r ApiReadOneApplicationRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneApplicationRoleAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet READ One Application Role Assignment
+ReadOneApplicationRoleAssignment READ One Application Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -387,10 +409,10 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param roleAssignmentID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest
+ @return ApiReadOneApplicationRoleAssignmentRequest
 */
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet(ctx _context.Context, envID string, appID string, roleAssignmentID string) ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest{
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) ReadOneApplicationRoleAssignment(ctx _context.Context, envID string, appID string, roleAssignmentID string) ApiReadOneApplicationRoleAssignmentRequest {
+	return ApiReadOneApplicationRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -400,18 +422,20 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest) (*_nethttp.Response, error) {
+//  @return RoleAssignment
+func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) ReadOneApplicationRoleAssignmentExecute(r ApiReadOneApplicationRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  RoleAssignment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationRoleAssignmentsApiService.ReadOneApplicationRoleAssignment")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID}"
@@ -442,19 +466,19 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -467,13 +491,22 @@ func (a *ManagementAPIsApplicationsApplicationRoleAssignmentsApiService) V1Envir
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

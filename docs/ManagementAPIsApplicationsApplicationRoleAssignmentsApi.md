@@ -4,87 +4,16 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet) | **Get** /v1/environments/{envID}/applications/{appID}/roleAssignments | READ Application Role Assignments
-[**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost) | **Post** /v1/environments/{envID}/applications/{appID}/roleAssignments | CREATE Application Role Assignments
-[**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete) | **Delete** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
-[**V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet) | **Get** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
+[**CreateApplicationRoleAssignment**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#CreateApplicationRoleAssignment) | **Post** /v1/environments/{envID}/applications/{appID}/roleAssignments | CREATE Application Role Assignments
+[**DeleteApplicationRoleAssignment**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#DeleteApplicationRoleAssignment) | **Delete** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
+[**ReadApplicationRoleAssignments**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#ReadApplicationRoleAssignments) | **Get** /v1/environments/{envID}/applications/{appID}/roleAssignments | READ Application Role Assignments
+[**ReadOneApplicationRoleAssignment**](ManagementAPIsApplicationsApplicationRoleAssignmentsApi.md#ReadOneApplicationRoleAssignment) | **Get** /v1/environments/{envID}/applications/{appID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
 
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet
+## CreateApplicationRoleAssignment
 
-> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet(ctx, envID, appID).Execute()
-
-READ Application Role Assignments
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    envID := "envID_example" // string | 
-    appID := "appID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet(context.Background(), envID, appID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
-**appID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost
-
-> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(ctx, envID, appID).Body(body).Execute()
+> RoleAssignment CreateApplicationRoleAssignment(ctx, envID, appID).RoleAssignment(roleAssignment).Execute()
 
 CREATE Application Role Assignments
 
@@ -105,15 +34,17 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    roleAssignment := *openapiclient.NewRoleAssignment(*openapiclient.NewRoleAssignmentRole("Id_example"), *openapiclient.NewRoleAssignmentScope("Id_example", "Type_example")) // RoleAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost(context.Background(), envID, appID).Body(body).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.CreateApplicationRoleAssignment(context.Background(), envID, appID).RoleAssignment(roleAssignment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.CreateApplicationRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateApplicationRoleAssignment`: RoleAssignment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.CreateApplicationRoleAssignment`: %v\n", resp)
 }
 ```
 
@@ -128,18 +59,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateApplicationRoleAssignmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **roleAssignment** | [**RoleAssignment**](RoleAssignment.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**RoleAssignment**](RoleAssignment.md)
 
 ### Authorization
 
@@ -155,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete
+## DeleteApplicationRoleAssignment
 
-> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete(ctx, envID, appID, roleAssignmentID).Execute()
+> DeleteApplicationRoleAssignment(ctx, envID, appID, roleAssignmentID).Execute()
 
 DELETE Application Role Assignment
 
@@ -182,9 +113,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete(context.Background(), envID, appID, roleAssignmentID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.DeleteApplicationRoleAssignment(context.Background(), envID, appID, roleAssignmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.DeleteApplicationRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -202,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationRoleAssignmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -229,9 +160,82 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet
+## ReadApplicationRoleAssignments
 
-> V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet(ctx, envID, appID, roleAssignmentID).Execute()
+> EntityArray ReadApplicationRoleAssignments(ctx, envID, appID).Execute()
+
+READ Application Role Assignments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    appID := "appID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments(context.Background(), envID, appID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadApplicationRoleAssignments`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**appID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadApplicationRoleAssignmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneApplicationRoleAssignment
+
+> RoleAssignment ReadOneApplicationRoleAssignment(ctx, envID, appID, roleAssignmentID).Execute()
 
 READ One Application Role Assignment
 
@@ -256,11 +260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet(context.Background(), envID, appID, roleAssignmentID).Execute()
+    resp, r, err := api_client.ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadOneApplicationRoleAssignment(context.Background(), envID, appID, roleAssignmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadOneApplicationRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneApplicationRoleAssignment`: RoleAssignment
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationRoleAssignmentsApi.ReadOneApplicationRoleAssignment`: %v\n", resp)
 }
 ```
 
@@ -276,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDApplicationsAppIDRoleAssignmentsRoleAssignmentIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneApplicationRoleAssignmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -287,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**RoleAssignment**](RoleAssignment.md)
 
 ### Authorization
 

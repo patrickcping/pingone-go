@@ -267,7 +267,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignm
 	return localVarHTTPResponse, nil
 }
 
-type ApiReadOneRoleAssignmentRequest struct {
+type ApiReadOneUserRoleAssignmentRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
@@ -276,12 +276,12 @@ type ApiReadOneRoleAssignmentRequest struct {
 }
 
 
-func (r ApiReadOneRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
-	return r.ApiService.ReadOneRoleAssignmentExecute(r)
+func (r ApiReadOneUserRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneUserRoleAssignmentExecute(r)
 }
 
 /*
-ReadOneRoleAssignment READ One Role Assignment
+ReadOneUserRoleAssignment READ One Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -289,10 +289,10 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param userID
  @param roleAssignmentID
- @return ApiReadOneRoleAssignmentRequest
+ @return ApiReadOneUserRoleAssignmentRequest
 */
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneRoleAssignment(ctx _context.Context, envID string, userID string, roleAssignmentID string) ApiReadOneRoleAssignmentRequest {
-	return ApiReadOneRoleAssignmentRequest{
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignment(ctx _context.Context, envID string, userID string, roleAssignmentID string) ApiReadOneUserRoleAssignmentRequest {
+	return ApiReadOneUserRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -303,7 +303,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneRoleAssignment
 
 // Execute executes the request
 //  @return RoleAssignment
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneRoleAssignmentExecute(r ApiReadOneRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignmentExecute(r ApiReadOneUserRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -313,7 +313,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneRoleAssignment
 		localVarReturnValue  RoleAssignment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.ReadOneRoleAssignment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.ReadOneUserRoleAssignment")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
