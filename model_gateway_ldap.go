@@ -27,7 +27,7 @@ type GatewayLDAP struct {
 	// A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property.
 	Type string `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 	SupportedVersions *GatewaySupportedVersions `json:"supportedVersions,omitempty"`
 	// A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
 	BindDN string `json:"bindDN"`
@@ -49,10 +49,11 @@ type GatewayLDAP struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAP(name string, type_ string, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor string) *GatewayLDAP {
+func NewGatewayLDAP(name string, type_ string, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor string) *GatewayLDAP {
 	this := GatewayLDAP{}
 	this.Name = name
 	this.Type = type_
+	this.Enabled = enabled
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
 	this.UserTypes = userTypes
@@ -244,36 +245,28 @@ func (o *GatewayLDAP) SetType(v string) {
 	o.Type = v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *GatewayLDAP) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *GatewayLDAP) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetSupportedVersions returns the SupportedVersions field value if set, zero value otherwise.
@@ -520,7 +513,7 @@ func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.SupportedVersions != nil {

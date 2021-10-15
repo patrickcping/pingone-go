@@ -13181,13 +13181,21 @@ components:
           - ""
           credentials:
           - createdAt: createdAt
+            authUrl: authUrl
+            gatewayType: LDAP
+            consoleUrl: consoleUrl
+            apiUrl: apiUrl
+            credential: credential
             lastUsedAt: lastUsedAt
             id: id
-            token: token
           - createdAt: createdAt
+            authUrl: authUrl
+            gatewayType: LDAP
+            consoleUrl: consoleUrl
+            apiUrl: apiUrl
+            credential: credential
             lastUsedAt: lastUsedAt
             id: id
-            token: token
           environments:
           - name: New-Env
             description: New environment description
@@ -14068,6 +14076,7 @@ components:
         supportedVersions:
           $ref: '#/components/schemas/Gateway_supportedVersions'
       required:
+      - enabled
       - name
       - type
       type: object
@@ -14078,9 +14087,13 @@ components:
     GatewayCredential:
       example:
         createdAt: createdAt
+        authUrl: authUrl
+        gatewayType: LDAP
+        consoleUrl: consoleUrl
+        apiUrl: apiUrl
+        credential: credential
         lastUsedAt: lastUsedAt
         id: id
-        token: token
       properties:
         id:
           description: A string that specifies the auto-generated ID for this credential.
@@ -14092,12 +14105,30 @@ components:
             Coordinated Universal Time (UTC). This is a required property.
           readOnly: true
           type: string
+        gatewayType:
+          description: A date that specifies the date the credential was created in
+            Coordinated Universal Time (UTC). This is a required property.
+          enum:
+          - LDAP
+          - PING_FEDERATE
+          - PING_INTELLIGENCE
+          readOnly: true
+          type: string
         lastUsedAt:
           description: A date that specifies the date the credential was last used
             in UTC. This is a required property.
           readOnly: true
           type: string
-        token:
+        consoleUrl:
+          readOnly: true
+          type: string
+        apiUrl:
+          readOnly: true
+          type: string
+        authUrl:
+          readOnly: true
+          type: string
+        credential:
           description: A string that specifies the signed JWT for the gateway credential.
             This property is present only when the gateway credential is created.
           readOnly: true
@@ -15741,13 +15772,21 @@ components:
         - ""
         credentials:
         - createdAt: createdAt
+          authUrl: authUrl
+          gatewayType: LDAP
+          consoleUrl: consoleUrl
+          apiUrl: apiUrl
+          credential: credential
           lastUsedAt: lastUsedAt
           id: id
-          token: token
         - createdAt: createdAt
+          authUrl: authUrl
+          gatewayType: LDAP
+          consoleUrl: consoleUrl
+          apiUrl: apiUrl
+          credential: credential
           lastUsedAt: lastUsedAt
           id: id
-          token: token
         environments:
         - name: New-Env
           description: New environment description

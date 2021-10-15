@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | 
 **Description** | Pointer to **string** | (Optional) A string that specifies the description of the resource. | [optional] 
 **Type** | **string** | A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property. | 
-**Enabled** | Pointer to **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | [optional] 
+**Enabled** | **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | 
 **SupportedVersions** | Pointer to [**GatewaySupportedVersions**](GatewaySupportedVersions.md) |  | [optional] 
 
 ## Methods
 
 ### NewGateway
 
-`func NewGateway(name string, type_ string, ) *Gateway`
+`func NewGateway(name string, type_ string, enabled bool, ) *Gateway`
 
 NewGateway instantiates a new Gateway object
 This constructor will assign default values to properties that have it defined,
@@ -191,11 +191,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *Gateway) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetSupportedVersions
 
