@@ -24,7 +24,7 @@ type Gateway struct {
 	Name string `json:"name"`
 	// (Optional) A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
-	// A string that specifies the type of gateway resource. Options are LDAP and PING_FEDERATE. This is a required property.
+	// A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property.
 	Type string `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled *bool `json:"enabled,omitempty"`

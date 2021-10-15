@@ -14055,10 +14055,11 @@ components:
           type: string
         type:
           description: A string that specifies the type of gateway resource. Options
-            are LDAP and PING_FEDERATE. This is a required property.
+            are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property.
           enum:
           - LDAP
           - PING_FEDERATE
+          - PING_INTELLIGENCE
           type: string
         enabled:
           description: A boolean that specifies whether the gateway is enabled. This

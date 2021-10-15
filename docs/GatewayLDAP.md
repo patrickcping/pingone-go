@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | 
 **Description** | Pointer to **string** | (Optional) A string that specifies the description of the resource. | [optional] 
-**Type** | **string** | A string that specifies the type of gateway resource. Options are LDAP and PING_FEDERATE. This is a required property. | 
+**Type** | **string** | A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property. | 
 **Enabled** | Pointer to **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | [optional] 
 **SupportedVersions** | Pointer to [**GatewaySupportedVersions**](GatewaySupportedVersions.md) |  | [optional] 
 **BindDN** | **string** | A string that specifies the distinguished name information to bind to the LDAP database (for example, uid&#x3D;pingone,dc&#x3D;example,dc&#x3D;com). | 
