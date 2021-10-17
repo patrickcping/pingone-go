@@ -17,6 +17,7 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"os"
 )
 
 // Linger please
@@ -27,256 +28,43 @@ var (
 // ManagementAPIsImagesApiService ManagementAPIsImagesApi service
 type ManagementAPIsImagesApiService service
 
-type ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsImagesApiService
-	envID string
-	imgID string
-}
-
-
-func (r ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDImagesImgIDDeleteExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDImagesImgIDDelete DELETE Image
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param imgID
- @return ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest
-*/
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesImgIDDelete(ctx _context.Context, envID string, imgID string) ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		imgID: imgID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesImgIDDeleteExecute(r ApiV1EnvironmentsEnvIDImagesImgIDDeleteRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.V1EnvironmentsEnvIDImagesImgIDDelete")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", _neturl.PathEscape(parameterToString(r.imgID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDImagesImgIDGetRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsImagesApiService
-	envID string
-	imgID string
-}
-
-
-func (r ApiV1EnvironmentsEnvIDImagesImgIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDImagesImgIDGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDImagesImgIDGet READ Image
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param imgID
- @return ApiV1EnvironmentsEnvIDImagesImgIDGetRequest
-*/
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesImgIDGet(ctx _context.Context, envID string, imgID string) ApiV1EnvironmentsEnvIDImagesImgIDGetRequest {
-	return ApiV1EnvironmentsEnvIDImagesImgIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		imgID: imgID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesImgIDGetExecute(r ApiV1EnvironmentsEnvIDImagesImgIDGetRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.V1EnvironmentsEnvIDImagesImgIDGet")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", _neturl.PathEscape(parameterToString(r.imgID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDImagesPostRequest struct {
+type ApiCreateImageRequest struct {
 	ctx _context.Context
 	ApiService *ManagementAPIsImagesApiService
 	envID string
 	contentType *string
 	contentDisposition *string
+	body **os.File
 }
 
-func (r ApiV1EnvironmentsEnvIDImagesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDImagesPostRequest {
+func (r ApiCreateImageRequest) ContentType(contentType string) ApiCreateImageRequest {
 	r.contentType = &contentType
 	return r
 }
-func (r ApiV1EnvironmentsEnvIDImagesPostRequest) ContentDisposition(contentDisposition string) ApiV1EnvironmentsEnvIDImagesPostRequest {
+func (r ApiCreateImageRequest) ContentDisposition(contentDisposition string) ApiCreateImageRequest {
 	r.contentDisposition = &contentDisposition
 	return r
 }
+func (r ApiCreateImageRequest) Body(body *os.File) ApiCreateImageRequest {
+	r.body = &body
+	return r
+}
 
-func (r ApiV1EnvironmentsEnvIDImagesPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDImagesPostExecute(r)
+func (r ApiCreateImageRequest) Execute() (Image, *_nethttp.Response, error) {
+	return r.ApiService.CreateImageExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDImagesPost CREATE Image
+CreateImage CREATE Image
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
- @return ApiV1EnvironmentsEnvIDImagesPostRequest
+ @return ApiCreateImageRequest
 */
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDImagesPostRequest {
-	return ApiV1EnvironmentsEnvIDImagesPostRequest{
+func (a *ManagementAPIsImagesApiService) CreateImage(ctx _context.Context, envID string) ApiCreateImageRequest {
+	return ApiCreateImageRequest{
 		ApiService: a,
 		ctx: ctx,
 		envID: envID,
@@ -284,18 +72,20 @@ func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPost(ctx _cont
 }
 
 // Execute executes the request
-func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPostExecute(r ApiV1EnvironmentsEnvIDImagesPostRequest) (*_nethttp.Response, error) {
+//  @return Image
+func (a *ManagementAPIsImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (Image, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  Image
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.V1EnvironmentsEnvIDImagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.CreateImage")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/images"
@@ -306,7 +96,7 @@ func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPostExecute(r 
 	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"image/_*"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -328,6 +118,126 @@ func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPostExecute(r 
 	if r.contentDisposition != nil {
 		localVarHeaderParams["Content-Disposition"] = parameterToString(*r.contentDisposition, "")
 	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteImageRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsImagesApiService
+	envID string
+	imgID string
+}
+
+
+func (r ApiDeleteImageRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteImageExecute(r)
+}
+
+/*
+DeleteImage DELETE Image
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param imgID
+ @return ApiDeleteImageRequest
+*/
+func (a *ManagementAPIsImagesApiService) DeleteImage(ctx _context.Context, envID string, imgID string) ApiDeleteImageRequest {
+	return ApiDeleteImageRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		imgID: imgID,
+	}
+}
+
+// Execute executes the request
+func (a *ManagementAPIsImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.DeleteImage")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/images/{imgID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", _neturl.PathEscape(parameterToString(r.imgID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -364,4 +274,124 @@ func (a *ManagementAPIsImagesApiService) V1EnvironmentsEnvIDImagesPostExecute(r 
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiReadImageRequest struct {
+	ctx _context.Context
+	ApiService *ManagementAPIsImagesApiService
+	envID string
+	imgID string
+}
+
+
+func (r ApiReadImageRequest) Execute() (Image, *_nethttp.Response, error) {
+	return r.ApiService.ReadImageExecute(r)
+}
+
+/*
+ReadImage READ Image
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param imgID
+ @return ApiReadImageRequest
+*/
+func (a *ManagementAPIsImagesApiService) ReadImage(ctx _context.Context, envID string, imgID string) ApiReadImageRequest {
+	return ApiReadImageRequest{
+		ApiService: a,
+		ctx: ctx,
+		envID: envID,
+		imgID: imgID,
+	}
+}
+
+// Execute executes the request
+//  @return Image
+func (a *ManagementAPIsImagesApiService) ReadImageExecute(r ApiReadImageRequest) (Image, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Image
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsImagesApiService.ReadImage")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/images/{imgID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", _neturl.PathEscape(parameterToString(r.imgID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

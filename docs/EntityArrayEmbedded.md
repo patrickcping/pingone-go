@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
+**PushCredentials** | Pointer to [**[]AnyOfMFAPushCredentialAPNSMFAPushCredential**](AnyOfMFAPushCredentialAPNSMFAPushCredential.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **RiskPolicySets** | Pointer to [**[]RiskPolicySet**](RiskPolicySet.md) |  | [optional] 
@@ -291,6 +292,31 @@ SetPopulations sets Populations field to given value.
 `func (o *EntityArrayEmbedded) HasPopulations() bool`
 
 HasPopulations returns a boolean if a field has been set.
+
+### GetPushCredentials
+
+`func (o *EntityArrayEmbedded) GetPushCredentials() []AnyOfMFAPushCredentialAPNSMFAPushCredential`
+
+GetPushCredentials returns the PushCredentials field if non-nil, zero value otherwise.
+
+### GetPushCredentialsOk
+
+`func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]AnyOfMFAPushCredentialAPNSMFAPushCredential, bool)`
+
+GetPushCredentialsOk returns a tuple with the PushCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPushCredentials
+
+`func (o *EntityArrayEmbedded) SetPushCredentials(v []AnyOfMFAPushCredentialAPNSMFAPushCredential)`
+
+SetPushCredentials sets PushCredentials field to given value.
+
+### HasPushCredentials
+
+`func (o *EntityArrayEmbedded) HasPushCredentials() bool`
+
+HasPushCredentials returns a boolean if a field has been set.
 
 ### GetResources
 

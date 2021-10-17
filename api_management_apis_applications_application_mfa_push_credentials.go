@@ -27,164 +27,57 @@ var (
 // ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService ManagementAPIsApplicationsApplicationMFAPushCredentialsApi service
 type ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService service
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
-	envID string
-	appID string
+type ApiCreateMFAPushCredentialRequest struct {
+	ctx                                         _context.Context
+	ApiService                                  *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
+	envID                                       string
+	appID                                       string
+	oneOfMFAPushCredentialAPNSMFAPushCredential *interface{}
 }
 
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet READ All MFA Push Credentials
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest
-*/
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
-	}
-}
-
-// Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGetRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsGet")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
-	envID string
-	appID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest {
-	r.body = &body
+func (r ApiCreateMFAPushCredentialRequest) OneOfMFAPushCredentialAPNSMFAPushCredential(oneOfMFAPushCredentialAPNSMFAPushCredential interface{}) ApiCreateMFAPushCredentialRequest {
+	r.oneOfMFAPushCredentialAPNSMFAPushCredential = &oneOfMFAPushCredentialAPNSMFAPushCredential
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostExecute(r)
+func (r ApiCreateMFAPushCredentialRequest) Execute() (interface{}, *_nethttp.Response, error) {
+	return r.ApiService.CreateMFAPushCredentialExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost CREATE MFA Push Credential (FCM)
+CreateMFAPushCredential CREATE MFA Push Credential
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest
+ @return ApiCreateMFAPushCredentialRequest
 */
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost(ctx _context.Context, envID string, appID string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest{
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx _context.Context, envID string, appID string) ApiCreateMFAPushCredentialRequest {
+	return ApiCreateMFAPushCredentialRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPostRequest) (*_nethttp.Response, error) {
+//  @return OneOfMFAPushCredentialAPNSMFAPushCredential
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.CreateMFAPushCredential")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials"
@@ -213,22 +106,22 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.oneOfMFAPushCredentialAPNSMFAPushCredential
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -241,37 +134,46 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
-	envID string
-	appID string
-	pushCredID string
+type ApiDeleteMFAPushCredentialRequest struct {
+	ctx           _context.Context
+	ApiService    *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
+	envID         string
+	appID         string
+	pushCredID    string
 	authorization *string
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest) Authorization(authorization string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest {
+func (r ApiDeleteMFAPushCredentialRequest) Authorization(authorization string) ApiDeleteMFAPushCredentialRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteExecute(r)
+func (r ApiDeleteMFAPushCredentialRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteMFAPushCredentialExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDelete DELETE MFA Push Credential
+DeleteMFAPushCredential DELETE MFA Push Credential
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -279,20 +181,20 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param pushCredID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest
+ @return ApiDeleteMFAPushCredentialRequest
 */
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDelete(ctx _context.Context, envID string, appID string, pushCredID string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest{
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx _context.Context, envID string, appID string, pushCredID string) ApiDeleteMFAPushCredentialRequest {
+	return ApiDeleteMFAPushCredentialRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 		pushCredID: pushCredID,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -301,7 +203,7 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.DeleteMFAPushCredential")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -373,21 +275,139 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest struct {
-	ctx _context.Context
+type ApiReadAllMFAPushCredentialsRequest struct {
+	ctx        _context.Context
 	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
-	envID string
-	appID string
-	pushCredID string
+	envID      string
+	appID      string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetExecute(r)
+func (r ApiReadAllMFAPushCredentialsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+	return r.ApiService.ReadAllMFAPushCredentialsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet READ One MFA Push Credential
+ReadAllMFAPushCredentials READ All MFA Push Credentials
+
+By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param envID
+ @param appID
+ @return ApiReadAllMFAPushCredentialsRequest
+*/
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx _context.Context, envID string, appID string) ApiReadAllMFAPushCredentialsRequest {
+	return ApiReadAllMFAPushCredentialsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (EntityArray, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.ReadAllMFAPushCredentials")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneMFAPushCredentialRequest struct {
+	ctx        _context.Context
+	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
+	envID      string
+	appID      string
+	pushCredID string
+}
+
+func (r ApiReadOneMFAPushCredentialRequest) Execute() (interface{}, *_nethttp.Response, error) {
+	return r.ApiService.ReadOneMFAPushCredentialExecute(r)
+}
+
+/*
+ReadOneMFAPushCredential READ One MFA Push Credential
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -395,31 +415,33 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param pushCredID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest
+ @return ApiReadOneMFAPushCredentialRequest
 */
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet(ctx _context.Context, envID string, appID string, pushCredID string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest{
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx _context.Context, envID string, appID string, pushCredID string) ApiReadOneMFAPushCredentialRequest {
+	return ApiReadOneMFAPushCredentialRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 		pushCredID: pushCredID,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGetRequest) (*_nethttp.Response, error) {
+//  @return OneOfMFAPushCredentialAPNSMFAPushCredential
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.ReadOneMFAPushCredential")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}"
@@ -450,19 +472,19 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -475,37 +497,46 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest struct {
-	ctx _context.Context
-	ApiService *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
-	envID string
-	appID string
-	pushCredID string
-	body *map[string]interface{}
+type ApiUpdateMFAPushCredentialRequest struct {
+	ctx                                         _context.Context
+	ApiService                                  *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService
+	envID                                       string
+	appID                                       string
+	pushCredID                                  string
+	oneOfMFAPushCredentialAPNSMFAPushCredential *interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest {
-	r.body = &body
+func (r ApiUpdateMFAPushCredentialRequest) OneOfMFAPushCredentialAPNSMFAPushCredential(oneOfMFAPushCredentialAPNSMFAPushCredential interface{}) ApiUpdateMFAPushCredentialRequest {
+	r.oneOfMFAPushCredentialAPNSMFAPushCredential = &oneOfMFAPushCredentialAPNSMFAPushCredential
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutExecute(r)
+func (r ApiUpdateMFAPushCredentialRequest) Execute() (interface{}, *_nethttp.Response, error) {
+	return r.ApiService.UpdateMFAPushCredentialExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut UPDATE MFA Push Credential
+UpdateMFAPushCredential UPDATE MFA Push Credential
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
@@ -513,31 +544,33 @@ By design, PingOne requests solely comprise this collection. For complete docume
  @param envID
  @param appID
  @param pushCredID
- @return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest
+ @return ApiUpdateMFAPushCredentialRequest
 */
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut(ctx _context.Context, envID string, appID string, pushCredID string) ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest {
-	return ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest{
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx _context.Context, envID string, appID string, pushCredID string) ApiUpdateMFAPushCredentialRequest {
+	return ApiUpdateMFAPushCredentialRequest{
 		ApiService: a,
-		ctx: ctx,
-		envID: envID,
-		appID: appID,
+		ctx:        ctx,
+		envID:      envID,
+		appID:      appID,
 		pushCredID: pushCredID,
 	}
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutExecute(r ApiV1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPutRequest) (*_nethttp.Response, error) {
+//  @return OneOfMFAPushCredentialAPNSMFAPushCredential
+func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.V1EnvironmentsEnvIDApplicationsAppIDPushCredentialsPushCredIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService.UpdateMFAPushCredential")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}"
@@ -567,22 +600,22 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.oneOfMFAPushCredentialAPNSMFAPushCredential
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -595,13 +628,22 @@ func (a *ManagementAPIsApplicationsApplicationMFAPushCredentialsApiService) V1En
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

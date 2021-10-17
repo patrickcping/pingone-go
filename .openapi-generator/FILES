@@ -131,8 +131,13 @@ docs/GroupDirectMemberCounts.md
 docs/GroupMembership.md
 docs/GroupPopulation.md
 docs/GroupTotalMemberCounts.md
+docs/Image.md
+docs/ImageTargets.md
 docs/InlineObject2.md
 docs/InlineObject3.md
+docs/MFAPushCredential.md
+docs/MFAPushCredentialAPNS.md
+docs/MFAPushCredentialAPNSAllOf.md
 docs/ManagementAPIsActiveIdentityCountsApi.md
 docs/ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.md
 docs/ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi.md
@@ -328,8 +333,13 @@ model_group_direct_member_counts.go
 model_group_membership.go
 model_group_population.go
 model_group_total_member_counts.go
+model_image.go
+model_image_targets.go
 model_inline_object_2.go
 model_inline_object_3.go
+model_mfa_push_credential.go
+model_mfa_push_credential_apns.go
+model_mfa_push_credential_apns_all_of.go
 model_object_environment.go
 model_object_population.go
 model_p1_error.go

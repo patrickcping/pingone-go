@@ -16,15 +16,15 @@ import (
 
 // RiskPredictorItemMapBetween Minimum and maximum boundaries
 type RiskPredictorItemMapBetween struct {
-	MinScore int32 `json:"minScore"`
-	MaxScore int32 `json:"maxScore"`
+	MinScore float32 `json:"minScore"`
+	MaxScore float32 `json:"maxScore"`
 }
 
 // NewRiskPredictorItemMapBetween instantiates a new RiskPredictorItemMapBetween object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorItemMapBetween(minScore int32, maxScore int32) *RiskPredictorItemMapBetween {
+func NewRiskPredictorItemMapBetween(minScore float32, maxScore float32) *RiskPredictorItemMapBetween {
 	this := RiskPredictorItemMapBetween{}
 	this.MinScore = minScore
 	this.MaxScore = maxScore
@@ -40,9 +40,9 @@ func NewRiskPredictorItemMapBetweenWithDefaults() *RiskPredictorItemMapBetween {
 }
 
 // GetMinScore returns the MinScore field value
-func (o *RiskPredictorItemMapBetween) GetMinScore() int32 {
+func (o *RiskPredictorItemMapBetween) GetMinScore() float32 {
 	if o == nil {
-		var ret int32
+		var ret float32
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *RiskPredictorItemMapBetween) GetMinScore() int32 {
 
 // GetMinScoreOk returns a tuple with the MinScore field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*int32, bool) {
+func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*float32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -59,14 +59,14 @@ func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*int32, bool) {
 }
 
 // SetMinScore sets field value
-func (o *RiskPredictorItemMapBetween) SetMinScore(v int32) {
+func (o *RiskPredictorItemMapBetween) SetMinScore(v float32) {
 	o.MinScore = v
 }
 
 // GetMaxScore returns the MaxScore field value
-func (o *RiskPredictorItemMapBetween) GetMaxScore() int32 {
+func (o *RiskPredictorItemMapBetween) GetMaxScore() float32 {
 	if o == nil {
-		var ret int32
+		var ret float32
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *RiskPredictorItemMapBetween) GetMaxScore() int32 {
 
 // GetMaxScoreOk returns a tuple with the MaxScore field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*int32, bool) {
+func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*float32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*int32, bool) {
 }
 
 // SetMaxScore sets field value
-func (o *RiskPredictorItemMapBetween) SetMaxScore(v int32) {
+func (o *RiskPredictorItemMapBetween) SetMaxScore(v float32) {
 	o.MaxScore = v
 }
 

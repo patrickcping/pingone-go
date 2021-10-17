@@ -2161,6 +2161,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readAllMFAPushCredentials
       parameters:
       - explode: false
         in: path
@@ -2185,7 +2186,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All MFA Push Credentials
       tags:
@@ -2193,6 +2196,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createMFAPushCredential
       parameters:
       - explode: false
         in: path
@@ -2215,7 +2219,9 @@ paths:
               example:
                 type: FCM
                 key: key.value
-              type: object
+              oneOf:
+              - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+              - $ref: '#/components/schemas/MFAPushCredentialFCM'
       responses:
         "401":
           content:
@@ -2225,15 +2231,20 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+                - $ref: '#/components/schemas/MFAPushCredentialFCM'
           description: Successful response
-      summary: CREATE MFA Push Credential (FCM)
+      summary: CREATE MFA Push Credential
       tags:
       - Management APIs > Applications > Application MFA Push Credentials
   /v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteMFAPushCredential
       parameters:
       - example: Bearer {{accessToken}}
         explode: false
@@ -2279,6 +2290,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readOneMFAPushCredential
       parameters:
       - explode: false
         in: path
@@ -2310,7 +2322,11 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+                - $ref: '#/components/schemas/MFAPushCredentialFCM'
           description: Successful response
       summary: READ One MFA Push Credential
       tags:
@@ -2318,6 +2334,7 @@ paths:
     put:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: updateMFAPushCredential
       parameters:
       - explode: false
         in: path
@@ -2352,7 +2369,9 @@ paths:
                   -----BEGIN PRIVATE KEY-----
                   MIGTAgEA****7HUikGZU
                   -----END PRIVATE KEY-----
-              type: object
+              oneOf:
+              - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+              - $ref: '#/components/schemas/MFAPushCredentialFCM'
       responses:
         "401":
           content:
@@ -2362,7 +2381,11 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+                - $ref: '#/components/schemas/MFAPushCredentialFCM'
           description: Successful response
       summary: UPDATE MFA Push Credential
       tags:
@@ -6503,6 +6526,7 @@ paths:
     post:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: createImage
       parameters:
       - example: image/jpeg
         explode: false
@@ -6527,6 +6551,12 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          image/*:
+            schema:
+              format: binary
+              type: string
       responses:
         "401":
           content:
@@ -6536,7 +6566,9 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
           description: Successful response
       summary: CREATE Image
       tags:
@@ -6545,6 +6577,7 @@ paths:
     delete:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: deleteImage
       parameters:
       - explode: false
         in: path
@@ -6575,6 +6608,7 @@ paths:
     get:
       description: By design, PingOne requests solely comprise this collection. For
         complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+      operationId: readImage
       parameters:
       - explode: false
         in: path
@@ -6599,7 +6633,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
           description: Successful response
       summary: READ Image
       tags:
@@ -13225,6 +13261,9 @@ components:
                   href: https://example.com
             license:
               id: 34f0efac-21d9-4a17-8a35-196bb3362983
+          pushCredentials:
+          - ""
+          - ""
           roles:
           - permissions:
             - classifier: classifier
@@ -13270,8 +13309,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
               low:
                 contains: contains
                 ipRange:
@@ -13281,8 +13320,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
               medium:
                 contains: contains
                 ipRange:
@@ -13292,8 +13331,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
             updatedAt: updatedAt
           - createdAt: createdAt
             default:
@@ -13316,8 +13355,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
               low:
                 contains: contains
                 ipRange:
@@ -13327,8 +13366,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
               medium:
                 contains: contains
                 ipRange:
@@ -13338,8 +13377,8 @@ components:
                 - list
                 - list
                 between:
-                  minScore: 1
-                  maxScore: 1
+                  minScore: 1.2315135367772556
+                  maxScore: 1.0246457001441578
             updatedAt: updatedAt
           groups:
           - directMemberCounts:
@@ -14290,6 +14329,50 @@ components:
       required:
       - id
       type: object
+    Image:
+      example:
+        environment:
+          id: id
+        id: id
+        targets:
+          width: 0
+          href: href
+          id: id
+          type: PNG
+          height: 6
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        targets:
+          $ref: '#/components/schemas/Image_targets'
+      type: object
+    MFAPushCredential:
+      properties:
+        type:
+          description: A string that specifies the type of the push credentials. Mandatory.
+            Valid values APNS, FCM
+          enum:
+          - APNS
+          - FCM
+          type: string
+        key:
+          description: A string that Apple uses as an identifier to identify an authentication
+            key.  Mandatory.
+          type: string
+      required:
+      - key
+      - type
+      type: object
+    MFAPushCredentialAPNS:
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
+    MFAPushCredentialFCM:
+      $ref: '#/components/schemas/MFAPushCredential'
     Population:
       example:
         createdAt: createdAt
@@ -14864,8 +14947,8 @@ components:
             - list
             - list
             between:
-              minScore: 1
-              maxScore: 1
+              minScore: 1.2315135367772556
+              maxScore: 1.0246457001441578
           low:
             contains: contains
             ipRange:
@@ -14875,8 +14958,8 @@ components:
             - list
             - list
             between:
-              minScore: 1
-              maxScore: 1
+              minScore: 1.2315135367772556
+              maxScore: 1.0246457001441578
           medium:
             contains: contains
             ipRange:
@@ -14886,8 +14969,8 @@ components:
             - list
             - list
             between:
-              minScore: 1
-              maxScore: 1
+              minScore: 1.2315135367772556
+              maxScore: 1.0246457001441578
         updatedAt: updatedAt
       properties:
         id:
@@ -14945,8 +15028,8 @@ components:
         - list
         - list
         between:
-          minScore: 1
-          maxScore: 1
+          minScore: 1.2315135367772556
+          maxScore: 1.0246457001441578
       properties:
         contains:
           type: string
@@ -15816,6 +15899,9 @@ components:
                 href: https://example.com
           license:
             id: 34f0efac-21d9-4a17-8a35-196bb3362983
+        pushCredentials:
+        - ""
+        - ""
         roles:
         - permissions:
           - classifier: classifier
@@ -15861,8 +15947,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
             low:
               contains: contains
               ipRange:
@@ -15872,8 +15958,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
             medium:
               contains: contains
               ipRange:
@@ -15883,8 +15969,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
           updatedAt: updatedAt
         - createdAt: createdAt
           default:
@@ -15907,8 +15993,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
             low:
               contains: contains
               ipRange:
@@ -15918,8 +16004,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
             medium:
               contains: contains
               ipRange:
@@ -15929,8 +16015,8 @@ components:
               - list
               - list
               between:
-                minScore: 1
-                maxScore: 1
+                minScore: 1.2315135367772556
+                maxScore: 1.0246457001441578
           updatedAt: updatedAt
         groups:
         - directMemberCounts:
@@ -16348,6 +16434,12 @@ components:
         populations:
           items:
             $ref: '#/components/schemas/Population'
+          type: array
+        pushCredentials:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+            - $ref: '#/components/schemas/MFAPushCredentialFCM'
           type: array
         resources:
           items:
@@ -17025,6 +17117,55 @@ components:
           description: Number of users with direct membership
           type: integer
       readOnly: true
+      type: object
+    Image_targets:
+      example:
+        width: 0
+        href: href
+        id: id
+        type: PNG
+        height: 6
+      properties:
+        href:
+          description: A string that specifies the URL or fully qualified path to
+            the image source file.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the UUID of the target image.
+          readOnly: true
+          type: string
+        type:
+          description: A string that specifies the type of format used for the image.
+            Options are jpg, png, and gif.
+          enum:
+          - PNG
+          - JPG
+          - GIF
+          readOnly: true
+          type: string
+        width:
+          description: The width of the image (in pixels).
+          readOnly: true
+          type: integer
+        height:
+          description: The height of the image (in pixels).
+          readOnly: true
+          type: integer
+      type: object
+    MFAPushCredentialAPNS_allOf:
+      properties:
+        teamId:
+          description: A string that Apple uses as an identifier to identify teams.
+          type: string
+        token:
+          description: A string that Apple uses as the authentication token signing
+            key to securely connect to APNS. This is a p8 file with a private key
+            format.
+          type: string
+      required:
+      - teamId
+      - token
       type: object
     RiskEvaluation_riskPolicySet:
       example:
@@ -17724,8 +17865,8 @@ components:
           - list
           - list
           between:
-            minScore: 1
-            maxScore: 1
+            minScore: 1.2315135367772556
+            maxScore: 1.0246457001441578
         low:
           contains: contains
           ipRange:
@@ -17735,8 +17876,8 @@ components:
           - list
           - list
           between:
-            minScore: 1
-            maxScore: 1
+            minScore: 1.2315135367772556
+            maxScore: 1.0246457001441578
         medium:
           contains: contains
           ipRange:
@@ -17746,8 +17887,8 @@ components:
           - list
           - list
           between:
-            minScore: 1
-            maxScore: 1
+            minScore: 1.2315135367772556
+            maxScore: 1.0246457001441578
       properties:
         high:
           $ref: '#/components/schemas/RiskPredictorItemMap'
@@ -17759,13 +17900,13 @@ components:
     RiskPredictorItemMap_between:
       description: Minimum and maximum boundaries
       example:
-        minScore: 1
-        maxScore: 1
+        minScore: 1.2315135367772556
+        maxScore: 1.0246457001441578
       properties:
         minScore:
-          type: integer
+          type: number
         maxScore:
-          type: integer
+          type: number
       required:
       - maxScore
       - minScore

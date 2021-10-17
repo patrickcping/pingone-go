@@ -26,6 +26,7 @@ type EntityArrayEmbedded struct {
 	Groups           *[]Group                    `json:"groups,omitempty"`
 	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
 	Populations      *[]Population               `json:"populations,omitempty"`
+	PushCredentials  *[]interface{}              `json:"pushCredentials,omitempty"`
 	Resources        *[]Resource                 `json:"resources,omitempty"`
 	Scopes           *[]ResourceScope            `json:"scopes,omitempty"`
 	RiskPolicySets   *[]RiskPolicySet            `json:"riskPolicySets,omitempty"`
@@ -373,6 +374,38 @@ func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
 	o.Populations = &v
 }
 
+// GetPushCredentials returns the PushCredentials field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPushCredentials() []interface{} {
+	if o == nil || o.PushCredentials == nil {
+		var ret []interface{}
+		return ret
+	}
+	return *o.PushCredentials
+}
+
+// GetPushCredentialsOk returns a tuple with the PushCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]interface{}, bool) {
+	if o == nil || o.PushCredentials == nil {
+		return nil, false
+	}
+	return o.PushCredentials, true
+}
+
+// HasPushCredentials returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPushCredentials() bool {
+	if o != nil && o.PushCredentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPushCredentials gets a reference to the given []AnyOfMFAPushCredentialAPNSMFAPushCredential and assigns it to the PushCredentials field.
+func (o *EntityArrayEmbedded) SetPushCredentials(v []interface{}) {
+	o.PushCredentials = &v
+}
+
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetResources() []Resource {
 	if o == nil || o.Resources == nil {
@@ -660,6 +693,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Populations != nil {
 		toSerialize["populations"] = o.Populations
+	}
+	if o.PushCredentials != nil {
+		toSerialize["pushCredentials"] = o.PushCredentials
 	}
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
