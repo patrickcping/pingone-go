@@ -16,6 +16,8 @@ import (
 
 // RiskPolicySetCondition The condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
 type RiskPolicySetCondition struct {
+	Contains          *string                                    `json:"contains,omitempty"`
+	IpRange           *[]string                                  `json:"ipRange,omitempty"`
 	Value             *string                                    `json:"value,omitempty"`
 	Equals            *interface{}                               `json:"equals,omitempty"`
 	AggregatedWeights *[]RiskPolicySetConditionAggregatedWeights `json:"aggregatedWeights,omitempty"`
@@ -37,6 +39,70 @@ func NewRiskPolicySetCondition() *RiskPolicySetCondition {
 func NewRiskPolicySetConditionWithDefaults() *RiskPolicySetCondition {
 	this := RiskPolicySetCondition{}
 	return &this
+}
+
+// GetContains returns the Contains field value if set, zero value otherwise.
+func (o *RiskPolicySetCondition) GetContains() string {
+	if o == nil || o.Contains == nil {
+		var ret string
+		return ret
+	}
+	return *o.Contains
+}
+
+// GetContainsOk returns a tuple with the Contains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySetCondition) GetContainsOk() (*string, bool) {
+	if o == nil || o.Contains == nil {
+		return nil, false
+	}
+	return o.Contains, true
+}
+
+// HasContains returns a boolean if a field has been set.
+func (o *RiskPolicySetCondition) HasContains() bool {
+	if o != nil && o.Contains != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContains gets a reference to the given string and assigns it to the Contains field.
+func (o *RiskPolicySetCondition) SetContains(v string) {
+	o.Contains = &v
+}
+
+// GetIpRange returns the IpRange field value if set, zero value otherwise.
+func (o *RiskPolicySetCondition) GetIpRange() []string {
+	if o == nil || o.IpRange == nil {
+		var ret []string
+		return ret
+	}
+	return *o.IpRange
+}
+
+// GetIpRangeOk returns a tuple with the IpRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySetCondition) GetIpRangeOk() (*[]string, bool) {
+	if o == nil || o.IpRange == nil {
+		return nil, false
+	}
+	return o.IpRange, true
+}
+
+// HasIpRange returns a boolean if a field has been set.
+func (o *RiskPolicySetCondition) HasIpRange() bool {
+	if o != nil && o.IpRange != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIpRange gets a reference to the given []string and assigns it to the IpRange field.
+func (o *RiskPolicySetCondition) SetIpRange(v []string) {
+	o.IpRange = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
@@ -169,6 +235,12 @@ func (o *RiskPolicySetCondition) SetBetween(v RiskPolicySetConditionBetween) {
 
 func (o RiskPolicySetCondition) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Contains != nil {
+		toSerialize["contains"] = o.Contains
+	}
+	if o.IpRange != nil {
+		toSerialize["ipRange"] = o.IpRange
+	}
 	if o.Value != nil {
 		toSerialize["value"] = o.Value
 	}

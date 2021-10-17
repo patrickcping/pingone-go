@@ -13115,6 +13115,7 @@ components:
             - result:
                 level: LOW
                 type: VALUE
+                value: value
               createdAt: createdAt
               condition:
                 aggregatedWeights:
@@ -13122,7 +13123,11 @@ components:
                   value: value
                 - weight: 9
                   value: value
+                contains: contains
                 equals: ""
+                ipRange:
+                - ipRange
+                - ipRange
                 value: value
                 between:
                   minScore: 3
@@ -13137,6 +13142,7 @@ components:
             - result:
                 level: LOW
                 type: VALUE
+                value: value
               createdAt: createdAt
               condition:
                 aggregatedWeights:
@@ -13144,7 +13150,11 @@ components:
                   value: value
                 - weight: 9
                   value: value
+                contains: contains
                 equals: ""
+                ipRange:
+                - ipRange
+                - ipRange
                 value: value
                 between:
                   minScore: 3
@@ -13159,6 +13169,7 @@ components:
             defaultResult:
               level: LOW
               type: VALUE
+              value: value
             updatedAt: updatedAt
           - createdAt: createdAt
             default: true
@@ -13171,6 +13182,7 @@ components:
             - result:
                 level: LOW
                 type: VALUE
+                value: value
               createdAt: createdAt
               condition:
                 aggregatedWeights:
@@ -13178,7 +13190,11 @@ components:
                   value: value
                 - weight: 9
                   value: value
+                contains: contains
                 equals: ""
+                ipRange:
+                - ipRange
+                - ipRange
                 value: value
                 between:
                   minScore: 3
@@ -13193,6 +13209,7 @@ components:
             - result:
                 level: LOW
                 type: VALUE
+                value: value
               createdAt: createdAt
               condition:
                 aggregatedWeights:
@@ -13200,7 +13217,11 @@ components:
                   value: value
                 - weight: 9
                   value: value
+                contains: contains
                 equals: ""
+                ipRange:
+                - ipRange
+                - ipRange
                 value: value
                 between:
                   minScore: 3
@@ -13215,6 +13236,7 @@ components:
             defaultResult:
               level: LOW
               type: VALUE
+              value: value
             updatedAt: updatedAt
           gateways:
           - ""
@@ -14814,6 +14836,7 @@ components:
         - result:
             level: LOW
             type: VALUE
+            value: value
           createdAt: createdAt
           condition:
             aggregatedWeights:
@@ -14821,7 +14844,11 @@ components:
               value: value
             - weight: 9
               value: value
+            contains: contains
             equals: ""
+            ipRange:
+            - ipRange
+            - ipRange
             value: value
             between:
               minScore: 3
@@ -14836,6 +14863,7 @@ components:
         - result:
             level: LOW
             type: VALUE
+            value: value
           createdAt: createdAt
           condition:
             aggregatedWeights:
@@ -14843,7 +14871,11 @@ components:
               value: value
             - weight: 9
               value: value
+            contains: contains
             equals: ""
+            ipRange:
+            - ipRange
+            - ipRange
             value: value
             between:
               minScore: 3
@@ -14858,6 +14890,7 @@ components:
         defaultResult:
           level: LOW
           type: VALUE
+          value: value
         updatedAt: updatedAt
       properties:
         createdAt:
@@ -14910,6 +14943,7 @@ components:
       example:
         level: LOW
         type: VALUE
+        value: value
       properties:
         level:
           enum:
@@ -14920,6 +14954,8 @@ components:
         type:
           enum:
           - VALUE
+          type: string
+        value:
           type: string
       required:
       - level
@@ -15753,6 +15789,7 @@ components:
           - result:
               level: LOW
               type: VALUE
+              value: value
             createdAt: createdAt
             condition:
               aggregatedWeights:
@@ -15760,7 +15797,11 @@ components:
                 value: value
               - weight: 9
                 value: value
+              contains: contains
               equals: ""
+              ipRange:
+              - ipRange
+              - ipRange
               value: value
               between:
                 minScore: 3
@@ -15775,6 +15816,7 @@ components:
           - result:
               level: LOW
               type: VALUE
+              value: value
             createdAt: createdAt
             condition:
               aggregatedWeights:
@@ -15782,7 +15824,11 @@ components:
                 value: value
               - weight: 9
                 value: value
+              contains: contains
               equals: ""
+              ipRange:
+              - ipRange
+              - ipRange
               value: value
               between:
                 minScore: 3
@@ -15797,6 +15843,7 @@ components:
           defaultResult:
             level: LOW
             type: VALUE
+            value: value
           updatedAt: updatedAt
         - createdAt: createdAt
           default: true
@@ -15809,6 +15856,7 @@ components:
           - result:
               level: LOW
               type: VALUE
+              value: value
             createdAt: createdAt
             condition:
               aggregatedWeights:
@@ -15816,7 +15864,11 @@ components:
                 value: value
               - weight: 9
                 value: value
+              contains: contains
               equals: ""
+              ipRange:
+              - ipRange
+              - ipRange
               value: value
               between:
                 minScore: 3
@@ -15831,6 +15883,7 @@ components:
           - result:
               level: LOW
               type: VALUE
+              value: value
             createdAt: createdAt
             condition:
               aggregatedWeights:
@@ -15838,7 +15891,11 @@ components:
                 value: value
               - weight: 9
                 value: value
+              contains: contains
               equals: ""
+              ipRange:
+              - ipRange
+              - ipRange
               value: value
               between:
                 minScore: 3
@@ -15853,6 +15910,7 @@ components:
           defaultResult:
             level: LOW
             type: VALUE
+            value: value
           updatedAt: updatedAt
         gateways:
         - ""
@@ -17703,6 +17761,9 @@ components:
           type: string
         weight:
           type: integer
+      required:
+      - value
+      - weight
       type: object
     RiskPolicySet_condition_between:
       example:
@@ -17713,6 +17774,9 @@ components:
           type: integer
         maxScore:
           type: integer
+      required:
+      - maxScore
+      - minScore
       type: object
     RiskPolicySet_condition:
       description: The condition logic that determines when a policy is evaluated
@@ -17723,12 +17787,22 @@ components:
           value: value
         - weight: 9
           value: value
+        contains: contains
         equals: ""
+        ipRange:
+        - ipRange
+        - ipRange
         value: value
         between:
           minScore: 3
           maxScore: 2
       properties:
+        contains:
+          type: string
+        ipRange:
+          items:
+            type: string
+          type: array
         value:
           type: string
         equals:
@@ -17747,6 +17821,7 @@ components:
         result:
           level: LOW
           type: VALUE
+          value: value
         createdAt: createdAt
         condition:
           aggregatedWeights:
@@ -17754,7 +17829,11 @@ components:
             value: value
           - weight: 9
             value: value
+          contains: contains
           equals: ""
+          ipRange:
+          - ipRange
+          - ipRange
           value: value
           between:
             minScore: 3

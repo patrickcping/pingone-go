@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Contains** | Pointer to **string** |  | [optional] 
+**IpRange** | Pointer to **[]string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 **Equals** | Pointer to [**OneOfstringboolean**](oneOf&lt;string,boolean&gt;.md) |  | [optional] 
 **AggregatedWeights** | Pointer to [**[]RiskPolicySetConditionAggregatedWeights**](RiskPolicySetConditionAggregatedWeights.md) |  | [optional] 
@@ -27,6 +29,56 @@ will change when the set of required properties is changed
 NewRiskPolicySetConditionWithDefaults instantiates a new RiskPolicySetCondition object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetContains
+
+`func (o *RiskPolicySetCondition) GetContains() string`
+
+GetContains returns the Contains field if non-nil, zero value otherwise.
+
+### GetContainsOk
+
+`func (o *RiskPolicySetCondition) GetContainsOk() (*string, bool)`
+
+GetContainsOk returns a tuple with the Contains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContains
+
+`func (o *RiskPolicySetCondition) SetContains(v string)`
+
+SetContains sets Contains field to given value.
+
+### HasContains
+
+`func (o *RiskPolicySetCondition) HasContains() bool`
+
+HasContains returns a boolean if a field has been set.
+
+### GetIpRange
+
+`func (o *RiskPolicySetCondition) GetIpRange() []string`
+
+GetIpRange returns the IpRange field if non-nil, zero value otherwise.
+
+### GetIpRangeOk
+
+`func (o *RiskPolicySetCondition) GetIpRangeOk() (*[]string, bool)`
+
+GetIpRangeOk returns a tuple with the IpRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpRange
+
+`func (o *RiskPolicySetCondition) SetIpRange(v []string)`
+
+SetIpRange sets IpRange field to given value.
+
+### HasIpRange
+
+`func (o *RiskPolicySetCondition) HasIpRange() bool`
+
+HasIpRange returns a boolean if a field has been set.
 
 ### GetValue
 

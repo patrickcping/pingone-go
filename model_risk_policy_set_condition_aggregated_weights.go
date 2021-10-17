@@ -16,16 +16,18 @@ import (
 
 // RiskPolicySetConditionAggregatedWeights struct for RiskPolicySetConditionAggregatedWeights
 type RiskPolicySetConditionAggregatedWeights struct {
-	Value *string `json:"value,omitempty"`
-	Weight *int32 `json:"weight,omitempty"`
+	Value string `json:"value"`
+	Weight int32 `json:"weight"`
 }
 
 // NewRiskPolicySetConditionAggregatedWeights instantiates a new RiskPolicySetConditionAggregatedWeights object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicySetConditionAggregatedWeights() *RiskPolicySetConditionAggregatedWeights {
+func NewRiskPolicySetConditionAggregatedWeights(value string, weight int32) *RiskPolicySetConditionAggregatedWeights {
 	this := RiskPolicySetConditionAggregatedWeights{}
+	this.Value = value
+	this.Weight = weight
 	return &this
 }
 
@@ -37,76 +39,60 @@ func NewRiskPolicySetConditionAggregatedWeightsWithDefaults() *RiskPolicySetCond
 	return &this
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *RiskPolicySetConditionAggregatedWeights) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetConditionAggregatedWeights) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *RiskPolicySetConditionAggregatedWeights) HasValue() bool {
-	if o != nil && o.Value != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *RiskPolicySetConditionAggregatedWeights) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// GetWeight returns the Weight field value
 func (o *RiskPolicySetConditionAggregatedWeights) GetWeight() int32 {
-	if o == nil || o.Weight == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Weight
+
+	return o.Weight
 }
 
-// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetConditionAggregatedWeights) GetWeightOk() (*int32, bool) {
-	if o == nil || o.Weight == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Weight, true
+	return &o.Weight, true
 }
 
-// HasWeight returns a boolean if a field has been set.
-func (o *RiskPolicySetConditionAggregatedWeights) HasWeight() bool {
-	if o != nil && o.Weight != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWeight gets a reference to the given int32 and assigns it to the Weight field.
+// SetWeight sets field value
 func (o *RiskPolicySetConditionAggregatedWeights) SetWeight(v int32) {
-	o.Weight = &v
+	o.Weight = v
 }
 
 func (o RiskPolicySetConditionAggregatedWeights) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Value != nil {
+	if true {
 		toSerialize["value"] = o.Value
 	}
-	if o.Weight != nil {
+	if true {
 		toSerialize["weight"] = o.Weight
 	}
 	return json.Marshal(toSerialize)

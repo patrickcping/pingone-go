@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **int32** |  | [optional] 
+**Value** | **string** |  | 
+**Weight** | **int32** |  | 
 
 ## Methods
 
 ### NewRiskPolicySetConditionAggregatedWeights
 
-`func NewRiskPolicySetConditionAggregatedWeights() *RiskPolicySetConditionAggregatedWeights`
+`func NewRiskPolicySetConditionAggregatedWeights(value string, weight int32, ) *RiskPolicySetConditionAggregatedWeights`
 
 NewRiskPolicySetConditionAggregatedWeights instantiates a new RiskPolicySetConditionAggregatedWeights object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-### HasValue
-
-`func (o *RiskPolicySetConditionAggregatedWeights) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 ### GetWeight
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetWeight sets Weight field to given value.
 
-### HasWeight
-
-`func (o *RiskPolicySetConditionAggregatedWeights) HasWeight() bool`
-
-HasWeight returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
