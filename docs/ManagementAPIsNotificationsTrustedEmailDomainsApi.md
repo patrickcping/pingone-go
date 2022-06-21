@@ -39,8 +39,8 @@ func main() {
     emailDomainId := "emailDomainId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(context.Background(), envID, emailDomainId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     emailDomainId := "emailDomainId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(context.Background(), envID, emailDomainId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdDkimGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
     emailDomainId := "emailDomainId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(context.Background(), envID, emailDomainId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,8 +252,8 @@ func main() {
     emailDomainId := "emailDomainId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(context.Background(), envID, emailDomainId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdOwnershipGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,8 +323,8 @@ func main() {
     emailDomainId := "emailDomainId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(context.Background(), envID, emailDomainId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet(context.Background(), envID, emailDomainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdSpfGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -393,8 +393,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -459,11 +459,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsTrustedEmailDomainsApi.V1EnvironmentsEnvIDEmailDomainsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

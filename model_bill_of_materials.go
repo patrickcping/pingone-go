@@ -21,7 +21,7 @@ type BillOfMaterials struct {
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// An array that specifies the products associated with this bill of materials
-	Products *[]BillOfMaterialsProducts `json:"products,omitempty"`
+	Products []BillOfMaterialsProductsInner `json:"products,omitempty"`
 }
 
 // NewBillOfMaterials instantiates a new BillOfMaterials object
@@ -106,17 +106,17 @@ func (o *BillOfMaterials) SetUpdatedAt(v string) {
 }
 
 // GetProducts returns the Products field value if set, zero value otherwise.
-func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProducts {
+func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProductsInner {
 	if o == nil || o.Products == nil {
-		var ret []BillOfMaterialsProducts
+		var ret []BillOfMaterialsProductsInner
 		return ret
 	}
-	return *o.Products
+	return o.Products
 }
 
 // GetProductsOk returns a tuple with the Products field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillOfMaterials) GetProductsOk() (*[]BillOfMaterialsProducts, bool) {
+func (o *BillOfMaterials) GetProductsOk() ([]BillOfMaterialsProductsInner, bool) {
 	if o == nil || o.Products == nil {
 		return nil, false
 	}
@@ -132,9 +132,9 @@ func (o *BillOfMaterials) HasProducts() bool {
 	return false
 }
 
-// SetProducts gets a reference to the given []BillOfMaterialsProducts and assigns it to the Products field.
-func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProducts) {
-	o.Products = &v
+// SetProducts gets a reference to the given []BillOfMaterialsProductsInner and assigns it to the Products field.
+func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProductsInner) {
+	o.Products = v
 }
 
 func (o BillOfMaterials) MarshalJSON() ([]byte, error) {

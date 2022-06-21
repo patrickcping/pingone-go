@@ -37,8 +37,8 @@ func main() {
     agreementID := "agreementID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesGet(context.Background(), envID, agreementID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesGet(context.Background(), envID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     languageID := "languageID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDDelete(context.Background(), envID, agreementID, languageID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDDelete(context.Background(), envID, agreementID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@ func main() {
     languageID := "languageID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDGet(context.Background(), envID, agreementID, languageID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDGet(context.Background(), envID, agreementID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,11 +255,11 @@ func main() {
     envID := "envID_example" // string | 
     agreementID := "agreementID_example" // string | 
     languageID := "languageID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut(context.Background(), envID, agreementID, languageID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut(context.Background(), envID, agreementID, languageID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -330,11 +330,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost(context.Background(), envID, agreementID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost(context.Background(), envID, agreementID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

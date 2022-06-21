@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsPasswordPoliciesApiService ManagementAPIsPasswordPoliciesApi service
 type ManagementAPIsPasswordPoliciesApiService service
 
 type ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPasswordPoliciesApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPasswordPoliciesGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDPasswordPoliciesGet READ All Password Policies
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest
 */
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest {
 	return ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 }
 
 // Execute executes the request
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesGetExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesGetExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPasswordPoliciesApiService.V1EnvironmentsEnvIDPasswordPoliciesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/passwordPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,14 +126,13 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 }
 
 type ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPasswordPoliciesApiService
 	envID string
 	passwordPolicyID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetExecute(r)
 }
 
@@ -149,12 +141,12 @@ V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet READ One Password Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param passwordPolicyID
  @return ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest
 */
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet(ctx _context.Context, envID string, passwordPolicyID string) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet(ctx context.Context, envID string, passwordPolicyID string) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest {
 	return ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,27 +156,25 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 }
 
 // Execute executes the request
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPasswordPoliciesApiService.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/passwordPolicies/{passwordPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", _neturl.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -203,7 +193,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -213,15 +203,15 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,7 +232,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 }
 
 type ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPasswordPoliciesApiService
 	envID string
 	passwordPolicyID string
@@ -254,7 +244,7 @@ func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) Body(b
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutExecute(r)
 }
 
@@ -263,12 +253,12 @@ V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut UPDATE Password Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param passwordPolicyID
  @return ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest
 */
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(ctx _context.Context, envID string, passwordPolicyID string) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(ctx context.Context, envID string, passwordPolicyID string) ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest {
 	return ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -278,27 +268,25 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 }
 
 // Execute executes the request
-func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutExecute(r ApiV1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPasswordPoliciesApiService.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/passwordPolicies/{passwordPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", _neturl.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -319,7 +307,7 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -329,15 +317,15 @@ func (a *ManagementAPIsPasswordPoliciesApiService) V1EnvironmentsEnvIDPasswordPo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

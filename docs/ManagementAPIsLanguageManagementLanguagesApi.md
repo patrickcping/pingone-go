@@ -36,8 +36,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     languageID := "languageID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDDelete(context.Background(), envID, languageID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDDelete(context.Background(), envID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,8 +176,8 @@ func main() {
     languageID := "languageID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDGet(context.Background(), envID, languageID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDGet(context.Background(), envID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,11 +245,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     languageID := "languageID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDPut(context.Background(), envID, languageID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDPut(context.Background(), envID, languageID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesLanguageIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,11 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLanguageManagementLanguagesApi.V1EnvironmentsEnvIDLanguagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

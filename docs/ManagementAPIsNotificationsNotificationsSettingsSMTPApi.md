@@ -33,8 +33,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -99,11 +99,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsSMTPApi.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

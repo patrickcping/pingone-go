@@ -16,25 +16,25 @@ import (
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Attributes       *[]interface{}              `json:"attributes,omitempty"`
-	Applications     *[]interface{}              `json:"applications,omitempty"`
-	Credentials      *[]GatewayCredential        `json:"credentials,omitempty"`
-	Environments     *[]Environment              `json:"environments,omitempty"`
-	GatewayInstances *[]GatewayInstance          `json:"gatewayInstances,omitempty"`
-	Gateways         *[]interface{}              `json:"gateways,omitempty"`
-	Grants           *[]ApplicationResourceGrant `json:"grants,omitempty"`
-	Groups           *[]Group                    `json:"groups,omitempty"`
-	GroupMemberships *[]GroupMembership          `json:"groupMemberships,omitempty"`
-	Populations      *[]Population               `json:"populations,omitempty"`
-	PushCredentials  *[]interface{}              `json:"pushCredentials,omitempty"`
-	Resources        *[]Resource                 `json:"resources,omitempty"`
-	Scopes           *[]ResourceScope            `json:"scopes,omitempty"`
-	RiskPolicySets   *[]RiskPolicySet            `json:"riskPolicySets,omitempty"`
-	RiskPredictors   *[]RiskPredictor            `json:"riskPredictors,omitempty"`
-	RoleAssignments  *[]RoleAssignment           `json:"roleAssignments,omitempty"`
-	Roles            *[]Role                     `json:"roles,omitempty"`
-	Schemas          *[]Schema                   `json:"schemas,omitempty"`
-	Users            *[]User                     `json:"users,omitempty"`
+	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
+	Applications []EntityArrayEmbeddedApplicationsInner `json:"applications,omitempty"`
+	Credentials []GatewayCredential `json:"credentials,omitempty"`
+	Environments []Environment `json:"environments,omitempty"`
+	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
+	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
+	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
+	Groups []Group `json:"groups,omitempty"`
+	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
+	Populations []Population `json:"populations,omitempty"`
+	PushCredentials []EntityArrayEmbeddedPushCredentialsInner `json:"pushCredentials,omitempty"`
+	Resources []Resource `json:"resources,omitempty"`
+	Scopes []ResourceScope `json:"scopes,omitempty"`
+	RiskPolicySets []RiskPolicySet `json:"riskPolicySets,omitempty"`
+	RiskPredictors []RiskPredictor `json:"riskPredictors,omitempty"`
+	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
+	Roles []Role `json:"roles,omitempty"`
+	Schemas []Schema `json:"schemas,omitempty"`
+	Users []User `json:"users,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -55,17 +55,17 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetAttributes() []interface{} {
+func (o *EntityArrayEmbedded) GetAttributes() []EntityArrayEmbeddedAttributesInner {
 	if o == nil || o.Attributes == nil {
-		var ret []interface{}
+		var ret []EntityArrayEmbeddedAttributesInner
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetAttributesOk() (*[]interface{}, bool) {
+func (o *EntityArrayEmbedded) GetAttributesOk() ([]EntityArrayEmbeddedAttributesInner, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -81,23 +81,23 @@ func (o *EntityArrayEmbedded) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute and assigns it to the Attributes field.
-func (o *EntityArrayEmbedded) SetAttributes(v []interface{}) {
-	o.Attributes = &v
+// SetAttributes gets a reference to the given []EntityArrayEmbeddedAttributesInner and assigns it to the Attributes field.
+func (o *EntityArrayEmbedded) SetAttributes(v []EntityArrayEmbeddedAttributesInner) {
+	o.Attributes = v
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetApplications() []interface{} {
+func (o *EntityArrayEmbedded) GetApplications() []EntityArrayEmbeddedApplicationsInner {
 	if o == nil || o.Applications == nil {
-		var ret []interface{}
+		var ret []EntityArrayEmbeddedApplicationsInner
 		return ret
 	}
-	return *o.Applications
+	return o.Applications
 }
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]interface{}, bool) {
+func (o *EntityArrayEmbedded) GetApplicationsOk() ([]EntityArrayEmbeddedApplicationsInner, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -113,9 +113,9 @@ func (o *EntityArrayEmbedded) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given []AnyOfApplicationSAMLApplicationOIDC and assigns it to the Applications field.
-func (o *EntityArrayEmbedded) SetApplications(v []interface{}) {
-	o.Applications = &v
+// SetApplications gets a reference to the given []EntityArrayEmbeddedApplicationsInner and assigns it to the Applications field.
+func (o *EntityArrayEmbedded) SetApplications(v []EntityArrayEmbeddedApplicationsInner) {
+	o.Applications = v
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
@@ -124,12 +124,12 @@ func (o *EntityArrayEmbedded) GetCredentials() []GatewayCredential {
 		var ret []GatewayCredential
 		return ret
 	}
-	return *o.Credentials
+	return o.Credentials
 }
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetCredentialsOk() (*[]GatewayCredential, bool) {
+func (o *EntityArrayEmbedded) GetCredentialsOk() ([]GatewayCredential, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *EntityArrayEmbedded) HasCredentials() bool {
 
 // SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
 func (o *EntityArrayEmbedded) SetCredentials(v []GatewayCredential) {
-	o.Credentials = &v
+	o.Credentials = v
 }
 
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
@@ -156,12 +156,12 @@ func (o *EntityArrayEmbedded) GetEnvironments() []Environment {
 		var ret []Environment
 		return ret
 	}
-	return *o.Environments
+	return o.Environments
 }
 
 // GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetEnvironmentsOk() (*[]Environment, bool) {
+func (o *EntityArrayEmbedded) GetEnvironmentsOk() ([]Environment, bool) {
 	if o == nil || o.Environments == nil {
 		return nil, false
 	}
@@ -179,7 +179,7 @@ func (o *EntityArrayEmbedded) HasEnvironments() bool {
 
 // SetEnvironments gets a reference to the given []Environment and assigns it to the Environments field.
 func (o *EntityArrayEmbedded) SetEnvironments(v []Environment) {
-	o.Environments = &v
+	o.Environments = v
 }
 
 // GetGatewayInstances returns the GatewayInstances field value if set, zero value otherwise.
@@ -188,12 +188,12 @@ func (o *EntityArrayEmbedded) GetGatewayInstances() []GatewayInstance {
 		var ret []GatewayInstance
 		return ret
 	}
-	return *o.GatewayInstances
+	return o.GatewayInstances
 }
 
 // GetGatewayInstancesOk returns a tuple with the GatewayInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetGatewayInstancesOk() (*[]GatewayInstance, bool) {
+func (o *EntityArrayEmbedded) GetGatewayInstancesOk() ([]GatewayInstance, bool) {
 	if o == nil || o.GatewayInstances == nil {
 		return nil, false
 	}
@@ -211,21 +211,21 @@ func (o *EntityArrayEmbedded) HasGatewayInstances() bool {
 
 // SetGatewayInstances gets a reference to the given []GatewayInstance and assigns it to the GatewayInstances field.
 func (o *EntityArrayEmbedded) SetGatewayInstances(v []GatewayInstance) {
-	o.GatewayInstances = &v
+	o.GatewayInstances = v
 }
 
 // GetGateways returns the Gateways field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetGateways() []interface{} {
+func (o *EntityArrayEmbedded) GetGateways() []EntityArrayEmbeddedGatewaysInner {
 	if o == nil || o.Gateways == nil {
-		var ret []interface{}
+		var ret []EntityArrayEmbeddedGatewaysInner
 		return ret
 	}
-	return *o.Gateways
+	return o.Gateways
 }
 
 // GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetGatewaysOk() (*[]interface{}, bool) {
+func (o *EntityArrayEmbedded) GetGatewaysOk() ([]EntityArrayEmbeddedGatewaysInner, bool) {
 	if o == nil || o.Gateways == nil {
 		return nil, false
 	}
@@ -241,9 +241,9 @@ func (o *EntityArrayEmbedded) HasGateways() bool {
 	return false
 }
 
-// SetGateways gets a reference to the given []AnyOfGatewayGatewayLDAP and assigns it to the Gateways field.
-func (o *EntityArrayEmbedded) SetGateways(v []interface{}) {
-	o.Gateways = &v
+// SetGateways gets a reference to the given []EntityArrayEmbeddedGatewaysInner and assigns it to the Gateways field.
+func (o *EntityArrayEmbedded) SetGateways(v []EntityArrayEmbeddedGatewaysInner) {
+	o.Gateways = v
 }
 
 // GetGrants returns the Grants field value if set, zero value otherwise.
@@ -252,12 +252,12 @@ func (o *EntityArrayEmbedded) GetGrants() []ApplicationResourceGrant {
 		var ret []ApplicationResourceGrant
 		return ret
 	}
-	return *o.Grants
+	return o.Grants
 }
 
 // GetGrantsOk returns a tuple with the Grants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetGrantsOk() (*[]ApplicationResourceGrant, bool) {
+func (o *EntityArrayEmbedded) GetGrantsOk() ([]ApplicationResourceGrant, bool) {
 	if o == nil || o.Grants == nil {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *EntityArrayEmbedded) HasGrants() bool {
 
 // SetGrants gets a reference to the given []ApplicationResourceGrant and assigns it to the Grants field.
 func (o *EntityArrayEmbedded) SetGrants(v []ApplicationResourceGrant) {
-	o.Grants = &v
+	o.Grants = v
 }
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
@@ -284,12 +284,12 @@ func (o *EntityArrayEmbedded) GetGroups() []Group {
 		var ret []Group
 		return ret
 	}
-	return *o.Groups
+	return o.Groups
 }
 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetGroupsOk() (*[]Group, bool) {
+func (o *EntityArrayEmbedded) GetGroupsOk() ([]Group, bool) {
 	if o == nil || o.Groups == nil {
 		return nil, false
 	}
@@ -307,7 +307,7 @@ func (o *EntityArrayEmbedded) HasGroups() bool {
 
 // SetGroups gets a reference to the given []Group and assigns it to the Groups field.
 func (o *EntityArrayEmbedded) SetGroups(v []Group) {
-	o.Groups = &v
+	o.Groups = v
 }
 
 // GetGroupMemberships returns the GroupMemberships field value if set, zero value otherwise.
@@ -316,12 +316,12 @@ func (o *EntityArrayEmbedded) GetGroupMemberships() []GroupMembership {
 		var ret []GroupMembership
 		return ret
 	}
-	return *o.GroupMemberships
+	return o.GroupMemberships
 }
 
 // GetGroupMembershipsOk returns a tuple with the GroupMemberships field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetGroupMembershipsOk() (*[]GroupMembership, bool) {
+func (o *EntityArrayEmbedded) GetGroupMembershipsOk() ([]GroupMembership, bool) {
 	if o == nil || o.GroupMemberships == nil {
 		return nil, false
 	}
@@ -339,7 +339,7 @@ func (o *EntityArrayEmbedded) HasGroupMemberships() bool {
 
 // SetGroupMemberships gets a reference to the given []GroupMembership and assigns it to the GroupMemberships field.
 func (o *EntityArrayEmbedded) SetGroupMemberships(v []GroupMembership) {
-	o.GroupMemberships = &v
+	o.GroupMemberships = v
 }
 
 // GetPopulations returns the Populations field value if set, zero value otherwise.
@@ -348,12 +348,12 @@ func (o *EntityArrayEmbedded) GetPopulations() []Population {
 		var ret []Population
 		return ret
 	}
-	return *o.Populations
+	return o.Populations
 }
 
 // GetPopulationsOk returns a tuple with the Populations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetPopulationsOk() (*[]Population, bool) {
+func (o *EntityArrayEmbedded) GetPopulationsOk() ([]Population, bool) {
 	if o == nil || o.Populations == nil {
 		return nil, false
 	}
@@ -371,21 +371,21 @@ func (o *EntityArrayEmbedded) HasPopulations() bool {
 
 // SetPopulations gets a reference to the given []Population and assigns it to the Populations field.
 func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
-	o.Populations = &v
+	o.Populations = v
 }
 
 // GetPushCredentials returns the PushCredentials field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetPushCredentials() []interface{} {
+func (o *EntityArrayEmbedded) GetPushCredentials() []EntityArrayEmbeddedPushCredentialsInner {
 	if o == nil || o.PushCredentials == nil {
-		var ret []interface{}
+		var ret []EntityArrayEmbeddedPushCredentialsInner
 		return ret
 	}
-	return *o.PushCredentials
+	return o.PushCredentials
 }
 
 // GetPushCredentialsOk returns a tuple with the PushCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]interface{}, bool) {
+func (o *EntityArrayEmbedded) GetPushCredentialsOk() ([]EntityArrayEmbeddedPushCredentialsInner, bool) {
 	if o == nil || o.PushCredentials == nil {
 		return nil, false
 	}
@@ -401,9 +401,9 @@ func (o *EntityArrayEmbedded) HasPushCredentials() bool {
 	return false
 }
 
-// SetPushCredentials gets a reference to the given []AnyOfMFAPushCredentialAPNSMFAPushCredential and assigns it to the PushCredentials field.
-func (o *EntityArrayEmbedded) SetPushCredentials(v []interface{}) {
-	o.PushCredentials = &v
+// SetPushCredentials gets a reference to the given []EntityArrayEmbeddedPushCredentialsInner and assigns it to the PushCredentials field.
+func (o *EntityArrayEmbedded) SetPushCredentials(v []EntityArrayEmbeddedPushCredentialsInner) {
+	o.PushCredentials = v
 }
 
 // GetResources returns the Resources field value if set, zero value otherwise.
@@ -412,12 +412,12 @@ func (o *EntityArrayEmbedded) GetResources() []Resource {
 		var ret []Resource
 		return ret
 	}
-	return *o.Resources
+	return o.Resources
 }
 
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetResourcesOk() (*[]Resource, bool) {
+func (o *EntityArrayEmbedded) GetResourcesOk() ([]Resource, bool) {
 	if o == nil || o.Resources == nil {
 		return nil, false
 	}
@@ -435,7 +435,7 @@ func (o *EntityArrayEmbedded) HasResources() bool {
 
 // SetResources gets a reference to the given []Resource and assigns it to the Resources field.
 func (o *EntityArrayEmbedded) SetResources(v []Resource) {
-	o.Resources = &v
+	o.Resources = v
 }
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
@@ -444,12 +444,12 @@ func (o *EntityArrayEmbedded) GetScopes() []ResourceScope {
 		var ret []ResourceScope
 		return ret
 	}
-	return *o.Scopes
+	return o.Scopes
 }
 
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetScopesOk() (*[]ResourceScope, bool) {
+func (o *EntityArrayEmbedded) GetScopesOk() ([]ResourceScope, bool) {
 	if o == nil || o.Scopes == nil {
 		return nil, false
 	}
@@ -467,7 +467,7 @@ func (o *EntityArrayEmbedded) HasScopes() bool {
 
 // SetScopes gets a reference to the given []ResourceScope and assigns it to the Scopes field.
 func (o *EntityArrayEmbedded) SetScopes(v []ResourceScope) {
-	o.Scopes = &v
+	o.Scopes = v
 }
 
 // GetRiskPolicySets returns the RiskPolicySets field value if set, zero value otherwise.
@@ -476,12 +476,12 @@ func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
 		var ret []RiskPolicySet
 		return ret
 	}
-	return *o.RiskPolicySets
+	return o.RiskPolicySets
 }
 
 // GetRiskPolicySetsOk returns a tuple with the RiskPolicySets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() (*[]RiskPolicySet, bool) {
+func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() ([]RiskPolicySet, bool) {
 	if o == nil || o.RiskPolicySets == nil {
 		return nil, false
 	}
@@ -499,7 +499,7 @@ func (o *EntityArrayEmbedded) HasRiskPolicySets() bool {
 
 // SetRiskPolicySets gets a reference to the given []RiskPolicySet and assigns it to the RiskPolicySets field.
 func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet) {
-	o.RiskPolicySets = &v
+	o.RiskPolicySets = v
 }
 
 // GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
@@ -508,12 +508,12 @@ func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
 		var ret []RiskPredictor
 		return ret
 	}
-	return *o.RiskPredictors
+	return o.RiskPredictors
 }
 
 // GetRiskPredictorsOk returns a tuple with the RiskPredictors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRiskPredictorsOk() (*[]RiskPredictor, bool) {
+func (o *EntityArrayEmbedded) GetRiskPredictorsOk() ([]RiskPredictor, bool) {
 	if o == nil || o.RiskPredictors == nil {
 		return nil, false
 	}
@@ -531,7 +531,7 @@ func (o *EntityArrayEmbedded) HasRiskPredictors() bool {
 
 // SetRiskPredictors gets a reference to the given []RiskPredictor and assigns it to the RiskPredictors field.
 func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor) {
-	o.RiskPredictors = &v
+	o.RiskPredictors = v
 }
 
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
@@ -540,12 +540,12 @@ func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment {
 		var ret []RoleAssignment
 		return ret
 	}
-	return *o.RoleAssignments
+	return o.RoleAssignments
 }
 
 // GetRoleAssignmentsOk returns a tuple with the RoleAssignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRoleAssignmentsOk() (*[]RoleAssignment, bool) {
+func (o *EntityArrayEmbedded) GetRoleAssignmentsOk() ([]RoleAssignment, bool) {
 	if o == nil || o.RoleAssignments == nil {
 		return nil, false
 	}
@@ -563,7 +563,7 @@ func (o *EntityArrayEmbedded) HasRoleAssignments() bool {
 
 // SetRoleAssignments gets a reference to the given []RoleAssignment and assigns it to the RoleAssignments field.
 func (o *EntityArrayEmbedded) SetRoleAssignments(v []RoleAssignment) {
-	o.RoleAssignments = &v
+	o.RoleAssignments = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
@@ -572,12 +572,12 @@ func (o *EntityArrayEmbedded) GetRoles() []Role {
 		var ret []Role
 		return ret
 	}
-	return *o.Roles
+	return o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRolesOk() (*[]Role, bool) {
+func (o *EntityArrayEmbedded) GetRolesOk() ([]Role, bool) {
 	if o == nil || o.Roles == nil {
 		return nil, false
 	}
@@ -595,7 +595,7 @@ func (o *EntityArrayEmbedded) HasRoles() bool {
 
 // SetRoles gets a reference to the given []Role and assigns it to the Roles field.
 func (o *EntityArrayEmbedded) SetRoles(v []Role) {
-	o.Roles = &v
+	o.Roles = v
 }
 
 // GetSchemas returns the Schemas field value if set, zero value otherwise.
@@ -604,12 +604,12 @@ func (o *EntityArrayEmbedded) GetSchemas() []Schema {
 		var ret []Schema
 		return ret
 	}
-	return *o.Schemas
+	return o.Schemas
 }
 
 // GetSchemasOk returns a tuple with the Schemas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetSchemasOk() (*[]Schema, bool) {
+func (o *EntityArrayEmbedded) GetSchemasOk() ([]Schema, bool) {
 	if o == nil || o.Schemas == nil {
 		return nil, false
 	}
@@ -627,7 +627,7 @@ func (o *EntityArrayEmbedded) HasSchemas() bool {
 
 // SetSchemas gets a reference to the given []Schema and assigns it to the Schemas field.
 func (o *EntityArrayEmbedded) SetSchemas(v []Schema) {
-	o.Schemas = &v
+	o.Schemas = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -636,12 +636,12 @@ func (o *EntityArrayEmbedded) GetUsers() []User {
 		var ret []User
 		return ret
 	}
-	return *o.Users
+	return o.Users
 }
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetUsersOk() (*[]User, bool) {
+func (o *EntityArrayEmbedded) GetUsersOk() ([]User, bool) {
 	if o == nil || o.Users == nil {
 		return nil, false
 	}
@@ -659,7 +659,7 @@ func (o *EntityArrayEmbedded) HasUsers() bool {
 
 // SetUsers gets a reference to the given []User and assigns it to the Users field.
 func (o *EntityArrayEmbedded) SetUsers(v []User) {
-	o.Users = &v
+	o.Users = v
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
@@ -759,3 +759,5 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

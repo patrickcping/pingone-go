@@ -35,8 +35,8 @@ func main() {
     riskEvaluation := *openapiclient.NewRiskEvaluation(*openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", "Type_example"))) // RiskEvaluation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation(context.Background(), envID).RiskEvaluation(riskEvaluation).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation(context.Background(), envID).RiskEvaluation(riskEvaluation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.CreateRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     riskID := "riskID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation(context.Background(), envID, riskID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation(context.Background(), envID, riskID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.ReadOneRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
     riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", "Type_example")) // RiskEvaluationEvent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), envID, riskID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), envID, riskID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskEvaluationsApi.UpdateRiskEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

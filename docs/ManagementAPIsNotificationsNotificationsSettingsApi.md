@@ -34,8 +34,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsDelete(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsDelete(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -102,8 +102,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,8 +170,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsSettingsApi.V1EnvironmentsEnvIDNotificationsSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

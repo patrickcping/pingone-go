@@ -34,11 +34,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     alertChannelID := "alertChannelID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(context.Background(), envID, alertChannelID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(context.Background(), envID, alertChannelID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     alertChannelsID := "alertChannelsID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(context.Background(), envID, alertChannelsID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(context.Background(), envID, alertChannelsID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,8 +179,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,11 +245,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAlertingApi.V1EnvironmentsEnvIDAlertChannelsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

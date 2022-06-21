@@ -34,8 +34,8 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances(context.Background(), envID, gatewayID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadAllGatewayInstances``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     instanceID := "instanceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance(context.Background(), envID, gatewayID, instanceID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance(context.Background(), envID, gatewayID, instanceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayInstancesApi.ReadOneGatewayInstance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

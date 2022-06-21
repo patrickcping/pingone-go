@@ -37,8 +37,8 @@ func main() {
     order := "-startDate" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -112,8 +112,8 @@ func main() {
     samplePeriod := "MONTH" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(context.Background(), envID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -188,8 +188,8 @@ func main() {
     order := "-startDate" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(context.Background(), orgID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(context.Background(), orgID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsActiveIdentityCountsApi.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

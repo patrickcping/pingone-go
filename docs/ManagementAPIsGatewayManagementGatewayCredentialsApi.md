@@ -34,8 +34,8 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.CreateGatewayCredential(context.Background(), envID, gatewayID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayCredentialsApi.CreateGatewayCredential(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayCredentialsApi.CreateGatewayCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     credentialID := "credentialID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayCredentialsApi.DeleteGatewayCredential(context.Background(), envID, gatewayID, credentialID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayCredentialsApi.DeleteGatewayCredential(context.Background(), envID, gatewayID, credentialID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayCredentialsApi.DeleteGatewayCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

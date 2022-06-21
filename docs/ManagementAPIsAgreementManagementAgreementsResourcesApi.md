@@ -37,8 +37,8 @@ func main() {
     agreementID := "agreementID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDDelete(context.Background(), envID, agreementID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDDelete(context.Background(), envID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     agreementID := "agreementID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDGet(context.Background(), envID, agreementID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDGet(context.Background(), envID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,11 +177,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut(context.Background(), envID, agreementID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut(context.Background(), envID, agreementID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsAgreementIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,11 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvIDAgreementsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

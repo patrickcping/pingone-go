@@ -186,7 +186,7 @@ func (o *RoleAssignment) GetRole() RoleAssignmentRole {
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetRoleOk() (*RoleAssignmentRole, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Role, true
@@ -210,7 +210,7 @@ func (o *RoleAssignment) GetScope() RoleAssignmentScope {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetScopeOk() (*RoleAssignmentScope, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true

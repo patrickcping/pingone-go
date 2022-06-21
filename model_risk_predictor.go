@@ -99,7 +99,7 @@ func (o *RiskPredictor) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -123,7 +123,7 @@ func (o *RiskPredictor) GetCompactName() string {
 // GetCompactNameOk returns a tuple with the CompactName field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetCompactNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CompactName, true
@@ -147,7 +147,7 @@ func (o *RiskPredictor) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true

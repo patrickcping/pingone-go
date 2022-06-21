@@ -70,11 +70,11 @@ func (o *ApplicationSAMLAllOf) GetAcsUrls() []string {
 
 // GetAcsUrlsOk returns a tuple with the AcsUrls field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAMLAllOf) GetAcsUrlsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *ApplicationSAMLAllOf) GetAcsUrlsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.AcsUrls, true
+	return o.AcsUrls, true
 }
 
 // SetAcsUrls sets field value
@@ -95,7 +95,7 @@ func (o *ApplicationSAMLAllOf) GetAssertionDuration() int32 {
 // GetAssertionDurationOk returns a tuple with the AssertionDuration field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOf) GetAssertionDurationOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssertionDuration, true
@@ -343,7 +343,7 @@ func (o *ApplicationSAMLAllOf) GetSpEntityId() string {
 // GetSpEntityIdOk returns a tuple with the SpEntityId field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOf) GetSpEntityIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SpEntityId, true

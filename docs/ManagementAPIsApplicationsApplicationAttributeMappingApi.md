@@ -38,8 +38,8 @@ func main() {
     applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping("Name_example", false, "Value_example") // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping(context.Background(), envID, appID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping(context.Background(), envID, appID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.CreateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     attrMappingID := "attrMappingID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.DeleteApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     attrMappingID := "attrMappingID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.ReadOneApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,8 +337,8 @@ func main() {
     applicationAttributeMapping := *openapiclient.NewApplicationAttributeMapping("Name_example", false, "Value_example") // ApplicationAttributeMapping |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping(context.Background(), envID, appID, attrMappingID).ApplicationAttributeMapping(applicationAttributeMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationAttributeMappingApi.UpdateApplicationAttributeMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

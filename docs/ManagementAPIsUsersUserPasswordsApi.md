@@ -35,8 +35,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,11 +105,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.password.recover+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,11 +180,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.password.set+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPasswordsApi.V1EnvironmentsEnvIDUsersUserIDPasswordPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

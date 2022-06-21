@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsSignOnPoliciesSignOnPoliciesApiService ManagementAPIsSignOnPoliciesSignOnPoliciesApi service
 type ManagementAPIsSignOnPoliciesSignOnPoliciesApiService service
 
 type ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSignOnPoliciesGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDSignOnPoliciesGet READ All Sign On Policies
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest
 */
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest {
 	return ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesGetExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesGetExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSignOnPoliciesSignOnPoliciesApiService.V1EnvironmentsEnvIDSignOnPoliciesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/signOnPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,14 +126,13 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 type ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService
 	envID string
 	policyID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteExecute(r)
 }
 
@@ -149,12 +141,12 @@ V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete DELETE Sign On Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param policyID
  @return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest
 */
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete(ctx _context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete(ctx context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,27 +156,25 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSignOnPoliciesSignOnPoliciesApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", _neturl.PathEscape(parameterToString(r.policyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterToString(r.policyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -203,7 +193,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -213,15 +203,15 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,14 +232,13 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 type ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService
 	envID string
 	policyID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetExecute(r)
 }
 
@@ -258,12 +247,12 @@ V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet READ One Sign On Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param policyID
  @return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest
 */
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet(ctx _context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet(ctx context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest {
 	return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,27 +262,25 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSignOnPoliciesSignOnPoliciesApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", _neturl.PathEscape(parameterToString(r.policyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterToString(r.policyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -312,7 +299,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -322,15 +309,15 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -351,7 +338,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 type ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService
 	envID string
 	policyID string
@@ -363,7 +350,7 @@ func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest) Body(body map[st
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutExecute(r)
 }
 
@@ -372,12 +359,12 @@ V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut UPDATE Sign On Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param policyID
  @return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest
 */
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(ctx _context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(ctx context.Context, envID string, policyID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest {
 	return ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,27 +374,25 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPolicyIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSignOnPoliciesSignOnPoliciesApiService.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", _neturl.PathEscape(parameterToString(r.policyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterToString(r.policyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -428,7 +413,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -438,15 +423,15 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -467,7 +452,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 type ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService
 	envID string
 	body *map[string]interface{}
@@ -478,7 +463,7 @@ func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest) Body(body map[string]in
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSignOnPoliciesPostExecute(r)
 }
 
@@ -487,11 +472,11 @@ V1EnvironmentsEnvIDSignOnPoliciesPost CREATE Sign On Policy
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest
 */
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest {
 	return ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -500,26 +485,24 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPostExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnvIDSignOnPoliciesPostExecute(r ApiV1EnvironmentsEnvIDSignOnPoliciesPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSignOnPoliciesSignOnPoliciesApiService.V1EnvironmentsEnvIDSignOnPoliciesPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/signOnPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -540,7 +523,7 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -550,15 +533,15 @@ func (a *ManagementAPIsSignOnPoliciesSignOnPoliciesApiService) V1EnvironmentsEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

@@ -54,7 +54,7 @@ func (o *MFAPushCredentialAPNSAllOf) GetTeamId() string {
 // GetTeamIdOk returns a tuple with the TeamId field value
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNSAllOf) GetTeamIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TeamId, true
@@ -78,7 +78,7 @@ func (o *MFAPushCredentialAPNSAllOf) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNSAllOf) GetTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Token, true

@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsCapabilitiesApiService ManagementAPIsCapabilitiesApi service
 type ManagementAPIsCapabilitiesApiService service
 
 type ApiV1EnvironmentsEnvIDCapabilitiesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsCapabilitiesApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDCapabilitiesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDCapabilitiesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDCapabilitiesGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDCapabilitiesGet READ Environment Capabilities
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDCapabilitiesGetRequest
 */
-func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDCapabilitiesGetRequest {
+func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDCapabilitiesGetRequest {
 	return ApiV1EnvironmentsEnvIDCapabilitiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGe
 }
 
 // Execute executes the request
-func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGetExecute(r ApiV1EnvironmentsEnvIDCapabilitiesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGetExecute(r ApiV1EnvironmentsEnvIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsCapabilitiesApiService.V1EnvironmentsEnvIDCapabilitiesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/capabilities"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,13 +126,12 @@ func (a *ManagementAPIsCapabilitiesApiService) V1EnvironmentsEnvIDCapabilitiesGe
 }
 
 type ApiV1OrganizationsOrgIDCapabilitiesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsCapabilitiesApiService
 	orgID string
 }
 
-
-func (r ApiV1OrganizationsOrgIDCapabilitiesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDCapabilitiesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDCapabilitiesGetExecute(r)
 }
 
@@ -148,11 +140,11 @@ V1OrganizationsOrgIDCapabilitiesGet READ Organization Capabilities
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @return ApiV1OrganizationsOrgIDCapabilitiesGetRequest
 */
-func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesGet(ctx _context.Context, orgID string) ApiV1OrganizationsOrgIDCapabilitiesGetRequest {
+func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesGet(ctx context.Context, orgID string) ApiV1OrganizationsOrgIDCapabilitiesGetRequest {
 	return ApiV1OrganizationsOrgIDCapabilitiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -161,26 +153,24 @@ func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesG
 }
 
 // Execute executes the request
-func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesGetExecute(r ApiV1OrganizationsOrgIDCapabilitiesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesGetExecute(r ApiV1OrganizationsOrgIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsCapabilitiesApiService.V1OrganizationsOrgIDCapabilitiesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/capabilities"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -199,7 +189,7 @@ func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesG
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -209,15 +199,15 @@ func (a *ManagementAPIsCapabilitiesApiService) V1OrganizationsOrgIDCapabilitiesG
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

@@ -49,8 +49,8 @@ func main() {
     certID := "certID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(context.Background(), envID, certID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,8 +120,8 @@ func main() {
     certID := "certID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete(context.Background(), envID, certID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -191,8 +191,8 @@ func main() {
     certID := "certID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet(context.Background(), envID, certID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet(context.Background(), envID, certID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesCertIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDCertificatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -401,11 +401,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDDecryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -471,11 +471,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDEncryptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -543,8 +543,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -612,8 +612,8 @@ func main() {
     keyID := "keyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(context.Background(), envID, keyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet(context.Background(), envID, keyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -684,8 +684,8 @@ func main() {
     contentType := "application/pkcs10" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -757,8 +757,8 @@ func main() {
     contentType := "application/x-pem-file" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut(context.Background(), envID, keyID).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDCsrPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -829,8 +829,8 @@ func main() {
     keyID := "keyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete(context.Background(), envID, keyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete(context.Background(), envID, keyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -901,8 +901,8 @@ func main() {
     contentType := "application/x-pkcs7-certificates" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet(context.Background(), envID, keyID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -971,11 +971,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     keyID := "keyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut(context.Background(), envID, keyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysKeyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1048,8 +1048,8 @@ func main() {
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost(context.Background(), envID).ContentType(contentType).UsageType(usageType).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1117,11 +1117,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDSigningsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1187,11 +1187,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCertificateManagementApi.V1EnvironmentsEnvIDVerificationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

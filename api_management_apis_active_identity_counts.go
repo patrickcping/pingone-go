@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsActiveIdentityCountsApiService ManagementAPIsActiveIdentityCountsApi service
 type ManagementAPIsActiveIdentityCountsApiService service
 
 type ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsActiveIdentityCountsApiService
 	envID string
 	filter *string
@@ -40,16 +36,18 @@ func (r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) Filter(filter stri
 	r.filter = &filter
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) Limit(limit int32) ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) Order(order string) ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest {
 	r.order = &order
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDActiveIdentityCountsGetExecute(r)
 }
 
@@ -58,11 +56,11 @@ V1EnvironmentsEnvIDActiveIdentityCountsGet READ Active Identity Counts (Deprecat
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest
 */
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActiveIdentityCountsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActiveIdentityCountsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest {
 	return ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,26 +69,24 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActive
 }
 
 // Execute executes the request
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvIDActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsActiveIdentityCountsApiService.V1EnvironmentsEnvIDActiveIdentityCountsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.filter != nil {
 		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
@@ -118,7 +114,7 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActive
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -128,15 +124,15 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActive
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -157,7 +153,7 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDActive
 }
 
 type ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsActiveIdentityCountsApiService
 	envID string
 	filter *string
@@ -170,20 +166,23 @@ func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) Filter(filt
 	r.filter = &filter
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) Limit(limit int32) ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) Order(order string) ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest {
 	r.order = &order
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) SamplePeriod(samplePeriod string) ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest {
 	r.samplePeriod = &samplePeriod
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGetExecute(r)
 }
 
@@ -192,11 +191,11 @@ V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet READ Active Identity Counts by
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest
 */
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest {
 	return ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -205,26 +204,24 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetric
 }
 
 // Execute executes the request
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetricsActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetricsActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsActiveIdentityCountsApiService.V1EnvironmentsEnvIDMetricsActiveIdentityCountsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/metrics/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.filter != nil {
 		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
@@ -255,7 +252,7 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetric
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -265,15 +262,15 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetric
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -294,7 +291,7 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1EnvironmentsEnvIDMetric
 }
 
 type ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsActiveIdentityCountsApiService
 	orgID string
 	licenseID string
@@ -307,16 +304,18 @@ func (r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRe
 	r.aggregatedBy = &aggregatedBy
 	return r
 }
+
 func (r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) Limit(limit int32) ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 func (r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) Order(order string) ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest {
 	r.order = &order
 	return r
 }
 
-func (r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetExecute(r)
 }
 
@@ -325,12 +324,12 @@ V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet READ Active 
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @param licenseID
  @return ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest
 */
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(ctx _context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet(ctx context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest {
 	return ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -340,27 +339,25 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicen
 }
 
 // Execute executes the request
-func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsActiveIdentityCountsApiService.V1OrganizationsOrgIDLicensesLicenseIDMetricsActiveIdentityCountsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/licenses/{licenseID}/metrics/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", _neturl.PathEscape(parameterToString(r.licenseID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterToString(r.licenseID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.aggregatedBy != nil {
 		localVarQueryParams.Add("aggregatedBy", parameterToString(*r.aggregatedBy, ""))
@@ -388,7 +385,7 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicen
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -398,15 +395,15 @@ func (a *ManagementAPIsActiveIdentityCountsApiService) V1OrganizationsOrgIDLicen
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

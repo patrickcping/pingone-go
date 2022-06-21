@@ -35,11 +35,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopes{*openapiclient.NewApplicationResourceGrantScopes("Id_example")}) // ApplicationResourceGrant |  (optional)
+    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopesInner{*openapiclient.NewApplicationResourceGrantScopesInner("Id_example")}) // ApplicationResourceGrant |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant(context.Background(), envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant(context.Background(), envID, appID).ApplicationResourceGrant(applicationResourceGrant).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.CreateApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     grantID := "grantID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.DeleteApplicationGrant(context.Background(), envID, appID, grantID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationResourceGrantsApi.DeleteApplicationGrant(context.Background(), envID, appID, grantID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.DeleteApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadAllApplicationGrants``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     grantID := "grantID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant(context.Background(), envID, appID, grantID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant(context.Background(), envID, appID, grantID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.ReadOneApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,11 +334,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     grantID := "grantID_example" // string | 
-    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopes{*openapiclient.NewApplicationResourceGrantScopes("Id_example")}) // ApplicationResourceGrant |  (optional)
+    applicationResourceGrant := *openapiclient.NewApplicationResourceGrant(*openapiclient.NewApplicationResourceGrantResource("Id_example"), []openapiclient.ApplicationResourceGrantScopesInner{*openapiclient.NewApplicationResourceGrantScopesInner("Id_example")}) // ApplicationResourceGrant |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant(context.Background(), envID, appID, grantID).ApplicationResourceGrant(applicationResourceGrant).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant(context.Background(), envID, appID, grantID).ApplicationResourceGrant(applicationResourceGrant).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationResourceGrantsApi.UpdateApplicationGrant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

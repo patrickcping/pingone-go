@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the application resource grant ID. | [optional] [readonly] 
 **Resource** | [**ApplicationResourceGrantResource**](ApplicationResourceGrantResource.md) |  | 
-**Scopes** | [**[]ApplicationResourceGrantScopes**](ApplicationResourceGrantScopes.md) |  | 
+**Scopes** | [**[]ApplicationResourceGrantScopesInner**](ApplicationResourceGrantScopesInner.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewApplicationResourceGrant
 
-`func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopes, ) *ApplicationResourceGrant`
+`func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopesInner, ) *ApplicationResourceGrant`
 
 NewApplicationResourceGrant instantiates a new ApplicationResourceGrant object
 This constructor will assign default values to properties that have it defined,
@@ -127,20 +127,20 @@ SetResource sets Resource field to given value.
 
 ### GetScopes
 
-`func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopes`
+`func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopesInner`
 
 GetScopes returns the Scopes field if non-nil, zero value otherwise.
 
 ### GetScopesOk
 
-`func (o *ApplicationResourceGrant) GetScopesOk() (*[]ApplicationResourceGrantScopes, bool)`
+`func (o *ApplicationResourceGrant) GetScopesOk() (*[]ApplicationResourceGrantScopesInner, bool)`
 
 GetScopesOk returns a tuple with the Scopes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScopes
 
-`func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopes)`
+`func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopesInner)`
 
 SetScopes sets Scopes field to given value.
 

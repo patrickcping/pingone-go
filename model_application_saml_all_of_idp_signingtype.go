@@ -50,7 +50,7 @@ func (o *ApplicationSAMLAllOfIdpSigningtype) GetKey() ApplicationSAMLAllOfIdpSig
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOfIdpSigningtype) GetKeyOk() (*ApplicationSAMLAllOfIdpSigningtypeKey, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Key, true

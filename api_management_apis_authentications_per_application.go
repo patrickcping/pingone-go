@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsAuthenticationsPerApplicationApiService ManagementAPIsAuthenticationsPerApplicationApi service
 type ManagementAPIsAuthenticationsPerApplicationApiService service
 
 type ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAuthenticationsPerApplicationApiService
 	envID string
 	limit *int32
@@ -41,20 +37,23 @@ func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) Limit(limit int32) A
 	r.limit = &limit
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) SamplePeriod(samplePeriod int32) ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest {
 	r.samplePeriod = &samplePeriod
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) SamplePeriodCount(samplePeriodCount int32) ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest {
 	r.samplePeriodCount = &samplePeriodCount
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) Filter(filter string) ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDApplicationSignonsGetExecute(r)
 }
 
@@ -63,11 +62,11 @@ V1EnvironmentsEnvIDApplicationSignonsGet READ Authentications Per Application (P
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest
 */
-func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEnvIDApplicationSignonsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest {
+func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEnvIDApplicationSignonsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest {
 	return ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -76,26 +75,24 @@ func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEn
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEnvIDApplicationSignonsGetExecute(r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEnvIDApplicationSignonsGetExecute(r ApiV1EnvironmentsEnvIDApplicationSignonsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAuthenticationsPerApplicationApiService.V1EnvironmentsEnvIDApplicationSignonsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applicationSignons"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
@@ -126,7 +123,7 @@ func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEn
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -136,15 +133,15 @@ func (a *ManagementAPIsAuthenticationsPerApplicationApiService) V1EnvironmentsEn
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

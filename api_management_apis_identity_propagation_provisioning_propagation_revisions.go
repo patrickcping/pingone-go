@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi service
 type ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService service
 
 type ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService
 	envID string
 	accept *string
@@ -39,7 +35,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest) Accept(acc
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGetExecute(r)
 }
 
@@ -48,11 +44,11 @@ V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet READ Latest Revision
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -61,26 +57,24 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsIdlatestGetExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsIdlatestGetExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/revisions/id:latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,7 +96,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -112,15 +106,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -141,13 +135,12 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRevisionsPostExecute(r)
 }
 
@@ -156,11 +149,11 @@ V1EnvironmentsEnvIDPropagationRevisionsPost CREATE Revision
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -169,26 +162,24 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPostExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPostExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService.V1EnvironmentsEnvIDPropagationRevisionsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/revisions"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -207,7 +198,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -217,15 +208,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -246,7 +237,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService
 	envID string
 	previousRevisionID string
@@ -258,7 +249,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest) 
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetExecute(r)
 }
 
@@ -267,12 +258,12 @@ V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet READ Previous Revis
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param previousRevisionID
  @return ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(ctx _context.Context, envID string, previousRevisionID string) ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(ctx context.Context, envID string, previousRevisionID string) ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,27 +273,25 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService) V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiV1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiService.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/revisions/{previousRevisionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"previousRevisionID"+"}", _neturl.PathEscape(parameterToString(r.previousRevisionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"previousRevisionID"+"}", url.PathEscape(parameterToString(r.previousRevisionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -324,7 +313,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -334,15 +323,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApiSer
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

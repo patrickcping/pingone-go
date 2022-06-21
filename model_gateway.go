@@ -19,7 +19,7 @@ type Gateway struct {
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Credentials *[]GatewayCredential `json:"credentials,omitempty"`
+	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	Name string `json:"name"`
 	// (Optional) A string that specifies the description of the resource.
@@ -121,12 +121,12 @@ func (o *Gateway) GetCredentials() []GatewayCredential {
 		var ret []GatewayCredential
 		return ret
 	}
-	return *o.Credentials
+	return o.Credentials
 }
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Gateway) GetCredentialsOk() (*[]GatewayCredential, bool) {
+func (o *Gateway) GetCredentialsOk() ([]GatewayCredential, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *Gateway) HasCredentials() bool {
 
 // SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
 func (o *Gateway) SetCredentials(v []GatewayCredential) {
-	o.Credentials = &v
+	o.Credentials = v
 }
 
 // GetName returns the Name field value
@@ -160,7 +160,7 @@ func (o *Gateway) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -216,7 +216,7 @@ func (o *Gateway) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -240,7 +240,7 @@ func (o *Gateway) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetEnabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Enabled, true

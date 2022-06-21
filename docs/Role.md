@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the role. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the ID of the role. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the role | [optional] 
-**Permissions** | Pointer to [**[]RolePermissions**](RolePermissions.md) | A string that specifies the set of permissions assigned to the role. | [optional] [readonly] 
+**Permissions** | Pointer to [**[]RolePermissionsInner**](RolePermissionsInner.md) | A string that specifies the set of permissions assigned to the role. | [optional] [readonly] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetPermissions
 
-`func (o *Role) GetPermissions() []RolePermissions`
+`func (o *Role) GetPermissions() []RolePermissionsInner`
 
 GetPermissions returns the Permissions field if non-nil, zero value otherwise.
 
 ### GetPermissionsOk
 
-`func (o *Role) GetPermissionsOk() (*[]RolePermissions, bool)`
+`func (o *Role) GetPermissionsOk() (*[]RolePermissionsInner, bool)`
 
 GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPermissions
 
-`func (o *Role) SetPermissions(v []RolePermissions)`
+`func (o *Role) SetPermissions(v []RolePermissionsInner)`
 
 SetPermissions sets Permissions field to given value.
 

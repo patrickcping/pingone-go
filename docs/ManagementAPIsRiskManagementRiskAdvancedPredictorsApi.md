@@ -37,8 +37,8 @@ func main() {
     riskPredictor := *openapiclient.NewRiskPredictor("Name_example", "CompactName_example", "Type_example") // RiskPredictor |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.CreateRiskPredictor(context.Background(), envID).RiskPredictor(riskPredictor).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.CreateRiskPredictor(context.Background(), envID).RiskPredictor(riskPredictor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.CreateRiskPredictor``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     riskPredictorID := "riskPredictorID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor(context.Background(), envID, riskPredictorID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor(context.Background(), envID, riskPredictorID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,8 +179,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadAllRiskPredictors(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadAllRiskPredictors(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadAllRiskPredictors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +250,8 @@ func main() {
     riskPredictorID := "riskPredictorID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadOneRiskPredictor(context.Background(), envID, riskPredictorID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadOneRiskPredictor(context.Background(), envID, riskPredictorID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.ReadOneRiskPredictor``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -324,8 +324,8 @@ func main() {
     riskPredictor := *openapiclient.NewRiskPredictor("Name_example", "CompactName_example", "Type_example") // RiskPredictor |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.UpdateRiskPredictor(context.Background(), envID, riskPredictorID).RiskPredictor(riskPredictor).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.UpdateRiskPredictor(context.Background(), envID, riskPredictorID).RiskPredictor(riskPredictor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskAdvancedPredictorsApi.UpdateRiskPredictor``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

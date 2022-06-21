@@ -37,8 +37,8 @@ func main() {
     domID := "domID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete(context.Background(), envID, domID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete(context.Background(), envID, domID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     domID := "domID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet(context.Background(), envID, domID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet(context.Background(), envID, domID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,11 +178,11 @@ func main() {
     envID := "envID_example" // string | 
     domID := "domID_example" // string | 
     contentType := "application/vnd.pingidentity.certificate.import+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost(context.Background(), envID, domID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost(context.Background(), envID, domID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsDomIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -253,8 +253,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -319,11 +319,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsCustomDomainsApi.V1EnvironmentsEnvIDCustomDomainsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

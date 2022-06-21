@@ -37,8 +37,8 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsGet(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsGet(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,11 +106,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(context.Background(), envID, appID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost(context.Background(), envID, appID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,8 +182,8 @@ func main() {
     sOPAssignmentID := "sOPAssignmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDDelete(context.Background(), envID, appID, sOPAssignmentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDDelete(context.Background(), envID, appID, sOPAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,8 +256,8 @@ func main() {
     sOPAssignmentID := "sOPAssignmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDGet(context.Background(), envID, appID, sOPAssignmentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDGet(context.Background(), envID, appID, sOPAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -328,11 +328,11 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     sOPAssignmentID := "sOPAssignmentID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(context.Background(), envID, appID, sOPAssignmentID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut(context.Background(), envID, appID, sOPAssignmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi.V1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

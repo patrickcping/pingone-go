@@ -22,27 +22,27 @@ type RiskEvaluationEventBrowser struct {
 	ColorDepth *float32 `json:"colorDepth,omitempty"`
 	DeviceMemory *float32 `json:"deviceMemory,omitempty"`
 	HardwareConcurrency *float32 `json:"hardwareConcurrency,omitempty"`
-	ScreenResolution *[]float32 `json:"screenResolution,omitempty"`
-	AvailableScreenResolution *[]float32 `json:"availableScreenResolution,omitempty"`
+	ScreenResolution []float32 `json:"screenResolution,omitempty"`
+	AvailableScreenResolution []float32 `json:"availableScreenResolution,omitempty"`
 	TimezoneOffset *float32 `json:"timezoneOffset,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	SessionStorage *bool `json:"sessionStorage,omitempty"`
 	LocalStorage *bool `json:"localStorage,omitempty"`
 	IndexedDb *bool `json:"indexedDb,omitempty"`
-	AddBehaviour *map[string]interface{} `json:"addBehaviour,omitempty"`
+	AddBehaviour map[string]interface{} `json:"addBehaviour,omitempty"`
 	OpenDatabase *bool `json:"openDatabase,omitempty"`
 	CpuClass *string `json:"cpuClass,omitempty"`
 	Platform *string `json:"platform,omitempty"`
-	Plugins *[]map[string]interface{} `json:"plugins,omitempty"`
+	Plugins []map[string]interface{} `json:"plugins,omitempty"`
 	WebglVendorAndRenderer *string `json:"webglVendorAndRenderer,omitempty"`
-	Webgl *[]string `json:"webgl,omitempty"`
+	Webgl []string `json:"webgl,omitempty"`
 	AdBlock *bool `json:"adBlock,omitempty"`
 	HasLiedLanguages *bool `json:"hasLiedLanguages,omitempty"`
 	HasLiedResolution *bool `json:"hasLiedResolution,omitempty"`
 	HasLiedOs *bool `json:"hasLiedOs,omitempty"`
 	HasLiedBrowser *bool `json:"hasLiedBrowser,omitempty"`
-	TouchSupport *[]string `json:"touchSupport,omitempty"`
-	Fonts *[]string `json:"fonts,omitempty"`
+	TouchSupport []string `json:"touchSupport,omitempty"`
+	Fonts []string `json:"fonts,omitempty"`
 	Audio *string `json:"audio,omitempty"`
 }
 
@@ -261,12 +261,12 @@ func (o *RiskEvaluationEventBrowser) GetScreenResolution() []float32 {
 		var ret []float32
 		return ret
 	}
-	return *o.ScreenResolution
+	return o.ScreenResolution
 }
 
 // GetScreenResolutionOk returns a tuple with the ScreenResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetScreenResolutionOk() (*[]float32, bool) {
+func (o *RiskEvaluationEventBrowser) GetScreenResolutionOk() ([]float32, bool) {
 	if o == nil || o.ScreenResolution == nil {
 		return nil, false
 	}
@@ -284,7 +284,7 @@ func (o *RiskEvaluationEventBrowser) HasScreenResolution() bool {
 
 // SetScreenResolution gets a reference to the given []float32 and assigns it to the ScreenResolution field.
 func (o *RiskEvaluationEventBrowser) SetScreenResolution(v []float32) {
-	o.ScreenResolution = &v
+	o.ScreenResolution = v
 }
 
 // GetAvailableScreenResolution returns the AvailableScreenResolution field value if set, zero value otherwise.
@@ -293,12 +293,12 @@ func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolution() []float32 {
 		var ret []float32
 		return ret
 	}
-	return *o.AvailableScreenResolution
+	return o.AvailableScreenResolution
 }
 
 // GetAvailableScreenResolutionOk returns a tuple with the AvailableScreenResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolutionOk() (*[]float32, bool) {
+func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolutionOk() ([]float32, bool) {
 	if o == nil || o.AvailableScreenResolution == nil {
 		return nil, false
 	}
@@ -316,7 +316,7 @@ func (o *RiskEvaluationEventBrowser) HasAvailableScreenResolution() bool {
 
 // SetAvailableScreenResolution gets a reference to the given []float32 and assigns it to the AvailableScreenResolution field.
 func (o *RiskEvaluationEventBrowser) SetAvailableScreenResolution(v []float32) {
-	o.AvailableScreenResolution = &v
+	o.AvailableScreenResolution = v
 }
 
 // GetTimezoneOffset returns the TimezoneOffset field value if set, zero value otherwise.
@@ -485,12 +485,12 @@ func (o *RiskEvaluationEventBrowser) GetAddBehaviour() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.AddBehaviour
+	return o.AddBehaviour
 }
 
 // GetAddBehaviourOk returns a tuple with the AddBehaviour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetAddBehaviourOk() (*map[string]interface{}, bool) {
+func (o *RiskEvaluationEventBrowser) GetAddBehaviourOk() (map[string]interface{}, bool) {
 	if o == nil || o.AddBehaviour == nil {
 		return nil, false
 	}
@@ -508,7 +508,7 @@ func (o *RiskEvaluationEventBrowser) HasAddBehaviour() bool {
 
 // SetAddBehaviour gets a reference to the given map[string]interface{} and assigns it to the AddBehaviour field.
 func (o *RiskEvaluationEventBrowser) SetAddBehaviour(v map[string]interface{}) {
-	o.AddBehaviour = &v
+	o.AddBehaviour = v
 }
 
 // GetOpenDatabase returns the OpenDatabase field value if set, zero value otherwise.
@@ -613,12 +613,12 @@ func (o *RiskEvaluationEventBrowser) GetPlugins() []map[string]interface{} {
 		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.Plugins
+	return o.Plugins
 }
 
 // GetPluginsOk returns a tuple with the Plugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetPluginsOk() (*[]map[string]interface{}, bool) {
+func (o *RiskEvaluationEventBrowser) GetPluginsOk() ([]map[string]interface{}, bool) {
 	if o == nil || o.Plugins == nil {
 		return nil, false
 	}
@@ -636,7 +636,7 @@ func (o *RiskEvaluationEventBrowser) HasPlugins() bool {
 
 // SetPlugins gets a reference to the given []map[string]interface{} and assigns it to the Plugins field.
 func (o *RiskEvaluationEventBrowser) SetPlugins(v []map[string]interface{}) {
-	o.Plugins = &v
+	o.Plugins = v
 }
 
 // GetWebglVendorAndRenderer returns the WebglVendorAndRenderer field value if set, zero value otherwise.
@@ -677,12 +677,12 @@ func (o *RiskEvaluationEventBrowser) GetWebgl() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Webgl
+	return o.Webgl
 }
 
 // GetWebglOk returns a tuple with the Webgl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetWebglOk() (*[]string, bool) {
+func (o *RiskEvaluationEventBrowser) GetWebglOk() ([]string, bool) {
 	if o == nil || o.Webgl == nil {
 		return nil, false
 	}
@@ -700,7 +700,7 @@ func (o *RiskEvaluationEventBrowser) HasWebgl() bool {
 
 // SetWebgl gets a reference to the given []string and assigns it to the Webgl field.
 func (o *RiskEvaluationEventBrowser) SetWebgl(v []string) {
-	o.Webgl = &v
+	o.Webgl = v
 }
 
 // GetAdBlock returns the AdBlock field value if set, zero value otherwise.
@@ -869,12 +869,12 @@ func (o *RiskEvaluationEventBrowser) GetTouchSupport() []string {
 		var ret []string
 		return ret
 	}
-	return *o.TouchSupport
+	return o.TouchSupport
 }
 
 // GetTouchSupportOk returns a tuple with the TouchSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetTouchSupportOk() (*[]string, bool) {
+func (o *RiskEvaluationEventBrowser) GetTouchSupportOk() ([]string, bool) {
 	if o == nil || o.TouchSupport == nil {
 		return nil, false
 	}
@@ -892,7 +892,7 @@ func (o *RiskEvaluationEventBrowser) HasTouchSupport() bool {
 
 // SetTouchSupport gets a reference to the given []string and assigns it to the TouchSupport field.
 func (o *RiskEvaluationEventBrowser) SetTouchSupport(v []string) {
-	o.TouchSupport = &v
+	o.TouchSupport = v
 }
 
 // GetFonts returns the Fonts field value if set, zero value otherwise.
@@ -901,12 +901,12 @@ func (o *RiskEvaluationEventBrowser) GetFonts() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Fonts
+	return o.Fonts
 }
 
 // GetFontsOk returns a tuple with the Fonts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventBrowser) GetFontsOk() (*[]string, bool) {
+func (o *RiskEvaluationEventBrowser) GetFontsOk() ([]string, bool) {
 	if o == nil || o.Fonts == nil {
 		return nil, false
 	}
@@ -924,7 +924,7 @@ func (o *RiskEvaluationEventBrowser) HasFonts() bool {
 
 // SetFonts gets a reference to the given []string and assigns it to the Fonts field.
 func (o *RiskEvaluationEventBrowser) SetFonts(v []string) {
-	o.Fonts = &v
+	o.Fonts = v
 }
 
 // GetAudio returns the Audio field value if set, zero value otherwise.

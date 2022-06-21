@@ -34,8 +34,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,8 +103,8 @@ func main() {
     passwordPolicyID := "passwordPolicyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet(context.Background(), envID, passwordPolicyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet(context.Background(), envID, passwordPolicyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,11 +172,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     passwordPolicyID := "passwordPolicyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(context.Background(), envID, passwordPolicyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut(context.Background(), envID, passwordPolicyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsPasswordPoliciesApi.V1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

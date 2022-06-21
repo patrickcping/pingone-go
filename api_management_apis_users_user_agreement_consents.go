@@ -12,31 +12,26 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersUserAgreementConsentsApiService ManagementAPIsUsersUserAgreementConsentsApi service
 type ManagementAPIsUsersUserAgreementConsentsApiService service
 
 type ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserAgreementConsentsApiService
 	envID string
 	userID string
 	agreementID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r)
 }
 
@@ -45,13 +40,13 @@ V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet READ One User Agre
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param agreementID
  @return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest
 */
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(ctx _context.Context, envID string, userID string, agreementID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(ctx context.Context, envID string, userID string, agreementID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,28 +57,26 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserAgreementConsentsApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/agreementConsents/{agreementID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", _neturl.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,7 +95,7 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -112,15 +105,15 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -141,7 +134,7 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserAgreementConsentsApiService
 	envID string
 	userID string
@@ -154,7 +147,7 @@ func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r)
 }
 
@@ -163,13 +156,13 @@ V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost Revoke Agreement
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param agreementID
  @return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest
 */
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(ctx _context.Context, envID string, userID string, agreementID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(ctx context.Context, envID string, userID string, agreementID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -180,28 +173,26 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserAgreementConsentsApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/agreementConsents/{agreementID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", _neturl.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -223,7 +214,7 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -233,15 +224,15 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -262,14 +253,13 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserAgreementConsentsApiService
 	envID string
 	userID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetExecute(r)
 }
 
@@ -278,12 +268,12 @@ V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet READ All User Agreement Conse
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest
 */
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(ctx _context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -293,27 +283,25 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserAgreementConsentsApiService.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/agreementConsents"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -332,7 +320,7 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -342,15 +330,15 @@ func (a *ManagementAPIsUsersUserAgreementConsentsApiService) V1EnvironmentsEnvID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

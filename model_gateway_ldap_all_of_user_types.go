@@ -118,7 +118,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookup() GatewayLDAPAllOfNewUserLo
 // GetNewUserLookupOk returns a tuple with the NewUserLookup field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayLDAPAllOfNewUserLookup, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.NewUserLookup, true

@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersUserPopulationsApiService ManagementAPIsUsersUserPopulationsApi service
 type ManagementAPIsUsersUserPopulationsApiService service
 
 type ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserPopulationsApiService
 	envID string
 	userID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPopulationGetExecute(r)
 }
 
@@ -44,12 +39,12 @@ V1EnvironmentsEnvIDUsersUserIDPopulationGet READ User Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest
 */
-func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationGet(ctx _context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest {
+func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationGet(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,27 +54,25 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPopulationGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserPopulationsApiService.V1EnvironmentsEnvIDUsersUserIDPopulationGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/population"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +91,7 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -108,15 +101,15 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,7 +130,7 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserPopulationsApiService
 	envID string
 	userID string
@@ -149,7 +142,7 @@ func (r ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest) Body(body map[str
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPopulationPutExecute(r)
 }
 
@@ -158,12 +151,12 @@ V1EnvironmentsEnvIDUsersUserIDPopulationPut UPDATE User Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest
 */
-func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationPut(ctx _context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest {
+func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationPut(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -173,27 +166,25 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationPutExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersUserIDPopulationPutExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPopulationPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserPopulationsApiService.V1EnvironmentsEnvIDUsersUserIDPopulationPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/population"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -214,7 +205,7 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -224,15 +215,15 @@ func (a *ManagementAPIsUsersUserPopulationsApiService) V1EnvironmentsEnvIDUsersU
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

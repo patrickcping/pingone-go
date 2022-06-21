@@ -23,7 +23,7 @@ type RiskEvaluationEventUser struct {
 	// A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property.
 	Type string `json:"type"`
 	// An array of group names.
-	Groups *[]RiskEvaluationEventUserGroups `json:"groups,omitempty"`
+	Groups []RiskEvaluationEventUserGroupsInner `json:"groups,omitempty"`
 }
 
 // NewRiskEvaluationEventUser instantiates a new RiskEvaluationEventUser object
@@ -58,7 +58,7 @@ func (o *RiskEvaluationEventUser) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -114,7 +114,7 @@ func (o *RiskEvaluationEventUser) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -126,17 +126,17 @@ func (o *RiskEvaluationEventUser) SetType(v string) {
 }
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
-func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroups {
+func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroupsInner {
 	if o == nil || o.Groups == nil {
-		var ret []RiskEvaluationEventUserGroups
+		var ret []RiskEvaluationEventUserGroupsInner
 		return ret
 	}
-	return *o.Groups
+	return o.Groups
 }
 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventUser) GetGroupsOk() (*[]RiskEvaluationEventUserGroups, bool) {
+func (o *RiskEvaluationEventUser) GetGroupsOk() ([]RiskEvaluationEventUserGroupsInner, bool) {
 	if o == nil || o.Groups == nil {
 		return nil, false
 	}
@@ -152,9 +152,9 @@ func (o *RiskEvaluationEventUser) HasGroups() bool {
 	return false
 }
 
-// SetGroups gets a reference to the given []RiskEvaluationEventUserGroups and assigns it to the Groups field.
-func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroups) {
-	o.Groups = &v
+// SetGroups gets a reference to the given []RiskEvaluationEventUserGroupsInner and assigns it to the Groups field.
+func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroupsInner) {
+	o.Groups = v
 }
 
 func (o RiskEvaluationEventUser) MarshalJSON() ([]byte, error) {

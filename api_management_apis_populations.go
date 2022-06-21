@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsPopulationsApiService ManagementAPIsPopulationsApi service
 type ManagementAPIsPopulationsApiService service
 
 type ApiCreatePopulationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPopulationsApiService
 	envID string
 	population *Population
@@ -39,7 +35,7 @@ func (r ApiCreatePopulationRequest) Population(population Population) ApiCreateP
 	return r
 }
 
-func (r ApiCreatePopulationRequest) Execute() (Population, *_nethttp.Response, error) {
+func (r ApiCreatePopulationRequest) Execute() (*Population, *http.Response, error) {
 	return r.ApiService.CreatePopulationExecute(r)
 }
 
@@ -48,11 +44,11 @@ CreatePopulation CREATE Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiCreatePopulationRequest
 */
-func (a *ManagementAPIsPopulationsApiService) CreatePopulation(ctx _context.Context, envID string) ApiCreatePopulationRequest {
+func (a *ManagementAPIsPopulationsApiService) CreatePopulation(ctx context.Context, envID string) ApiCreatePopulationRequest {
 	return ApiCreatePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,27 +58,25 @@ func (a *ManagementAPIsPopulationsApiService) CreatePopulation(ctx _context.Cont
 
 // Execute executes the request
 //  @return Population
-func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreatePopulationRequest) (Population, *_nethttp.Response, error) {
+func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Population
+		formFiles            []formFile
+		localVarReturnValue  *Population
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.CreatePopulation")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/populations"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.population == nil {
 		return localVarReturnValue, nil, reportError("population is required and must be specified")
 	}
@@ -106,7 +100,7 @@ func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreat
 	}
 	// body params
 	localVarPostBody = r.population
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -116,15 +110,15 @@ func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -143,7 +137,7 @@ func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -154,14 +148,13 @@ func (a *ManagementAPIsPopulationsApiService) CreatePopulationExecute(r ApiCreat
 }
 
 type ApiDeletePopulationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPopulationsApiService
 	envID string
 	popID string
 }
 
-
-func (r ApiDeletePopulationRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeletePopulationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeletePopulationExecute(r)
 }
 
@@ -170,12 +163,12 @@ DeletePopulation DELETE Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param popID
  @return ApiDeletePopulationRequest
 */
-func (a *ManagementAPIsPopulationsApiService) DeletePopulation(ctx _context.Context, envID string, popID string) ApiDeletePopulationRequest {
+func (a *ManagementAPIsPopulationsApiService) DeletePopulation(ctx context.Context, envID string, popID string) ApiDeletePopulationRequest {
 	return ApiDeletePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -185,27 +178,25 @@ func (a *ManagementAPIsPopulationsApiService) DeletePopulation(ctx _context.Cont
 }
 
 // Execute executes the request
-func (a *ManagementAPIsPopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsPopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.DeletePopulation")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/populations/{popID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", _neturl.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -224,7 +215,7 @@ func (a *ManagementAPIsPopulationsApiService) DeletePopulationExecute(r ApiDelet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -234,15 +225,15 @@ func (a *ManagementAPIsPopulationsApiService) DeletePopulationExecute(r ApiDelet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -263,7 +254,7 @@ func (a *ManagementAPIsPopulationsApiService) DeletePopulationExecute(r ApiDelet
 }
 
 type ApiReadAllPopulationsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPopulationsApiService
 	envID string
 	limit *int32
@@ -275,13 +266,14 @@ func (r ApiReadAllPopulationsRequest) Limit(limit int32) ApiReadAllPopulationsRe
 	r.limit = &limit
 	return r
 }
+
 // Adding a SCIM filter for a population ID or population name to display only those resources associated with the specified population. Only the id and name parameters are supported
 func (r ApiReadAllPopulationsRequest) Filter(filter string) ApiReadAllPopulationsRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiReadAllPopulationsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllPopulationsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllPopulationsExecute(r)
 }
 
@@ -290,11 +282,11 @@ ReadAllPopulations READ All Populations
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiReadAllPopulationsRequest
 */
-func (a *ManagementAPIsPopulationsApiService) ReadAllPopulations(ctx _context.Context, envID string) ApiReadAllPopulationsRequest {
+func (a *ManagementAPIsPopulationsApiService) ReadAllPopulations(ctx context.Context, envID string) ApiReadAllPopulationsRequest {
 	return ApiReadAllPopulationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -304,27 +296,25 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulations(ctx _context.Co
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.ReadAllPopulations")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/populations"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
@@ -349,7 +339,7 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiRea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -359,15 +349,15 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiRea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -386,7 +376,7 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiRea
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -397,14 +387,13 @@ func (a *ManagementAPIsPopulationsApiService) ReadAllPopulationsExecute(r ApiRea
 }
 
 type ApiReadOnePopulationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPopulationsApiService
 	envID string
 	popID string
 }
 
-
-func (r ApiReadOnePopulationRequest) Execute() (Population, *_nethttp.Response, error) {
+func (r ApiReadOnePopulationRequest) Execute() (*Population, *http.Response, error) {
 	return r.ApiService.ReadOnePopulationExecute(r)
 }
 
@@ -413,12 +402,12 @@ ReadOnePopulation READ One Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param popID
  @return ApiReadOnePopulationRequest
 */
-func (a *ManagementAPIsPopulationsApiService) ReadOnePopulation(ctx _context.Context, envID string, popID string) ApiReadOnePopulationRequest {
+func (a *ManagementAPIsPopulationsApiService) ReadOnePopulation(ctx context.Context, envID string, popID string) ApiReadOnePopulationRequest {
 	return ApiReadOnePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -429,28 +418,26 @@ func (a *ManagementAPIsPopulationsApiService) ReadOnePopulation(ctx _context.Con
 
 // Execute executes the request
 //  @return Population
-func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationRequest) (Population, *_nethttp.Response, error) {
+func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Population
+		formFiles            []formFile
+		localVarReturnValue  *Population
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.ReadOnePopulation")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/populations/{popID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", _neturl.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -469,7 +456,7 @@ func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiRead
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -479,15 +466,15 @@ func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiRead
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -506,7 +493,7 @@ func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiRead
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -517,7 +504,7 @@ func (a *ManagementAPIsPopulationsApiService) ReadOnePopulationExecute(r ApiRead
 }
 
 type ApiUpdatePopulationRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsPopulationsApiService
 	envID string
 	popID string
@@ -529,7 +516,7 @@ func (r ApiUpdatePopulationRequest) Population(population Population) ApiUpdateP
 	return r
 }
 
-func (r ApiUpdatePopulationRequest) Execute() (Population, *_nethttp.Response, error) {
+func (r ApiUpdatePopulationRequest) Execute() (*Population, *http.Response, error) {
 	return r.ApiService.UpdatePopulationExecute(r)
 }
 
@@ -538,12 +525,12 @@ UpdatePopulation UPDATE Population
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param popID
  @return ApiUpdatePopulationRequest
 */
-func (a *ManagementAPIsPopulationsApiService) UpdatePopulation(ctx _context.Context, envID string, popID string) ApiUpdatePopulationRequest {
+func (a *ManagementAPIsPopulationsApiService) UpdatePopulation(ctx context.Context, envID string, popID string) ApiUpdatePopulationRequest {
 	return ApiUpdatePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -554,28 +541,26 @@ func (a *ManagementAPIsPopulationsApiService) UpdatePopulation(ctx _context.Cont
 
 // Execute executes the request
 //  @return Population
-func (a *ManagementAPIsPopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationRequest) (Population, *_nethttp.Response, error) {
+func (a *ManagementAPIsPopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Population
+		formFiles            []formFile
+		localVarReturnValue  *Population
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsPopulationsApiService.UpdatePopulation")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/populations/{popID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", _neturl.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -596,7 +581,7 @@ func (a *ManagementAPIsPopulationsApiService) UpdatePopulationExecute(r ApiUpdat
 	}
 	// body params
 	localVarPostBody = r.population
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -606,15 +591,15 @@ func (a *ManagementAPIsPopulationsApiService) UpdatePopulationExecute(r ApiUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -633,7 +618,7 @@ func (a *ManagementAPIsPopulationsApiService) UpdatePopulationExecute(r ApiUpdat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

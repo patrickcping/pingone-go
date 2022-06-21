@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
-**Details** | Pointer to [**[]P1ErrorDetails**](P1ErrorDetails.md) |  | [optional] 
+**Details** | Pointer to [**[]P1ErrorDetailsInner**](P1ErrorDetailsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasMessage returns a boolean if a field has been set.
 
 ### GetDetails
 
-`func (o *P1Error) GetDetails() []P1ErrorDetails`
+`func (o *P1Error) GetDetails() []P1ErrorDetailsInner`
 
 GetDetails returns the Details field if non-nil, zero value otherwise.
 
 ### GetDetailsOk
 
-`func (o *P1Error) GetDetailsOk() (*[]P1ErrorDetails, bool)`
+`func (o *P1Error) GetDetailsOk() (*[]P1ErrorDetailsInner, bool)`
 
 GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetails
 
-`func (o *P1Error) SetDetails(v []P1ErrorDetails)`
+`func (o *P1Error) SetDetails(v []P1ErrorDetailsInner)`
 
 SetDetails sets Details field to given value.
 

@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersUserRoleAssignmentsApiService ManagementAPIsUsersUserRoleAssignmentsApi service
 type ManagementAPIsUsersUserRoleAssignmentsApiService service
 
 type ApiCreateUserRoleAssignmentRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
 	userID string
@@ -40,7 +36,7 @@ func (r ApiCreateUserRoleAssignmentRequest) RoleAssignment(roleAssignment RoleAs
 	return r
 }
 
-func (r ApiCreateUserRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
+func (r ApiCreateUserRoleAssignmentRequest) Execute() (*RoleAssignment, *http.Response, error) {
 	return r.ApiService.CreateUserRoleAssignmentExecute(r)
 }
 
@@ -49,12 +45,12 @@ CreateUserRoleAssignment CREATE User Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiCreateUserRoleAssignmentRequest
 */
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignment(ctx _context.Context, envID string, userID string) ApiCreateUserRoleAssignmentRequest {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignment(ctx context.Context, envID string, userID string) ApiCreateUserRoleAssignmentRequest {
 	return ApiCreateUserRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -65,28 +61,26 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 
 // Execute executes the request
 //  @return RoleAssignment
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignmentExecute(r ApiCreateUserRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignmentExecute(r ApiCreateUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RoleAssignment
+		formFiles            []formFile
+		localVarReturnValue  *RoleAssignment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.CreateUserRoleAssignment")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -107,7 +101,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 	}
 	// body params
 	localVarPostBody = r.roleAssignment
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -117,15 +111,15 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +138,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,15 +149,14 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) CreateUserRoleAssignm
 }
 
 type ApiDeleteUserRoleAssignmentRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
 	userID string
 	roleAssignmentID string
 }
 
-
-func (r ApiDeleteUserRoleAssignmentRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteUserRoleAssignmentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteUserRoleAssignmentExecute(r)
 }
 
@@ -172,13 +165,13 @@ DeleteUserRoleAssignment DELETE User's Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param roleAssignmentID
  @return ApiDeleteUserRoleAssignmentRequest
 */
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignment(ctx _context.Context, envID string, userID string, roleAssignmentID string) ApiDeleteUserRoleAssignmentRequest {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignment(ctx context.Context, envID string, userID string, roleAssignmentID string) ApiDeleteUserRoleAssignmentRequest {
 	return ApiDeleteUserRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -189,28 +182,26 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignm
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignmentExecute(r ApiDeleteUserRoleAssignmentRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignmentExecute(r ApiDeleteUserRoleAssignmentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.DeleteUserRoleAssignment")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", _neturl.PathEscape(parameterToString(r.roleAssignmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterToString(r.roleAssignmentID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -229,7 +220,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignm
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -239,15 +230,15 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignm
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -268,15 +259,14 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) DeleteUserRoleAssignm
 }
 
 type ApiReadOneUserRoleAssignmentRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
 	userID string
 	roleAssignmentID string
 }
 
-
-func (r ApiReadOneUserRoleAssignmentRequest) Execute() (RoleAssignment, *_nethttp.Response, error) {
+func (r ApiReadOneUserRoleAssignmentRequest) Execute() (*RoleAssignment, *http.Response, error) {
 	return r.ApiService.ReadOneUserRoleAssignmentExecute(r)
 }
 
@@ -285,13 +275,13 @@ ReadOneUserRoleAssignment READ One Role Assignment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param roleAssignmentID
  @return ApiReadOneUserRoleAssignmentRequest
 */
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignment(ctx _context.Context, envID string, userID string, roleAssignmentID string) ApiReadOneUserRoleAssignmentRequest {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignment(ctx context.Context, envID string, userID string, roleAssignmentID string) ApiReadOneUserRoleAssignmentRequest {
 	return ApiReadOneUserRoleAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -303,29 +293,27 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssign
 
 // Execute executes the request
 //  @return RoleAssignment
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignmentExecute(r ApiReadOneUserRoleAssignmentRequest) (RoleAssignment, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssignmentExecute(r ApiReadOneUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RoleAssignment
+		formFiles            []formFile
+		localVarReturnValue  *RoleAssignment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.ReadOneUserRoleAssignment")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", _neturl.PathEscape(parameterToString(r.roleAssignmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterToString(r.roleAssignmentID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -344,7 +332,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssign
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -354,15 +342,15 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssign
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -381,7 +369,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssign
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -392,14 +380,13 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadOneUserRoleAssign
 }
 
 type ApiReadUserRoleAssignmentsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersUserRoleAssignmentsApiService
 	envID string
 	userID string
 }
 
-
-func (r ApiReadUserRoleAssignmentsRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadUserRoleAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadUserRoleAssignmentsExecute(r)
 }
 
@@ -408,12 +395,12 @@ ReadUserRoleAssignments READ Role Assignments
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiReadUserRoleAssignmentsRequest
 */
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignments(ctx _context.Context, envID string, userID string) ApiReadUserRoleAssignmentsRequest {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignments(ctx context.Context, envID string, userID string) ApiReadUserRoleAssignmentsRequest {
 	return ApiReadUserRoleAssignmentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -424,28 +411,26 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmen
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmentsExecute(r ApiReadUserRoleAssignmentsRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmentsExecute(r ApiReadUserRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersUserRoleAssignmentsApiService.ReadUserRoleAssignments")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -464,7 +449,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmen
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -474,15 +459,15 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -501,7 +486,7 @@ func (a *ManagementAPIsUsersUserRoleAssignmentsApiService) ReadUserRoleAssignmen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
-**Products** | Pointer to [**[]BillOfMaterialsProducts**](BillOfMaterialsProducts.md) | An array that specifies the products associated with this bill of materials | [optional] 
+**Products** | Pointer to [**[]BillOfMaterialsProductsInner**](BillOfMaterialsProductsInner.md) | An array that specifies the products associated with this bill of materials | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetProducts
 
-`func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProducts`
+`func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProductsInner`
 
 GetProducts returns the Products field if non-nil, zero value otherwise.
 
 ### GetProductsOk
 
-`func (o *BillOfMaterials) GetProductsOk() (*[]BillOfMaterialsProducts, bool)`
+`func (o *BillOfMaterials) GetProductsOk() (*[]BillOfMaterialsProductsInner, bool)`
 
 GetProductsOk returns a tuple with the Products field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducts
 
-`func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProducts)`
+`func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProductsInner)`
 
 SetProducts sets Products field to given value.
 

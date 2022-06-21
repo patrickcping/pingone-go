@@ -22,7 +22,7 @@ type UserPasswordExternalGateway struct {
 	Type *string `json:"type,omitempty"`
 	UserType *UserPasswordExternalGatewayUserType `json:"userType,omitempty"`
 	// An object that maps the external LDAP directory attributes to PingOne attributes. We use the correlationAttributes values to read the attributes from the external LDAP directory and map them to the corresponding PingOne attributes.
-	CorrelationAttributes *map[string]interface{} `json:"correlationAttributes,omitempty"`
+	CorrelationAttributes map[string]interface{} `json:"correlationAttributes,omitempty"`
 }
 
 // NewUserPasswordExternalGateway instantiates a new UserPasswordExternalGateway object
@@ -144,12 +144,12 @@ func (o *UserPasswordExternalGateway) GetCorrelationAttributes() map[string]inte
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.CorrelationAttributes
+	return o.CorrelationAttributes
 }
 
 // GetCorrelationAttributesOk returns a tuple with the CorrelationAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserPasswordExternalGateway) GetCorrelationAttributesOk() (*map[string]interface{}, bool) {
+func (o *UserPasswordExternalGateway) GetCorrelationAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.CorrelationAttributes == nil {
 		return nil, false
 	}
@@ -167,7 +167,7 @@ func (o *UserPasswordExternalGateway) HasCorrelationAttributes() bool {
 
 // SetCorrelationAttributes gets a reference to the given map[string]interface{} and assigns it to the CorrelationAttributes field.
 func (o *UserPasswordExternalGateway) SetCorrelationAttributes(v map[string]interface{}) {
-	o.CorrelationAttributes = &v
+	o.CorrelationAttributes = v
 }
 
 func (o UserPasswordExternalGateway) MarshalJSON() ([]byte, error) {

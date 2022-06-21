@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsSchemasApiService ManagementAPIsSchemasApi service
 type ManagementAPIsSchemasApiService service
 
 type ApiCreateAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
@@ -40,7 +36,7 @@ func (r ApiCreateAttributeRequest) SchemaAttribute(schemaAttribute SchemaAttribu
 	return r
 }
 
-func (r ApiCreateAttributeRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
+func (r ApiCreateAttributeRequest) Execute() (*SchemaAttribute, *http.Response, error) {
 	return r.ApiService.CreateAttributeExecute(r)
 }
 
@@ -49,12 +45,12 @@ CreateAttribute CREATE Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @return ApiCreateAttributeRequest
 */
-func (a *ManagementAPIsSchemasApiService) CreateAttribute(ctx _context.Context, envID string, schemaID string) ApiCreateAttributeRequest {
+func (a *ManagementAPIsSchemasApiService) CreateAttribute(ctx context.Context, envID string, schemaID string) ApiCreateAttributeRequest {
 	return ApiCreateAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -65,28 +61,26 @@ func (a *ManagementAPIsSchemasApiService) CreateAttribute(ctx _context.Context, 
 
 // Execute executes the request
 //  @return SchemaAttribute
-func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttributeRequest) (SchemaAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttributeRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SchemaAttribute
+		formFiles            []formFile
+		localVarReturnValue  *SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.CreateAttribute")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -107,7 +101,7 @@ func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttr
 	}
 	// body params
 	localVarPostBody = r.schemaAttribute
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -117,15 +111,15 @@ func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +138,7 @@ func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,15 +149,14 @@ func (a *ManagementAPIsSchemasApiService) CreateAttributeExecute(r ApiCreateAttr
 }
 
 type ApiDeleteAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
 	attributeID string
 }
 
-
-func (r ApiDeleteAttributeRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteAttributeRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteAttributeExecute(r)
 }
 
@@ -172,13 +165,13 @@ DeleteAttribute DELETE Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @param attributeID
  @return ApiDeleteAttributeRequest
 */
-func (a *ManagementAPIsSchemasApiService) DeleteAttribute(ctx _context.Context, envID string, schemaID string, attributeID string) ApiDeleteAttributeRequest {
+func (a *ManagementAPIsSchemasApiService) DeleteAttribute(ctx context.Context, envID string, schemaID string, attributeID string) ApiDeleteAttributeRequest {
 	return ApiDeleteAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -189,28 +182,26 @@ func (a *ManagementAPIsSchemasApiService) DeleteAttribute(ctx _context.Context, 
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttributeRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttributeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.DeleteAttribute")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", _neturl.PathEscape(parameterToString(r.attributeID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterToString(r.attributeID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -229,7 +220,7 @@ func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -239,15 +230,15 @@ func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -268,14 +259,13 @@ func (a *ManagementAPIsSchemasApiService) DeleteAttributeExecute(r ApiDeleteAttr
 }
 
 type ApiReadAllSchemaAttributesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
 }
 
-
-func (r ApiReadAllSchemaAttributesRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllSchemaAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllSchemaAttributesExecute(r)
 }
 
@@ -284,12 +274,12 @@ ReadAllSchemaAttributes READ All (Schema) Attributes
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @return ApiReadAllSchemaAttributesRequest
 */
-func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributes(ctx _context.Context, envID string, schemaID string) ApiReadAllSchemaAttributesRequest {
+func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributes(ctx context.Context, envID string, schemaID string) ApiReadAllSchemaAttributesRequest {
 	return ApiReadAllSchemaAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -300,28 +290,26 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributes(ctx _context.C
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.ReadAllSchemaAttributes")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -340,7 +328,7 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -350,15 +338,15 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -377,7 +365,7 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -388,13 +376,12 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemaAttributesExecute(r ApiRe
 }
 
 type ApiReadAllSchemasRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 }
 
-
-func (r ApiReadAllSchemasRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllSchemasRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllSchemasExecute(r)
 }
 
@@ -403,11 +390,11 @@ ReadAllSchemas READ All Schemas
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiReadAllSchemasRequest
 */
-func (a *ManagementAPIsSchemasApiService) ReadAllSchemas(ctx _context.Context, envID string) ApiReadAllSchemasRequest {
+func (a *ManagementAPIsSchemasApiService) ReadAllSchemas(ctx context.Context, envID string) ApiReadAllSchemasRequest {
 	return ApiReadAllSchemasRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -417,27 +404,25 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemas(ctx _context.Context, e
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.ReadAllSchemas")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -456,7 +441,7 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSche
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -466,15 +451,15 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSche
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -493,7 +478,7 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSche
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -504,15 +489,14 @@ func (a *ManagementAPIsSchemasApiService) ReadAllSchemasExecute(r ApiReadAllSche
 }
 
 type ApiReadOneAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
 	attributeID string
 }
 
-
-func (r ApiReadOneAttributeRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
+func (r ApiReadOneAttributeRequest) Execute() (*SchemaAttribute, *http.Response, error) {
 	return r.ApiService.ReadOneAttributeExecute(r)
 }
 
@@ -521,13 +505,13 @@ ReadOneAttribute READ One Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @param attributeID
  @return ApiReadOneAttributeRequest
 */
-func (a *ManagementAPIsSchemasApiService) ReadOneAttribute(ctx _context.Context, envID string, schemaID string, attributeID string) ApiReadOneAttributeRequest {
+func (a *ManagementAPIsSchemasApiService) ReadOneAttribute(ctx context.Context, envID string, schemaID string, attributeID string) ApiReadOneAttributeRequest {
 	return ApiReadOneAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -539,29 +523,27 @@ func (a *ManagementAPIsSchemasApiService) ReadOneAttribute(ctx _context.Context,
 
 // Execute executes the request
 //  @return SchemaAttribute
-func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAttributeRequest) (SchemaAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAttributeRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SchemaAttribute
+		formFiles            []formFile
+		localVarReturnValue  *SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.ReadOneAttribute")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", _neturl.PathEscape(parameterToString(r.attributeID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterToString(r.attributeID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -580,7 +562,7 @@ func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -590,15 +572,15 @@ func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -617,7 +599,7 @@ func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -628,14 +610,13 @@ func (a *ManagementAPIsSchemasApiService) ReadOneAttributeExecute(r ApiReadOneAt
 }
 
 type ApiReadOneSchemaRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
 }
 
-
-func (r ApiReadOneSchemaRequest) Execute() (Schema, *_nethttp.Response, error) {
+func (r ApiReadOneSchemaRequest) Execute() (*Schema, *http.Response, error) {
 	return r.ApiService.ReadOneSchemaExecute(r)
 }
 
@@ -644,12 +625,12 @@ ReadOneSchema READ One Schema
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @return ApiReadOneSchemaRequest
 */
-func (a *ManagementAPIsSchemasApiService) ReadOneSchema(ctx _context.Context, envID string, schemaID string) ApiReadOneSchemaRequest {
+func (a *ManagementAPIsSchemasApiService) ReadOneSchema(ctx context.Context, envID string, schemaID string) ApiReadOneSchemaRequest {
 	return ApiReadOneSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -660,28 +641,26 @@ func (a *ManagementAPIsSchemasApiService) ReadOneSchema(ctx _context.Context, en
 
 // Execute executes the request
 //  @return Schema
-func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchemaRequest) (Schema, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchemaRequest) (*Schema, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Schema
+		formFiles            []formFile
+		localVarReturnValue  *Schema
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.ReadOneSchema")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -700,7 +679,7 @@ func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchem
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -710,15 +689,15 @@ func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchem
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -737,7 +716,7 @@ func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchem
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -748,7 +727,7 @@ func (a *ManagementAPIsSchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchem
 }
 
 type ApiUpdateAttributePatchRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
@@ -761,7 +740,7 @@ func (r ApiUpdateAttributePatchRequest) SchemaAttribute(schemaAttribute SchemaAt
 	return r
 }
 
-func (r ApiUpdateAttributePatchRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
+func (r ApiUpdateAttributePatchRequest) Execute() (*SchemaAttribute, *http.Response, error) {
 	return r.ApiService.UpdateAttributePatchExecute(r)
 }
 
@@ -770,13 +749,13 @@ UpdateAttributePatch UPDATE Attribute (Patch)
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @param attributeID
  @return ApiUpdateAttributePatchRequest
 */
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePatch(ctx _context.Context, envID string, schemaID string, attributeID string) ApiUpdateAttributePatchRequest {
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePatch(ctx context.Context, envID string, schemaID string, attributeID string) ApiUpdateAttributePatchRequest {
 	return ApiUpdateAttributePatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -788,29 +767,27 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatch(ctx _context.Cont
 
 // Execute executes the request
 //  @return SchemaAttribute
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (SchemaAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SchemaAttribute
+		formFiles            []formFile
+		localVarReturnValue  *SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.UpdateAttributePatch")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", _neturl.PathEscape(parameterToString(r.attributeID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterToString(r.attributeID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -831,7 +808,7 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 	}
 	// body params
 	localVarPostBody = r.schemaAttribute
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -841,15 +818,15 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -868,7 +845,7 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -879,7 +856,7 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePatchExecute(r ApiUpdat
 }
 
 type ApiUpdateAttributePutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSchemasApiService
 	envID string
 	schemaID string
@@ -892,7 +869,7 @@ func (r ApiUpdateAttributePutRequest) SchemaAttribute(schemaAttribute SchemaAttr
 	return r
 }
 
-func (r ApiUpdateAttributePutRequest) Execute() (SchemaAttribute, *_nethttp.Response, error) {
+func (r ApiUpdateAttributePutRequest) Execute() (*SchemaAttribute, *http.Response, error) {
 	return r.ApiService.UpdateAttributePutExecute(r)
 }
 
@@ -901,13 +878,13 @@ UpdateAttributePut UPDATE Attribute (Put)
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param schemaID
  @param attributeID
  @return ApiUpdateAttributePutRequest
 */
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePut(ctx _context.Context, envID string, schemaID string, attributeID string) ApiUpdateAttributePutRequest {
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePut(ctx context.Context, envID string, schemaID string, attributeID string) ApiUpdateAttributePutRequest {
 	return ApiUpdateAttributePutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -919,29 +896,27 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePut(ctx _context.Contex
 
 // Execute executes the request
 //  @return SchemaAttribute
-func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (SchemaAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SchemaAttribute
+		formFiles            []formFile
+		localVarReturnValue  *SchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSchemasApiService.UpdateAttributePut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", _neturl.PathEscape(parameterToString(r.schemaID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", _neturl.PathEscape(parameterToString(r.attributeID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterToString(r.schemaID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterToString(r.attributeID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -962,7 +937,7 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateA
 	}
 	// body params
 	localVarPostBody = r.schemaAttribute
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -972,15 +947,15 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -999,7 +974,7 @@ func (a *ManagementAPIsSchemasApiService) UpdateAttributePutExecute(r ApiUpdateA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

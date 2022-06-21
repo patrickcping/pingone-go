@@ -38,8 +38,8 @@ func main() {
     roleAssignment := *openapiclient.NewRoleAssignment(*openapiclient.NewRoleAssignmentRole("Id_example"), *openapiclient.NewRoleAssignmentScope("Id_example", "Type_example")) // RoleAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.CreateGatewayRoleAssignment(context.Background(), envID, gatewayID).RoleAssignment(roleAssignment).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.CreateGatewayRoleAssignment(context.Background(), envID, gatewayID).RoleAssignment(roleAssignment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.CreateGatewayRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     gatewayRoleAssignmentID := "gatewayRoleAssignmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.DeleteGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.DeleteGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.DeleteGatewayRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadGatewayRoleAssignments(context.Background(), envID, gatewayID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadGatewayRoleAssignments(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadGatewayRoleAssignments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     gatewayRoleAssignmentID := "gatewayRoleAssignmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadOneGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadOneGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.ReadOneGatewayRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,11 +334,11 @@ func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
     gatewayRoleAssignmentID := "gatewayRoleAssignmentID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.UpdateGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.UpdateGatewayRoleAssignment(context.Background(), envID, gatewayID, gatewayRoleAssignmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi.UpdateGatewayRoleAssignment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

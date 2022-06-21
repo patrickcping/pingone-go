@@ -34,8 +34,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,11 +103,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationPut(context.Background(), envID, userID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationPut(context.Background(), envID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserPopulationsApi.V1EnvironmentsEnvIDUsersUserIDPopulationPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

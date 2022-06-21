@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsIntegrationCatalogApiService ManagementAPIsIntegrationCatalogApi service
 type ManagementAPIsIntegrationCatalogApiService service
 
 type ApiV1EnvironmentsEnvIDIntegrationsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIntegrationCatalogApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDIntegrationsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDIntegrationsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDIntegrationsGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDIntegrationsGet READ Integration Metadata
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDIntegrationsGetRequest
 */
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDIntegrationsGetRequest {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDIntegrationsGetRequest {
 	return ApiV1EnvironmentsEnvIDIntegrationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIntegrationCatalogApiService.V1EnvironmentsEnvIDIntegrationsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/integrations"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,14 +126,13 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 type ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIntegrationCatalogApiService
 	envID string
 	integrationID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDGetExecute(r)
 }
 
@@ -149,12 +141,12 @@ V1EnvironmentsEnvIDIntegrationsIntegrationIDGet READ One Integration Metadata
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param integrationID
  @return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest
 */
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDGet(ctx _context.Context, envID string, integrationID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDGet(ctx context.Context, envID string, integrationID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest {
 	return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,27 +156,25 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIntegrationCatalogApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/integrations/{integrationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", _neturl.PathEscape(parameterToString(r.integrationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterToString(r.integrationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -203,7 +193,7 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -213,15 +203,15 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,14 +232,13 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 type ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIntegrationCatalogApiService
 	envID string
 	integrationID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetExecute(r)
 }
 
@@ -258,12 +247,12 @@ V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet READ Integration Version
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param integrationID
  @return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest
 */
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet(ctx _context.Context, envID string, integrationID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet(ctx context.Context, envID string, integrationID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest {
 	return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,27 +262,25 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIntegrationCatalogApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/integrations/{integrationID}/versions"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", _neturl.PathEscape(parameterToString(r.integrationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterToString(r.integrationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -312,7 +299,7 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -322,15 +309,15 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -351,15 +338,14 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 type ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIntegrationCatalogApiService
 	envID string
 	integrationID string
 	integrationVersionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r)
 }
 
@@ -368,13 +354,13 @@ V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param integrationID
  @param integrationVersionID
  @return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest
 */
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx _context.Context, envID string, integrationID string, integrationVersionID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx context.Context, envID string, integrationID string, integrationVersionID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest {
 	return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,28 +371,26 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIntegrationCatalogApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/integrations/{integrationID}/versions/{integrationVersionID}/asset"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", _neturl.PathEscape(parameterToString(r.integrationID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", _neturl.PathEscape(parameterToString(r.integrationVersionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterToString(r.integrationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterToString(r.integrationVersionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -425,7 +409,7 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -435,15 +419,15 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -464,15 +448,14 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 type ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIntegrationCatalogApiService
 	envID string
 	integrationID string
 	integrationVersionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r)
 }
 
@@ -481,13 +464,13 @@ V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet READ
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param integrationID
  @param integrationVersionID
  @return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest
 */
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx _context.Context, envID string, integrationID string, integrationVersionID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx context.Context, envID string, integrationID string, integrationVersionID string) ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest {
 	return ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -498,28 +481,26 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiV1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIntegrationCatalogApiService.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/integrations/{integrationID}/versions/{integrationVersionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", _neturl.PathEscape(parameterToString(r.integrationID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", _neturl.PathEscape(parameterToString(r.integrationVersionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterToString(r.integrationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterToString(r.integrationVersionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -538,7 +519,7 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -548,15 +529,15 @@ func (a *ManagementAPIsIntegrationCatalogApiService) V1EnvironmentsEnvIDIntegrat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

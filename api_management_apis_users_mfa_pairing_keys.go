@@ -12,31 +12,26 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersMFAPairingKeysApiService ManagementAPIsUsersMFAPairingKeysApi service
 type ManagementAPIsUsersMFAPairingKeysApiService service
 
 type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersMFAPairingKeysApiService
 	envID string
 	userID string
 	pairingKeyID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r)
 }
 
@@ -45,13 +40,13 @@ V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete DELETE MFA Pairing K
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param pairingKeyID
  @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
 */
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx _context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,28 +57,26 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", _neturl.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", url.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,7 +95,7 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -112,15 +105,15 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -141,15 +134,14 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersMFAPairingKeysApiService
 	envID string
 	userID string
 	pairingKeyID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r)
 }
 
@@ -158,13 +150,13 @@ V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet READ One MFA Pairing Ke
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param pairingKeyID
  @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest
 */
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx _context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -175,28 +167,26 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", _neturl.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", url.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -215,7 +205,7 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -225,15 +215,15 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -254,7 +244,7 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersMFAPairingKeysApiService
 	envID string
 	userID string
@@ -266,7 +256,7 @@ func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) Body(body map[s
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPostExecute(r)
 }
 
@@ -275,12 +265,12 @@ V1EnvironmentsEnvIDUsersUserIDPairingKeysPost CREATE MFA Pairing Key
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest
 */
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx _context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -290,27 +280,25 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -331,7 +319,7 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -341,15 +329,15 @@ func (a *ManagementAPIsUsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUs
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

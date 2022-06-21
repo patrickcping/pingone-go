@@ -36,8 +36,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     policyID := "policyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete(context.Background(), envID, policyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete(context.Background(), envID, policyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,8 +176,8 @@ func main() {
     policyID := "policyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet(context.Background(), envID, policyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet(context.Background(), envID, policyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,11 +245,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(context.Background(), envID, policyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut(context.Background(), envID, policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,11 +317,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvIDSignOnPoliciesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

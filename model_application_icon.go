@@ -52,7 +52,7 @@ func (o *ApplicationIcon) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -76,7 +76,7 @@ func (o *ApplicationIcon) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetHrefOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Href, true

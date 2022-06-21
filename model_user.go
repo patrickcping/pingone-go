@@ -35,9 +35,9 @@ type User struct {
 	// A string that specifies the user’s default location, which is optional. This may be explicitly set to null when updating a user to unset it. This is used for purposes of localizing such items as currency, date time format, or numerical representations. If provided, it must be a valid language tag as defined in RFC 5646. The following are example tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
 	Locale *string `json:"locale,omitempty"`
 	// A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include=memberOfGroupIDs is appended to the request. This property is not returned with a list of users.
-	MemberOfGroupIDs *[]string `json:"memberOfGroupIDs,omitempty"`
+	MemberOfGroupIDs []string `json:"memberOfGroupIDs,omitempty"`
 	// A read-only array of names for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include=memberOfGroupNames is appended to the request. This property is not returned with a list of users.
-	MemberOfGroupNames *[]string `json:"memberOfGroupNames,omitempty"`
+	MemberOfGroupNames []string `json:"memberOfGroupNames,omitempty"`
 	// A boolean attribute that specifies whether multi-factor authentication is enabled. This attribute is set to false by default when the user is created. You can set mfaEnabled to true with POST CREATE User, POST CREATE User (Import), or PUT UPDATE User MFA Enabled. You cannot update mfaEnabled with PUT UPDATE User or PATCH UPDATE User.
 	MfaEnabled *bool `json:"mfaEnabled,omitempty"`
 	// A string that specifies the user’s native phone number, which is optional. This might also match the primaryPhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32.
@@ -195,7 +195,7 @@ func (o *User) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *User) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Email, true
@@ -468,12 +468,12 @@ func (o *User) GetMemberOfGroupIDs() []string {
 		var ret []string
 		return ret
 	}
-	return *o.MemberOfGroupIDs
+	return o.MemberOfGroupIDs
 }
 
 // GetMemberOfGroupIDsOk returns a tuple with the MemberOfGroupIDs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetMemberOfGroupIDsOk() (*[]string, bool) {
+func (o *User) GetMemberOfGroupIDsOk() ([]string, bool) {
 	if o == nil || o.MemberOfGroupIDs == nil {
 		return nil, false
 	}
@@ -491,7 +491,7 @@ func (o *User) HasMemberOfGroupIDs() bool {
 
 // SetMemberOfGroupIDs gets a reference to the given []string and assigns it to the MemberOfGroupIDs field.
 func (o *User) SetMemberOfGroupIDs(v []string) {
-	o.MemberOfGroupIDs = &v
+	o.MemberOfGroupIDs = v
 }
 
 // GetMemberOfGroupNames returns the MemberOfGroupNames field value if set, zero value otherwise.
@@ -500,12 +500,12 @@ func (o *User) GetMemberOfGroupNames() []string {
 		var ret []string
 		return ret
 	}
-	return *o.MemberOfGroupNames
+	return o.MemberOfGroupNames
 }
 
 // GetMemberOfGroupNamesOk returns a tuple with the MemberOfGroupNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetMemberOfGroupNamesOk() (*[]string, bool) {
+func (o *User) GetMemberOfGroupNamesOk() ([]string, bool) {
 	if o == nil || o.MemberOfGroupNames == nil {
 		return nil, false
 	}
@@ -523,7 +523,7 @@ func (o *User) HasMemberOfGroupNames() bool {
 
 // SetMemberOfGroupNames gets a reference to the given []string and assigns it to the MemberOfGroupNames field.
 func (o *User) SetMemberOfGroupNames(v []string) {
-	o.MemberOfGroupNames = &v
+	o.MemberOfGroupNames = v
 }
 
 // GetMfaEnabled returns the MfaEnabled field value if set, zero value otherwise.
@@ -731,7 +731,7 @@ func (o *User) GetPopulation() UserPopulation {
 // GetPopulationOk returns a tuple with the Population field value
 // and a boolean to check if the value has been set.
 func (o *User) GetPopulationOk() (*UserPopulation, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Population, true
@@ -947,7 +947,7 @@ func (o *User) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *User) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true

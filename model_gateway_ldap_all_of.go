@@ -23,7 +23,7 @@ type GatewayLDAPAllOf struct {
 	// (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
 	ConnectionSecurity *string `json:"connectionSecurity,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [\"ds1.example.com:389\", \"ds2.example.com:389\"]).
-	ServersHostAndPort *[]string `json:"serversHostAndPort,omitempty"`
+	ServersHostAndPort []string `json:"serversHostAndPort,omitempty"`
 	// (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
 	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes"`
 	// (Optional) A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
@@ -66,7 +66,7 @@ func (o *GatewayLDAPAllOf) GetBindDN() string {
 // GetBindDNOk returns a tuple with the BindDN field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAPAllOf) GetBindDNOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BindDN, true
@@ -90,7 +90,7 @@ func (o *GatewayLDAPAllOf) GetBindPassword() string {
 // GetBindPasswordOk returns a tuple with the BindPassword field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAPAllOf) GetBindPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BindPassword, true
@@ -139,12 +139,12 @@ func (o *GatewayLDAPAllOf) GetServersHostAndPort() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ServersHostAndPort
+	return o.ServersHostAndPort
 }
 
 // GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetServersHostAndPortOk() (*[]string, bool) {
+func (o *GatewayLDAPAllOf) GetServersHostAndPortOk() ([]string, bool) {
 	if o == nil || o.ServersHostAndPort == nil {
 		return nil, false
 	}
@@ -162,7 +162,7 @@ func (o *GatewayLDAPAllOf) HasServersHostAndPort() bool {
 
 // SetServersHostAndPort gets a reference to the given []string and assigns it to the ServersHostAndPort field.
 func (o *GatewayLDAPAllOf) SetServersHostAndPort(v []string) {
-	o.ServersHostAndPort = &v
+	o.ServersHostAndPort = v
 }
 
 // GetUserTypes returns the UserTypes field value
@@ -177,11 +177,11 @@ func (o *GatewayLDAPAllOf) GetUserTypes() []GatewayLDAPAllOfUserTypes {
 
 // GetUserTypesOk returns a tuple with the UserTypes field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetUserTypesOk() (*[]GatewayLDAPAllOfUserTypes, bool) {
-	if o == nil  {
+func (o *GatewayLDAPAllOf) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.UserTypes, true
+	return o.UserTypes, true
 }
 
 // SetUserTypes sets field value
@@ -234,7 +234,7 @@ func (o *GatewayLDAPAllOf) GetVendor() string {
 // GetVendorOk returns a tuple with the Vendor field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAPAllOf) GetVendorOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Vendor, true

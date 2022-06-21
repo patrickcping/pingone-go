@@ -52,7 +52,7 @@ func (o *RiskPredictorItemMapBetween) GetMinScore() float32 {
 // GetMinScoreOk returns a tuple with the MinScore field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MinScore, true
@@ -76,7 +76,7 @@ func (o *RiskPredictorItemMapBetween) GetMaxScore() float32 {
 // GetMaxScoreOk returns a tuple with the MaxScore field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MaxScore, true

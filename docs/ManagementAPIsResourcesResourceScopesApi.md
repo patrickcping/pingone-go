@@ -38,8 +38,8 @@ func main() {
     resourceScope := *openapiclient.NewResourceScope("Name_example") // ResourceScope |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.CreateResourceScope(context.Background(), envID, resourceID).ResourceScope(resourceScope).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceScopesApi.CreateResourceScope(context.Background(), envID, resourceID).ResourceScope(resourceScope).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.CreateResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     scopeID := "scopeID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.DeleteResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceScopesApi.DeleteResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.DeleteResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     resourceID := "resourceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes(context.Background(), envID, resourceID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.ReadAllResourceScopes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     scopeID := "scopeID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope(context.Background(), envID, resourceID, scopeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.ReadOneResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,8 +337,8 @@ func main() {
     resourceScope := *openapiclient.NewResourceScope("Name_example") // ResourceScope |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope(context.Background(), envID, resourceID, scopeID).ResourceScope(resourceScope).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope(context.Background(), envID, resourceID, scopeID).ResourceScope(resourceScope).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceScopesApi.UpdateResourceScope``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

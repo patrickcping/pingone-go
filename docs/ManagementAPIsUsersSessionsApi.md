@@ -35,8 +35,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     sessionID := "sessionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(context.Background(), envID, userID, sessionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(context.Background(), envID, userID, sessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
     sessionID := "sessionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(context.Background(), envID, userID, sessionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(context.Background(), envID, userID, sessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersSessionsApi.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

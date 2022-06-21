@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsAgreementManagementAgreementsResourcesApiService ManagementAPIsAgreementManagementAgreementsResourcesApi service
 type ManagementAPIsAgreementManagementAgreementsResourcesApiService service
 
 type ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 	agreementID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAgreementsAgreementIDDeleteExecute(r)
 }
 
@@ -44,12 +39,12 @@ V1EnvironmentsEnvIDAgreementsAgreementIDDelete DELETE Agreement
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param agreementID
  @return ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest
 */
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDDelete(ctx _context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDDelete(ctx context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,27 +54,25 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDDeleteExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDDeleteExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAgreementManagementAgreementsResourcesApiService.V1EnvironmentsEnvIDAgreementsAgreementIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/agreements/{agreementID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", _neturl.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +91,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -108,15 +101,15 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,14 +130,13 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 type ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 	agreementID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAgreementsAgreementIDGetExecute(r)
 }
 
@@ -153,12 +145,12 @@ V1EnvironmentsEnvIDAgreementsAgreementIDGet READ One Agreement
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param agreementID
  @return ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest
 */
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDGet(ctx _context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDGet(ctx context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest {
 	return ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -168,27 +160,25 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDGetExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDGetExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAgreementManagementAgreementsResourcesApiService.V1EnvironmentsEnvIDAgreementsAgreementIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/agreements/{agreementID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", _neturl.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -207,7 +197,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -217,15 +207,15 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -246,7 +236,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 type ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 	agreementID string
@@ -258,7 +248,7 @@ func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) Body(body map[str
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAgreementsAgreementIDPutExecute(r)
 }
 
@@ -267,12 +257,12 @@ V1EnvironmentsEnvIDAgreementsAgreementIDPut UPDATE Agreement
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param agreementID
  @return ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest
 */
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDPut(ctx _context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDPut(ctx context.Context, envID string, agreementID string) ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest {
 	return ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,27 +272,25 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDPutExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsAgreementIDPutExecute(r ApiV1EnvironmentsEnvIDAgreementsAgreementIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAgreementManagementAgreementsResourcesApiService.V1EnvironmentsEnvIDAgreementsAgreementIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/agreements/{agreementID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", _neturl.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -323,7 +311,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -333,15 +321,15 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -362,13 +350,12 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 type ApiV1EnvironmentsEnvIDAgreementsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDAgreementsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAgreementsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAgreementsGetExecute(r)
 }
 
@@ -377,11 +364,11 @@ V1EnvironmentsEnvIDAgreementsGet READ All Agreements
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDAgreementsGetRequest
 */
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDAgreementsGetRequest {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDAgreementsGetRequest {
 	return ApiV1EnvironmentsEnvIDAgreementsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -390,26 +377,24 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsGetExecute(r ApiV1EnvironmentsEnvIDAgreementsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsGetExecute(r ApiV1EnvironmentsEnvIDAgreementsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAgreementManagementAgreementsResourcesApiService.V1EnvironmentsEnvIDAgreementsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/agreements"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -428,7 +413,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -438,15 +423,15 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -467,7 +452,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 type ApiV1EnvironmentsEnvIDAgreementsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAgreementManagementAgreementsResourcesApiService
 	envID string
 	body *map[string]interface{}
@@ -478,7 +463,7 @@ func (r ApiV1EnvironmentsEnvIDAgreementsPostRequest) Body(body map[string]interf
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDAgreementsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAgreementsPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAgreementsPostExecute(r)
 }
 
@@ -487,11 +472,11 @@ V1EnvironmentsEnvIDAgreementsPost CREATE Agreement
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDAgreementsPostRequest
 */
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDAgreementsPostRequest {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDAgreementsPostRequest {
 	return ApiV1EnvironmentsEnvIDAgreementsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -500,26 +485,24 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsPostExecute(r ApiV1EnvironmentsEnvIDAgreementsPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1EnvironmentsEnvIDAgreementsPostExecute(r ApiV1EnvironmentsEnvIDAgreementsPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAgreementManagementAgreementsResourcesApiService.V1EnvironmentsEnvIDAgreementsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/agreements"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -540,7 +523,7 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -550,15 +533,15 @@ func (a *ManagementAPIsAgreementManagementAgreementsResourcesApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

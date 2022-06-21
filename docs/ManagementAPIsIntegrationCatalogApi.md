@@ -36,8 +36,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     integrationID := "integrationID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDGet(context.Background(), envID, integrationID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDGet(context.Background(), envID, integrationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,8 +176,8 @@ func main() {
     integrationID := "integrationID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet(context.Background(), envID, integrationID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet(context.Background(), envID, integrationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,8 +248,8 @@ func main() {
     integrationVersionID := "integrationVersionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), envID, integrationID, integrationVersionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), envID, integrationID, integrationVersionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,8 +322,8 @@ func main() {
     integrationVersionID := "integrationVersionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), envID, integrationID, integrationVersionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), envID, integrationID, integrationVersionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIntegrationCatalogApi.V1EnvironmentsEnvIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

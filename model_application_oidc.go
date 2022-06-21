@@ -36,7 +36,7 @@ type ApplicationOIDC struct {
 	// A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
 	Protocol string `json:"protocol"`
 	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
-	Tags *[]string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 	// A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
 	Type string `json:"type"`
 	// The time the resource was last updated.
@@ -55,15 +55,15 @@ type ApplicationOIDC struct {
 	// A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256.
 	PkceEnforcement *string `json:"pkceEnforcement,omitempty"`
 	// A string that specifies the URLs that the browser can be redirected to after logout.
-	PostLogoutRedirectUris *[]string `json:"postLogoutRedirectUris,omitempty"`
+	PostLogoutRedirectUris []string `json:"postLogoutRedirectUris,omitempty"`
 	// A string that specifies the callback URI for the authentication response.
-	RedirectUris *[]string `json:"redirectUris,omitempty"`
+	RedirectUris []string `json:"redirectUris,omitempty"`
 	// An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenDuration *int32 `json:"refreshTokenDuration,omitempty"`
 	// An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
-	ResponseTypes *[]string `json:"responseTypes,omitempty"`
+	ResponseTypes []string `json:"responseTypes,omitempty"`
 	// A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
 	TokenEndpointAuthMethod string `json:"tokenEndpointAuthMethod"`
 }
@@ -232,7 +232,7 @@ func (o *ApplicationOIDC) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetEnabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Enabled, true
@@ -384,7 +384,7 @@ func (o *ApplicationOIDC) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -408,7 +408,7 @@ func (o *ApplicationOIDC) GetProtocol() string {
 // GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetProtocolOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Protocol, true
@@ -425,12 +425,12 @@ func (o *ApplicationOIDC) GetTags() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Tags
+	return o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetTagsOk() (*[]string, bool) {
+func (o *ApplicationOIDC) GetTagsOk() ([]string, bool) {
 	if o == nil || o.Tags == nil {
 		return nil, false
 	}
@@ -448,7 +448,7 @@ func (o *ApplicationOIDC) HasTags() bool {
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *ApplicationOIDC) SetTags(v []string) {
-	o.Tags = &v
+	o.Tags = v
 }
 
 // GetType returns the Type field value
@@ -464,7 +464,7 @@ func (o *ApplicationOIDC) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -647,11 +647,11 @@ func (o *ApplicationOIDC) GetGrantTypes() []string {
 
 // GetGrantTypesOk returns a tuple with the GrantTypes field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetGrantTypesOk() (*[]string, bool) {
-	if o == nil  {
+func (o *ApplicationOIDC) GetGrantTypesOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.GrantTypes, true
+	return o.GrantTypes, true
 }
 
 // SetGrantTypes sets field value
@@ -729,12 +729,12 @@ func (o *ApplicationOIDC) GetPostLogoutRedirectUris() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PostLogoutRedirectUris
+	return o.PostLogoutRedirectUris
 }
 
 // GetPostLogoutRedirectUrisOk returns a tuple with the PostLogoutRedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetPostLogoutRedirectUrisOk() (*[]string, bool) {
+func (o *ApplicationOIDC) GetPostLogoutRedirectUrisOk() ([]string, bool) {
 	if o == nil || o.PostLogoutRedirectUris == nil {
 		return nil, false
 	}
@@ -752,7 +752,7 @@ func (o *ApplicationOIDC) HasPostLogoutRedirectUris() bool {
 
 // SetPostLogoutRedirectUris gets a reference to the given []string and assigns it to the PostLogoutRedirectUris field.
 func (o *ApplicationOIDC) SetPostLogoutRedirectUris(v []string) {
-	o.PostLogoutRedirectUris = &v
+	o.PostLogoutRedirectUris = v
 }
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
@@ -761,12 +761,12 @@ func (o *ApplicationOIDC) GetRedirectUris() []string {
 		var ret []string
 		return ret
 	}
-	return *o.RedirectUris
+	return o.RedirectUris
 }
 
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetRedirectUrisOk() (*[]string, bool) {
+func (o *ApplicationOIDC) GetRedirectUrisOk() ([]string, bool) {
 	if o == nil || o.RedirectUris == nil {
 		return nil, false
 	}
@@ -784,7 +784,7 @@ func (o *ApplicationOIDC) HasRedirectUris() bool {
 
 // SetRedirectUris gets a reference to the given []string and assigns it to the RedirectUris field.
 func (o *ApplicationOIDC) SetRedirectUris(v []string) {
-	o.RedirectUris = &v
+	o.RedirectUris = v
 }
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
@@ -857,12 +857,12 @@ func (o *ApplicationOIDC) GetResponseTypes() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ResponseTypes
+	return o.ResponseTypes
 }
 
 // GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetResponseTypesOk() (*[]string, bool) {
+func (o *ApplicationOIDC) GetResponseTypesOk() ([]string, bool) {
 	if o == nil || o.ResponseTypes == nil {
 		return nil, false
 	}
@@ -880,7 +880,7 @@ func (o *ApplicationOIDC) HasResponseTypes() bool {
 
 // SetResponseTypes gets a reference to the given []string and assigns it to the ResponseTypes field.
 func (o *ApplicationOIDC) SetResponseTypes(v []string) {
-	o.ResponseTypes = &v
+	o.ResponseTypes = v
 }
 
 // GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value
@@ -896,7 +896,7 @@ func (o *ApplicationOIDC) GetTokenEndpointAuthMethod() string {
 // GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTokenEndpointAuthMethodOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TokenEndpointAuthMethod, true

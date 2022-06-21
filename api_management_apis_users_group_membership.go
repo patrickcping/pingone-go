@@ -12,35 +12,31 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersGroupMembershipApiService ManagementAPIsUsersGroupMembershipApi service
 type ManagementAPIsUsersGroupMembershipApiService service
 
 type ApiAddUserToGroupRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersGroupMembershipApiService
 	envID string
 	userID string
-	inlineObject3 *InlineObject3
+	addUserToGroupRequest *AddUserToGroupRequest
 }
 
-func (r ApiAddUserToGroupRequest) InlineObject3(inlineObject3 InlineObject3) ApiAddUserToGroupRequest {
-	r.inlineObject3 = &inlineObject3
+func (r ApiAddUserToGroupRequest) AddUserToGroupRequest(addUserToGroupRequest AddUserToGroupRequest) ApiAddUserToGroupRequest {
+	r.addUserToGroupRequest = &addUserToGroupRequest
 	return r
 }
 
-func (r ApiAddUserToGroupRequest) Execute() (Group, *_nethttp.Response, error) {
+func (r ApiAddUserToGroupRequest) Execute() (*Group, *http.Response, error) {
 	return r.ApiService.AddUserToGroupExecute(r)
 }
 
@@ -49,12 +45,12 @@ AddUserToGroup ADD User to Group
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiAddUserToGroupRequest
 */
-func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroup(ctx _context.Context, envID string, userID string) ApiAddUserToGroupRequest {
+func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroup(ctx context.Context, envID string, userID string) ApiAddUserToGroupRequest {
 	return ApiAddUserToGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -65,28 +61,26 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroup(ctx _conte
 
 // Execute executes the request
 //  @return Group
-func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupRequest) (Group, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupRequest) (*Group, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Group
+		formFiles            []formFile
+		localVarReturnValue  *Group
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersGroupMembershipApiService.AddUserToGroup")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -106,8 +100,8 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject3
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	localVarPostBody = r.addUserToGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -117,15 +111,15 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +138,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r A
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,7 +149,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) AddUserToGroupExecute(r A
 }
 
 type ApiReadAllGroupMembershipsForUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersGroupMembershipApiService
 	envID string
 	userID string
@@ -168,16 +162,18 @@ func (r ApiReadAllGroupMembershipsForUserRequest) Expand(expand string) ApiReadA
 	r.expand = &expand
 	return r
 }
+
 func (r ApiReadAllGroupMembershipsForUserRequest) Limit(limit int32) ApiReadAllGroupMembershipsForUserRequest {
 	r.limit = &limit
 	return r
 }
+
 func (r ApiReadAllGroupMembershipsForUserRequest) Filter(filter string) ApiReadAllGroupMembershipsForUserRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiReadAllGroupMembershipsForUserRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllGroupMembershipsForUserRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllGroupMembershipsForUserExecute(r)
 }
 
@@ -186,12 +182,12 @@ ReadAllGroupMembershipsForUser READ All Group Memberships for User
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiReadAllGroupMembershipsForUserRequest
 */
-func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsForUser(ctx _context.Context, envID string, userID string) ApiReadAllGroupMembershipsForUserRequest {
+func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsForUser(ctx context.Context, envID string, userID string) ApiReadAllGroupMembershipsForUserRequest {
 	return ApiReadAllGroupMembershipsForUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -202,28 +198,26 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsFo
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersGroupMembershipApiService.ReadAllGroupMembershipsForUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.expand != nil {
 		localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
@@ -251,7 +245,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsFo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -261,15 +255,15 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsFo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -288,7 +282,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsFo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -299,7 +293,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadAllGroupMembershipsFo
 }
 
 type ApiReadOneGroupMembershipForUserRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersGroupMembershipApiService
 	envID string
 	userID string
@@ -312,7 +306,7 @@ func (r ApiReadOneGroupMembershipForUserRequest) Expand(expand string) ApiReadOn
 	return r
 }
 
-func (r ApiReadOneGroupMembershipForUserRequest) Execute() (Group, *_nethttp.Response, error) {
+func (r ApiReadOneGroupMembershipForUserRequest) Execute() (*Group, *http.Response, error) {
 	return r.ApiService.ReadOneGroupMembershipForUserExecute(r)
 }
 
@@ -321,13 +315,13 @@ ReadOneGroupMembershipForUser READ One Group Membership for User
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param groupID
  @return ApiReadOneGroupMembershipForUserRequest
 */
-func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipForUser(ctx _context.Context, envID string, userID string, groupID string) ApiReadOneGroupMembershipForUserRequest {
+func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipForUser(ctx context.Context, envID string, userID string, groupID string) ApiReadOneGroupMembershipForUserRequest {
 	return ApiReadOneGroupMembershipForUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -339,29 +333,27 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipFor
 
 // Execute executes the request
 //  @return Group
-func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (Group, *_nethttp.Response, error) {
+func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*Group, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Group
+		formFiles            []formFile
+		localVarReturnValue  *Group
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersGroupMembershipApiService.ReadOneGroupMembershipForUser")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", _neturl.PathEscape(parameterToString(r.groupID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterToString(r.groupID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.expand != nil {
 		localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
@@ -383,7 +375,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipFor
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -393,15 +385,15 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipFor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -420,7 +412,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipFor
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -431,15 +423,14 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) ReadOneGroupMembershipFor
 }
 
 type ApiRemoveUserFromGroupRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersGroupMembershipApiService
 	envID string
 	userID string
 	groupID string
 }
 
-
-func (r ApiRemoveUserFromGroupRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiRemoveUserFromGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveUserFromGroupExecute(r)
 }
 
@@ -448,13 +439,13 @@ RemoveUserFromGroup REMOVE User from Group
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param groupID
  @return ApiRemoveUserFromGroupRequest
 */
-func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroup(ctx _context.Context, envID string, userID string, groupID string) ApiRemoveUserFromGroupRequest {
+func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroup(ctx context.Context, envID string, userID string, groupID string) ApiRemoveUserFromGroupRequest {
 	return ApiRemoveUserFromGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -465,28 +456,26 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroup(ctx _
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroupExecute(r ApiRemoveUserFromGroupRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroupExecute(r ApiRemoveUserFromGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersGroupMembershipApiService.RemoveUserFromGroup")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", _neturl.PathEscape(parameterToString(r.groupID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterToString(r.groupID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -505,7 +494,7 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroupExecut
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -515,15 +504,15 @@ func (a *ManagementAPIsUsersGroupMembershipApiService) RemoveUserFromGroupExecut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

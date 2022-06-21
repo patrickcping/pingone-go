@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsNotificationsNotificationsSettingsSMTPApiService ManagementAPIsNotificationsNotificationsSettingsSMTPApi service
 type ManagementAPIsNotificationsNotificationsSettingsSMTPApiService service
 
 type ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet READ Notificati
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest
 */
-func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest {
+func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest {
 	return ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsNotificationsSettingsSMTPApiService.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/notificationsSettings/emailDeliverySettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,7 +126,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 }
 
 type ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService
 	envID string
 	body *map[string]interface{}
@@ -144,7 +137,7 @@ func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutReque
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutExecute(r)
 }
 
@@ -153,11 +146,11 @@ V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut UPDATE Notifica
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest
 */
-func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest {
+func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest {
 	return ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -166,26 +159,24 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsNotificationsSettingsSMTPApiService.V1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/notificationsSettings/emailDeliverySettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -206,7 +197,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -216,15 +207,15 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsSMTPApiService) V1Envir
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

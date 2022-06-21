@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsSubscriptionsWebhooksApiService ManagementAPIsSubscriptionsWebhooksApi service
 type ManagementAPIsSubscriptionsWebhooksApiService service
 
 type ApiV1EnvironmentsEnvIDSubscriptionsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSubscriptionsWebhooksApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSubscriptionsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSubscriptionsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSubscriptionsGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDSubscriptionsGet READ All Subscriptions
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDSubscriptionsGetRequest
 */
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDSubscriptionsGetRequest {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDSubscriptionsGetRequest {
 	return ApiV1EnvironmentsEnvIDSubscriptionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsGetExecute(r ApiV1EnvironmentsEnvIDSubscriptionsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsGetExecute(r ApiV1EnvironmentsEnvIDSubscriptionsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSubscriptionsWebhooksApiService.V1EnvironmentsEnvIDSubscriptionsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/subscriptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,7 +126,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 type ApiV1EnvironmentsEnvIDSubscriptionsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSubscriptionsWebhooksApiService
 	envID string
 	body *map[string]interface{}
@@ -144,7 +137,7 @@ func (r ApiV1EnvironmentsEnvIDSubscriptionsPostRequest) Body(body map[string]int
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDSubscriptionsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSubscriptionsPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSubscriptionsPostExecute(r)
 }
 
@@ -153,11 +146,11 @@ V1EnvironmentsEnvIDSubscriptionsPost CREATE Subscriptions
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDSubscriptionsPostRequest
 */
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDSubscriptionsPostRequest {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDSubscriptionsPostRequest {
 	return ApiV1EnvironmentsEnvIDSubscriptionsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -166,26 +159,24 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsPostExecute(r ApiV1EnvironmentsEnvIDSubscriptionsPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsPostExecute(r ApiV1EnvironmentsEnvIDSubscriptionsPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSubscriptionsWebhooksApiService.V1EnvironmentsEnvIDSubscriptionsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/subscriptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -206,7 +197,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -216,15 +207,15 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -245,14 +236,13 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 type ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSubscriptionsWebhooksApiService
 	envID string
 	subscriptionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteExecute(r)
 }
 
@@ -261,12 +251,12 @@ V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete DELETE Subscription
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param subscriptionID
  @return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest
 */
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(ctx _context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(ctx context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -276,27 +266,25 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSubscriptionsWebhooksApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", _neturl.PathEscape(parameterToString(r.subscriptionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterToString(r.subscriptionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -315,7 +303,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -325,15 +313,15 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -354,14 +342,13 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 type ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSubscriptionsWebhooksApiService
 	envID string
 	subscriptionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetExecute(r)
 }
 
@@ -370,12 +357,12 @@ V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet READ One Subscription
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param subscriptionID
  @return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest
 */
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(ctx _context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(ctx context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest {
 	return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,27 +372,25 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSubscriptionsWebhooksApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", _neturl.PathEscape(parameterToString(r.subscriptionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterToString(r.subscriptionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -424,7 +409,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -434,15 +419,15 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -463,7 +448,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 type ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsSubscriptionsWebhooksApiService
 	envID string
 	subscriptionID string
@@ -475,7 +460,7 @@ func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest) Body(body m
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutExecute(r)
 }
 
@@ -484,12 +469,12 @@ V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut UPDATE Subscription
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param subscriptionID
  @return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest
 */
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(ctx _context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(ctx context.Context, envID string, subscriptionID string) ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest {
 	return ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -499,27 +484,25 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 }
 
 // Execute executes the request
-func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutExecute(r ApiV1EnvironmentsEnvIDSubscriptionsSubscriptionIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsSubscriptionsWebhooksApiService.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", _neturl.PathEscape(parameterToString(r.subscriptionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterToString(r.subscriptionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -540,7 +523,7 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -550,15 +533,15 @@ func (a *ManagementAPIsSubscriptionsWebhooksApiService) V1EnvironmentsEnvIDSubsc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

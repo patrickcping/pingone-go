@@ -160,7 +160,7 @@ func (o *RiskEvaluationEvent) GetIp() string {
 // GetIpOk returns a tuple with the Ip field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetIpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Ip, true
@@ -312,7 +312,7 @@ func (o *RiskEvaluationEvent) GetUser() RiskEvaluationEventUser {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetUserOk() (*RiskEvaluationEventUser, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true

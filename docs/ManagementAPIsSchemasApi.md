@@ -41,8 +41,8 @@ func main() {
     schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.CreateAttribute(context.Background(), envID, schemaID).SchemaAttribute(schemaAttribute).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.CreateAttribute(context.Background(), envID, schemaID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.CreateAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,8 +116,8 @@ func main() {
     attributeID := "attributeID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.DeleteAttribute(context.Background(), envID, schemaID, attributeID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.DeleteAttribute(context.Background(), envID, schemaID, attributeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.DeleteAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -189,8 +189,8 @@ func main() {
     schemaID := "schemaID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.ReadAllSchemaAttributes(context.Background(), envID, schemaID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.ReadAllSchemaAttributes(context.Background(), envID, schemaID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.ReadAllSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.ReadAllSchemas(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.ReadAllSchemas(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.ReadAllSchemas``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,8 +333,8 @@ func main() {
     attributeID := "attributeID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.ReadOneAttribute(context.Background(), envID, schemaID, attributeID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.ReadOneAttribute(context.Background(), envID, schemaID, attributeID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.ReadOneAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,8 +408,8 @@ func main() {
     schemaID := "schemaID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.ReadOneSchema(context.Background(), envID, schemaID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.ReadOneSchema(context.Background(), envID, schemaID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.ReadOneSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -483,8 +483,8 @@ func main() {
     schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePatch(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.UpdateAttributePatch(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.UpdateAttributePatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
     schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSchemasApi.UpdateAttributePut(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSchemasApi.UpdateAttributePut(context.Background(), envID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSchemasApi.UpdateAttributePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

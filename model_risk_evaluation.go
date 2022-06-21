@@ -156,7 +156,7 @@ func (o *RiskEvaluation) GetEvent() RiskEvaluationEvent {
 // GetEventOk returns a tuple with the Event field value
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluation) GetEventOk() (*RiskEvaluationEvent, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Event, true

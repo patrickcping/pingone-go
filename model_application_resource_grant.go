@@ -22,7 +22,7 @@ type ApplicationResourceGrant struct {
 	// A string that specifies the application resource grant ID.
 	Id *string `json:"id,omitempty"`
 	Resource ApplicationResourceGrantResource `json:"resource"`
-	Scopes []ApplicationResourceGrantScopes `json:"scopes"`
+	Scopes []ApplicationResourceGrantScopesInner `json:"scopes"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -31,7 +31,7 @@ type ApplicationResourceGrant struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopes) *ApplicationResourceGrant {
+func NewApplicationResourceGrant(resource ApplicationResourceGrantResource, scopes []ApplicationResourceGrantScopesInner) *ApplicationResourceGrant {
 	this := ApplicationResourceGrant{}
 	this.Resource = resource
 	this.Scopes = scopes
@@ -155,7 +155,7 @@ func (o *ApplicationResourceGrant) GetResource() ApplicationResourceGrantResourc
 // GetResourceOk returns a tuple with the Resource field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResourceGrant) GetResourceOk() (*ApplicationResourceGrantResource, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Resource, true
@@ -167,9 +167,9 @@ func (o *ApplicationResourceGrant) SetResource(v ApplicationResourceGrantResourc
 }
 
 // GetScopes returns the Scopes field value
-func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopes {
+func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopesInner {
 	if o == nil {
-		var ret []ApplicationResourceGrantScopes
+		var ret []ApplicationResourceGrantScopesInner
 		return ret
 	}
 
@@ -178,15 +178,15 @@ func (o *ApplicationResourceGrant) GetScopes() []ApplicationResourceGrantScopes 
 
 // GetScopesOk returns a tuple with the Scopes field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationResourceGrant) GetScopesOk() (*[]ApplicationResourceGrantScopes, bool) {
-	if o == nil  {
+func (o *ApplicationResourceGrant) GetScopesOk() ([]ApplicationResourceGrantScopesInner, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Scopes, true
+	return o.Scopes, true
 }
 
 // SetScopes sets field value
-func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopes) {
+func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopesInner) {
 	o.Scopes = v
 }
 

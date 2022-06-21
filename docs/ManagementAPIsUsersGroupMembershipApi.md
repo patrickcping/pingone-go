@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AddUserToGroup
 
-> Group AddUserToGroup(ctx, envID, userID).InlineObject3(inlineObject3).Execute()
+> Group AddUserToGroup(ctx, envID, userID).AddUserToGroupRequest(addUserToGroupRequest).Execute()
 
 ADD User to Group
 
@@ -34,11 +34,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    inlineObject3 := *openapiclient.NewInlineObject3() // InlineObject3 |  (optional)
+    addUserToGroupRequest := *openapiclient.NewAddUserToGroupRequest() // AddUserToGroupRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.AddUserToGroup(context.Background(), envID, userID).InlineObject3(inlineObject3).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersGroupMembershipApi.AddUserToGroup(context.Background(), envID, userID).AddUserToGroupRequest(addUserToGroupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.AddUserToGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **inlineObject3** | [**InlineObject3**](InlineObject3.md) |  | 
+ **addUserToGroupRequest** | [**AddUserToGroupRequest**](AddUserToGroupRequest.md) |  | 
 
 ### Return type
 
@@ -114,8 +114,8 @@ func main() {
     filter := "type eq "DIRECT"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser(context.Background(), envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser(context.Background(), envID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadAllGroupMembershipsForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -192,8 +192,8 @@ func main() {
     expand := "group" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser(context.Background(), envID, userID, groupID).Expand(expand).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser(context.Background(), envID, userID, groupID).Expand(expand).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.ReadOneGroupMembershipForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -269,8 +269,8 @@ func main() {
     groupID := "groupID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersGroupMembershipApi.RemoveUserFromGroup(context.Background(), envID, userID, groupID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersGroupMembershipApi.RemoveUserFromGroup(context.Background(), envID, userID, groupID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersGroupMembershipApi.RemoveUserFromGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

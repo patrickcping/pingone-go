@@ -37,8 +37,8 @@ func main() {
     environment := *openapiclient.NewEnvironment(*openapiclient.NewEnvironmentLicense("Id_example"), "Name_example", "Region_example", "Type_example") // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense(context.Background()).Environment(environment).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense(context.Background()).Environment(environment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.CreateEnvironmentActiveLicense``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,8 +103,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.DeleteEnvironment(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.DeleteEnvironment(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.DeleteEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,8 +172,8 @@ func main() {
     filter := "name sw "S" and license.id eq "34f0efac-21d9-4a17-8a35-196bb3362983"" // string | Adding a SCIM filter for an environment to display only those resources associated with the specified environment. 'sw', 'eq' and 'and' are supported (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.ReadAllEnvironments(context.Background()).Limit(limit).Filter(filter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.ReadAllEnvironments(context.Background()).Limit(limit).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.ReadAllEnvironments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,8 +239,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.ReadOneEnvironment(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.ReadOneEnvironment(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.ReadOneEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -310,8 +310,8 @@ func main() {
     environment := *openapiclient.NewEnvironment(*openapiclient.NewEnvironmentLicense("Id_example"), "Name_example", "Region_example", "Type_example") // Environment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironment(context.Background(), envID).Environment(environment).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.UpdateEnvironment(context.Background(), envID).Environment(environment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## UpdateEnvironmentType
 
-> Environment UpdateEnvironmentType(ctx, envID).InlineObject2(inlineObject2).Execute()
+> Environment UpdateEnvironmentType(ctx, envID).UpdateEnvironmentTypeRequest(updateEnvironmentTypeRequest).Execute()
 
 UPDATE Environment Type
 
@@ -379,11 +379,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 |  (optional)
+    updateEnvironmentTypeRequest := *openapiclient.NewUpdateEnvironmentTypeRequest() // UpdateEnvironmentTypeRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsEnvironmentsApi.UpdateEnvironmentType(context.Background(), envID).InlineObject2(inlineObject2).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsEnvironmentsApi.UpdateEnvironmentType(context.Background(), envID).UpdateEnvironmentTypeRequest(updateEnvironmentTypeRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsEnvironmentsApi.UpdateEnvironmentType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +409,7 @@ Other parameters are passed through a pointer to a apiUpdateEnvironmentTypeReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
+ **updateEnvironmentTypeRequest** | [**UpdateEnvironmentTypeRequest**](UpdateEnvironmentTypeRequest.md) |  | 
 
 ### Return type
 

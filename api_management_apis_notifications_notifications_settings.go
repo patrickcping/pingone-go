@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsNotificationsNotificationsSettingsApiService ManagementAPIsNotificationsNotificationsSettingsApi service
 type ManagementAPIsNotificationsNotificationsSettingsApiService service
 
 type ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsDeleteExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDNotificationsSettingsDelete DELETE Notifications Settings
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest
 */
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsDelete(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsDelete(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest {
 	return ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsDeleteExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsDeleteExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsNotificationsSettingsApiService.V1EnvironmentsEnvIDNotificationsSettingsDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/notificationsSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,13 +126,12 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsGetExecute(r)
 }
 
@@ -148,11 +140,11 @@ V1EnvironmentsEnvIDNotificationsSettingsGet READ Notifications Settings
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest
 */
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest {
 	return ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -161,26 +153,24 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsGetExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsGetExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsNotificationsSettingsApiService.V1EnvironmentsEnvIDNotificationsSettingsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/notificationsSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -199,7 +189,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -209,15 +199,15 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -238,13 +228,12 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsNotificationsSettingsApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDNotificationsSettingsPutExecute(r)
 }
 
@@ -253,11 +242,11 @@ V1EnvironmentsEnvIDNotificationsSettingsPut UPDATE Notifications Settings
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest
 */
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsPut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsPut(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest {
 	return ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -266,26 +255,24 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsPutExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1EnvironmentsEnvIDNotificationsSettingsPutExecute(r ApiV1EnvironmentsEnvIDNotificationsSettingsPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsNotificationsSettingsApiService.V1EnvironmentsEnvIDNotificationsSettingsPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/notificationsSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -304,7 +291,7 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -314,15 +301,15 @@ func (a *ManagementAPIsNotificationsNotificationsSettingsApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

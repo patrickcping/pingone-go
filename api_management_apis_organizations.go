@@ -12,28 +12,23 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsOrganizationsApiService ManagementAPIsOrganizationsApi service
 type ManagementAPIsOrganizationsApiService service
 
 type ApiV1OrganizationsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsOrganizationsApiService
 }
 
-
-func (r ApiV1OrganizationsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsGetExecute(r)
 }
 
@@ -42,10 +37,10 @@ V1OrganizationsGet READ All Organizations
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiV1OrganizationsGetRequest
 */
-func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGet(ctx _context.Context) ApiV1OrganizationsGetRequest {
+func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGet(ctx context.Context) ApiV1OrganizationsGetRequest {
 	return ApiV1OrganizationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,25 +48,23 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGet(ctx _context.
 }
 
 // Execute executes the request
-func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGetExecute(r ApiV1OrganizationsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGetExecute(r ApiV1OrganizationsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsOrganizationsApiService.V1OrganizationsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -90,7 +83,7 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGetExecute(r ApiV
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -100,15 +93,15 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGetExecute(r ApiV
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -129,13 +122,12 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsGetExecute(r ApiV
 }
 
 type ApiV1OrganizationsOrgIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsOrganizationsApiService
 	orgID string
 }
 
-
-func (r ApiV1OrganizationsOrgIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDGetExecute(r)
 }
 
@@ -144,11 +136,11 @@ V1OrganizationsOrgIDGet READ One Organization
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @return ApiV1OrganizationsOrgIDGetRequest
 */
-func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGet(ctx _context.Context, orgID string) ApiV1OrganizationsOrgIDGetRequest {
+func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGet(ctx context.Context, orgID string) ApiV1OrganizationsOrgIDGetRequest {
 	return ApiV1OrganizationsOrgIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -157,26 +149,24 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGet(ctx _con
 }
 
 // Execute executes the request
-func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGetExecute(r ApiV1OrganizationsOrgIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGetExecute(r ApiV1OrganizationsOrgIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsOrganizationsApiService.V1OrganizationsOrgIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -195,7 +185,7 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGetExecute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -205,15 +195,15 @@ func (a *ManagementAPIsOrganizationsApiService) V1OrganizationsOrgIDGetExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

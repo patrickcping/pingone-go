@@ -41,8 +41,8 @@ func main() {
     contentType := "application/vnd.pingidentity.devices.order.remove+json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete(context.Background(), envID, userID).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete(context.Background(), envID, userID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,8 +114,8 @@ func main() {
     deviceID := "deviceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(context.Background(), envID, userID, deviceID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(context.Background(), envID, userID, deviceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -188,8 +188,8 @@ func main() {
     deviceID := "deviceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(context.Background(), envID, userID, deviceID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(context.Background(), envID, userID, deviceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,11 +260,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), envID, userID, deviceID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), envID, userID, deviceID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,11 +336,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), envID, userID, deviceID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), envID, userID, deviceID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -413,11 +413,11 @@ func main() {
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
     contentType := "application/vnd.pingidentity.device.activate+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -491,8 +491,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,11 +561,11 @@ func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.devices.reorder+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -52,7 +52,7 @@ func (o *RiskPolicyResult) GetLevel() string {
 // GetLevelOk returns a tuple with the Level field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetLevelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Level, true

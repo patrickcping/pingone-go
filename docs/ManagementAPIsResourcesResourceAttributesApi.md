@@ -38,8 +38,8 @@ func main() {
     resourceAttribute := *openapiclient.NewResourceAttribute("Name_example", "Value_example") // ResourceAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.CreateResourceAttribute(context.Background(), envID, resourceID).ResourceAttribute(resourceAttribute).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceAttributesApi.CreateResourceAttribute(context.Background(), envID, resourceID).ResourceAttribute(resourceAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.CreateResourceAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     resourceAttrID := "resourceAttrID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.DeleteResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceAttributesApi.DeleteResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.DeleteResourceAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     resourceID := "resourceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.ReadAllResourceAttributes(context.Background(), envID, resourceID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceAttributesApi.ReadAllResourceAttributes(context.Background(), envID, resourceID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.ReadAllResourceAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     resourceAttrID := "resourceAttrID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.ReadOneResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceAttributesApi.ReadOneResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.ReadOneResourceAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,8 +337,8 @@ func main() {
     resourceAttribute := *openapiclient.NewResourceAttribute("Name_example", "Value_example") // ResourceAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsResourcesResourceAttributesApi.UpdateResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).ResourceAttribute(resourceAttribute).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsResourcesResourceAttributesApi.UpdateResourceAttribute(context.Background(), envID, resourceID, resourceAttrID).ResourceAttribute(resourceAttribute).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsResourcesResourceAttributesApi.UpdateResourceAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

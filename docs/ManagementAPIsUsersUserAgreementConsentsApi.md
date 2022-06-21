@@ -36,8 +36,8 @@ func main() {
     agreementID := "agreementID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), envID, userID, agreementID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), envID, userID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +111,8 @@ func main() {
     contentType := "application/vnd.pingidentity.consent.revoke+json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), envID, userID, agreementID).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), envID, userID, agreementID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsAgreementIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -185,8 +185,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersUserAgreementConsentsApi.V1EnvironmentsEnvIDUsersUserIDAgreementConsentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

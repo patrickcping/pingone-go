@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsResourcesResourceAttributesApiService ManagementAPIsResourcesResourceAttributesApi service
 type ManagementAPIsResourcesResourceAttributesApiService service
 
 type ApiCreateResourceAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsResourcesResourceAttributesApiService
 	envID string
 	resourceID string
@@ -40,7 +36,7 @@ func (r ApiCreateResourceAttributeRequest) ResourceAttribute(resourceAttribute R
 	return r
 }
 
-func (r ApiCreateResourceAttributeRequest) Execute() (ResourceAttribute, *_nethttp.Response, error) {
+func (r ApiCreateResourceAttributeRequest) Execute() (*ResourceAttribute, *http.Response, error) {
 	return r.ApiService.CreateResourceAttributeExecute(r)
 }
 
@@ -49,12 +45,12 @@ CreateResourceAttribute CREATE Resource Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param resourceID
  @return ApiCreateResourceAttributeRequest
 */
-func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttribute(ctx _context.Context, envID string, resourceID string) ApiCreateResourceAttributeRequest {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttribute(ctx context.Context, envID string, resourceID string) ApiCreateResourceAttributeRequest {
 	return ApiCreateResourceAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -65,28 +61,26 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttr
 
 // Execute executes the request
 //  @return ResourceAttribute
-func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttributeExecute(r ApiCreateResourceAttributeRequest) (ResourceAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttributeExecute(r ApiCreateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ResourceAttribute
+		formFiles            []formFile
+		localVarReturnValue  *ResourceAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsResourcesResourceAttributesApiService.CreateResourceAttribute")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/resources/{resourceID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", _neturl.PathEscape(parameterToString(r.resourceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterToString(r.resourceID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -107,7 +101,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttr
 	}
 	// body params
 	localVarPostBody = r.resourceAttribute
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -117,15 +111,15 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +138,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,15 +149,14 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) CreateResourceAttr
 }
 
 type ApiDeleteResourceAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsResourcesResourceAttributesApiService
 	envID string
 	resourceID string
 	resourceAttrID string
 }
 
-
-func (r ApiDeleteResourceAttributeRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteResourceAttributeRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteResourceAttributeExecute(r)
 }
 
@@ -172,13 +165,13 @@ DeleteResourceAttribute DELETE Resource Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param resourceID
  @param resourceAttrID
  @return ApiDeleteResourceAttributeRequest
 */
-func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttribute(ctx _context.Context, envID string, resourceID string, resourceAttrID string) ApiDeleteResourceAttributeRequest {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttribute(ctx context.Context, envID string, resourceID string, resourceAttrID string) ApiDeleteResourceAttributeRequest {
 	return ApiDeleteResourceAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -189,28 +182,26 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttr
 }
 
 // Execute executes the request
-func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttributeExecute(r ApiDeleteResourceAttributeRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttributeExecute(r ApiDeleteResourceAttributeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsResourcesResourceAttributesApiService.DeleteResourceAttribute")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/resources/{resourceID}/attributes/{resourceAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", _neturl.PathEscape(parameterToString(r.resourceID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", _neturl.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterToString(r.resourceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", url.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -229,7 +220,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -239,15 +230,15 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -268,14 +259,13 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) DeleteResourceAttr
 }
 
 type ApiReadAllResourceAttributesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsResourcesResourceAttributesApiService
 	envID string
 	resourceID string
 }
 
-
-func (r ApiReadAllResourceAttributesRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllResourceAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllResourceAttributesExecute(r)
 }
 
@@ -284,12 +274,12 @@ ReadAllResourceAttributes READ All Resource Attributes
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param resourceID
  @return ApiReadAllResourceAttributesRequest
 */
-func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAttributes(ctx _context.Context, envID string, resourceID string) ApiReadAllResourceAttributesRequest {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAttributes(ctx context.Context, envID string, resourceID string) ApiReadAllResourceAttributesRequest {
 	return ApiReadAllResourceAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -300,28 +290,26 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAtt
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAttributesExecute(r ApiReadAllResourceAttributesRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAttributesExecute(r ApiReadAllResourceAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsResourcesResourceAttributesApiService.ReadAllResourceAttributes")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/resources/{resourceID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", _neturl.PathEscape(parameterToString(r.resourceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterToString(r.resourceID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -340,7 +328,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAtt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -350,15 +338,15 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAtt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -377,7 +365,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAtt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -388,15 +376,14 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadAllResourceAtt
 }
 
 type ApiReadOneResourceAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsResourcesResourceAttributesApiService
 	envID string
 	resourceID string
 	resourceAttrID string
 }
 
-
-func (r ApiReadOneResourceAttributeRequest) Execute() (ResourceAttribute, *_nethttp.Response, error) {
+func (r ApiReadOneResourceAttributeRequest) Execute() (*ResourceAttribute, *http.Response, error) {
 	return r.ApiService.ReadOneResourceAttributeExecute(r)
 }
 
@@ -405,13 +392,13 @@ ReadOneResourceAttribute READ One Resource Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param resourceID
  @param resourceAttrID
  @return ApiReadOneResourceAttributeRequest
 */
-func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAttribute(ctx _context.Context, envID string, resourceID string, resourceAttrID string) ApiReadOneResourceAttributeRequest {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAttribute(ctx context.Context, envID string, resourceID string, resourceAttrID string) ApiReadOneResourceAttributeRequest {
 	return ApiReadOneResourceAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -423,29 +410,27 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAtt
 
 // Execute executes the request
 //  @return ResourceAttribute
-func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAttributeExecute(r ApiReadOneResourceAttributeRequest) (ResourceAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAttributeExecute(r ApiReadOneResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ResourceAttribute
+		formFiles            []formFile
+		localVarReturnValue  *ResourceAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsResourcesResourceAttributesApiService.ReadOneResourceAttribute")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/resources/{resourceID}/attributes/{resourceAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", _neturl.PathEscape(parameterToString(r.resourceID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", _neturl.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterToString(r.resourceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", url.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -464,7 +449,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAtt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -474,15 +459,15 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAtt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -501,7 +486,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAtt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -512,7 +497,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) ReadOneResourceAtt
 }
 
 type ApiUpdateResourceAttributeRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsResourcesResourceAttributesApiService
 	envID string
 	resourceID string
@@ -525,7 +510,7 @@ func (r ApiUpdateResourceAttributeRequest) ResourceAttribute(resourceAttribute R
 	return r
 }
 
-func (r ApiUpdateResourceAttributeRequest) Execute() (ResourceAttribute, *_nethttp.Response, error) {
+func (r ApiUpdateResourceAttributeRequest) Execute() (*ResourceAttribute, *http.Response, error) {
 	return r.ApiService.UpdateResourceAttributeExecute(r)
 }
 
@@ -534,13 +519,13 @@ UpdateResourceAttribute UPDATE Resource Attribute
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param resourceID
  @param resourceAttrID
  @return ApiUpdateResourceAttributeRequest
 */
-func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttribute(ctx _context.Context, envID string, resourceID string, resourceAttrID string) ApiUpdateResourceAttributeRequest {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttribute(ctx context.Context, envID string, resourceID string, resourceAttrID string) ApiUpdateResourceAttributeRequest {
 	return ApiUpdateResourceAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -552,29 +537,27 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttr
 
 // Execute executes the request
 //  @return ResourceAttribute
-func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttributeExecute(r ApiUpdateResourceAttributeRequest) (ResourceAttribute, *_nethttp.Response, error) {
+func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttributeExecute(r ApiUpdateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ResourceAttribute
+		formFiles            []formFile
+		localVarReturnValue  *ResourceAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsResourcesResourceAttributesApiService.UpdateResourceAttribute")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/resources/{resourceID}/attributes/{resourceAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", _neturl.PathEscape(parameterToString(r.resourceID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", _neturl.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterToString(r.resourceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceAttrID"+"}", url.PathEscape(parameterToString(r.resourceAttrID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -595,7 +578,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttr
 	}
 	// body params
 	localVarPostBody = r.resourceAttribute
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -605,15 +588,15 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -632,7 +615,7 @@ func (a *ManagementAPIsResourcesResourceAttributesApiService) UpdateResourceAttr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

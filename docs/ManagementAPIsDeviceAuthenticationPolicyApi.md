@@ -32,11 +32,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), envID, deviceAuthPolicyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,8 +106,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsDeviceAuthenticationPolicyApi.V1EnvironmentsEnvIDDeviceAuthenticationPolicyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

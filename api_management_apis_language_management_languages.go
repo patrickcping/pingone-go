@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsLanguageManagementLanguagesApiService ManagementAPIsLanguageManagementLanguagesApi service
 type ManagementAPIsLanguageManagementLanguagesApiService service
 
 type ApiV1EnvironmentsEnvIDLanguagesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLanguageManagementLanguagesApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDLanguagesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDLanguagesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDLanguagesGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1EnvironmentsEnvIDLanguagesGet READ Languages
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDLanguagesGetRequest
 */
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDLanguagesGetRequest {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDLanguagesGetRequest {
 	return ApiV1EnvironmentsEnvIDLanguagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesGetExecute(r ApiV1EnvironmentsEnvIDLanguagesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesGetExecute(r ApiV1EnvironmentsEnvIDLanguagesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLanguageManagementLanguagesApiService.V1EnvironmentsEnvIDLanguagesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/languages"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,14 +126,13 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 type ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLanguageManagementLanguagesApiService
 	envID string
 	languageID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDLanguagesLanguageIDDeleteExecute(r)
 }
 
@@ -149,12 +141,12 @@ V1EnvironmentsEnvIDLanguagesLanguageIDDelete DELETE Language
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param languageID
  @return ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest
 */
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDDelete(ctx _context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDDelete(ctx context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,27 +156,25 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDDeleteExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDDeleteExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLanguageManagementLanguagesApiService.V1EnvironmentsEnvIDLanguagesLanguageIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", _neturl.PathEscape(parameterToString(r.languageID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -203,7 +193,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -213,15 +203,15 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,14 +232,13 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 type ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLanguageManagementLanguagesApiService
 	envID string
 	languageID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDLanguagesLanguageIDGetExecute(r)
 }
 
@@ -258,12 +247,12 @@ V1EnvironmentsEnvIDLanguagesLanguageIDGet READ One Language
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param languageID
  @return ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest
 */
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDGet(ctx _context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDGet(ctx context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest {
 	return ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,27 +262,25 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDGetExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDGetExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLanguageManagementLanguagesApiService.V1EnvironmentsEnvIDLanguagesLanguageIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", _neturl.PathEscape(parameterToString(r.languageID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -312,7 +299,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -322,15 +309,15 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -351,7 +338,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 type ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLanguageManagementLanguagesApiService
 	envID string
 	languageID string
@@ -363,7 +350,7 @@ func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest) Body(body map[strin
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDLanguagesLanguageIDPutExecute(r)
 }
 
@@ -372,12 +359,12 @@ V1EnvironmentsEnvIDLanguagesLanguageIDPut UPDATE Language
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param languageID
  @return ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest
 */
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDPut(ctx _context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDPut(ctx context.Context, envID string, languageID string) ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest {
 	return ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,27 +374,25 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDPutExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesLanguageIDPutExecute(r ApiV1EnvironmentsEnvIDLanguagesLanguageIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLanguageManagementLanguagesApiService.V1EnvironmentsEnvIDLanguagesLanguageIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", _neturl.PathEscape(parameterToString(r.languageID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -428,7 +413,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -438,15 +423,15 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -467,7 +452,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 type ApiV1EnvironmentsEnvIDLanguagesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLanguageManagementLanguagesApiService
 	envID string
 	body *map[string]interface{}
@@ -478,7 +463,7 @@ func (r ApiV1EnvironmentsEnvIDLanguagesPostRequest) Body(body map[string]interfa
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDLanguagesPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDLanguagesPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDLanguagesPostExecute(r)
 }
 
@@ -487,11 +472,11 @@ V1EnvironmentsEnvIDLanguagesPost CREATE Language
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDLanguagesPostRequest
 */
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDLanguagesPostRequest {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDLanguagesPostRequest {
 	return ApiV1EnvironmentsEnvIDLanguagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -500,26 +485,24 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesPostExecute(r ApiV1EnvironmentsEnvIDLanguagesPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvIDLanguagesPostExecute(r ApiV1EnvironmentsEnvIDLanguagesPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLanguageManagementLanguagesApiService.V1EnvironmentsEnvIDLanguagesPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/languages/"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -540,7 +523,7 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -550,15 +533,15 @@ func (a *ManagementAPIsLanguageManagementLanguagesApiService) V1EnvironmentsEnvI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

@@ -39,8 +39,8 @@ func main() {
     authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesGet(context.Background(), envID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesGet(context.Background(), envID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,11 +108,11 @@ func main() {
     envID := "envID_example" // string | 
     authorization := "{{jwtToken}}" // string |  (optional)
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesPost(context.Background(), envID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesPost(context.Background(), envID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -184,8 +184,8 @@ func main() {
     authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultGet(context.Background(), envID, themeID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultGet(context.Background(), envID, themeID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,11 +256,11 @@ func main() {
     themeID := "themeID_example" // string | 
     authorization := "{{jwtToken}}" // string |  (optional)
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultPut(context.Background(), envID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultPut(context.Background(), envID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDefaultPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
     authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDelete(context.Background(), envID, themeID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDelete(context.Background(), envID, themeID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,8 +407,8 @@ func main() {
     authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDGet(context.Background(), envID, themeID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDGet(context.Background(), envID, themeID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,11 +479,11 @@ func main() {
     themeID := "themeID_example" // string | 
     authorization := "{{jwtToken}}" // string |  (optional)
     contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDPut(context.Background(), envID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDPut(context.Background(), envID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingThemesApi.V1EnvironmentsEnvIDThemesThemeIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

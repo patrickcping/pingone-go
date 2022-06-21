@@ -36,11 +36,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/vnd.pingidentity.connection.check+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresConnectionStatusPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet(context.Background(), envID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet(context.Background(), envID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,11 +177,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(context.Background(), envID, storeID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete(context.Background(), envID, storeID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -324,8 +324,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet(context.Background(), envID, storeID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet(context.Background(), envID, storeID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -394,11 +394,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     storeID := "storeID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut(context.Background(), envID, storeID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi.V1EnvironmentsEnvIDPropagationStoresStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

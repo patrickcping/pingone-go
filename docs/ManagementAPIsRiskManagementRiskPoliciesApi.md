@@ -37,8 +37,8 @@ func main() {
     riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet(context.Background(), envID).RiskPolicySet(riskPolicySet).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet(context.Background(), envID).RiskPolicySet(riskPolicySet).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.CreateRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     riskPolicySetID := "riskPolicySetID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.DeleteRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskPoliciesApi.DeleteRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.DeleteRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,8 +180,8 @@ func main() {
     riskPolicySetID := "riskPolicySetID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet(context.Background(), envID, riskPolicySetID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.ReadOneRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,8 +252,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.ReadRiskPolicySets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -324,8 +324,8 @@ func main() {
     riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet(context.Background(), envID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet(context.Background(), envID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsRiskManagementRiskPoliciesApi.UpdateRiskPolicySet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

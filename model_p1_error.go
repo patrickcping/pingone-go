@@ -19,7 +19,7 @@ type P1Error struct {
 	Id *string `json:"id,omitempty"`
 	Code *string `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
-	Details *[]P1ErrorDetails `json:"details,omitempty"`
+	Details []P1ErrorDetailsInner `json:"details,omitempty"`
 }
 
 // NewP1Error instantiates a new P1Error object
@@ -136,17 +136,17 @@ func (o *P1Error) SetMessage(v string) {
 }
 
 // GetDetails returns the Details field value if set, zero value otherwise.
-func (o *P1Error) GetDetails() []P1ErrorDetails {
+func (o *P1Error) GetDetails() []P1ErrorDetailsInner {
 	if o == nil || o.Details == nil {
-		var ret []P1ErrorDetails
+		var ret []P1ErrorDetailsInner
 		return ret
 	}
-	return *o.Details
+	return o.Details
 }
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *P1Error) GetDetailsOk() (*[]P1ErrorDetails, bool) {
+func (o *P1Error) GetDetailsOk() ([]P1ErrorDetailsInner, bool) {
 	if o == nil || o.Details == nil {
 		return nil, false
 	}
@@ -162,9 +162,9 @@ func (o *P1Error) HasDetails() bool {
 	return false
 }
 
-// SetDetails gets a reference to the given []P1ErrorDetails and assigns it to the Details field.
-func (o *P1Error) SetDetails(v []P1ErrorDetails) {
-	o.Details = &v
+// SetDetails gets a reference to the given []P1ErrorDetailsInner and assigns it to the Details field.
+func (o *P1Error) SetDetails(v []P1ErrorDetailsInner) {
+	o.Details = v
 }
 
 func (o P1Error) MarshalJSON() ([]byte, error) {

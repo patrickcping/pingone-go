@@ -38,8 +38,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingMappingIDDelete(context.Background(), envID, mappingID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingMappingIDDelete(context.Background(), envID, mappingID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingMappingIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +111,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDGet(context.Background(), envID, mappingID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDGet(context.Background(), envID, mappingID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,11 +181,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     mappingID := "mappingID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(context.Background(), envID, mappingID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut(context.Background(), envID, mappingID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationMappingsMappingIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -258,8 +258,8 @@ func main() {
     contentType := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsGet(context.Background(), envID, ruleID).Accept(accept).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsGet(context.Background(), envID, ruleID).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,11 +329,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     ruleID := "ruleID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(context.Background(), envID, ruleID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost(context.Background(), envID, ruleID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.V1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

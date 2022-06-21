@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsUsersSessionsApiService ManagementAPIsUsersSessionsApi service
 type ManagementAPIsUsersSessionsApiService service
 
 type ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersSessionsApiService
 	envID string
 	userID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDSessionsGetExecute(r)
 }
 
@@ -44,12 +39,12 @@ V1EnvironmentsEnvIDUsersUserIDSessionsGet READ All Sessions
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @return ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest
 */
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsGet(ctx _context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsGet(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,27 +54,25 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersSessionsApiService.V1EnvironmentsEnvIDUsersUserIDSessionsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/sessions"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +91,7 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -108,15 +101,15 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,15 +130,14 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersSessionsApiService
 	envID string
 	userID string
 	sessionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteExecute(r)
 }
 
@@ -154,13 +146,13 @@ V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete DELETE Session
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param sessionID
  @return ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest
 */
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(ctx _context.Context, envID string, userID string, sessionID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete(ctx context.Context, envID string, userID string, sessionID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -171,28 +163,26 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersSessionsApiService.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/sessions/{sessionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", _neturl.PathEscape(parameterToString(r.sessionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterToString(r.sessionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -211,7 +201,7 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -221,15 +211,15 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -250,15 +240,14 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 }
 
 type ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsUsersSessionsApiService
 	envID string
 	userID string
 	sessionID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetExecute(r)
 }
 
@@ -267,13 +256,13 @@ V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet READ One Session
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param userID
  @param sessionID
  @return ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest
 */
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(ctx _context.Context, envID string, userID string, sessionID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet(ctx context.Context, envID string, userID string, sessionID string) ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest {
 	return ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -284,28 +273,26 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 }
 
 // Execute executes the request
-func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsUsersSessionsApiService.V1EnvironmentsEnvIDUsersUserIDSessionsSessionIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/sessions/{sessionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.PathEscape(parameterToString(r.userID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", _neturl.PathEscape(parameterToString(r.sessionID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterToString(r.sessionID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -324,7 +311,7 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -334,15 +321,15 @@ func (a *ManagementAPIsUsersSessionsApiService) V1EnvironmentsEnvIDUsersUserIDSe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

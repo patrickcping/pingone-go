@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsGatewayManagementGatewayCredentialsApiService ManagementAPIsGatewayManagementGatewayCredentialsApi service
 type ManagementAPIsGatewayManagementGatewayCredentialsApiService service
 
 type ApiCreateGatewayCredentialRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsGatewayManagementGatewayCredentialsApiService
 	envID string
 	gatewayID string
 }
 
-
-func (r ApiCreateGatewayCredentialRequest) Execute() (GatewayCredential, *_nethttp.Response, error) {
+func (r ApiCreateGatewayCredentialRequest) Execute() (*GatewayCredential, *http.Response, error) {
 	return r.ApiService.CreateGatewayCredentialExecute(r)
 }
 
@@ -44,12 +39,12 @@ CreateGatewayCredential CREATE Gateway Credentials
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param gatewayID
  @return ApiCreateGatewayCredentialRequest
 */
-func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGatewayCredential(ctx _context.Context, envID string, gatewayID string) ApiCreateGatewayCredentialRequest {
+func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGatewayCredential(ctx context.Context, envID string, gatewayID string) ApiCreateGatewayCredentialRequest {
 	return ApiCreateGatewayCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,28 +55,26 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGate
 
 // Execute executes the request
 //  @return GatewayCredential
-func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGatewayCredentialExecute(r ApiCreateGatewayCredentialRequest) (GatewayCredential, *_nethttp.Response, error) {
+func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGatewayCredentialExecute(r ApiCreateGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  GatewayCredential
+		formFiles            []formFile
+		localVarReturnValue  *GatewayCredential
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGatewayManagementGatewayCredentialsApiService.CreateGatewayCredential")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/gateways/{gatewayID}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", _neturl.PathEscape(parameterToString(r.gatewayID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterToString(r.gatewayID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -100,7 +93,7 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -110,15 +103,15 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,7 +130,7 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -148,15 +141,14 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) CreateGate
 }
 
 type ApiDeleteGatewayCredentialRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsGatewayManagementGatewayCredentialsApiService
 	envID string
 	gatewayID string
 	credentialID string
 }
 
-
-func (r ApiDeleteGatewayCredentialRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteGatewayCredentialRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteGatewayCredentialExecute(r)
 }
 
@@ -165,13 +157,13 @@ DeleteGatewayCredential DELETE Gateway Credentials
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param gatewayID
  @param credentialID
  @return ApiDeleteGatewayCredentialRequest
 */
-func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGatewayCredential(ctx _context.Context, envID string, gatewayID string, credentialID string) ApiDeleteGatewayCredentialRequest {
+func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGatewayCredential(ctx context.Context, envID string, gatewayID string, credentialID string) ApiDeleteGatewayCredentialRequest {
 	return ApiDeleteGatewayCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -182,28 +174,26 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGate
 }
 
 // Execute executes the request
-func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGatewayCredentialExecute(r ApiDeleteGatewayCredentialRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGatewayCredentialExecute(r ApiDeleteGatewayCredentialRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGatewayManagementGatewayCredentialsApiService.DeleteGatewayCredential")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/gateways/{gatewayID}/credentials/{credentialID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", _neturl.PathEscape(parameterToString(r.gatewayID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialID"+"}", _neturl.PathEscape(parameterToString(r.credentialID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterToString(r.gatewayID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialID"+"}", url.PathEscape(parameterToString(r.credentialID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -222,7 +212,7 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -232,15 +222,15 @@ func (a *ManagementAPIsGatewayManagementGatewayCredentialsApiService) DeleteGate
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

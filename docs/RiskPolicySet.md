@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters. | 
-**RiskPolicies** | Pointer to [**[]RiskPolicySetRiskPolicies**](RiskPolicySetRiskPolicies.md) | An array of policies related to this policy set. | [optional] 
+**RiskPolicies** | Pointer to [**[]RiskPolicySetRiskPoliciesInner**](RiskPolicySetRiskPoliciesInner.md) | An array of policies related to this policy set. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated (format ISO-8061). | [optional] [readonly] 
 
 ## Methods
@@ -205,20 +205,20 @@ SetName sets Name field to given value.
 
 ### GetRiskPolicies
 
-`func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPolicies`
+`func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPoliciesInner`
 
 GetRiskPolicies returns the RiskPolicies field if non-nil, zero value otherwise.
 
 ### GetRiskPoliciesOk
 
-`func (o *RiskPolicySet) GetRiskPoliciesOk() (*[]RiskPolicySetRiskPolicies, bool)`
+`func (o *RiskPolicySet) GetRiskPoliciesOk() (*[]RiskPolicySetRiskPoliciesInner, bool)`
 
 GetRiskPoliciesOk returns a tuple with the RiskPolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRiskPolicies
 
-`func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicySetRiskPolicies)`
+`func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicySetRiskPoliciesInner)`
 
 SetRiskPolicies sets RiskPolicies field to given value.
 

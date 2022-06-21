@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsAlertingApiService ManagementAPIsAlertingApi service
 type ManagementAPIsAlertingApiService service
 
 type ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAlertingApiService
 	envID string
 	alertChannelID string
@@ -40,7 +36,7 @@ func (r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest) Body(body m
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutExecute(r)
 }
 
@@ -49,12 +45,12 @@ V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut UPDATE Alert Channel
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param alertChannelID
  @return ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest
 */
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(ctx _context.Context, envID string, alertChannelID string) ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut(ctx context.Context, envID string, alertChannelID string) ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest {
 	return ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -64,27 +60,25 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutExecute(r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutExecute(r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAlertingApiService.V1EnvironmentsEnvIDAlertChannelsAlertChannelIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/alertChannels/{alertChannelID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelID"+"}", _neturl.PathEscape(parameterToString(r.alertChannelID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelID"+"}", url.PathEscape(parameterToString(r.alertChannelID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -105,7 +99,7 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -115,15 +109,15 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,14 +138,13 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 }
 
 type ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAlertingApiService
 	envID string
 	alertChannelsID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteExecute(r)
 }
 
@@ -160,12 +153,12 @@ V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete DELETE Alert Channel
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param alertChannelsID
  @return ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest
 */
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(ctx _context.Context, envID string, alertChannelsID string) ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete(ctx context.Context, envID string, alertChannelsID string) ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -175,27 +168,25 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteExecute(r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteExecute(r ApiV1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAlertingApiService.V1EnvironmentsEnvIDAlertChannelsAlertChannelsIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/alertChannels/{alertChannelsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelsID"+"}", _neturl.PathEscape(parameterToString(r.alertChannelsID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelsID"+"}", url.PathEscape(parameterToString(r.alertChannelsID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -214,7 +205,7 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -224,15 +215,15 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,13 +244,12 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsAlert
 }
 
 type ApiV1EnvironmentsEnvIDAlertChannelsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAlertingApiService
 	envID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDAlertChannelsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAlertChannelsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAlertChannelsGetExecute(r)
 }
 
@@ -268,11 +258,11 @@ V1EnvironmentsEnvIDAlertChannelsGet READ All Alert Channels per Environment
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDAlertChannelsGetRequest
 */
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDAlertChannelsGetRequest {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDAlertChannelsGetRequest {
 	return ApiV1EnvironmentsEnvIDAlertChannelsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -281,26 +271,24 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGet(c
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGetExecute(r ApiV1EnvironmentsEnvIDAlertChannelsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGetExecute(r ApiV1EnvironmentsEnvIDAlertChannelsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAlertingApiService.V1EnvironmentsEnvIDAlertChannelsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/alertChannels"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -319,7 +307,7 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGetEx
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -329,15 +317,15 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGetEx
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -358,7 +346,7 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsGetEx
 }
 
 type ApiV1EnvironmentsEnvIDAlertChannelsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsAlertingApiService
 	envID string
 	body *map[string]interface{}
@@ -369,7 +357,7 @@ func (r ApiV1EnvironmentsEnvIDAlertChannelsPostRequest) Body(body map[string]int
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDAlertChannelsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDAlertChannelsPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDAlertChannelsPostExecute(r)
 }
 
@@ -378,11 +366,11 @@ V1EnvironmentsEnvIDAlertChannelsPost CREATE Alert Channel (Email)
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDAlertChannelsPostRequest
 */
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDAlertChannelsPostRequest {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDAlertChannelsPostRequest {
 	return ApiV1EnvironmentsEnvIDAlertChannelsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -391,26 +379,24 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPost(
 }
 
 // Execute executes the request
-func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPostExecute(r ApiV1EnvironmentsEnvIDAlertChannelsPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPostExecute(r ApiV1EnvironmentsEnvIDAlertChannelsPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsAlertingApiService.V1EnvironmentsEnvIDAlertChannelsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/alertChannels"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -431,7 +417,7 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPostE
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -441,15 +427,15 @@ func (a *ManagementAPIsAlertingApiService) V1EnvironmentsEnvIDAlertChannelsPostE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

@@ -35,8 +35,8 @@ func main() {
     orgID := "orgID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet(context.Background(), orgID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet(context.Background(), orgID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     licenseID := "licenseID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet(context.Background(), orgID, licenseID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet(context.Background(), orgID, licenseID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     licenseID := "licenseID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet(context.Background(), orgID, licenseID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet(context.Background(), orgID, licenseID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNameGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -244,11 +244,11 @@ import (
 func main() {
     orgID := "orgID_example" // string | 
     licenseID := "licenseID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut(context.Background(), orgID, licenseID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut(context.Background(), orgID, licenseID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsLicensesApi.V1OrganizationsOrgIDLicensesLicenseIDNamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

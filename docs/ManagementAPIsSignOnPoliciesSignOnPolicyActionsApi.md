@@ -35,11 +35,11 @@ import (
 
 func main() {
     policyID := "policyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost(context.Background(), policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     actionID := "actionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(context.Background(), envID, policyID, actionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete(context.Background(), envID, policyID, actionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@ func main() {
     actionID := "actionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(context.Background(), envID, policyID, actionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet(context.Background(), envID, policyID, actionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,11 +255,11 @@ func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut(context.Background(), envID, policyID, actionID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
     policyID := "policyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(context.Background(), envID, policyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet(context.Background(), envID, policyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -401,11 +401,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     policyID := "policyID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost(context.Background(), envID, policyID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi.V1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

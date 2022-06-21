@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService ManagementAPIsIdentityPropagationProvisioningPropagationRulesApi service
 type ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService service
 
 type ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	planID string
@@ -40,12 +36,13 @@ func (r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) Accept(acce
 	r.accept = &accept
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetExecute(r)
 }
 
@@ -54,12 +51,12 @@ V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet READ One Plan's Rules
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param planID
  @return ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(ctx _context.Context, envID string, planID string) ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet(ctx context.Context, envID string, planID string) ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest {
 	return ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -69,27 +66,25 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetExecute(r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetExecute(r ApiV1EnvironmentsEnvIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationPlansPlanIDRulesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/plans/{planID}/rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"planID"+"}", _neturl.PathEscape(parameterToString(r.planID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterToString(r.planID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -114,7 +109,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -124,15 +119,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -153,7 +148,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRulesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	accept *string
@@ -164,12 +159,13 @@ func (r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) Accept(accept string) 
 	r.accept = &accept
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) Authorization(authorization string) ApiV1EnvironmentsEnvIDPropagationRulesGetRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRulesGetExecute(r)
 }
 
@@ -178,11 +174,11 @@ V1EnvironmentsEnvIDPropagationRulesGet READ All Rules
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDPropagationRulesGetRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRulesGetRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRulesGetRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRulesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -191,26 +187,24 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesGetExecute(r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesGetExecute(r ApiV1EnvironmentsEnvIDPropagationRulesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationRulesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -235,7 +229,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	if r.authorization != nil {
 		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -245,15 +239,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -274,7 +268,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRulesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	body *map[string]interface{}
@@ -285,7 +279,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) Body(body map[string]
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRulesPostExecute(r)
 }
 
@@ -294,11 +288,11 @@ V1EnvironmentsEnvIDPropagationRulesPost CREATE Rule
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDPropagationRulesPostRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesPost(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRulesPostRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesPost(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDPropagationRulesPostRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRulesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -307,26 +301,24 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesPostExecute(r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesPostExecute(r ApiV1EnvironmentsEnvIDPropagationRulesPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationRulesPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -347,7 +339,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -357,15 +349,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -386,7 +378,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	ruleID string
@@ -398,7 +390,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest) Accept(accept
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRulesRuleIDDeleteExecute(r)
 }
 
@@ -407,12 +399,12 @@ V1EnvironmentsEnvIDPropagationRulesRuleIDDelete DELETE Rule
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param ruleID
  @return ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(ctx _context.Context, envID string, ruleID string) ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDDelete(ctx context.Context, envID string, ruleID string) ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -422,27 +414,25 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDDeleteExecute(r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDDeleteExecute(r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationRulesRuleIDDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/rules/{ruleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ruleID"+"}", _neturl.PathEscape(parameterToString(r.ruleID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ruleID"+"}", url.PathEscape(parameterToString(r.ruleID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -464,7 +454,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -474,15 +464,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -503,7 +493,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	ruleID string
@@ -515,7 +505,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest) Accept(accept st
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRulesRuleIDGetExecute(r)
 }
 
@@ -524,12 +514,12 @@ V1EnvironmentsEnvIDPropagationRulesRuleIDGet READ One Rule
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param ruleID
  @return ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDGet(ctx _context.Context, envID string, ruleID string) ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDGet(ctx context.Context, envID string, ruleID string) ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -539,27 +529,25 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDGetExecute(r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesRuleIDGetExecute(r ApiV1EnvironmentsEnvIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationRulesRuleIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/rules/{ruleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ruleID"+"}", _neturl.PathEscape(parameterToString(r.ruleID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ruleID"+"}", url.PathEscape(parameterToString(r.ruleID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -581,7 +569,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -591,15 +579,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -620,7 +608,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 type ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	envID string
 	storeID string
@@ -632,7 +620,7 @@ func (r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) Body(body map[s
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDPropagationRulesStoreIDPutExecute(r)
 }
 
@@ -641,12 +629,12 @@ V1EnvironmentsEnvIDPropagationRulesStoreIDPut UPDATE Rule
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param storeID
  @return ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest
 */
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesStoreIDPut(ctx _context.Context, envID string, storeID string) ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesStoreIDPut(ctx context.Context, envID string, storeID string) ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest {
 	return ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -656,27 +644,25 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 }
 
 // Execute executes the request
-func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesStoreIDPutExecute(r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService) V1EnvironmentsEnvIDPropagationRulesStoreIDPutExecute(r ApiV1EnvironmentsEnvIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService.V1EnvironmentsEnvIDPropagationRulesStoreIDPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/propagation/rules/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", _neturl.PathEscape(parameterToString(r.storeID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterToString(r.storeID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -697,7 +683,7 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -707,15 +693,15 @@ func (a *ManagementAPIsIdentityPropagationProvisioningPropagationRulesApiService
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

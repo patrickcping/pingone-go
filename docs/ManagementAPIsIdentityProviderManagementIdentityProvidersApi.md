@@ -36,8 +36,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,11 +103,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     contentType := "application/vnd.pingidentity.openid-configuration.discover+json" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost(context.Background(), envID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     providerID := "providerID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(context.Background(), envID, providerID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete(context.Background(), envID, providerID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,8 +248,8 @@ func main() {
     providerID := "providerID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(context.Background(), envID, providerID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet(context.Background(), envID, providerID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,11 +317,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     providerID := "providerID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(context.Background(), envID, providerID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut(context.Background(), envID, providerID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvIDIdentityProvidersProviderIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

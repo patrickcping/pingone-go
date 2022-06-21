@@ -16,7 +16,7 @@ import (
 
 // Schema struct for Schema
 type Schema struct {
-	Attributes *[]SchemaAttribute `json:"attributes,omitempty"`
+	Attributes []SchemaAttribute `json:"attributes,omitempty"`
 	// A string that specifies the description of the schema.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -49,12 +49,12 @@ func (o *Schema) GetAttributes() []SchemaAttribute {
 		var ret []SchemaAttribute
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schema) GetAttributesOk() (*[]SchemaAttribute, bool) {
+func (o *Schema) GetAttributesOk() ([]SchemaAttribute, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *Schema) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given []SchemaAttribute and assigns it to the Attributes field.
 func (o *Schema) SetAttributes(v []SchemaAttribute) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.

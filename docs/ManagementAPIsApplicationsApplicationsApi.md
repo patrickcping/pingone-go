@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateApplication
 
-> OneOfApplicationSAMLApplicationOIDC CreateApplication(ctx, envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateApplication201Response CreateApplication(ctx, envID).CreateApplicationRequest(createApplicationRequest).Execute()
 
 CREATE Application
 
@@ -34,16 +34,16 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    createApplicationRequest := openapiclient.createApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", "Protocol_example", "Type_example", []string{"GrantTypes_example"}, "TokenEndpointAuthMethod_example")} // CreateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.CreateApplication(context.Background(), envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationsApi.CreateApplication(context.Background(), envID).CreateApplicationRequest(createApplicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.CreateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplication`: OneOfApplicationSAMLApplicationOIDC
+    // response from `CreateApplication`: CreateApplication201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.CreateApplication`: %v\n", resp)
 }
 ```
@@ -64,11 +64,11 @@ Other parameters are passed through a pointer to a apiCreateApplicationRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **createApplicationRequest** | [**CreateApplicationRequest**](CreateApplicationRequest.md) |  | 
 
 ### Return type
 
-[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
+[**CreateApplication201Response**](CreateApplication201Response.md)
 
 ### Authorization
 
@@ -109,8 +109,8 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.DeleteApplication(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationsApi.DeleteApplication(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.DeleteApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,8 +179,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.ReadAllApplications(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationsApi.ReadAllApplications(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.ReadAllApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneApplication
 
-> OneOfApplicationSAMLApplicationOIDC ReadOneApplication(ctx, envID, appID).Execute()
+> CreateApplication201Response ReadOneApplication(ctx, envID, appID).Execute()
 
 READ One Application
 
@@ -250,13 +250,13 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.ReadOneApplication(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationsApi.ReadOneApplication(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.ReadOneApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneApplication`: OneOfApplicationSAMLApplicationOIDC
+    // response from `ReadOneApplication`: CreateApplication201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.ReadOneApplication`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
+[**CreateApplication201Response**](CreateApplication201Response.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplication
 
-> OneOfApplicationSAMLApplicationOIDC UpdateApplication(ctx, envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateApplication201Response UpdateApplication(ctx, envID, appID).UpdateApplicationRequest(updateApplicationRequest).Execute()
 
 UPDATE Application
 
@@ -321,16 +321,16 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    updateApplicationRequest := openapiclient.updateApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", "Protocol_example", "Type_example", []string{"GrantTypes_example"}, "TokenEndpointAuthMethod_example")} // UpdateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationsApi.UpdateApplication(context.Background(), envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationsApi.UpdateApplication(context.Background(), envID, appID).UpdateApplicationRequest(updateApplicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationsApi.UpdateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateApplication`: OneOfApplicationSAMLApplicationOIDC
+    // response from `UpdateApplication`: CreateApplication201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationsApi.UpdateApplication`: %v\n", resp)
 }
 ```
@@ -353,11 +353,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **updateApplicationRequest** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md) |  | 
 
 ### Return type
 
-[**OneOfApplicationSAMLApplicationOIDC**](oneOf&lt;ApplicationSAML,ApplicationOIDC&gt;.md)
+[**CreateApplication201Response**](CreateApplication201Response.md)
 
 ### Authorization
 

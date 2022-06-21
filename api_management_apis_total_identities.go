@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsTotalIdentitiesApiService ManagementAPIsTotalIdentitiesApi service
 type ManagementAPIsTotalIdentitiesApiService service
 
 type ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsTotalIdentitiesApiService
 	envID string
 	filter *string
@@ -39,7 +35,7 @@ func (r ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest) Filter(filter string) A
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDTotalIdentitiesGetExecute(r)
 }
 
@@ -48,11 +44,11 @@ V1EnvironmentsEnvIDTotalIdentitiesGet READ Total Identity Counts
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest
 */
-func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdentitiesGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest {
+func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdentitiesGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest {
 	return ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -61,26 +57,24 @@ func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdenti
 }
 
 // Execute executes the request
-func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvIDTotalIdentitiesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsTotalIdentitiesApiService.V1EnvironmentsEnvIDTotalIdentitiesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/totalIdentities"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.filter != nil {
 		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
@@ -102,7 +96,7 @@ func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdenti
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -112,15 +106,15 @@ func (a *ManagementAPIsTotalIdentitiesApiService) V1EnvironmentsEnvIDTotalIdenti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

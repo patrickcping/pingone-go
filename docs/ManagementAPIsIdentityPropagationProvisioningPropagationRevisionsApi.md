@@ -35,8 +35,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(context.Background(), envID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet(context.Background(), envID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsIdlatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
     accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), envID, previousRevisionID).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), envID, previousRevisionID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsIdentityPropagationProvisioningPropagationRevisionsApi.V1EnvironmentsEnvIDPropagationRevisionsPreviousRevisionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

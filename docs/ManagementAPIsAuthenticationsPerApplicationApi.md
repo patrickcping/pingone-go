@@ -36,8 +36,8 @@ func main() {
     filter := "occurredAt ge "2019-10-03T00:00:00Z""" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet(context.Background(), envID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet(context.Background(), envID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsAuthenticationsPerApplicationApi.V1EnvironmentsEnvIDApplicationSignonsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

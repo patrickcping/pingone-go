@@ -36,8 +36,8 @@ func main() {
     pairingKeyID := "pairingKeyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), envID, userID, pairingKeyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), envID, userID, pairingKeyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     pairingKeyID := "pairingKeyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), envID, userID, pairingKeyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,11 +181,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(context.Background(), envID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersMFAPairingKeysApi.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

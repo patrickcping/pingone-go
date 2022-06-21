@@ -19,7 +19,7 @@ type GatewayLDAP struct {
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Credentials *[]GatewayCredential `json:"credentials,omitempty"`
+	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	Name string `json:"name"`
 	// (Optional) A string that specifies the description of the resource.
@@ -36,7 +36,7 @@ type GatewayLDAP struct {
 	// (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
 	ConnectionSecurity *string `json:"connectionSecurity,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [\"ds1.example.com:389\", \"ds2.example.com:389\"]).
-	ServersHostAndPort *[]string `json:"serversHostAndPort,omitempty"`
+	ServersHostAndPort []string `json:"serversHostAndPort,omitempty"`
 	// (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
 	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes"`
 	// (Optional) A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
@@ -139,12 +139,12 @@ func (o *GatewayLDAP) GetCredentials() []GatewayCredential {
 		var ret []GatewayCredential
 		return ret
 	}
-	return *o.Credentials
+	return o.Credentials
 }
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetCredentialsOk() (*[]GatewayCredential, bool) {
+func (o *GatewayLDAP) GetCredentialsOk() ([]GatewayCredential, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -162,7 +162,7 @@ func (o *GatewayLDAP) HasCredentials() bool {
 
 // SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
 func (o *GatewayLDAP) SetCredentials(v []GatewayCredential) {
-	o.Credentials = &v
+	o.Credentials = v
 }
 
 // GetName returns the Name field value
@@ -178,7 +178,7 @@ func (o *GatewayLDAP) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -234,7 +234,7 @@ func (o *GatewayLDAP) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -258,7 +258,7 @@ func (o *GatewayLDAP) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetEnabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Enabled, true
@@ -314,7 +314,7 @@ func (o *GatewayLDAP) GetBindDN() string {
 // GetBindDNOk returns a tuple with the BindDN field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetBindDNOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BindDN, true
@@ -338,7 +338,7 @@ func (o *GatewayLDAP) GetBindPassword() string {
 // GetBindPasswordOk returns a tuple with the BindPassword field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetBindPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BindPassword, true
@@ -387,12 +387,12 @@ func (o *GatewayLDAP) GetServersHostAndPort() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ServersHostAndPort
+	return o.ServersHostAndPort
 }
 
 // GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetServersHostAndPortOk() (*[]string, bool) {
+func (o *GatewayLDAP) GetServersHostAndPortOk() ([]string, bool) {
 	if o == nil || o.ServersHostAndPort == nil {
 		return nil, false
 	}
@@ -410,7 +410,7 @@ func (o *GatewayLDAP) HasServersHostAndPort() bool {
 
 // SetServersHostAndPort gets a reference to the given []string and assigns it to the ServersHostAndPort field.
 func (o *GatewayLDAP) SetServersHostAndPort(v []string) {
-	o.ServersHostAndPort = &v
+	o.ServersHostAndPort = v
 }
 
 // GetUserTypes returns the UserTypes field value
@@ -425,11 +425,11 @@ func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes {
 
 // GetUserTypesOk returns a tuple with the UserTypes field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetUserTypesOk() (*[]GatewayLDAPAllOfUserTypes, bool) {
-	if o == nil  {
+func (o *GatewayLDAP) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.UserTypes, true
+	return o.UserTypes, true
 }
 
 // SetUserTypes sets field value
@@ -482,7 +482,7 @@ func (o *GatewayLDAP) GetVendor() string {
 // GetVendorOk returns a tuple with the Vendor field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetVendorOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Vendor, true

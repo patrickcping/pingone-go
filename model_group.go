@@ -29,7 +29,7 @@ type Group struct {
 	// A user-defined identifier for the group. Use this propertry to syncronize a group in PingOne with the same group in an external system. PingOne does not directly use this property. Search all groups for a specific external ID with a SCIM filter on GET /environments/{envID}/groups
 	ExternalId *string `json:"externalId,omitempty"`
 	// Optional User-defined custom data.
-	CustomData *map[string]interface{} `json:"customData,omitempty"`
+	CustomData map[string]interface{} `json:"customData,omitempty"`
 	DirectMemberCounts *GroupDirectMemberCounts `json:"directMemberCounts,omitempty"`
 	TotalMemberCounts *GroupTotalMemberCounts `json:"totalMemberCounts,omitempty"`
 }
@@ -161,7 +161,7 @@ func (o *Group) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Group) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -274,12 +274,12 @@ func (o *Group) GetCustomData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.CustomData
+	return o.CustomData
 }
 
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetCustomDataOk() (*map[string]interface{}, bool) {
+func (o *Group) GetCustomDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.CustomData == nil {
 		return nil, false
 	}
@@ -297,7 +297,7 @@ func (o *Group) HasCustomData() bool {
 
 // SetCustomData gets a reference to the given map[string]interface{} and assigns it to the CustomData field.
 func (o *Group) SetCustomData(v map[string]interface{}) {
-	o.CustomData = &v
+	o.CustomData = v
 }
 
 // GetDirectMemberCounts returns the DirectMemberCounts field value if set, zero value otherwise.

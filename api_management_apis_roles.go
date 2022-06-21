@@ -12,28 +12,23 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsRolesApiService ManagementAPIsRolesApi service
 type ManagementAPIsRolesApiService service
 
 type ApiReadAllRolesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsRolesApiService
 }
 
-
-func (r ApiReadAllRolesRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllRolesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllRolesExecute(r)
 }
 
@@ -42,10 +37,10 @@ ReadAllRoles READ All Roles
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiReadAllRolesRequest
 */
-func (a *ManagementAPIsRolesApiService) ReadAllRoles(ctx _context.Context) ApiReadAllRolesRequest {
+func (a *ManagementAPIsRolesApiService) ReadAllRoles(ctx context.Context) ApiReadAllRolesRequest {
 	return ApiReadAllRolesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,26 +49,24 @@ func (a *ManagementAPIsRolesApiService) ReadAllRoles(ctx _context.Context) ApiRe
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.ReadAllRoles")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/roles"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -92,7 +85,7 @@ func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -102,15 +95,15 @@ func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -129,7 +122,7 @@ func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -140,13 +133,12 @@ func (a *ManagementAPIsRolesApiService) ReadAllRolesExecute(r ApiReadAllRolesReq
 }
 
 type ApiReadOneRoleRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsRolesApiService
 	roleID string
 }
 
-
-func (r ApiReadOneRoleRequest) Execute() (Role, *_nethttp.Response, error) {
+func (r ApiReadOneRoleRequest) Execute() (*Role, *http.Response, error) {
 	return r.ApiService.ReadOneRoleExecute(r)
 }
 
@@ -155,11 +147,11 @@ ReadOneRole READ One Role
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param roleID
  @return ApiReadOneRoleRequest
 */
-func (a *ManagementAPIsRolesApiService) ReadOneRole(ctx _context.Context, roleID string) ApiReadOneRoleRequest {
+func (a *ManagementAPIsRolesApiService) ReadOneRole(ctx context.Context, roleID string) ApiReadOneRoleRequest {
 	return ApiReadOneRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -169,27 +161,25 @@ func (a *ManagementAPIsRolesApiService) ReadOneRole(ctx _context.Context, roleID
 
 // Execute executes the request
 //  @return Role
-func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (Role, *_nethttp.Response, error) {
+func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Role
+		formFiles            []formFile
+		localVarReturnValue  *Role
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsRolesApiService.ReadOneRole")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/roles/{roleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"roleID"+"}", _neturl.PathEscape(parameterToString(r.roleID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleID"+"}", url.PathEscape(parameterToString(r.roleID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -208,7 +198,7 @@ func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -218,15 +208,15 @@ func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -245,7 +235,7 @@ func (a *ManagementAPIsRolesApiService) ReadOneRoleExecute(r ApiReadOneRoleReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

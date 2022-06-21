@@ -29,7 +29,7 @@ type RiskPolicySet struct {
 	// A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
 	Name string `json:"name"`
 	// An array of policies related to this policy set.
-	RiskPolicies *[]RiskPolicySetRiskPolicies `json:"riskPolicies,omitempty"`
+	RiskPolicies []RiskPolicySetRiskPoliciesInner `json:"riskPolicies,omitempty"`
 	// The time the resource was last updated (format ISO-8061).
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -257,7 +257,7 @@ func (o *RiskPolicySet) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySet) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -269,17 +269,17 @@ func (o *RiskPolicySet) SetName(v string) {
 }
 
 // GetRiskPolicies returns the RiskPolicies field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPolicies {
+func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPoliciesInner {
 	if o == nil || o.RiskPolicies == nil {
-		var ret []RiskPolicySetRiskPolicies
+		var ret []RiskPolicySetRiskPoliciesInner
 		return ret
 	}
-	return *o.RiskPolicies
+	return o.RiskPolicies
 }
 
 // GetRiskPoliciesOk returns a tuple with the RiskPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetRiskPoliciesOk() (*[]RiskPolicySetRiskPolicies, bool) {
+func (o *RiskPolicySet) GetRiskPoliciesOk() ([]RiskPolicySetRiskPoliciesInner, bool) {
 	if o == nil || o.RiskPolicies == nil {
 		return nil, false
 	}
@@ -295,9 +295,9 @@ func (o *RiskPolicySet) HasRiskPolicies() bool {
 	return false
 }
 
-// SetRiskPolicies gets a reference to the given []RiskPolicySetRiskPolicies and assigns it to the RiskPolicies field.
-func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicySetRiskPolicies) {
-	o.RiskPolicies = &v
+// SetRiskPolicies gets a reference to the given []RiskPolicySetRiskPoliciesInner and assigns it to the RiskPolicies field.
+func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicySetRiskPoliciesInner) {
+	o.RiskPolicies = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.

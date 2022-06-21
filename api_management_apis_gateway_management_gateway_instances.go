@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsGatewayManagementGatewayInstancesApiService ManagementAPIsGatewayManagementGatewayInstancesApi service
 type ManagementAPIsGatewayManagementGatewayInstancesApiService service
 
 type ApiReadAllGatewayInstancesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsGatewayManagementGatewayInstancesApiService
 	envID string
 	gatewayID string
 }
 
-
-func (r ApiReadAllGatewayInstancesRequest) Execute() (EntityArray, *_nethttp.Response, error) {
+func (r ApiReadAllGatewayInstancesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ReadAllGatewayInstancesExecute(r)
 }
 
@@ -44,12 +39,12 @@ ReadAllGatewayInstances READ All Gateway Instances
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param gatewayID
  @return ApiReadAllGatewayInstancesRequest
 */
-func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatewayInstances(ctx _context.Context, envID string, gatewayID string) ApiReadAllGatewayInstancesRequest {
+func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatewayInstances(ctx context.Context, envID string, gatewayID string) ApiReadAllGatewayInstancesRequest {
 	return ApiReadAllGatewayInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,28 +55,26 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatew
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (EntityArray, *_nethttp.Response, error) {
+func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EntityArray
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGatewayManagementGatewayInstancesApiService.ReadAllGatewayInstances")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/gateways/{gatewayID}/instances"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", _neturl.PathEscape(parameterToString(r.gatewayID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterToString(r.gatewayID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -100,7 +93,7 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatew
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -110,15 +103,15 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatew
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,7 +130,7 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatew
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -148,15 +141,14 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadAllGatew
 }
 
 type ApiReadOneGatewayInstanceRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsGatewayManagementGatewayInstancesApiService
 	envID string
 	gatewayID string
 	instanceID string
 }
 
-
-func (r ApiReadOneGatewayInstanceRequest) Execute() (GatewayInstance, *_nethttp.Response, error) {
+func (r ApiReadOneGatewayInstanceRequest) Execute() (*GatewayInstance, *http.Response, error) {
 	return r.ApiService.ReadOneGatewayInstanceExecute(r)
 }
 
@@ -165,13 +157,13 @@ ReadOneGatewayInstance READ One Gateway Instance
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param gatewayID
  @param instanceID
  @return ApiReadOneGatewayInstanceRequest
 */
-func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatewayInstance(ctx _context.Context, envID string, gatewayID string, instanceID string) ApiReadOneGatewayInstanceRequest {
+func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatewayInstance(ctx context.Context, envID string, gatewayID string, instanceID string) ApiReadOneGatewayInstanceRequest {
 	return ApiReadOneGatewayInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -183,29 +175,27 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatew
 
 // Execute executes the request
 //  @return GatewayInstance
-func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (GatewayInstance, *_nethttp.Response, error) {
+func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  GatewayInstance
+		formFiles            []formFile
+		localVarReturnValue  *GatewayInstance
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsGatewayManagementGatewayInstancesApiService.ReadOneGatewayInstance")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/gateways/{gatewayID}/instances/{instanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", _neturl.PathEscape(parameterToString(r.gatewayID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceID"+"}", _neturl.PathEscape(parameterToString(r.instanceID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterToString(r.gatewayID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceID"+"}", url.PathEscape(parameterToString(r.instanceID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -224,7 +214,7 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatew
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -234,15 +224,15 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatew
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -261,7 +251,7 @@ func (a *ManagementAPIsGatewayManagementGatewayInstancesApiService) ReadOneGatew
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

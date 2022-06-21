@@ -161,7 +161,7 @@ func (o *ApplicationAttributeMapping) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAttributeMapping) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -185,7 +185,7 @@ func (o *ApplicationAttributeMapping) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAttributeMapping) GetRequiredOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Required, true
@@ -241,7 +241,7 @@ func (o *ApplicationAttributeMapping) GetValue() string {
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAttributeMapping) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Value, true

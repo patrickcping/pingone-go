@@ -36,8 +36,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -102,11 +102,11 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost(context.Background(), envID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost(context.Background(), envID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     subscriptionID := "subscriptionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(context.Background(), envID, subscriptionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete(context.Background(), envID, subscriptionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     subscriptionID := "subscriptionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(context.Background(), envID, subscriptionID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet(context.Background(), envID, subscriptionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -315,11 +315,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     subscriptionID := "subscriptionID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(context.Background(), envID, subscriptionID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut(context.Background(), envID, subscriptionID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsSubscriptionsWebhooksApi.V1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

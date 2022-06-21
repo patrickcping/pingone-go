@@ -24,7 +24,7 @@ type ResourceScope struct {
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// An array that specifies the user schema attributes that can be read or updated for the specified PingOne access control scope. The value is an array of schema attribute paths (such as username, name.given, shirtSize) that the scope controls. This property is supported only for the p1:read:user, p1:update:user and p1:read:user:{suffix} and p1:update:user:{suffix} scopes. No other PingOne platform scopes allow this behavior. Any attributes not listed in the attribute array are excluded from the read or update action. The wildcard path (*) in the array includes all attributes and cannot be used in conjunction with any other user schema attribute paths
-	SchemaAttributes *[]string `json:"schemaAttributes,omitempty"`
+	SchemaAttributes []string `json:"schemaAttributes,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -94,7 +94,7 @@ func (o *ResourceScope) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -175,12 +175,12 @@ func (o *ResourceScope) GetSchemaAttributes() []string {
 		var ret []string
 		return ret
 	}
-	return *o.SchemaAttributes
+	return o.SchemaAttributes
 }
 
 // GetSchemaAttributesOk returns a tuple with the SchemaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceScope) GetSchemaAttributesOk() (*[]string, bool) {
+func (o *ResourceScope) GetSchemaAttributesOk() ([]string, bool) {
 	if o == nil || o.SchemaAttributes == nil {
 		return nil, false
 	}
@@ -198,7 +198,7 @@ func (o *ResourceScope) HasSchemaAttributes() bool {
 
 // SetSchemaAttributes gets a reference to the given []string and assigns it to the SchemaAttributes field.
 func (o *ResourceScope) SetSchemaAttributes(v []string) {
-	o.SchemaAttributes = &v
+	o.SchemaAttributes = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateGateway
 
-> OneOfGatewayGatewayLDAP CreateGateway(ctx, envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateGateway201Response CreateGateway(ctx, envID).CreateGatewayRequest(createGatewayRequest).Execute()
 
 CREATE Gateway
 
@@ -34,16 +34,16 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", "Type_example", false)} // CreateGatewayRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.CreateGateway(context.Background(), envID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewaysApi.CreateGateway(context.Background(), envID).CreateGatewayRequest(createGatewayRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.CreateGateway``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateGateway`: OneOfGatewayGatewayLDAP
+    // response from `CreateGateway`: CreateGateway201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGatewayManagementGatewaysApi.CreateGateway`: %v\n", resp)
 }
 ```
@@ -64,11 +64,11 @@ Other parameters are passed through a pointer to a apiCreateGatewayRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **createGatewayRequest** | [**CreateGatewayRequest**](CreateGatewayRequest.md) |  | 
 
 ### Return type
 
-[**OneOfGatewayGatewayLDAP**](oneOf&lt;Gateway,GatewayLDAP&gt;.md)
+[**CreateGateway201Response**](CreateGateway201Response.md)
 
 ### Authorization
 
@@ -109,8 +109,8 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.DeleteGateway(context.Background(), envID, gatewayID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewaysApi.DeleteGateway(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.DeleteGateway``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,8 +179,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.ReadAllGateways(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewaysApi.ReadAllGateways(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.ReadAllGateways``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneGateway
 
-> OneOfGatewayGatewayLDAP ReadOneGateway(ctx, envID, gatewayID).Execute()
+> CreateGateway201Response ReadOneGateway(ctx, envID, gatewayID).Execute()
 
 READ One Gateway
 
@@ -250,13 +250,13 @@ func main() {
     gatewayID := "gatewayID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.ReadOneGateway(context.Background(), envID, gatewayID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewaysApi.ReadOneGateway(context.Background(), envID, gatewayID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.ReadOneGateway``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneGateway`: OneOfGatewayGatewayLDAP
+    // response from `ReadOneGateway`: CreateGateway201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGatewayManagementGatewaysApi.ReadOneGateway`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OneOfGatewayGatewayLDAP**](oneOf&lt;Gateway,GatewayLDAP&gt;.md)
+[**CreateGateway201Response**](CreateGateway201Response.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## UpdateGateway
 
-> OneOfGatewayGatewayLDAP UpdateGateway(ctx, envID, gatewayID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateGateway201Response UpdateGateway(ctx, envID, gatewayID).CreateGatewayRequest(createGatewayRequest).Execute()
 
 UPDATE Gateway
 
@@ -321,16 +321,16 @@ import (
 func main() {
     envID := "envID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", "Type_example", false)} // CreateGatewayRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsGatewayManagementGatewaysApi.UpdateGateway(context.Background(), envID, gatewayID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGatewayManagementGatewaysApi.UpdateGateway(context.Background(), envID, gatewayID).CreateGatewayRequest(createGatewayRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGatewayManagementGatewaysApi.UpdateGateway``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateGateway`: OneOfGatewayGatewayLDAP
+    // response from `UpdateGateway`: CreateGateway201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGatewayManagementGatewaysApi.UpdateGateway`: %v\n", resp)
 }
 ```
@@ -353,11 +353,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **createGatewayRequest** | [**CreateGatewayRequest**](CreateGatewayRequest.md) |  | 
 
 ### Return type
 
-[**OneOfGatewayGatewayLDAP**](oneOf&lt;Gateway,GatewayLDAP&gt;.md)
+[**CreateGateway201Response**](CreateGateway201Response.md)
 
 ### Authorization
 

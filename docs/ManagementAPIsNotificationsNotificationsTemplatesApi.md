@@ -40,8 +40,8 @@ func main() {
     envID := "envID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet(context.Background(), envID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet(context.Background(), envID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     contentID := "contentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(context.Background(), envID, templateName, contentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete(context.Background(), envID, templateName, contentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -184,8 +184,8 @@ func main() {
     contentID := "contentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet(context.Background(), envID, templateName, contentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,11 +256,11 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut(context.Background(), envID, templateName, contentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
     filter := "variant eq {{variantName}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(context.Background(), envID, templateName).Filter(filter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete(context.Background(), envID, templateName).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -406,8 +406,8 @@ func main() {
     templateName := "templateName_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(context.Background(), envID, templateName).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet(context.Background(), envID, templateName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -476,11 +476,11 @@ func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
     filter := "variant eq {{variantName}}" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(context.Background(), envID, templateName).Filter(filter).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch(context.Background(), envID, templateName).Filter(filter).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -550,11 +550,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     templateName := "templateName_example" // string | 
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost(context.Background(), envID, templateName).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameContentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -625,8 +625,8 @@ func main() {
     templateName := "templateName_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet(context.Background(), envID, templateName).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet(context.Background(), envID, templateName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsNotificationsNotificationsTemplatesApi.V1EnvironmentsEnvIDTemplatesTemplateNameGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

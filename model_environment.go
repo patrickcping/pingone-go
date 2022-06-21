@@ -197,7 +197,7 @@ func (o *Environment) GetLicense() EnvironmentLicense {
 // GetLicenseOk returns a tuple with the License field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetLicenseOk() (*EnvironmentLicense, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.License, true
@@ -221,7 +221,7 @@ func (o *Environment) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -277,7 +277,7 @@ func (o *Environment) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetRegionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Region, true
@@ -301,7 +301,7 @@ func (o *Environment) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true

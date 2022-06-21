@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsNotificationsTrustedEmailAddressesApiService ManagementAPIsNotificationsTrustedEmailAddressesApi service
 type ManagementAPIsNotificationsTrustedEmailAddressesApiService service
 
 type ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailAddressesApiService
 	envID string
 	emailDomainID string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetExecute(r)
 }
 
@@ -44,12 +39,12 @@ V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGet READ All Trusted Em
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param emailDomainID
  @return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest
 */
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGet(ctx _context.Context, envID string, emailDomainID string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGet(ctx context.Context, envID string, emailDomainID string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest {
 	return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,27 +54,25 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsTrustedEmailAddressesApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIDTrustedEmailsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/emailDomains/{emailDomainID}/trustedEmails"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", _neturl.PathEscape(parameterToString(r.emailDomainID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterToString(r.emailDomainID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +91,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -108,15 +101,15 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,7 +130,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailAddressesApiService
 	envID string
 	emailDomainId string
@@ -149,7 +142,7 @@ func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest)
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostExecute(r)
 }
 
@@ -158,12 +151,12 @@ V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost CREATE Trusted Ema
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param emailDomainId
  @return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest
 */
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost(ctx _context.Context, envID string, emailDomainId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost(ctx context.Context, envID string, emailDomainId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest {
 	return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -173,27 +166,25 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsTrustedEmailAddressesApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/emailDomains/{emailDomainId}/trustedEmails"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", _neturl.PathEscape(parameterToString(r.emailDomainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", url.PathEscape(parameterToString(r.emailDomainId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -214,7 +205,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -224,15 +215,15 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,15 +244,14 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailAddressesApiService
 	envID string
 	emailDomainId string
 	trustedEmailId string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteExecute(r)
 }
 
@@ -270,13 +260,13 @@ V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDelete DE
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param emailDomainId
  @param trustedEmailId
  @return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest
 */
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDelete(ctx _context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDelete(ctx context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest {
 	return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -287,28 +277,26 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsTrustedEmailAddressesApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/emailDomains/{emailDomainId}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", _neturl.PathEscape(parameterToString(r.emailDomainId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", _neturl.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", url.PathEscape(parameterToString(r.emailDomainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -327,7 +315,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -337,15 +325,15 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -366,15 +354,14 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailAddressesApiService
 	envID string
 	emailDomainId string
 	trustedEmailId string
 }
 
-
-func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetExecute(r)
 }
 
@@ -383,13 +370,13 @@ V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGet READ 
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param emailDomainId
  @param trustedEmailId
  @return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest
 */
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGet(ctx _context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGet(ctx context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest {
 	return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -400,28 +387,26 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsTrustedEmailAddressesApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/emailDomains/{emailDomainId}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", _neturl.PathEscape(parameterToString(r.emailDomainId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", _neturl.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", url.PathEscape(parameterToString(r.emailDomainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -440,7 +425,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -450,15 +435,15 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -479,7 +464,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 type ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsNotificationsTrustedEmailAddressesApiService
 	envID string
 	emailDomainId string
@@ -492,7 +477,7 @@ func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmail
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostExecute(r)
 }
 
@@ -501,13 +486,13 @@ V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPost Rese
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param emailDomainId
  @param trustedEmailId
  @return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest
 */
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPost(ctx _context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPost(ctx context.Context, envID string, emailDomainId string, trustedEmailId string) ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest {
 	return ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -518,28 +503,26 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 }
 
 // Execute executes the request
-func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostExecute(r ApiV1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsNotificationsTrustedEmailAddressesApiService.V1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsTrustedEmailIdPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/emailDomains/{emailDomainId}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", _neturl.PathEscape(parameterToString(r.emailDomainId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", _neturl.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainId"+"}", url.PathEscape(parameterToString(r.emailDomainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterToString(r.trustedEmailId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -561,7 +544,7 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -571,15 +554,15 @@ func (a *ManagementAPIsNotificationsTrustedEmailAddressesApiService) V1Environme
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

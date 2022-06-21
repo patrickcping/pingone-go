@@ -49,11 +49,11 @@ func (o *ApplicationSAMLAllOfSpVerification) GetCertificates() []ApplicationSAML
 
 // GetCertificatesOk returns a tuple with the Certificates field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAMLAllOfSpVerification) GetCertificatesOk() (*[]ApplicationSAMLAllOfSpVerificationCertificates, bool) {
-	if o == nil  {
+func (o *ApplicationSAMLAllOfSpVerification) GetCertificatesOk() ([]ApplicationSAMLAllOfSpVerificationCertificates, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Certificates, true
+	return o.Certificates, true
 }
 
 // SetCertificates sets field value

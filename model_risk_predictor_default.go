@@ -53,7 +53,7 @@ func (o *RiskPredictorDefault) GetWeight() int32 {
 // GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetWeightOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Weight, true
@@ -77,7 +77,7 @@ func (o *RiskPredictorDefault) GetResult() RiskPredictorDefaultResult {
 // GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetResultOk() (*RiskPredictorDefaultResult, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Result, true

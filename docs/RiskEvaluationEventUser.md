@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property. | 
 **Name** | Pointer to **string** | A string that specifies the name of the user associated with the event (maximum size 1024 characters). | [optional] 
 **Type** | **string** | A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property. | 
-**Groups** | Pointer to [**[]RiskEvaluationEventUserGroups**](RiskEvaluationEventUserGroups.md) | An array of group names. | [optional] 
+**Groups** | Pointer to [**[]RiskEvaluationEventUserGroupsInner**](RiskEvaluationEventUserGroupsInner.md) | An array of group names. | [optional] 
 
 ## Methods
 
@@ -95,20 +95,20 @@ SetType sets Type field to given value.
 
 ### GetGroups
 
-`func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroups`
+`func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroupsInner`
 
 GetGroups returns the Groups field if non-nil, zero value otherwise.
 
 ### GetGroupsOk
 
-`func (o *RiskEvaluationEventUser) GetGroupsOk() (*[]RiskEvaluationEventUserGroups, bool)`
+`func (o *RiskEvaluationEventUser) GetGroupsOk() (*[]RiskEvaluationEventUserGroupsInner, bool)`
 
 GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroups
 
-`func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroups)`
+`func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroupsInner)`
 
 SetGroups sets Groups field to given value.
 

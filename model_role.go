@@ -17,7 +17,7 @@ import (
 // Role struct for Role
 type Role struct {
 	// A string that specifies the scope to which the role applies.
-	ApplicableTo *[]string `json:"applicableTo,omitempty"`
+	ApplicableTo []string `json:"applicableTo,omitempty"`
 	// A string that specifies the description of the role.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the ID of the role.
@@ -25,7 +25,7 @@ type Role struct {
 	// The name of the role
 	Name *string `json:"name,omitempty"`
 	// A string that specifies the set of permissions assigned to the role.
-	Permissions *[]RolePermissions `json:"permissions,omitempty"`
+	Permissions []RolePermissionsInner `json:"permissions,omitempty"`
 }
 
 // NewRole instantiates a new Role object
@@ -51,12 +51,12 @@ func (o *Role) GetApplicableTo() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ApplicableTo
+	return o.ApplicableTo
 }
 
 // GetApplicableToOk returns a tuple with the ApplicableTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetApplicableToOk() (*[]string, bool) {
+func (o *Role) GetApplicableToOk() ([]string, bool) {
 	if o == nil || o.ApplicableTo == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *Role) HasApplicableTo() bool {
 
 // SetApplicableTo gets a reference to the given []string and assigns it to the ApplicableTo field.
 func (o *Role) SetApplicableTo(v []string) {
-	o.ApplicableTo = &v
+	o.ApplicableTo = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -174,17 +174,17 @@ func (o *Role) SetName(v string) {
 }
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
-func (o *Role) GetPermissions() []RolePermissions {
+func (o *Role) GetPermissions() []RolePermissionsInner {
 	if o == nil || o.Permissions == nil {
-		var ret []RolePermissions
+		var ret []RolePermissionsInner
 		return ret
 	}
-	return *o.Permissions
+	return o.Permissions
 }
 
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetPermissionsOk() (*[]RolePermissions, bool) {
+func (o *Role) GetPermissionsOk() ([]RolePermissionsInner, bool) {
 	if o == nil || o.Permissions == nil {
 		return nil, false
 	}
@@ -200,9 +200,9 @@ func (o *Role) HasPermissions() bool {
 	return false
 }
 
-// SetPermissions gets a reference to the given []RolePermissions and assigns it to the Permissions field.
-func (o *Role) SetPermissions(v []RolePermissions) {
-	o.Permissions = &v
+// SetPermissions gets a reference to the given []RolePermissionsInner and assigns it to the Permissions field.
+func (o *Role) SetPermissions(v []RolePermissionsInner) {
+	o.Permissions = v
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {

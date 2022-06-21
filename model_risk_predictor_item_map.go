@@ -18,10 +18,10 @@ import (
 type RiskPredictorItemMap struct {
 	Contains string `json:"contains"`
 	// List of CIDRs to include
-	IpRange *[]string `json:"ipRange,omitempty"`
+	IpRange []string `json:"ipRange,omitempty"`
 	Between *RiskPredictorItemMapBetween `json:"between,omitempty"`
 	// An array that specifies the list of entities that represent the risk conditions.
-	List *[]string `json:"list,omitempty"`
+	List []string `json:"list,omitempty"`
 }
 
 // NewRiskPredictorItemMap instantiates a new RiskPredictorItemMap object
@@ -55,7 +55,7 @@ func (o *RiskPredictorItemMap) GetContains() string {
 // GetContainsOk returns a tuple with the Contains field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetContainsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Contains, true
@@ -72,12 +72,12 @@ func (o *RiskPredictorItemMap) GetIpRange() []string {
 		var ret []string
 		return ret
 	}
-	return *o.IpRange
+	return o.IpRange
 }
 
 // GetIpRangeOk returns a tuple with the IpRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorItemMap) GetIpRangeOk() (*[]string, bool) {
+func (o *RiskPredictorItemMap) GetIpRangeOk() ([]string, bool) {
 	if o == nil || o.IpRange == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *RiskPredictorItemMap) HasIpRange() bool {
 
 // SetIpRange gets a reference to the given []string and assigns it to the IpRange field.
 func (o *RiskPredictorItemMap) SetIpRange(v []string) {
-	o.IpRange = &v
+	o.IpRange = v
 }
 
 // GetBetween returns the Between field value if set, zero value otherwise.
@@ -136,12 +136,12 @@ func (o *RiskPredictorItemMap) GetList() []string {
 		var ret []string
 		return ret
 	}
-	return *o.List
+	return o.List
 }
 
 // GetListOk returns a tuple with the List field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorItemMap) GetListOk() (*[]string, bool) {
+func (o *RiskPredictorItemMap) GetListOk() ([]string, bool) {
 	if o == nil || o.List == nil {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *RiskPredictorItemMap) HasList() bool {
 
 // SetList gets a reference to the given []string and assigns it to the List field.
 func (o *RiskPredictorItemMap) SetList(v []string) {
-	o.List = &v
+	o.List = v
 }
 
 func (o RiskPredictorItemMap) MarshalJSON() ([]byte, error) {

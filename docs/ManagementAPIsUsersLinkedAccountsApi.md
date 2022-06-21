@@ -35,8 +35,8 @@ func main() {
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(context.Background(), envID, userID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet(context.Background(), envID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     linkedAccountID := "linkedAccountID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(context.Background(), envID, userID, linkedAccountID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete(context.Background(), envID, userID, linkedAccountID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
     linkedAccountID := "linkedAccountID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(context.Background(), envID, userID, linkedAccountID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet(context.Background(), envID, userID, linkedAccountID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUsersLinkedAccountsApi.V1EnvironmentsEnvIDUsersUserIDLinkedAccountsLinkedAccountIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

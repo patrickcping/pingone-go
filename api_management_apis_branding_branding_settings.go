@@ -12,23 +12,19 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsBrandingBrandingSettingsApiService ManagementAPIsBrandingBrandingSettingsApi service
 type ManagementAPIsBrandingBrandingSettingsApiService service
 
 type ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsBrandingBrandingSettingsApiService
 	envID string
 	authorization *string
@@ -39,7 +35,7 @@ func (r ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest) Authorization(authoriz
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDBrandingSettingsGetExecute(r)
 }
 
@@ -48,11 +44,11 @@ V1EnvironmentsEnvIDBrandingSettingsGet READ Branding Settings
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest
 */
-func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsGet(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest {
+func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest {
 	return ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -61,26 +57,24 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 }
 
 // Execute executes the request
-func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsGetExecute(r ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsGetExecute(r ApiV1EnvironmentsEnvIDBrandingSettingsGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBrandingBrandingSettingsApiService.V1EnvironmentsEnvIDBrandingSettingsGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/brandingSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,7 +96,7 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 	if r.authorization != nil {
 		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -112,15 +106,15 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -141,7 +135,7 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 }
 
 type ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsBrandingBrandingSettingsApiService
 	envID string
 	authorization *string
@@ -152,12 +146,13 @@ func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) Authorization(authoriz
 	r.authorization = &authorization
 	return r
 }
+
 func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnvironmentsEnvIDBrandingSettingsPutExecute(r)
 }
 
@@ -166,11 +161,11 @@ V1EnvironmentsEnvIDBrandingSettingsPut UPDATE Branding Settings
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @return ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest
 */
-func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsPut(ctx _context.Context, envID string) ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest {
+func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsPut(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest {
 	return ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -179,26 +174,24 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 }
 
 // Execute executes the request
-func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsPutExecute(r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBrandingSettingsPutExecute(r ApiV1EnvironmentsEnvIDBrandingSettingsPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsBrandingBrandingSettingsApiService.V1EnvironmentsEnvIDBrandingSettingsPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/brandingSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -222,7 +215,7 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -232,15 +225,15 @@ func (a *ManagementAPIsBrandingBrandingSettingsApiService) V1EnvironmentsEnvIDBr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

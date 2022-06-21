@@ -33,8 +33,8 @@ func main() {
     filter := "startDate eq "2018-02-17T09:10:12-04:00" and endDate eq "2018-02-23T09:10:12-04:00"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet(context.Background(), envID).Filter(filter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet(context.Background(), envID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsUserActivitiesApi.V1EnvironmentsEnvIDUserActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

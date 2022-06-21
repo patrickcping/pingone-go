@@ -53,11 +53,11 @@ func (o *GatewayLDAPAllOfNewUserLookup) GetAttributeMappings() []GatewayLDAPAllO
 
 // GetAttributeMappingsOk returns a tuple with the AttributeMappings field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfNewUserLookup) GetAttributeMappingsOk() (*[]GatewayLDAPAllOfNewUserLookupAttributeMappings, bool) {
-	if o == nil  {
+func (o *GatewayLDAPAllOfNewUserLookup) GetAttributeMappingsOk() ([]GatewayLDAPAllOfNewUserLookupAttributeMappings, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.AttributeMappings, true
+	return o.AttributeMappings, true
 }
 
 // SetAttributeMappings sets field value

@@ -34,8 +34,8 @@ func main() {
     authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsGet(context.Background(), envID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsGet(context.Background(), envID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -102,11 +102,11 @@ import (
 func main() {
     envID := "envID_example" // string | 
     authorization := "{{jwtToken}}" // string |  (optional)
-    body := map[string]interface{}(Object) // map[string]interface{} |  (optional)
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut(context.Background(), envID).Authorization(authorization).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut(context.Background(), envID).Authorization(authorization).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsBrandingBrandingSettingsApi.V1EnvironmentsEnvIDBrandingSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -24,7 +24,7 @@ type GatewayInstance struct {
 	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
 	Credential *GatewayInstanceCredential `json:"credential,omitempty"`
 	// An array of strings that lists the messages that are maintained by the gateway instance.
-	CurrentErrors *[]string `json:"currentErrors,omitempty"`
+	CurrentErrors []string `json:"currentErrors,omitempty"`
 	// An enumeration that specifies whether or not the gateway is in a healthy state. Options are HEALTHY, DEGRADED, UNHEALTHY. This is a required property.
 	HealthStatus *string `json:"healthStatus,omitempty"`
 	// A string that specifies the hostname of the container running in the customer’s infrastructure. This is a required property.
@@ -225,12 +225,12 @@ func (o *GatewayInstance) GetCurrentErrors() []string {
 		var ret []string
 		return ret
 	}
-	return *o.CurrentErrors
+	return o.CurrentErrors
 }
 
 // GetCurrentErrorsOk returns a tuple with the CurrentErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayInstance) GetCurrentErrorsOk() (*[]string, bool) {
+func (o *GatewayInstance) GetCurrentErrorsOk() ([]string, bool) {
 	if o == nil || o.CurrentErrors == nil {
 		return nil, false
 	}
@@ -248,7 +248,7 @@ func (o *GatewayInstance) HasCurrentErrors() bool {
 
 // SetCurrentErrors gets a reference to the given []string and assigns it to the CurrentErrors field.
 func (o *GatewayInstance) SetCurrentErrors(v []string) {
-	o.CurrentErrors = &v
+	o.CurrentErrors = v
 }
 
 // GetHealthStatus returns the HealthStatus field value if set, zero value otherwise.

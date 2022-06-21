@@ -12,30 +12,25 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsApplicationsApplicationSecretApiService ManagementAPIsApplicationsApplicationSecretApi service
 type ManagementAPIsApplicationsApplicationSecretApiService service
 
 type ApiReadApplicationSecretRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsApplicationsApplicationSecretApiService
 	envID string
 	appID string
 }
 
-
-func (r ApiReadApplicationSecretRequest) Execute() (ApplicationSecret, *_nethttp.Response, error) {
+func (r ApiReadApplicationSecretRequest) Execute() (*ApplicationSecret, *http.Response, error) {
 	return r.ApiService.ReadApplicationSecretExecute(r)
 }
 
@@ -44,12 +39,12 @@ ReadApplicationSecret READ Application Secret
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
  @return ApiReadApplicationSecretRequest
 */
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecret(ctx _context.Context, envID string, appID string) ApiReadApplicationSecretRequest {
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecret(ctx context.Context, envID string, appID string) ApiReadApplicationSecretRequest {
 	return ApiReadApplicationSecretRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,28 +55,26 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationS
 
 // Execute executes the request
 //  @return ApplicationSecret
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (ApplicationSecret, *_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationSecret
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationSecret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.ReadApplicationSecret")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -100,7 +93,7 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -110,15 +103,15 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -137,7 +130,7 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationS
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -148,14 +141,13 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) ReadApplicationS
 }
 
 type ApiUpdateApplicationSecretRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsApplicationsApplicationSecretApiService
 	envID string
 	appID string
 }
 
-
-func (r ApiUpdateApplicationSecretRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiUpdateApplicationSecretRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdateApplicationSecretExecute(r)
 }
 
@@ -164,12 +156,12 @@ UpdateApplicationSecret UPDATE Application Secret
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param envID
  @param appID
  @return ApiUpdateApplicationSecretRequest
 */
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecret(ctx _context.Context, envID string, appID string) ApiUpdateApplicationSecretRequest {
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecret(ctx context.Context, envID string, appID string) ApiUpdateApplicationSecretRequest {
 	return ApiUpdateApplicationSecretRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -179,27 +171,25 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicatio
 }
 
 // Execute executes the request
-func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsApplicationsApplicationSecretApiService.UpdateApplicationSecret")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", _neturl.PathEscape(parameterToString(r.envID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", _neturl.PathEscape(parameterToString(r.appID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -218,7 +208,7 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicatio
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -228,15 +218,15 @@ func (a *ManagementAPIsApplicationsApplicationSecretApiService) UpdateApplicatio
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

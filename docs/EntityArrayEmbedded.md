@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**[]OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute**](OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute.md) |  | [optional] 
-**Applications** | Pointer to [**[]AnyOfApplicationSAMLApplicationOIDC**](AnyOfApplicationSAMLApplicationOIDC.md) |  | [optional] 
+**Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
+**Applications** | Pointer to [**[]EntityArrayEmbeddedApplicationsInner**](EntityArrayEmbeddedApplicationsInner.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
-**Gateways** | Pointer to [**[]AnyOfGatewayGatewayLDAP**](AnyOfGatewayGatewayLDAP.md) |  | [optional] 
+**Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
-**PushCredentials** | Pointer to [**[]AnyOfMFAPushCredentialAPNSMFAPushCredential**](AnyOfMFAPushCredentialAPNSMFAPushCredential.md) |  | [optional] 
+**PushCredentials** | Pointer to [**[]EntityArrayEmbeddedPushCredentialsInner**](EntityArrayEmbeddedPushCredentialsInner.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **RiskPolicySets** | Pointer to [**[]RiskPolicySet**](RiskPolicySet.md) |  | [optional] 
@@ -45,20 +45,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAttributes
 
-`func (o *EntityArrayEmbedded) GetAttributes() []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute`
+`func (o *EntityArrayEmbedded) GetAttributes() []EntityArrayEmbeddedAttributesInner`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute, bool)`
+`func (o *EntityArrayEmbedded) GetAttributesOk() (*[]EntityArrayEmbeddedAttributesInner, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EntityArrayEmbedded) SetAttributes(v []OneOfApplicationAttributeMappingSchemaAttributeResourceAttribute)`
+`func (o *EntityArrayEmbedded) SetAttributes(v []EntityArrayEmbeddedAttributesInner)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -70,20 +70,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetApplications
 
-`func (o *EntityArrayEmbedded) GetApplications() []AnyOfApplicationSAMLApplicationOIDC`
+`func (o *EntityArrayEmbedded) GetApplications() []EntityArrayEmbeddedApplicationsInner`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]AnyOfApplicationSAMLApplicationOIDC, bool)`
+`func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]EntityArrayEmbeddedApplicationsInner, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *EntityArrayEmbedded) SetApplications(v []AnyOfApplicationSAMLApplicationOIDC)`
+`func (o *EntityArrayEmbedded) SetApplications(v []EntityArrayEmbeddedApplicationsInner)`
 
 SetApplications sets Applications field to given value.
 
@@ -170,20 +170,20 @@ HasGatewayInstances returns a boolean if a field has been set.
 
 ### GetGateways
 
-`func (o *EntityArrayEmbedded) GetGateways() []AnyOfGatewayGatewayLDAP`
+`func (o *EntityArrayEmbedded) GetGateways() []EntityArrayEmbeddedGatewaysInner`
 
 GetGateways returns the Gateways field if non-nil, zero value otherwise.
 
 ### GetGatewaysOk
 
-`func (o *EntityArrayEmbedded) GetGatewaysOk() (*[]AnyOfGatewayGatewayLDAP, bool)`
+`func (o *EntityArrayEmbedded) GetGatewaysOk() (*[]EntityArrayEmbeddedGatewaysInner, bool)`
 
 GetGatewaysOk returns a tuple with the Gateways field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGateways
 
-`func (o *EntityArrayEmbedded) SetGateways(v []AnyOfGatewayGatewayLDAP)`
+`func (o *EntityArrayEmbedded) SetGateways(v []EntityArrayEmbeddedGatewaysInner)`
 
 SetGateways sets Gateways field to given value.
 
@@ -295,20 +295,20 @@ HasPopulations returns a boolean if a field has been set.
 
 ### GetPushCredentials
 
-`func (o *EntityArrayEmbedded) GetPushCredentials() []AnyOfMFAPushCredentialAPNSMFAPushCredential`
+`func (o *EntityArrayEmbedded) GetPushCredentials() []EntityArrayEmbeddedPushCredentialsInner`
 
 GetPushCredentials returns the PushCredentials field if non-nil, zero value otherwise.
 
 ### GetPushCredentialsOk
 
-`func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]AnyOfMFAPushCredentialAPNSMFAPushCredential, bool)`
+`func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]EntityArrayEmbeddedPushCredentialsInner, bool)`
 
 GetPushCredentialsOk returns a tuple with the PushCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPushCredentials
 
-`func (o *EntityArrayEmbedded) SetPushCredentials(v []AnyOfMFAPushCredentialAPNSMFAPushCredential)`
+`func (o *EntityArrayEmbedded) SetPushCredentials(v []EntityArrayEmbeddedPushCredentialsInner)`
 
 SetPushCredentials sets PushCredentials field to given value.
 

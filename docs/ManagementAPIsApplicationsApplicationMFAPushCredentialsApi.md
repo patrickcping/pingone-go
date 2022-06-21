@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateMFAPushCredential
 
-> OneOfMFAPushCredentialAPNSMFAPushCredential CreateMFAPushCredential(ctx, envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateMFAPushCredential201Response CreateMFAPushCredential(ctx, envID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
 
 CREATE MFA Push Credential
 
@@ -35,16 +35,16 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential("Type_example", "Key_example")} // CreateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), envID, appID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), envID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMFAPushCredential`: OneOfMFAPushCredentialAPNSMFAPushCredential
+    // response from `CreateMFAPushCredential`: CreateMFAPushCredential201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -67,11 +67,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **createMFAPushCredentialRequest** | [**CreateMFAPushCredentialRequest**](CreateMFAPushCredentialRequest.md) |  | 
 
 ### Return type
 
-[**OneOfMFAPushCredentialAPNSMFAPushCredential**](oneOf&lt;MFAPushCredentialAPNS,MFAPushCredential&gt;.md)
+[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
 
 ### Authorization
 
@@ -114,8 +114,8 @@ func main() {
     authorization := "Bearer {{accessToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), envID, appID, pushCredID).Authorization(authorization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), envID, appID, pushCredID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -188,8 +188,8 @@ func main() {
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), envID, appID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), envID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneMFAPushCredential
 
-> OneOfMFAPushCredentialAPNSMFAPushCredential ReadOneMFAPushCredential(ctx, envID, appID, pushCredID).Execute()
+> CreateMFAPushCredential201Response ReadOneMFAPushCredential(ctx, envID, appID, pushCredID).Execute()
 
 READ One MFA Push Credential
 
@@ -262,13 +262,13 @@ func main() {
     pushCredID := "pushCredID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), envID, appID, pushCredID).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), envID, appID, pushCredID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneMFAPushCredential`: OneOfMFAPushCredentialAPNSMFAPushCredential
+    // response from `ReadOneMFAPushCredential`: CreateMFAPushCredential201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OneOfMFAPushCredentialAPNSMFAPushCredential**](oneOf&lt;MFAPushCredentialAPNS,MFAPushCredential&gt;.md)
+[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMFAPushCredential
 
-> OneOfMFAPushCredentialAPNSMFAPushCredential UpdateMFAPushCredential(ctx, envID, appID, pushCredID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> CreateMFAPushCredential201Response UpdateMFAPushCredential(ctx, envID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
 
 UPDATE MFA Push Credential
 
@@ -336,16 +336,16 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE |  (optional)
+    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential("Type_example", "Key_example")} // UpdateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), envID, appID, pushCredID).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), envID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMFAPushCredential`: OneOfMFAPushCredentialAPNSMFAPushCredential
+    // response from `UpdateMFAPushCredential`: CreateMFAPushCredential201Response
     fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -370,11 +370,11 @@ Name | Type | Description  | Notes
 
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **updateMFAPushCredentialRequest** | [**UpdateMFAPushCredentialRequest**](UpdateMFAPushCredentialRequest.md) |  | 
 
 ### Return type
 
-[**OneOfMFAPushCredentialAPNSMFAPushCredential**](oneOf&lt;MFAPushCredentialAPNS,MFAPushCredential&gt;.md)
+[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
 
 ### Authorization
 

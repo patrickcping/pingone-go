@@ -12,29 +12,24 @@ package pingone
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // ManagementAPIsLicensesApiService ManagementAPIsLicensesApi service
 type ManagementAPIsLicensesApiService service
 
 type ApiV1OrganizationsOrgIDLicensesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLicensesApiService
 	orgID string
 }
 
-
-func (r ApiV1OrganizationsOrgIDLicensesGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDLicensesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDLicensesGetExecute(r)
 }
 
@@ -43,11 +38,11 @@ V1OrganizationsOrgIDLicensesGet READ All Licenses
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @return ApiV1OrganizationsOrgIDLicensesGetRequest
 */
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGet(ctx _context.Context, orgID string) ApiV1OrganizationsOrgIDLicensesGetRequest {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGet(ctx context.Context, orgID string) ApiV1OrganizationsOrgIDLicensesGetRequest {
 	return ApiV1OrganizationsOrgIDLicensesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,26 +51,24 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGet(ctx _
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGetExecute(r ApiV1OrganizationsOrgIDLicensesGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGetExecute(r ApiV1OrganizationsOrgIDLicensesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLicensesApiService.V1OrganizationsOrgIDLicensesGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/licenses"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +87,7 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGetExecut
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +97,15 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGetExecut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -133,14 +126,13 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesGetExecut
 }
 
 type ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLicensesApiService
 	orgID string
 	licenseID string
 }
 
-
-func (r ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDLicensesLicenseIDGetExecute(r)
 }
 
@@ -149,12 +141,12 @@ V1OrganizationsOrgIDLicensesLicenseIDGet READ One License
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @param licenseID
  @return ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest
 */
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDGet(ctx _context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDGet(ctx context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest {
 	return ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,27 +156,25 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLicensesApiService.V1OrganizationsOrgIDLicensesLicenseIDGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/licenses/{licenseID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", _neturl.PathEscape(parameterToString(r.licenseID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterToString(r.licenseID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -203,7 +193,7 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -213,15 +203,15 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,14 +232,13 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 }
 
 type ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLicensesApiService
 	orgID string
 	licenseID string
 }
 
-
-func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDLicensesLicenseIDNameGetExecute(r)
 }
 
@@ -258,12 +247,12 @@ V1OrganizationsOrgIDLicensesLicenseIDNameGet READ One License Name
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @param licenseID
  @return ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest
 */
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNameGet(ctx _context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNameGet(ctx context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest {
 	return ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,27 +262,25 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNameGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNameGetExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDNameGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLicensesApiService.V1OrganizationsOrgIDLicensesLicenseIDNameGet")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/licenses/{licenseID}/name"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", _neturl.PathEscape(parameterToString(r.licenseID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterToString(r.licenseID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -312,7 +299,7 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -322,15 +309,15 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -351,7 +338,7 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 }
 
 type ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ManagementAPIsLicensesApiService
 	orgID string
 	licenseID string
@@ -363,7 +350,7 @@ func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) Body(body map[st
 	return r
 }
 
-func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1OrganizationsOrgIDLicensesLicenseIDNamePutExecute(r)
 }
 
@@ -372,12 +359,12 @@ V1OrganizationsOrgIDLicensesLicenseIDNamePut Update One License Name
 
 By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgID
  @param licenseID
  @return ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest
 */
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNamePut(ctx _context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNamePut(ctx context.Context, orgID string, licenseID string) ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest {
 	return ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,27 +374,25 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 }
 
 // Execute executes the request
-func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNamePutExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) (*_nethttp.Response, error) {
+func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseIDNamePutExecute(r ApiV1OrganizationsOrgIDLicensesLicenseIDNamePutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagementAPIsLicensesApiService.V1OrganizationsOrgIDLicensesLicenseIDNamePut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{orgID}/licenses/{licenseID}/name"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", _neturl.PathEscape(parameterToString(r.orgID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", _neturl.PathEscape(parameterToString(r.licenseID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgID"+"}", url.PathEscape(parameterToString(r.orgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterToString(r.licenseID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -428,7 +413,7 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -438,15 +423,15 @@ func (a *ManagementAPIsLicensesApiService) V1OrganizationsOrgIDLicensesLicenseID
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
