@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the BOM ID | [optional] [readonly] 
-**Type** | **string** | A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL | 
+**Type** | **string** | A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL | 
 **Description** | Pointer to **string** | A string that specifies the description of the product or standalone service | [optional] [readonly] 
 **Console** | Pointer to [**BillOfMaterialsProductsInnerConsole**](BillOfMaterialsProductsInnerConsole.md) |  | [optional] 
+**Deployment** | Pointer to [**BillOfMaterialsProductsInnerDeployment**](BillOfMaterialsProductsInnerDeployment.md) |  | [optional] 
 **Bookmarks** | Pointer to [**[]BillOfMaterialsProductsInnerBookmarksInner**](BillOfMaterialsProductsInnerBookmarksInner.md) | Optional array of custom bookmarks. Maximum of five bookmarks per product. | [optional] 
 
 ## Methods
@@ -123,6 +124,31 @@ SetConsole sets Console field to given value.
 `func (o *BillOfMaterialsProductsInner) HasConsole() bool`
 
 HasConsole returns a boolean if a field has been set.
+
+### GetDeployment
+
+`func (o *BillOfMaterialsProductsInner) GetDeployment() BillOfMaterialsProductsInnerDeployment`
+
+GetDeployment returns the Deployment field if non-nil, zero value otherwise.
+
+### GetDeploymentOk
+
+`func (o *BillOfMaterialsProductsInner) GetDeploymentOk() (*BillOfMaterialsProductsInnerDeployment, bool)`
+
+GetDeploymentOk returns a tuple with the Deployment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeployment
+
+`func (o *BillOfMaterialsProductsInner) SetDeployment(v BillOfMaterialsProductsInnerDeployment)`
+
+SetDeployment sets Deployment field to given value.
+
+### HasDeployment
+
+`func (o *BillOfMaterialsProductsInner) HasDeployment() bool`
+
+HasDeployment returns a boolean if a field has been set.
 
 ### GetBookmarks
 

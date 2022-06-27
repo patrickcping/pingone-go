@@ -18,11 +18,12 @@ import (
 type BillOfMaterialsProductsInner struct {
 	// A string that specifies the BOM ID
 	Id *string `json:"id,omitempty"`
-	// A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL
+	// A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL
 	Type string `json:"type"`
 	// A string that specifies the description of the product or standalone service
 	Description *string `json:"description,omitempty"`
 	Console *BillOfMaterialsProductsInnerConsole `json:"console,omitempty"`
+	Deployment *BillOfMaterialsProductsInnerDeployment `json:"deployment,omitempty"`
 	// Optional array of custom bookmarks. Maximum of five bookmarks per product.
 	Bookmarks []BillOfMaterialsProductsInnerBookmarksInner `json:"bookmarks,omitempty"`
 }
@@ -165,6 +166,38 @@ func (o *BillOfMaterialsProductsInner) SetConsole(v BillOfMaterialsProductsInner
 	o.Console = &v
 }
 
+// GetDeployment returns the Deployment field value if set, zero value otherwise.
+func (o *BillOfMaterialsProductsInner) GetDeployment() BillOfMaterialsProductsInnerDeployment {
+	if o == nil || o.Deployment == nil {
+		var ret BillOfMaterialsProductsInnerDeployment
+		return ret
+	}
+	return *o.Deployment
+}
+
+// GetDeploymentOk returns a tuple with the Deployment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillOfMaterialsProductsInner) GetDeploymentOk() (*BillOfMaterialsProductsInnerDeployment, bool) {
+	if o == nil || o.Deployment == nil {
+		return nil, false
+	}
+	return o.Deployment, true
+}
+
+// HasDeployment returns a boolean if a field has been set.
+func (o *BillOfMaterialsProductsInner) HasDeployment() bool {
+	if o != nil && o.Deployment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeployment gets a reference to the given BillOfMaterialsProductsInnerDeployment and assigns it to the Deployment field.
+func (o *BillOfMaterialsProductsInner) SetDeployment(v BillOfMaterialsProductsInnerDeployment) {
+	o.Deployment = &v
+}
+
 // GetBookmarks returns the Bookmarks field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetBookmarks() []BillOfMaterialsProductsInnerBookmarksInner {
 	if o == nil || o.Bookmarks == nil {
@@ -210,6 +243,9 @@ func (o BillOfMaterialsProductsInner) MarshalJSON() ([]byte, error) {
 	}
 	if o.Console != nil {
 		toSerialize["console"] = o.Console
+	}
+	if o.Deployment != nil {
+		toSerialize["deployment"] = o.Deployment
 	}
 	if o.Bookmarks != nil {
 		toSerialize["bookmarks"] = o.Bookmarks

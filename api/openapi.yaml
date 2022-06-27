@@ -13875,6 +13875,7 @@ components:
     BillOfMaterials:
       example:
         createdAt: createdAt
+        solutionType: WORKFORCE
         updatedAt: updatedAt
         products:
         - bookmarks:
@@ -13887,6 +13888,8 @@ components:
           description: description
           id: id
           type: PING_ONE_MFA
+          deployment:
+            id: id
         - bookmarks:
           - name: name
             href: href
@@ -13897,7 +13900,15 @@ components:
           description: description
           id: id
           type: PING_ONE_MFA
+          deployment:
+            id: id
       properties:
+        solutionType:
+          description: The solution set of the bill of materials
+          enum:
+          - WORKFORCE
+          - CUSTOMER
+          type: string
         createdAt:
           description: The time the resource was created.
           readOnly: true
@@ -13912,6 +13923,8 @@ components:
           items:
             $ref: '#/components/schemas/BillOfMaterials_products_inner'
           type: array
+      required:
+      - products
       type: object
     Environment:
       example:
@@ -16823,6 +16836,15 @@ components:
       required:
       - href
       type: object
+    BillOfMaterials_products_inner_deployment:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID of the PingID deployment
+          readOnly: true
+          type: string
+      type: object
     BillOfMaterials_products_inner_bookmarks_inner:
       example:
         name: name
@@ -16851,6 +16873,8 @@ components:
         description: description
         id: id
         type: PING_ONE_MFA
+        deployment:
+          id: id
       properties:
         id:
           description: A string that specifies the BOM ID
@@ -16858,25 +16882,25 @@ components:
           type: string
         type:
           description: "A string that specifies the Ping Identity product type. Options\
-            \ for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY,\
+            \ for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA,\
+            \ PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE\
             \ and PING_ONE_BASE. The PING_ONE_BASE product represents the default\
             \ set of services that an environment can use on the PingOne platform.\
             \ Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS,\
-            \ PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE,\
-            \ PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL"
+            \ PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL"
           enum:
           - PING_ONE_MFA
+          - PING_ONE_ORCHESTRATE
           - PING_ONE_RISK
           - PING_ONE_VERIFY
+          - PING_ONE_CREDENTIALS
+          - PING_ONE_AUTHORIZE
           - PING_ONE_BASE
           - PING_FEDERATE
           - PING_ACCESS
           - PING_DIRECTORY
-          - PING_DATA_SYNC
-          - PING_DATA_GOVERNANCE
-          - PING_ONE_FOR_ENTERPRISE
+          - PING_AUTHORIZE
           - PING_ID
-          - PING_ID_SDK
           - PING_INTELLIGENCE
           - PING_CENTRAL
           type: string
@@ -16887,6 +16911,8 @@ components:
           type: string
         console:
           $ref: '#/components/schemas/BillOfMaterials_products_inner_console'
+        deployment:
+          $ref: '#/components/schemas/BillOfMaterials_products_inner_deployment'
         bookmarks:
           description: Optional array of custom bookmarks. Maximum of five bookmarks
             per product.

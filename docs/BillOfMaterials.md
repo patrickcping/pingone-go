@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SolutionType** | Pointer to **string** | The solution set of the bill of materials | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
-**Products** | Pointer to [**[]BillOfMaterialsProductsInner**](BillOfMaterialsProductsInner.md) | An array that specifies the products associated with this bill of materials | [optional] 
+**Products** | [**[]BillOfMaterialsProductsInner**](BillOfMaterialsProductsInner.md) | An array that specifies the products associated with this bill of materials | 
 
 ## Methods
 
 ### NewBillOfMaterials
 
-`func NewBillOfMaterials() *BillOfMaterials`
+`func NewBillOfMaterials(products []BillOfMaterialsProductsInner, ) *BillOfMaterials`
 
 NewBillOfMaterials instantiates a new BillOfMaterials object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewBillOfMaterialsWithDefaults instantiates a new BillOfMaterials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSolutionType
+
+`func (o *BillOfMaterials) GetSolutionType() string`
+
+GetSolutionType returns the SolutionType field if non-nil, zero value otherwise.
+
+### GetSolutionTypeOk
+
+`func (o *BillOfMaterials) GetSolutionTypeOk() (*string, bool)`
+
+GetSolutionTypeOk returns a tuple with the SolutionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSolutionType
+
+`func (o *BillOfMaterials) SetSolutionType(v string)`
+
+SetSolutionType sets SolutionType field to given value.
+
+### HasSolutionType
+
+`func (o *BillOfMaterials) HasSolutionType() bool`
+
+HasSolutionType returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -96,11 +122,6 @@ and a boolean to check if the value has been set.
 
 SetProducts sets Products field to given value.
 
-### HasProducts
-
-`func (o *BillOfMaterials) HasProducts() bool`
-
-HasProducts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -101,7 +101,7 @@ import (
 
 func main() {
     envID := "envID_example" // string | 
-    billOfMaterials := *openapiclient.NewBillOfMaterials() // BillOfMaterials |  (optional)
+    billOfMaterials := *openapiclient.NewBillOfMaterials([]openapiclient.BillOfMaterialsProductsInner{*openapiclient.NewBillOfMaterialsProductsInner("Type_example")}) // BillOfMaterials |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

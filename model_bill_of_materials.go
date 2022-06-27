@@ -16,20 +16,23 @@ import (
 
 // BillOfMaterials struct for BillOfMaterials
 type BillOfMaterials struct {
+	// The solution set of the bill of materials
+	SolutionType *string `json:"solutionType,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// An array that specifies the products associated with this bill of materials
-	Products []BillOfMaterialsProductsInner `json:"products,omitempty"`
+	Products []BillOfMaterialsProductsInner `json:"products"`
 }
 
 // NewBillOfMaterials instantiates a new BillOfMaterials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillOfMaterials() *BillOfMaterials {
+func NewBillOfMaterials(products []BillOfMaterialsProductsInner) *BillOfMaterials {
 	this := BillOfMaterials{}
+	this.Products = products
 	return &this
 }
 
@@ -39,6 +42,38 @@ func NewBillOfMaterials() *BillOfMaterials {
 func NewBillOfMaterialsWithDefaults() *BillOfMaterials {
 	this := BillOfMaterials{}
 	return &this
+}
+
+// GetSolutionType returns the SolutionType field value if set, zero value otherwise.
+func (o *BillOfMaterials) GetSolutionType() string {
+	if o == nil || o.SolutionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.SolutionType
+}
+
+// GetSolutionTypeOk returns a tuple with the SolutionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillOfMaterials) GetSolutionTypeOk() (*string, bool) {
+	if o == nil || o.SolutionType == nil {
+		return nil, false
+	}
+	return o.SolutionType, true
+}
+
+// HasSolutionType returns a boolean if a field has been set.
+func (o *BillOfMaterials) HasSolutionType() bool {
+	if o != nil && o.SolutionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSolutionType gets a reference to the given string and assigns it to the SolutionType field.
+func (o *BillOfMaterials) SetSolutionType(v string) {
+	o.SolutionType = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -105,47 +140,42 @@ func (o *BillOfMaterials) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
-// GetProducts returns the Products field value if set, zero value otherwise.
+// GetProducts returns the Products field value
 func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProductsInner {
-	if o == nil || o.Products == nil {
+	if o == nil {
 		var ret []BillOfMaterialsProductsInner
 		return ret
 	}
+
 	return o.Products
 }
 
-// GetProductsOk returns a tuple with the Products field value if set, nil otherwise
+// GetProductsOk returns a tuple with the Products field value
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterials) GetProductsOk() ([]BillOfMaterialsProductsInner, bool) {
-	if o == nil || o.Products == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.Products, true
 }
 
-// HasProducts returns a boolean if a field has been set.
-func (o *BillOfMaterials) HasProducts() bool {
-	if o != nil && o.Products != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProducts gets a reference to the given []BillOfMaterialsProductsInner and assigns it to the Products field.
+// SetProducts sets field value
 func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProductsInner) {
 	o.Products = v
 }
 
 func (o BillOfMaterials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.SolutionType != nil {
+		toSerialize["solutionType"] = o.SolutionType
+	}
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.Products != nil {
+	if true {
 		toSerialize["products"] = o.Products
 	}
 	return json.Marshal(toSerialize)
