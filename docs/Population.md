@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the population name, which must be provided and must be unique within an environment. | 
+**PasswordPolicy** | Pointer to [**PopulationPasswordPolicy**](PopulationPasswordPolicy.md) |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **UserCount** | Pointer to **int32** | The number of users that belong to the population | [optional] [readonly] 
 
@@ -124,6 +125,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordPolicy
+
+`func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy`
+
+GetPasswordPolicy returns the PasswordPolicy field if non-nil, zero value otherwise.
+
+### GetPasswordPolicyOk
+
+`func (o *Population) GetPasswordPolicyOk() (*PopulationPasswordPolicy, bool)`
+
+GetPasswordPolicyOk returns a tuple with the PasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicy
+
+`func (o *Population) SetPasswordPolicy(v PopulationPasswordPolicy)`
+
+SetPasswordPolicy sets PasswordPolicy field to given value.
+
+### HasPasswordPolicy
+
+`func (o *Population) HasPasswordPolicy() bool`
+
+HasPasswordPolicy returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

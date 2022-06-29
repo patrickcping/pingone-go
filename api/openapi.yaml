@@ -13584,12 +13584,16 @@ components:
               id: id
           populations:
           - createdAt: createdAt
+            passwordPolicy:
+              id: id
             userCount: 2
             name: name
             description: description
             id: id
             updatedAt: updatedAt
           - createdAt: createdAt
+            passwordPolicy:
+              id: id
             userCount: 2
             name: name
             description: description
@@ -14282,6 +14286,8 @@ components:
     Population:
       example:
         createdAt: createdAt
+        passwordPolicy:
+          id: id
         userCount: 2
         name: name
         description: description
@@ -14303,6 +14309,8 @@ components:
           description: "A string that specifies the population name, which must be\
             \ provided and must be unique within an environment."
           type: string
+        passwordPolicy:
+          $ref: '#/components/schemas/Population_passwordPolicy'
         updatedAt:
           description: The time the resource was last updated.
           readOnly: true
@@ -16370,12 +16378,16 @@ components:
             id: id
         populations:
         - createdAt: createdAt
+          passwordPolicy:
+            id: id
           userCount: 2
           name: name
           description: description
           id: id
           updatedAt: updatedAt
         - createdAt: createdAt
+          passwordPolicy:
+            id: id
           userCount: 2
           name: name
           description: description
@@ -17213,6 +17225,20 @@ components:
       required:
       - teamId
       - token
+      type: object
+    Population_passwordPolicy:
+      description: The object reference to the password policy resource. This is an
+        optional property.
+      example:
+        id: id
+      properties:
+        id:
+          description: "The ID of the password policy that is used for this population.\
+            \ If absent, the environment's default is used. Requried if `passwordPolicy`\
+            \ is used."
+          type: string
+      required:
+      - id
       type: object
     RiskEvaluation_riskPolicySet:
       example:

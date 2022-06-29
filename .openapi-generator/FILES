@@ -230,6 +230,7 @@ docs/ObjectPopulation.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
 docs/Population.md
+docs/PopulationPasswordPolicy.md
 docs/Resource.md
 docs/ResourceAttribute.md
 docs/ResourceResource.md
@@ -369,6 +370,7 @@ model_object_population.go
 model_p1_error.go
 model_p1_error_details_inner.go
 model_population.go
+model_population_password_policy.go
 model_resource.go
 model_resource_attribute.go
 model_resource_resource.go

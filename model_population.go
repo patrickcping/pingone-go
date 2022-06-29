@@ -24,6 +24,7 @@ type Population struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the population name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
+	PasswordPolicy *PopulationPasswordPolicy `json:"passwordPolicy,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// The number of users that belong to the population
@@ -168,6 +169,38 @@ func (o *Population) SetName(v string) {
 	o.Name = v
 }
 
+// GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
+func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy {
+	if o == nil || o.PasswordPolicy == nil {
+		var ret PopulationPasswordPolicy
+		return ret
+	}
+	return *o.PasswordPolicy
+}
+
+// GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetPasswordPolicyOk() (*PopulationPasswordPolicy, bool) {
+	if o == nil || o.PasswordPolicy == nil {
+		return nil, false
+	}
+	return o.PasswordPolicy, true
+}
+
+// HasPasswordPolicy returns a boolean if a field has been set.
+func (o *Population) HasPasswordPolicy() bool {
+	if o != nil && o.PasswordPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicy gets a reference to the given PopulationPasswordPolicy and assigns it to the PasswordPolicy field.
+func (o *Population) SetPasswordPolicy(v PopulationPasswordPolicy) {
+	o.PasswordPolicy = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Population) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -245,6 +278,9 @@ func (o Population) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordPolicy != nil {
+		toSerialize["passwordPolicy"] = o.PasswordPolicy
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
