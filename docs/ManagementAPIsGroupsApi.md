@@ -5,8 +5,11 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateGroup**](ManagementAPIsGroupsApi.md#CreateGroup) | **Post** /v1/environments/{envID}/groups | CREATE Group
+[**CreateGroupNesting**](ManagementAPIsGroupsApi.md#CreateGroupNesting) | **Post** /v1/environments/{envID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
 [**DeleteGroup**](ManagementAPIsGroupsApi.md#DeleteGroup) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
+[**DeleteGroupNesting**](ManagementAPIsGroupsApi.md#DeleteGroupNesting) | **Delete** /v1/environments/{envID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
 [**ReadAllGroups**](ManagementAPIsGroupsApi.md#ReadAllGroups) | **Get** /v1/environments/{envID}/groups | READ All Groups
+[**ReadGroupNesting**](ManagementAPIsGroupsApi.md#ReadGroupNesting) | **Get** /v1/environments/{envID}/groups/{groupID}/memberOfGroups | READ Group Nesting
 [**ReadOneGroup**](ManagementAPIsGroupsApi.md#ReadOneGroup) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
 [**UpdateGroup**](ManagementAPIsGroupsApi.md#UpdateGroup) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
 
@@ -65,6 +68,81 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **group** | [**Group**](Group.md) |  | 
+
+### Return type
+
+[**Group**](Group.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateGroupNesting
+
+> Group CreateGroupNesting(ctx, envID, groupID).GroupNesting(groupNesting).Execute()
+
+CREATE Group Nesting
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    groupID := "groupID_example" // string | 
+    groupNesting := *openapiclient.NewGroupNesting("Id_example") // GroupNesting |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGroupsApi.CreateGroupNesting(context.Background(), envID, groupID).GroupNesting(groupNesting).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.CreateGroupNesting``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGroupNesting`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.CreateGroupNesting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**groupID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGroupNestingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **groupNesting** | [**GroupNesting**](GroupNesting.md) |  | 
 
 ### Return type
 
@@ -155,6 +233,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteGroupNesting
+
+> DeleteGroupNesting(ctx, envID, groupID, nestedGroupID).Execute()
+
+DELETE Group Nesting
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    groupID := "groupID_example" // string | 
+    nestedGroupID := "nestedGroupID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGroupsApi.DeleteGroupNesting(context.Background(), envID, groupID, nestedGroupID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.DeleteGroupNesting``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**groupID** | **string** |  | 
+**nestedGroupID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGroupNestingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ReadAllGroups
 
 > EntityArray ReadAllGroups(ctx, envID).Filter(filter).Limit(limit).Execute()
@@ -210,6 +362,79 @@ Name | Type | Description  | Notes
 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadGroupNesting
+
+> EntityArray ReadGroupNesting(ctx, envID, groupID).Execute()
+
+READ Group Nesting
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    envID := "envID_example" // string | 
+    groupID := "groupID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagementAPIsGroupsApi.ReadGroupNesting(context.Background(), envID, groupID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagementAPIsGroupsApi.ReadGroupNesting``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadGroupNesting`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `ManagementAPIsGroupsApi.ReadGroupNesting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**envID** | **string** |  | 
+**groupID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadGroupNestingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 
 ### Return type
 

@@ -192,8 +192,11 @@ Class | Method | HTTP request | Description
 *ManagementAPIsGatewayManagementGatewaysApi* | [**ReadOneGateway**](docs/ManagementAPIsGatewayManagementGatewaysApi.md#readonegateway) | **Get** /v1/environments/{envID}/gateways/{gatewayID} | READ One Gateway
 *ManagementAPIsGatewayManagementGatewaysApi* | [**UpdateGateway**](docs/ManagementAPIsGatewayManagementGatewaysApi.md#updategateway) | **Put** /v1/environments/{envID}/gateways/{gatewayID} | UPDATE Gateway
 *ManagementAPIsGroupsApi* | [**CreateGroup**](docs/ManagementAPIsGroupsApi.md#creategroup) | **Post** /v1/environments/{envID}/groups | CREATE Group
+*ManagementAPIsGroupsApi* | [**CreateGroupNesting**](docs/ManagementAPIsGroupsApi.md#creategroupnesting) | **Post** /v1/environments/{envID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
 *ManagementAPIsGroupsApi* | [**DeleteGroup**](docs/ManagementAPIsGroupsApi.md#deletegroup) | **Delete** /v1/environments/{envID}/groups/{groupID} | DELETE Group
+*ManagementAPIsGroupsApi* | [**DeleteGroupNesting**](docs/ManagementAPIsGroupsApi.md#deletegroupnesting) | **Delete** /v1/environments/{envID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
 *ManagementAPIsGroupsApi* | [**ReadAllGroups**](docs/ManagementAPIsGroupsApi.md#readallgroups) | **Get** /v1/environments/{envID}/groups | READ All Groups
+*ManagementAPIsGroupsApi* | [**ReadGroupNesting**](docs/ManagementAPIsGroupsApi.md#readgroupnesting) | **Get** /v1/environments/{envID}/groups/{groupID}/memberOfGroups | READ Group Nesting
 *ManagementAPIsGroupsApi* | [**ReadOneGroup**](docs/ManagementAPIsGroupsApi.md#readonegroup) | **Get** /v1/environments/{envID}/groups/{groupID} | READ One Group
 *ManagementAPIsGroupsApi* | [**UpdateGroup**](docs/ManagementAPIsGroupsApi.md#updategroup) | **Put** /v1/environments/{envID}/groups/{groupID} | UPDATE Group
 *ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi* | [**V1EnvironmentsEnvIDPropagationMappingMappingIDDelete**](docs/ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi.md#v1environmentsenvidpropagationmappingmappingiddelete) | **Delete** /v1/environments/{envID}/propagation/mapping/{mappingID} | DELETE Mapping
@@ -474,6 +477,7 @@ Class | Method | HTTP request | Description
  - [Group](docs/Group.md)
  - [GroupDirectMemberCounts](docs/GroupDirectMemberCounts.md)
  - [GroupMembership](docs/GroupMembership.md)
+ - [GroupNesting](docs/GroupNesting.md)
  - [GroupPopulation](docs/GroupPopulation.md)
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
  - [Image](docs/Image.md)

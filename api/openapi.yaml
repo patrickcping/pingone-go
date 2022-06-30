@@ -4766,6 +4766,121 @@ paths:
       summary: UPDATE Group
       tags:
       - Management APIs > Groups
+  /v1/environments/{envID}/groups/{groupID}/memberOfGroups:
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: readGroupNesting
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: groupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Group Nesting
+      tags:
+      - Management APIs > Groups
+    post:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: createGroupNesting
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: groupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupNesting'
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful response
+      summary: CREATE Group Nesting
+      tags:
+      - Management APIs > Groups
+  /v1/environments/{envID}/groups/{groupID}/memberOfGroups/{nestedGroupID}:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: deleteGroupNesting
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: groupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: nestedGroupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "204":
+          description: Successful response
+      summary: DELETE Group Nesting
+      tags:
+      - Management APIs > Groups
   /v1/environments/{envID}/groups:
     get:
       description: "By design, PingOne requests solely comprise this collection. For\
@@ -14235,6 +14350,16 @@ components:
       properties:
         id:
           description: ID of the group to assign
+          type: string
+      required:
+      - id
+      type: object
+    GroupNesting:
+      example:
+        id: id
+      properties:
+        id:
+          description: ID of the group to nest
           type: string
       required:
       - id

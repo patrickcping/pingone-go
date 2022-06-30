@@ -141,6 +141,7 @@ docs/GatewaySupportedVersions.md
 docs/Group.md
 docs/GroupDirectMemberCounts.md
 docs/GroupMembership.md
+docs/GroupNesting.md
 docs/GroupPopulation.md
 docs/GroupTotalMemberCounts.md
 docs/Image.md
@@ -358,6 +359,7 @@ model_gateway_supported_versions.go
 model_group.go
 model_group_direct_member_counts.go
 model_group_membership.go
+model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
 model_image.go
