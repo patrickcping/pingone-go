@@ -23,39 +23,41 @@ import (
 // OrganizationsApiService OrganizationsApi service
 type OrganizationsApiService service
 
-type ApiV1OrganizationsGetRequest struct {
+type ApiReadAllOrganizationsRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsApiService
 }
 
-func (r ApiV1OrganizationsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1OrganizationsGetExecute(r)
+func (r ApiReadAllOrganizationsRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllOrganizationsExecute(r)
 }
 
 /*
-V1OrganizationsGet READ All Organizations
+ReadAllOrganizations READ All Organizations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1OrganizationsGetRequest
+ @return ApiReadAllOrganizationsRequest
 */
-func (a *OrganizationsApiService) V1OrganizationsGet(ctx context.Context) ApiV1OrganizationsGetRequest {
-	return ApiV1OrganizationsGetRequest{
+func (a *OrganizationsApiService) ReadAllOrganizations(ctx context.Context) ApiReadAllOrganizationsRequest {
+	return ApiReadAllOrganizationsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *OrganizationsApiService) V1OrganizationsGetExecute(r ApiV1OrganizationsGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.V1OrganizationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ReadAllOrganizations")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations"
@@ -83,19 +85,19 @@ func (a *OrganizationsApiService) V1OrganizationsGetExecute(r ApiV1Organizations
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -108,36 +110,45 @@ func (a *OrganizationsApiService) V1OrganizationsGetExecute(r ApiV1Organizations
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1OrganizationsOrganizationIDGetRequest struct {
+type ApiReadOneOrganizationsRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsApiService
 	organizationID string
 }
 
-func (r ApiV1OrganizationsOrganizationIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1OrganizationsOrganizationIDGetExecute(r)
+func (r ApiReadOneOrganizationsRequest) Execute() (*Organization, *http.Response, error) {
+	return r.ApiService.ReadOneOrganizationsExecute(r)
 }
 
 /*
-V1OrganizationsOrganizationIDGet READ One Organization
+ReadOneOrganizations READ One Organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationID
- @return ApiV1OrganizationsOrganizationIDGetRequest
+ @return ApiReadOneOrganizationsRequest
 */
-func (a *OrganizationsApiService) V1OrganizationsOrganizationIDGet(ctx context.Context, organizationID string) ApiV1OrganizationsOrganizationIDGetRequest {
-	return ApiV1OrganizationsOrganizationIDGetRequest{
+func (a *OrganizationsApiService) ReadOneOrganizations(ctx context.Context, organizationID string) ApiReadOneOrganizationsRequest {
+	return ApiReadOneOrganizationsRequest{
 		ApiService: a,
 		ctx: ctx,
 		organizationID: organizationID,
@@ -145,16 +156,18 @@ func (a *OrganizationsApiService) V1OrganizationsOrganizationIDGet(ctx context.C
 }
 
 // Execute executes the request
-func (a *OrganizationsApiService) V1OrganizationsOrganizationIDGetExecute(r ApiV1OrganizationsOrganizationIDGetRequest) (*http.Response, error) {
+//  @return Organization
+func (a *OrganizationsApiService) ReadOneOrganizationsExecute(r ApiReadOneOrganizationsRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Organization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.V1OrganizationsOrganizationIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ReadOneOrganizations")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/organizations/{organizationID}"
@@ -183,19 +196,19 @@ func (a *OrganizationsApiService) V1OrganizationsOrganizationIDGetExecute(r ApiV
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -208,13 +221,22 @@ func (a *OrganizationsApiService) V1OrganizationsOrganizationIDGetExecute(r ApiV
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

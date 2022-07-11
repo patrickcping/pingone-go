@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
+**Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
@@ -264,6 +265,31 @@ SetGroupMemberships sets GroupMemberships field to given value.
 `func (o *EntityArrayEmbedded) HasGroupMemberships() bool`
 
 HasGroupMemberships returns a boolean if a field has been set.
+
+### GetOrganizations
+
+`func (o *EntityArrayEmbedded) GetOrganizations() []Organization`
+
+GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+
+### GetOrganizationsOk
+
+`func (o *EntityArrayEmbedded) GetOrganizationsOk() (*[]Organization, bool)`
+
+GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizations
+
+`func (o *EntityArrayEmbedded) SetOrganizations(v []Organization)`
+
+SetOrganizations sets Organizations field to given value.
+
+### HasOrganizations
+
+`func (o *EntityArrayEmbedded) HasOrganizations() bool`
+
+HasOrganizations returns a boolean if a field has been set.
 
 ### GetPopulations
 

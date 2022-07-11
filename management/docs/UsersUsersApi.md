@@ -38,7 +38,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     contentType := "application/vnd.pingidentity.user.import+json" // string |  (optional)
-    user := *openapiclient.NewUser("Email_example", *openapiclient.NewUserPopulation("Id_example"), "Username_example") // User |  (optional)
+    user := *openapiclient.NewUser("Email_example", "Username_example") // User |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -324,7 +324,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    user := *openapiclient.NewUser("Email_example", *openapiclient.NewUserPopulation("Id_example"), "Username_example") // User |  (optional)
+    user := *openapiclient.NewUser("Email_example", "Username_example") // User |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -397,7 +397,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    user := *openapiclient.NewUser("Email_example", *openapiclient.NewUserPopulation("Id_example"), "Username_example") // User |  (optional)
+    user := *openapiclient.NewUser("Email_example", "Username_example") // User |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

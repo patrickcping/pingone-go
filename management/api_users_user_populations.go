@@ -23,27 +23,27 @@ import (
 // UsersUserPopulationsApiService UsersUserPopulationsApi service
 type UsersUserPopulationsApiService service
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest struct {
+type ApiReadUserPopulationRequest struct {
 	ctx context.Context
 	ApiService *UsersUserPopulationsApiService
 	environmentID string
 	userID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDPopulationGetExecute(r)
+func (r ApiReadUserPopulationRequest) Execute() (*UserPopulation, *http.Response, error) {
+	return r.ApiService.ReadUserPopulationExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet READ User Population
+ReadUserPopulation READ User Population
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest
+ @return ApiReadUserPopulationRequest
 */
-func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest{
+func (a *UsersUserPopulationsApiService) ReadUserPopulation(ctx context.Context, environmentID string, userID string) ApiReadUserPopulationRequest {
+	return ApiReadUserPopulationRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -52,16 +52,18 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 }
 
 // Execute executes the request
-func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPopulationGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest) (*http.Response, error) {
+//  @return UserPopulation
+func (a *UsersUserPopulationsApiService) ReadUserPopulationExecute(r ApiReadUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserPopulation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersUserPopulationsApiService.V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersUserPopulationsApiService.ReadUserPopulation")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/population"
@@ -91,19 +93,19 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -116,44 +118,53 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest struct {
+type ApiUpdateUserPopulationRequest struct {
 	ctx context.Context
 	ApiService *UsersUserPopulationsApiService
 	environmentID string
 	userID string
-	body *map[string]interface{}
+	userPopulation *UserPopulation
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest {
-	r.body = &body
+func (r ApiUpdateUserPopulationRequest) UserPopulation(userPopulation UserPopulation) ApiUpdateUserPopulationRequest {
+	r.userPopulation = &userPopulation
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDPopulationPutExecute(r)
+func (r ApiUpdateUserPopulationRequest) Execute() (*UserPopulation, *http.Response, error) {
+	return r.ApiService.UpdateUserPopulationExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut UPDATE User Population
+UpdateUserPopulation UPDATE User Population
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest
+ @return ApiUpdateUserPopulationRequest
 */
-func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest{
+func (a *UsersUserPopulationsApiService) UpdateUserPopulation(ctx context.Context, environmentID string, userID string) ApiUpdateUserPopulationRequest {
+	return ApiUpdateUserPopulationRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -162,16 +173,18 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 }
 
 // Execute executes the request
-func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPopulationPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest) (*http.Response, error) {
+//  @return UserPopulation
+func (a *UsersUserPopulationsApiService) UpdateUserPopulationExecute(r ApiUpdateUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserPopulation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersUserPopulationsApiService.V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersUserPopulationsApiService.UpdateUserPopulation")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/population"
@@ -200,22 +213,22 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.userPopulation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -228,13 +241,22 @@ func (a *UsersUserPopulationsApiService) V1EnvironmentsEnvironmentIDUsersUserIDP
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

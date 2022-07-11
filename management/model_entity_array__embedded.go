@@ -25,6 +25,7 @@ type EntityArrayEmbedded struct {
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
+	Organizations []Organization `json:"organizations,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 	Scopes []ResourceScope `json:"scopes,omitempty"`
@@ -339,6 +340,38 @@ func (o *EntityArrayEmbedded) SetGroupMemberships(v []GroupMembership) {
 	o.GroupMemberships = v
 }
 
+// GetOrganizations returns the Organizations field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetOrganizations() []Organization {
+	if o == nil || o.Organizations == nil {
+		var ret []Organization
+		return ret
+	}
+	return o.Organizations
+}
+
+// GetOrganizationsOk returns a tuple with the Organizations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetOrganizationsOk() ([]Organization, bool) {
+	if o == nil || o.Organizations == nil {
+		return nil, false
+	}
+	return o.Organizations, true
+}
+
+// HasOrganizations returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasOrganizations() bool {
+	if o != nil && o.Organizations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizations gets a reference to the given []Organization and assigns it to the Organizations field.
+func (o *EntityArrayEmbedded) SetOrganizations(v []Organization) {
+	o.Organizations = v
+}
+
 // GetPopulations returns the Populations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPopulations() []Population {
 	if o == nil || o.Populations == nil {
@@ -591,6 +624,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupMemberships != nil {
 		toSerialize["groupMemberships"] = o.GroupMemberships
+	}
+	if o.Organizations != nil {
+		toSerialize["organizations"] = o.Organizations
 	}
 	if o.Populations != nil {
 		toSerialize["populations"] = o.Populations

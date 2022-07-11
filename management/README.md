@@ -286,8 +286,8 @@ Class | Method | HTTP request | Description
 *NotificationsTrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDSpfGet**](docs/NotificationsTrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainidspfget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
 *NotificationsTrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsGet**](docs/NotificationsTrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsget) | **Get** /v1/environments/{environmentID}/emailDomains | READ All Trusted Email Domains
 *NotificationsTrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsPost**](docs/NotificationsTrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainspost) | **Post** /v1/environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
-*OrganizationsApi* | [**V1OrganizationsGet**](docs/OrganizationsApi.md#v1organizationsget) | **Get** /v1/organizations | READ All Organizations
-*OrganizationsApi* | [**V1OrganizationsOrganizationIDGet**](docs/OrganizationsApi.md#v1organizationsorganizationidget) | **Get** /v1/organizations/{organizationID} | READ One Organization
+*OrganizationsApi* | [**ReadAllOrganizations**](docs/OrganizationsApi.md#readallorganizations) | **Get** /v1/organizations | READ All Organizations
+*OrganizationsApi* | [**ReadOneOrganizations**](docs/OrganizationsApi.md#readoneorganizations) | **Get** /v1/organizations/{organizationID} | READ One Organization
 *PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesGet**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciesget) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
 *PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciespasswordpolicyidget) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
 *PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciespasswordpolicyidput) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
@@ -338,8 +338,8 @@ Class | Method | HTTP request | Description
 *SubscriptionsWebhooksApi* | [**V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPut**](docs/SubscriptionsWebhooksApi.md#v1environmentsenvironmentidsubscriptionssubscriptionidput) | **Put** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | UPDATE Subscription
 *TotalIdentitiesApi* | [**V1EnvironmentsEnvironmentIDTotalIdentitiesGet**](docs/TotalIdentitiesApi.md#v1environmentsenvironmentidtotalidentitiesget) | **Get** /v1/environments/{environmentID}/totalIdentities | READ Total Identity Counts
 *UserActivitiesApi* | [**V1EnvironmentsEnvironmentIDUserActivitiesGet**](docs/UserActivitiesApi.md#v1environmentsenvironmentiduseractivitiesget) | **Get** /v1/environments/{environmentID}/userActivities | READ User Activities
-*UsersEnableUsersApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet**](docs/UsersEnableUsersApi.md#v1environmentsenvironmentidusersuseridenabledget) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
-*UsersEnableUsersApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut**](docs/UsersEnableUsersApi.md#v1environmentsenvironmentidusersuseridenabledput) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
+*UsersEnableUsersApi* | [**ReadUserEnabled**](docs/UsersEnableUsersApi.md#readuserenabled) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
+*UsersEnableUsersApi* | [**UpdateUserEnabled**](docs/UsersEnableUsersApi.md#updateuserenabled) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
 *UsersGroupMembershipApi* | [**AddUserToGroup**](docs/UsersGroupMembershipApi.md#addusertogroup) | **Post** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | ADD User to Group
 *UsersGroupMembershipApi* | [**ReadAllGroupMembershipsForUser**](docs/UsersGroupMembershipApi.md#readallgroupmembershipsforuser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
 *UsersGroupMembershipApi* | [**ReadOneGroupMembershipForUser**](docs/UsersGroupMembershipApi.md#readonegroupmembershipforuser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
@@ -365,8 +365,8 @@ Class | Method | HTTP request | Description
 *UsersUserPasswordsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet**](docs/UsersUserPasswordsApi.md#v1environmentsenvironmentidusersuseridpasswordget) | **Get** /v1/environments/{environmentID}/users/{userID}/password | READ Password State
 *UsersUserPasswordsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost**](docs/UsersUserPasswordsApi.md#v1environmentsenvironmentidusersuseridpasswordpost) | **Post** /v1/environments/{environmentID}/users/{userID}/password | Password Locked Out
 *UsersUserPasswordsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut**](docs/UsersUserPasswordsApi.md#v1environmentsenvironmentidusersuseridpasswordput) | **Put** /v1/environments/{environmentID}/users/{userID}/password | UPDATE Password (Set)
-*UsersUserPopulationsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet**](docs/UsersUserPopulationsApi.md#v1environmentsenvironmentidusersuseridpopulationget) | **Get** /v1/environments/{environmentID}/users/{userID}/population | READ User Population
-*UsersUserPopulationsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut**](docs/UsersUserPopulationsApi.md#v1environmentsenvironmentidusersuseridpopulationput) | **Put** /v1/environments/{environmentID}/users/{userID}/population | UPDATE User Population
+*UsersUserPopulationsApi* | [**ReadUserPopulation**](docs/UsersUserPopulationsApi.md#readuserpopulation) | **Get** /v1/environments/{environmentID}/users/{userID}/population | READ User Population
+*UsersUserPopulationsApi* | [**UpdateUserPopulation**](docs/UsersUserPopulationsApi.md#updateuserpopulation) | **Put** /v1/environments/{environmentID}/users/{userID}/population | UPDATE User Population
 *UsersUserRoleAssignmentsApi* | [**CreateUserRoleAssignment**](docs/UsersUserRoleAssignmentsApi.md#createuserroleassignment) | **Post** /v1/environments/{environmentID}/users/{userID}/roleAssignments | CREATE User Role Assignment
 *UsersUserRoleAssignmentsApi* | [**DeleteUserRoleAssignment**](docs/UsersUserRoleAssignmentsApi.md#deleteuserroleassignment) | **Delete** /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | DELETE User&#39;s Role Assignment
 *UsersUserRoleAssignmentsApi* | [**ReadOneUserRoleAssignment**](docs/UsersUserRoleAssignmentsApi.md#readoneuserroleassignment) | **Get** /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | READ One Role Assignment
@@ -449,6 +449,8 @@ Class | Method | HTTP request | Description
  - [ImageTargets](docs/ImageTargets.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectPopulation](docs/ObjectPopulation.md)
+ - [Organization](docs/Organization.md)
+ - [OrganizationBillingConnectionsInner](docs/OrganizationBillingConnectionsInner.md)
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [Population](docs/Population.md)
@@ -470,6 +472,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)
  - [UserAddress](docs/UserAddress.md)
+ - [UserEnabled](docs/UserEnabled.md)
  - [UserEnvironment](docs/UserEnvironment.md)
  - [UserIdentityProvider](docs/UserIdentityProvider.md)
  - [UserLastSignOn](docs/UserLastSignOn.md)

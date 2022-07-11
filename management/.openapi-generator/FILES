@@ -181,6 +181,8 @@ docs/NotificationsTrustedEmailAddressesApi.md
 docs/NotificationsTrustedEmailDomainsApi.md
 docs/ObjectEnvironment.md
 docs/ObjectPopulation.md
+docs/Organization.md
+docs/OrganizationBillingConnectionsInner.md
 docs/OrganizationsApi.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
@@ -215,6 +217,7 @@ docs/User.md
 docs/UserAccount.md
 docs/UserActivitiesApi.md
 docs/UserAddress.md
+docs/UserEnabled.md
 docs/UserEnvironment.md
 docs/UserIdentityProvider.md
 docs/UserLastSignOn.md
@@ -304,6 +307,8 @@ model_image.go
 model_image_targets.go
 model_object_environment.go
 model_object_population.go
+model_organization.go
+model_organization_billing_connections_inner.go
 model_p1_error.go
 model_p1_error_details_inner.go
 model_population.go
@@ -325,6 +330,7 @@ model_update_environment_type_request.go
 model_user.go
 model_user_account.go
 model_user_address.go
+model_user_enabled.go
 model_user_environment.go
 model_user_identity_provider.go
 model_user_last_sign_on.go

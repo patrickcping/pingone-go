@@ -32,7 +32,7 @@ type User struct {
 	IdentityProvider *UserIdentityProvider `json:"identityProvider,omitempty"`
 	LastSignOn *UserLastSignOn `json:"lastSignOn,omitempty"`
 	Lifecycle *UserLifecycle `json:"lifecycle,omitempty"`
-	// A string that specifies the user’s default location, which is optional. This may be explicitly set to null when updating a user to unset it. This is used for purposes of localizing such items as currency, date time format, or numerical representations. If provided, it must be a valid language tag as defined in RFC 5646. The following are example tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the user’s default location, which is optional. This may be explicitly set to null when updating a user to unset it. This is used for purposes of localizing such items as currency, date time format, or numerical representations. If provided, it must be a valid language tag as defined in RFC 5646. The following are example tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Locale *string `json:"locale,omitempty"`
 	// A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{environmentID}/users/{userID} when include=memberOfGroupIDs is appended to the request. This property is not returned with a list of users.
 	MemberOfGroupIDs []string `json:"memberOfGroupIDs,omitempty"`
@@ -43,24 +43,24 @@ type User struct {
 	// A string that specifies the user’s native phone number, which is optional. This might also match the primaryPhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32.
 	MobilePhone *string `json:"mobilePhone,omitempty"`
 	Name *UserName `json:"name,omitempty"`
-	// A string that specifies the user’s nickname, which is optional. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the user’s nickname, which is optional. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Nickname *string `json:"nickname,omitempty"`
 	Password *UserPassword `json:"password,omitempty"`
 	Photo *UserPhoto `json:"photo,omitempty"`
-	Population UserPopulation `json:"population"`
+	Population *UserPopulation `json:"population,omitempty"`
 	// A string that specifies the user’s preferred written or spoken languages, which are optional. This may be explicitly set to null when updating a user to unset it. If provided, the format of the value must be a valid language range and the same as the HTTP Accept-Language header field (not including Accept-Language:) and is specified in Section 5.3.5 of RFC 7231. For example en-US, en-gb;q=0.8, en;q=0.7.
 	PreferredLanguage *string `json:"preferredLanguage,omitempty"`
 	// A string that specifies the user’s primary phone number, which is optional. This might also match the mobilePhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32.
 	PrimaryPhone *string `json:"primaryPhone,omitempty"`
-	// A string that specifies the user’s time zone, which is optional. This can be explicitly set to null when updating a user to unset it. If provided, it must conform with the IANA Time Zone database format [RFC6557], also known as the “Olson” time zone database format [Olson-TZ] for example, “America/Los_Angeles” (regex ^\\w+/\\w+$).
+	// A string that specifies the user’s time zone, which is optional. This can be explicitly set to null when updating a user to unset it. If provided, it must conform with the IANA Time Zone database format [RFC6557], also known as the “Olson” time zone database format [Olson-TZ] for example, “America/Los_Angeles” (regex `^\\w+/\\w+$`).
 	Timezone *string `json:"timezone,omitempty"`
-	// A string that specifies the user’s title, which is optional, such as \"Vice President\". This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the user’s title, which is optional, such as \"Vice President\". This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Title *string `json:"title,omitempty"`
-	// A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \"Contractor\", \"Employee\", \"Intern\", \"Temp\", \"External\", and “Unknown”. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \"Contractor\", \"Employee\", \"Intern\", \"Temp\", \"External\", and “Unknown”. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128 characters (min/max=1/128).
+	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 128 characters (min/max=1/128).
 	Username string `json:"username"`
 	// Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
 	VerifyStatus *string `json:"verifyStatus,omitempty"`
@@ -70,10 +70,9 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(email string, population UserPopulation, username string) *User {
+func NewUser(email string, username string) *User {
 	this := User{}
 	this.Email = email
-	this.Population = population
 	this.Username = username
 	return &this
 }
@@ -718,28 +717,36 @@ func (o *User) SetPhoto(v UserPhoto) {
 	o.Photo = &v
 }
 
-// GetPopulation returns the Population field value
+// GetPopulation returns the Population field value if set, zero value otherwise.
 func (o *User) GetPopulation() UserPopulation {
-	if o == nil {
+	if o == nil || o.Population == nil {
 		var ret UserPopulation
 		return ret
 	}
-
-	return o.Population
+	return *o.Population
 }
 
-// GetPopulationOk returns a tuple with the Population field value
+// GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetPopulationOk() (*UserPopulation, bool) {
-	if o == nil {
+	if o == nil || o.Population == nil {
 		return nil, false
 	}
-	return &o.Population, true
+	return o.Population, true
 }
 
-// SetPopulation sets field value
+// HasPopulation returns a boolean if a field has been set.
+func (o *User) HasPopulation() bool {
+	if o != nil && o.Population != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPopulation gets a reference to the given UserPopulation and assigns it to the Population field.
 func (o *User) SetPopulation(v UserPopulation) {
-	o.Population = v
+	o.Population = &v
 }
 
 // GetPreferredLanguage returns the PreferredLanguage field value if set, zero value otherwise.
@@ -1052,7 +1059,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Photo != nil {
 		toSerialize["photo"] = o.Photo
 	}
-	if true {
+	if o.Population != nil {
 		toSerialize["population"] = o.Population
 	}
 	if o.PreferredLanguage != nil {

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet**](UsersEnableUsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
-[**V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut**](UsersEnableUsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
+[**ReadUserEnabled**](UsersEnableUsersApi.md#ReadUserEnabled) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
+[**UpdateUserEnabled**](UsersEnableUsersApi.md#UpdateUserEnabled) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet
+## ReadUserEnabled
 
-> V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet(ctx, environmentID, userID).Execute()
+> UserEnabled ReadUserEnabled(ctx, environmentID, userID).Execute()
 
 READ User Enabled
 
@@ -33,11 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersApi.V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet(context.Background(), environmentID, userID).Execute()
+    resp, r, err := apiClient.UsersEnableUsersApi.ReadUserEnabled(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersApi.V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersApi.ReadUserEnabled``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadUserEnabled`: UserEnabled
+    fmt.Fprintf(os.Stdout, "Response from `UsersEnableUsersApi.ReadUserEnabled`: %v\n", resp)
 }
 ```
 
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadUserEnabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -62,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**UserEnabled**](UserEnabled.md)
 
 ### Authorization
 
@@ -78,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut
+## UpdateUserEnabled
 
-> V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut(ctx, environmentID, userID).Body(body).Execute()
+> UserEnabled UpdateUserEnabled(ctx, environmentID, userID).UserEnabled(userEnabled).Execute()
 
 UPDATE User Enabled
 
@@ -99,15 +101,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    userEnabled := *openapiclient.NewUserEnabled() // UserEnabled |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersApi.V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut(context.Background(), environmentID, userID).Body(body).Execute()
+    resp, r, err := apiClient.UsersEnableUsersApi.UpdateUserEnabled(context.Background(), environmentID, userID).UserEnabled(userEnabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersApi.V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersApi.UpdateUserEnabled``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateUserEnabled`: UserEnabled
+    fmt.Fprintf(os.Stdout, "Response from `UsersEnableUsersApi.UpdateUserEnabled`: %v\n", resp)
 }
 ```
 
@@ -122,18 +126,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateUserEnabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **userEnabled** | [**UserEnabled**](UserEnabled.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**UserEnabled**](UserEnabled.md)
 
 ### Authorization
 

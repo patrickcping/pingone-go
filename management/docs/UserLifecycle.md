@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | A string that specifies information about the account lifecycle. Options for status are ACCOUNT_OK and VERIFICATION_REQUIRED. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to VERIFICATION_REQUIRED and an email address is provided, a verification email is sent. | [optional] 
+**Status** | Pointer to **string** | A string that specifies information about the account lifecycle. Options for status are &#x60;ACCOUNT_OK&#x60; and &#x60;VERIFICATION_REQUIRED&#x60;. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to &#x60;VERIFICATION_REQUIRED&#x60; and an email address is provided, a verification email is sent. | [optional] 
 
 ## Methods
 

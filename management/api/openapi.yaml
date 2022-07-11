@@ -9750,6 +9750,7 @@ paths:
       - Users > Group Membership
   /v1/environments/{environmentID}/users/{userID}/enabled:
     get:
+      operationId: readUserEnabled
       parameters:
       - explode: false
         in: path
@@ -9774,12 +9775,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEnabled'
           description: Successful response
       summary: READ User Enabled
       tags:
       - Users > Enable Users
     put:
+      operationId: updateUserEnabled
       parameters:
       - explode: false
         in: path
@@ -9799,9 +9803,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                enabled: false
-              type: object
+              $ref: '#/components/schemas/UserEnabled'
       responses:
         "401":
           content:
@@ -9811,7 +9813,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEnabled'
           description: Successful response
       summary: UPDATE User Enabled
       tags:
@@ -10034,6 +10038,7 @@ paths:
       - Users > MFA Pairing Keys
   /v1/environments/{environmentID}/users/{userID}/population:
     get:
+      operationId: readUserPopulation
       parameters:
       - explode: false
         in: path
@@ -10058,12 +10063,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPopulation'
           description: Successful response
       summary: READ User Population
       tags:
       - Users > User Populations
     put:
+      operationId: updateUserPopulation
       parameters:
       - explode: false
         in: path
@@ -10083,9 +10091,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                id: "{{popID}}"
-              type: object
+              $ref: '#/components/schemas/UserPopulation'
       responses:
         "401":
           content:
@@ -10095,7 +10101,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPopulation'
           description: Successful response
       summary: UPDATE User Population
       tags:
@@ -10771,6 +10779,7 @@ paths:
       - Users > Sessions
   /v1/organizations:
     get:
+      operationId: readAllOrganizations
       responses:
         "401":
           content:
@@ -10780,13 +10789,16 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Organizations
       tags:
       - Organizations
   /v1/organizations/{organizationID}:
     get:
+      operationId: readOneOrganizations
       parameters:
       - explode: false
         in: path
@@ -10804,7 +10816,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
           description: Successful response
       summary: READ One Organization
       tags:
@@ -11231,9 +11245,9 @@ components:
             enabled: true
             identityProvider:
               id: id
-              type: type
+              type: FACEBOOK
             lifecycle:
-              status: status
+              status: ACCOUNT_OK
             createdAt: createdAt
             password:
               external:
@@ -11284,7 +11298,7 @@ components:
               lockedAt: lockedAt
               secondsUntilUnlock: 9
               unlockAt: unlockAt
-              status: status
+              status: LOCKED
             username: username
           - preferredLanguage: preferredLanguage
             timezone: timezone
@@ -11297,9 +11311,9 @@ components:
             enabled: true
             identityProvider:
               id: id
-              type: type
+              type: FACEBOOK
             lifecycle:
-              status: status
+              status: ACCOUNT_OK
             createdAt: createdAt
             password:
               external:
@@ -11350,7 +11364,7 @@ components:
               lockedAt: lockedAt
               secondsUntilUnlock: 9
               unlockAt: unlockAt
-              status: status
+              status: LOCKED
             username: username
           schemas:
           - environment:
@@ -11425,6 +11439,25 @@ components:
               ldapAttribute: ldapAttribute
               multiValued: true
             id: id
+          organizations:
+          - createdAt: createdAt
+            name: name
+            billingConnections:
+            - id: id
+            - id: id
+            description: description
+            id: id
+            type: PAID
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            name: name
+            billingConnections:
+            - id: id
+            - id: id
+            description: description
+            id: id
+            type: PAID
+            updatedAt: updatedAt
           groupMemberships:
           - id: id
           - id: id
@@ -12163,6 +12196,54 @@ components:
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    Organization:
+      example:
+        createdAt: createdAt
+        name: name
+        billingConnections:
+        - id: id
+        - id: id
+        description: description
+        id: id
+        type: PAID
+        updatedAt: updatedAt
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies the organization name, which must\
+            \ be provided and must be unique among all organizations in PingOne."
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the organization.
+          readOnly: true
+          type: string
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+        type:
+          description: "A string that specifies the organization type. If the organization\
+            \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
+            \ the property value is set to `TRIAL`."
+          enum:
+          - PAID
+          - TRIAL
+          readOnly: true
+          type: string
+        billingConnections:
+          items:
+            $ref: '#/components/schemas/Organization_billingConnections_inner'
+          readOnly: true
+          type: array
+      type: object
     Population:
       example:
         createdAt: createdAt
@@ -12608,9 +12689,9 @@ components:
         enabled: true
         identityProvider:
           id: id
-          type: type
+          type: FACEBOOK
         lifecycle:
-          status: status
+          status: ACCOUNT_OK
         createdAt: createdAt
         password:
           external:
@@ -12661,7 +12742,7 @@ components:
           lockedAt: lockedAt
           secondsUntilUnlock: 9
           unlockAt: unlockAt
-          status: status
+          status: LOCKED
         username: username
       properties:
         account:
@@ -12693,6 +12774,8 @@ components:
             \ this attribute directly in any way, but it is used by Ping Identity’\
             s Data Sync product. It can have a length of no more than 1024 characters\
             \ (min/max=1/1024)."
+          maxLength: 1024
+          minLength: 1
           type: string
         id:
           description: A string that specifies the user resource’s unique identifier.
@@ -12711,9 +12794,12 @@ components:
             \ be a valid language tag as defined in RFC 5646. The following are example\
             \ tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain\
             \ any letters, numbers, combining characters, math and currency symbols,\
-            \ dingbats and drawing characters, and invisible whitespace (regex ^[\\\
-            p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more\
+            \ dingbats and drawing characters, and invisible whitespace (regex `^[\\\
+            p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more\
             \ than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         memberOfGroupIDs:
           description: "A read-only array of IDs for the groups the user is a member\
@@ -12746,6 +12832,7 @@ components:
             \ may be explicitly set to null when updating a user to unset it. Valid\
             \ phone numbers must have at least one number and a maximum character\
             \ length of 32."
+          maxLength: 32
           type: string
         name:
           $ref: '#/components/schemas/User_name'
@@ -12754,8 +12841,11 @@ components:
             \ This can be explicitly set to null when updating a user to unset it.\
             \ The string can contain any letters, numbers, combining characters, math\
             \ and currency symbols, dingbats and drawing characters, and invisible\
-            \ whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can\
-            \ have a length of no more than 256 characters (min/max=1/256)."
+            \ whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It\
+            \ can have a length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         password:
           $ref: '#/components/schemas/User_password'
@@ -12777,22 +12867,28 @@ components:
             \ be explicitly set to null when updating a user to unset it. Valid phone\
             \ numbers must have at least one number and a maximum character length\
             \ of 32."
+          maxLength: 32
+          minLength: 1
           type: string
         timezone:
           description: "A string that specifies the user’s time zone, which is optional.\
             \ This can be explicitly set to null when updating a user to unset it.\
             \ If provided, it must conform with the IANA Time Zone database format\
             \ [RFC6557], also known as the “Olson” time zone database format [Olson-TZ]\
-            \ for example, “America/Los_Angeles” (regex ^\\w+\\/\\w+$)."
+            \ for example, “America/Los_Angeles” (regex `^\\w+\\/\\w+$`)."
+          pattern: ^\w+\/\w+$
           type: string
         title:
           description: "A string that specifies the user’s title, which is optional,\
             \ such as \"Vice President\". This can be explicitly set to null when\
             \ updating a user to unset it. The string can contain any letters, numbers,\
             \ combining characters, math and currency symbols, dingbats and drawing\
-            \ characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\\
-            p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters\
+            \ characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\\
+            p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters\
             \ (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         type:
           description: "A string that specifies the user’s type, which is optional.\
@@ -12801,9 +12897,12 @@ components:
             \ the PingOne platform. It could have values of \"Contractor\", \"Employee\"\
             , \"Intern\", \"Temp\", \"External\", and “Unknown”. The string can contain\
             \ any letters, numbers, combining characters, math and currency symbols,\
-            \ dingbats and drawing characters, and invisible whitespace (regex ^[\\\
-            p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more\
+            \ dingbats and drawing characters, and invisible whitespace (regex `^[\\\
+            p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more\
             \ than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         updatedAt:
           description: The time the resource was last updated.
@@ -12813,9 +12912,12 @@ components:
             \ and must be unique within an environment. The username must either be\
             \ a well-formed email address or a string. The string can contain any\
             \ letters, numbers, combining characters, math and currency symbols, dingbats\
-            \ and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\\
-            p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128\
-            \ characters (min/max=1/128)."
+            \ and drawing characters, and invisible whitespace (regex `^[\\p{L}\\\
+            p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than\
+            \ 128 characters (min/max=1/128)."
+          maxLength: 128
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         verifyStatus:
           description: "Indicates whether ID verification can be done for the user.\
@@ -12829,8 +12931,29 @@ components:
           type: string
       required:
       - email
-      - population
       - username
+      type: object
+    UserEnabled:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          default: true
+          description: A read-only boolean attribute that specifies whether the user
+            is enabled. This attribute is set to ‘true’ by default when the user is
+            created.
+          type: boolean
+      type: object
+    UserPopulation:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the population ID associated with the
+            user resource ID identified in the request URL.
+          type: string
+      required:
+      - id
       type: object
     createApplication_request:
       example:
@@ -13099,9 +13222,9 @@ components:
           enabled: true
           identityProvider:
             id: id
-            type: type
+            type: FACEBOOK
           lifecycle:
-            status: status
+            status: ACCOUNT_OK
           createdAt: createdAt
           password:
             external:
@@ -13152,7 +13275,7 @@ components:
             lockedAt: lockedAt
             secondsUntilUnlock: 9
             unlockAt: unlockAt
-            status: status
+            status: LOCKED
           username: username
         - preferredLanguage: preferredLanguage
           timezone: timezone
@@ -13165,9 +13288,9 @@ components:
           enabled: true
           identityProvider:
             id: id
-            type: type
+            type: FACEBOOK
           lifecycle:
-            status: status
+            status: ACCOUNT_OK
           createdAt: createdAt
           password:
             external:
@@ -13218,7 +13341,7 @@ components:
             lockedAt: lockedAt
             secondsUntilUnlock: 9
             unlockAt: unlockAt
-            status: status
+            status: LOCKED
           username: username
         schemas:
         - environment:
@@ -13293,6 +13416,25 @@ components:
             ldapAttribute: ldapAttribute
             multiValued: true
           id: id
+        organizations:
+        - createdAt: createdAt
+          name: name
+          billingConnections:
+          - id: id
+          - id: id
+          description: description
+          id: id
+          type: PAID
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          name: name
+          billingConnections:
+          - id: id
+          - id: id
+          description: description
+          id: id
+          type: PAID
+          updatedAt: updatedAt
         groupMemberships:
         - id: id
         - id: id
@@ -13442,6 +13584,10 @@ components:
         groupMemberships:
           items:
             $ref: '#/components/schemas/GroupMembership'
+          type: array
+        organizations:
+          items:
+            $ref: '#/components/schemas/Organization'
           type: array
         populations:
           items:
@@ -14167,6 +14313,16 @@ components:
           readOnly: true
           type: integer
       type: object
+    Organization_billingConnections_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the list of the BillingConnection resource
+            IDs for the organization.
+          readOnly: true
+          type: string
+      type: object
     Population_passwordPolicy:
       description: The object reference to the password policy resource. This is an
         optional property.
@@ -14252,7 +14408,7 @@ components:
         lockedAt: lockedAt
         secondsUntilUnlock: 9
         unlockAt: unlockAt
-        status: status
+        status: LOCKED
       properties:
         canAuthenticate:
           description: "A boolean that specifies the whether the user can authenticate.\
@@ -14274,6 +14430,9 @@ components:
         status:
           description: A string that specifies the account locked state. Options are
             LOCKED and OK.
+          enum:
+          - LOCKED
+          - OK
           type: string
         unlockAt:
           description: "The time the specified user account will be unlocked. This\
@@ -14294,35 +14453,48 @@ components:
             \ the value must be in ISO 3166-1 “alpha-2” code format [ISO3166]. For\
             \ example, the country codes for the United States and Sweden are “US”\
             \ and \"SE\", respectively. Valid characters consist of two upper-case\
-            \ letters (regex [A-Z]{2})."
+            \ letters (regex `[A-Z]{2}`)."
+          pattern: "[A-Z]{2}"
           type: string
         locality:
           description: "A string that specifies the city or locality component of\
             \ the address. The string can contain any letters, numbers, combining\
             \ characters, math and currency symbols, dingbats and drawing characters,\
-            \ and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\\
-            p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256)."
+            \ and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\\
+            p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         postalCode:
           description: "A string that specifies the zip code or postal code component\
             \ of the address. The string can contain any letters, numbers, combining\
             \ characters, math and currency symbols, dingbats and drawing characters,\
-            \ and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\\
-            p{P}]*$). It can have a length of no more than 40 characters (min/max=1/40)."
+            \ and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\\
+            p{P}]*$`). It can have a length of no more than 40 characters (min/max=1/40)."
+          maxLength: 40
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         region:
           description: "A string that specifies the state or region component of the\
             \ address. The string can contain any letters, numbers, combining characters,\
             \ math and currency symbols, dingbats and drawing characters, and invisible\
-            \ whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can\
-            \ have a length of no more than 256 characters (min/max=1/256)."
+            \ whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It\
+            \ can have a length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         streetAddress:
           description: "A string that specifies the full street address component,\
             \ which may include house number, street name, P.O. box, and multi-line\
             \ extended street address information. This attribute may contain newlines\
-            \ (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$). It can have a length\
-            \ of no more than 256 characters (min/max=1/256)."
+            \ (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$`). It can have a\
+            \ length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$"
           type: string
       type: object
     User_environment:
@@ -14337,7 +14509,7 @@ components:
     User_identityProvider:
       example:
         id: id
-        type: type
+        type: FACEBOOK
       properties:
         id:
           description: "A mutable string that identifies the external identity provider\
@@ -14347,12 +14519,26 @@ components:
           type: string
         type:
           description: "A read-only string that identifies the type of identity provider\
-            \ used to authenticate the user. Possible values are FACEBOOK, GOOGLE,\
-            \ LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB,\
-            \ OPENID_CONNECT, SAML, and PING_ONE. The default value of PING_ONE is\
-            \ set when a value for identityProvider.id is not provided. The PING_ONE\
-            \ value is the default for all pre-existing users. There is currently\
-            \ no search filter support for this attribute."
+            \ used to authenticate the user. Possible values are `FACEBOOK`, `GOOGLE`,\
+            \ `LINKEDIN`, `APPLE`, `TWITTER`, `AMAZON`, `YAHOO`, `MICROSOFT`, `PAYPAL`,\
+            \ `GITHUB`, `OPENID_CONNECT`, `SAML`, and `PING_ONE`. The default value\
+            \ of `PING_ONE` is set when a value for identityProvider.id is not provided.\
+            \ The `PING_ONE` value is the default for all pre-existing users. There\
+            \ is currently no search filter support for this attribute."
+          enum:
+          - FACEBOOK
+          - GOOGLE
+          - LINKEDIN
+          - APPLE
+          - TWITTER
+          - AMAZON
+          - YAHOO
+          - MICROSOFT
+          - PAYPAL
+          - GITHUB
+          - OPENID_CONNECT
+          - SAML
+          - PING_ONE
           readOnly: true
           type: string
       type: object
@@ -14372,14 +14558,17 @@ components:
       type: object
     User_lifecycle:
       example:
-        status: status
+        status: ACCOUNT_OK
       properties:
         status:
           description: "A string that specifies information about the account lifecycle.\
-            \ Options for status are ACCOUNT_OK and VERIFICATION_REQUIRED. This property\
-            \ value is only allowed to be set when importing a user to set the initial\
-            \ account status. If the initial status is set to VERIFICATION_REQUIRED\
+            \ Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This\
+            \ property value is only allowed to be set when importing a user to set\
+            \ the initial account status. If the initial status is set to `VERIFICATION_REQUIRED`\
             \ and an email address is provided, a verification email is sent."
+          enum:
+          - ACCOUNT_OK
+          - VERIFICATION_REQUIRED
           type: string
       type: object
     User_name:
@@ -14397,16 +14586,22 @@ components:
             \ ‘Ms. Barbara J Jensen, III’). This may be explicitly set to null when\
             \ updating a name to unset it. Valid characters consist of any Unicode\
             \ letter, mark (for example, accent, umlaut), space, dot, apostrophe,\
-            \ or hyphen (regex ^[\\p{L}\\p{M}\\p{N}' .-]*$). It can have a length\
+            \ or hyphen (regex `^[\\p{L}\\p{M}\\p{N}' .-]*$`). It can have a length\
             \ of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{N}' .-]*$"
           type: string
         formatted:
           description: "A string that specifies the fully formatted name of the user\
             \ (for example ‘Ms. Barbara J Jensen, III’). This can be explicitly set\
             \ to null when updating a name to unset it. Valid characters consist of\
             \ any Unicode letter, mark (for example, accent, umlaut), space, dot,\
-            \ apostrophe, or hyphen (regex ^[\\p{L}\\p{M}\\p{N}' .-]*$). It can have\
-            \ a length of no more than 256 characters (min/max=1/256)."
+            \ apostrophe, or hyphen (regex `^[\\p{L}\\p{M}\\p{N}' .-]*$`). It can\
+            \ have a length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{N}' .-]*$"
           type: string
         given:
           description: "A string that specifies the given name of the user, or First\
@@ -14414,9 +14609,12 @@ components:
             \ ‘Ms. Barbara J Jensen, III’). This may be explicitly set to null when\
             \ updating a name to unset it. The string can contain any letters, numbers,\
             \ combining characters, math and currency symbols, dingbats and drawing\
-            \ characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\\
-            p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters\
+            \ characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\\
+            p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters\
             \ (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         honorificPrefix:
           description: "A string that specifies the honorific prefix(es) of the user,\
@@ -14436,8 +14634,11 @@ components:
             ). This can be explicitly set to null when updating a name to unset it.\
             \ The string can contain any letters, numbers, combining characters, math\
             \ and currency symbols, dingbats and drawing characters, and invisible\
-            \ whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can\
-            \ have a length of no more than 256 characters (min/max=1/256)."
+            \ whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It\
+            \ can have a length of no more than 256 characters (min/max=1/256)."
+          maxLength: 256
+          minLength: 1
+          pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
       type: object
     User_password_external_gateway_userType:

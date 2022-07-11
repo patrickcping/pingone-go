@@ -16,15 +16,15 @@ import (
 
 // UserAddress struct for UserAddress
 type UserAddress struct {
-	// A string that specifies the country name component. When specified, the value must be in ISO 3166-1 “alpha-2” code format [ISO3166]. For example, the country codes for the United States and Sweden are “US” and \"SE\", respectively. Valid characters consist of two upper-case letters (regex [A-Z]{2}).
+	// A string that specifies the country name component. When specified, the value must be in ISO 3166-1 “alpha-2” code format [ISO3166]. For example, the country codes for the United States and Sweden are “US” and \"SE\", respectively. Valid characters consist of two upper-case letters (regex `[A-Z]{2}`).
 	CountryCode *string `json:"countryCode,omitempty"`
-	// A string that specifies the city or locality component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the city or locality component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Locality *string `json:"locality,omitempty"`
-	// A string that specifies the zip code or postal code component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 40 characters (min/max=1/40).
+	// A string that specifies the zip code or postal code component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 40 characters (min/max=1/40).
 	PostalCode *string `json:"postalCode,omitempty"`
-	// A string that specifies the state or region component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the state or region component of the address. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Region *string `json:"region,omitempty"`
-	// A string that specifies the full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information. This attribute may contain newlines (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$). It can have a length of no more than 256 characters (min/max=1/256).
+	// A string that specifies the full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information. This attribute may contain newlines (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	StreetAddress *string `json:"streetAddress,omitempty"`
 }
 

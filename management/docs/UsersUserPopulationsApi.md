@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet**](UsersUserPopulationsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet) | **Get** /v1/environments/{environmentID}/users/{userID}/population | READ User Population
-[**V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut**](UsersUserPopulationsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut) | **Put** /v1/environments/{environmentID}/users/{userID}/population | UPDATE User Population
+[**ReadUserPopulation**](UsersUserPopulationsApi.md#ReadUserPopulation) | **Get** /v1/environments/{environmentID}/users/{userID}/population | READ User Population
+[**UpdateUserPopulation**](UsersUserPopulationsApi.md#UpdateUserPopulation) | **Put** /v1/environments/{environmentID}/users/{userID}/population | UPDATE User Population
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet
+## ReadUserPopulation
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet(ctx, environmentID, userID).Execute()
+> UserPopulation ReadUserPopulation(ctx, environmentID, userID).Execute()
 
 READ User Population
 
@@ -33,11 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersUserPopulationsApi.V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet(context.Background(), environmentID, userID).Execute()
+    resp, r, err := apiClient.UsersUserPopulationsApi.ReadUserPopulation(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersUserPopulationsApi.V1EnvironmentsEnvironmentIDUsersUserIDPopulationGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersUserPopulationsApi.ReadUserPopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadUserPopulation`: UserPopulation
+    fmt.Fprintf(os.Stdout, "Response from `UsersUserPopulationsApi.ReadUserPopulation`: %v\n", resp)
 }
 ```
 
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPopulationGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadUserPopulationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -62,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**UserPopulation**](UserPopulation.md)
 
 ### Authorization
 
@@ -78,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut
+## UpdateUserPopulation
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut(ctx, environmentID, userID).Body(body).Execute()
+> UserPopulation UpdateUserPopulation(ctx, environmentID, userID).UserPopulation(userPopulation).Execute()
 
 UPDATE User Population
 
@@ -99,15 +101,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    userPopulation := *openapiclient.NewUserPopulation("Id_example") // UserPopulation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersUserPopulationsApi.V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut(context.Background(), environmentID, userID).Body(body).Execute()
+    resp, r, err := apiClient.UsersUserPopulationsApi.UpdateUserPopulation(context.Background(), environmentID, userID).UserPopulation(userPopulation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersUserPopulationsApi.V1EnvironmentsEnvironmentIDUsersUserIDPopulationPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersUserPopulationsApi.UpdateUserPopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateUserPopulation`: UserPopulation
+    fmt.Fprintf(os.Stdout, "Response from `UsersUserPopulationsApi.UpdateUserPopulation`: %v\n", resp)
 }
 ```
 
@@ -122,18 +126,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPopulationPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateUserPopulationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **userPopulation** | [**UserPopulation**](UserPopulation.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**UserPopulation**](UserPopulation.md)
 
 ### Authorization
 

@@ -23,27 +23,27 @@ import (
 // UsersEnableUsersApiService UsersEnableUsersApi service
 type UsersEnableUsersApiService service
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest struct {
+type ApiReadUserEnabledRequest struct {
 	ctx context.Context
 	ApiService *UsersEnableUsersApiService
 	environmentID string
 	userID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDEnabledGetExecute(r)
+func (r ApiReadUserEnabledRequest) Execute() (*UserEnabled, *http.Response, error) {
+	return r.ApiService.ReadUserEnabledExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet READ User Enabled
+ReadUserEnabled READ User Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest
+ @return ApiReadUserEnabledRequest
 */
-func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest{
+func (a *UsersEnableUsersApiService) ReadUserEnabled(ctx context.Context, environmentID string, userID string) ApiReadUserEnabledRequest {
+	return ApiReadUserEnabledRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -52,16 +52,18 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabledGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledGetRequest) (*http.Response, error) {
+//  @return UserEnabled
+func (a *UsersEnableUsersApiService) ReadUserEnabledExecute(r ApiReadUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersApiService.V1EnvironmentsEnvironmentIDUsersUserIDEnabledGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersApiService.ReadUserEnabled")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/enabled"
@@ -91,19 +93,19 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -116,44 +118,53 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest struct {
+type ApiUpdateUserEnabledRequest struct {
 	ctx context.Context
 	ApiService *UsersEnableUsersApiService
 	environmentID string
 	userID string
-	body *map[string]interface{}
+	userEnabled *UserEnabled
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest {
-	r.body = &body
+func (r ApiUpdateUserEnabledRequest) UserEnabled(userEnabled UserEnabled) ApiUpdateUserEnabledRequest {
+	r.userEnabled = &userEnabled
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDEnabledPutExecute(r)
+func (r ApiUpdateUserEnabledRequest) Execute() (*UserEnabled, *http.Response, error) {
+	return r.ApiService.UpdateUserEnabledExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut UPDATE User Enabled
+UpdateUserEnabled UPDATE User Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest
+ @return ApiUpdateUserEnabledRequest
 */
-func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest{
+func (a *UsersEnableUsersApiService) UpdateUserEnabled(ctx context.Context, environmentID string, userID string) ApiUpdateUserEnabledRequest {
+	return ApiUpdateUserEnabledRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -162,16 +173,18 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabledPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDEnabledPutRequest) (*http.Response, error) {
+//  @return UserEnabled
+func (a *UsersEnableUsersApiService) UpdateUserEnabledExecute(r ApiUpdateUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersApiService.V1EnvironmentsEnvironmentIDUsersUserIDEnabledPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersApiService.UpdateUserEnabled")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/enabled"
@@ -200,22 +213,22 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.userEnabled
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -228,13 +241,22 @@ func (a *UsersEnableUsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDEnabl
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

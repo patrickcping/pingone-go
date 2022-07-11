@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning. | [optional] 
-**Type** | Pointer to **string** | A read-only string that identifies the type of identity provider used to authenticate the user. Possible values are FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, and PING_ONE. The default value of PING_ONE is set when a value for identityProvider.id is not provided. The PING_ONE value is the default for all pre-existing users. There is currently no search filter support for this attribute. | [optional] [readonly] 
+**Type** | Pointer to **string** | A read-only string that identifies the type of identity provider used to authenticate the user. Possible values are &#x60;FACEBOOK&#x60;, &#x60;GOOGLE&#x60;, &#x60;LINKEDIN&#x60;, &#x60;APPLE&#x60;, &#x60;TWITTER&#x60;, &#x60;AMAZON&#x60;, &#x60;YAHOO&#x60;, &#x60;MICROSOFT&#x60;, &#x60;PAYPAL&#x60;, &#x60;GITHUB&#x60;, &#x60;OPENID_CONNECT&#x60;, &#x60;SAML&#x60;, and &#x60;PING_ONE&#x60;. The default value of &#x60;PING_ONE&#x60; is set when a value for identityProvider.id is not provided. The &#x60;PING_ONE&#x60; value is the default for all pre-existing users. There is currently no search filter support for this attribute. | [optional] [readonly] 
 
 ## Methods
 

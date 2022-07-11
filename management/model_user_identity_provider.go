@@ -18,7 +18,7 @@ import (
 type UserIdentityProvider struct {
 	// A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning.
 	Id *string `json:"id,omitempty"`
-	// A read-only string that identifies the type of identity provider used to authenticate the user. Possible values are FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, and PING_ONE. The default value of PING_ONE is set when a value for identityProvider.id is not provided. The PING_ONE value is the default for all pre-existing users. There is currently no search filter support for this attribute.
+	// A read-only string that identifies the type of identity provider used to authenticate the user. Possible values are `FACEBOOK`, `GOOGLE`, `LINKEDIN`, `APPLE`, `TWITTER`, `AMAZON`, `YAHOO`, `MICROSOFT`, `PAYPAL`, `GITHUB`, `OPENID_CONNECT`, `SAML`, and `PING_ONE`. The default value of `PING_ONE` is set when a value for identityProvider.id is not provided. The `PING_ONE` value is the default for all pre-existing users. There is currently no search filter support for this attribute.
 	Type *string `json:"type,omitempty"`
 }
 

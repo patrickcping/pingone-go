@@ -90,7 +90,7 @@ func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, 
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"image/_*"}
+	localVarHTTPContentTypes := []string{"image/*"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

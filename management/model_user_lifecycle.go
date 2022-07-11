@@ -16,7 +16,7 @@ import (
 
 // UserLifecycle struct for UserLifecycle
 type UserLifecycle struct {
-	// A string that specifies information about the account lifecycle. Options for status are ACCOUNT_OK and VERIFICATION_REQUIRED. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to VERIFICATION_REQUIRED and an email address is provided, a verification email is sent.
+	// A string that specifies information about the account lifecycle. Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to `VERIFICATION_REQUIRED` and an email address is provided, a verification email is sent.
 	Status *string `json:"status,omitempty"`
 }
 
