@@ -22,7 +22,7 @@ codegen: codegen-davinci codegen-management codegen-authorize codegen-credential
 codegen-davinci:
 	@echo "==> Running codegen-$(DV)..."
 	@if [[ -f "pingone-$(DV).yml" ]]; then \
-		openapi-generator generate -i pingone-$(DV).yml -g go --additional-properties=packageName=$(DV),packageVersion=$(VERSION) -o ./$(DV) --git-repo-id $(REPO)/$(DV) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(DV).yml -g go --additional-properties=packageName=$(DV),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(DV) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(DV); \
 		go mod tidy; \
 		go mod vendor; \
@@ -34,7 +34,7 @@ codegen-davinci:
 codegen-management:
 	@echo "==> Running codegen-$(MGMT)..."
 	@if [[ -f "pingone-$(MGMT).yml" ]]; then \
-		openapi-generator generate -i pingone-$(MGMT).yml -g go --additional-properties=packageName=$(MGMT),packageVersion=$(VERSION) -o ./$(MGMT) --git-repo-id $(REPO)/$(MGMT) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(MGMT).yml -g go --additional-properties=packageName=$(MGMT),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(MGMT) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(MGMT); \
 		go mod tidy; \
 		go mod vendor; \
@@ -46,7 +46,7 @@ codegen-management:
 codegen-authorize:
 	@echo "==> Running codegen-$(AUTHZ)..."
 	@if [[ -f "pingone-$(AUTHZ).yml" ]]; then \
-		openapi-generator generate -i pingone-$(AUTHZ).yml -g go --additional-properties=packageName=$(AUTHZ),packageVersion=$(VERSION) -o ./$(AUTHZ) --git-repo-id $(REPO)/$(AUTHZ) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(AUTHZ).yml -g go --additional-properties=packageName=$(AUTHZ),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(AUTHZ) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(AUTHZ); \
 		go mod tidy; \
 		go mod vendor; \
@@ -58,7 +58,7 @@ codegen-authorize:
 codegen-credentials:
 	@echo "==> Running codegen-$(CRED)..."
 	@if [[ -f "pingone-$(CRED).yml" ]]; then \
-		openapi-generator generate -i pingone-$(CRED).yml -g go --additional-properties=packageName=$(CRED),packageVersion=$(VERSION) -o ./$(CRED) --git-repo-id $(REPO)/$(CRED) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(CRED).yml -g go --additional-properties=packageName=$(CRED),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(CRED) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(CRED); \
 		go mod tidy; \
 		go mod vendor; \
@@ -70,7 +70,7 @@ codegen-credentials:
 codegen-fraud:
 	@echo "==> Running codegen-$(FRAUD)..."
 	@if [[ -f "pingone-$(FRAUD).yml" ]]; then \
-		openapi-generator generate -i pingone-$(FRAUD).yml -g go --additional-properties=packageName=$(FRAUD),packageVersion=$(VERSION) -o ./$(FRAUD) --git-repo-id $(REPO)/$(FRAUD) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(FRAUD).yml -g go --additional-properties=packageName=$(FRAUD),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(FRAUD) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(FRAUD); \
 		go mod tidy; \
 		go mod vendor; \
@@ -82,7 +82,7 @@ codegen-fraud:
 codegen-mfa:
 	@echo "==> Running codegen-$(MFA)..."
 	@if [[ -f "pingone-$(MFA).yml" ]]; then \
-		openapi-generator generate -i pingone-$(MFA).yml -g go --additional-properties=packageName=$(MFA),packageVersion=$(VERSION) -o ./$(MFA) --git-repo-id $(REPO)/$(MFA) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(MFA).yml -g go --additional-properties=packageName=$(MFA),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(MFA) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(MFA); \
 		go mod tidy; \
 		go mod vendor; \
@@ -94,7 +94,7 @@ codegen-mfa:
 codegen-risk:
 	@echo "==> Running codegen-$(RISK)..."
 	@if [[ -f "pingone-$(RISK).yml" ]]; then \
-		openapi-generator generate -i pingone-$(RISK).yml -g go --additional-properties=packageName=$(RISK),packageVersion=$(VERSION) -o ./$(RISK) --git-repo-id $(REPO)/$(RISK) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(RISK).yml -g go --additional-properties=packageName=$(RISK),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(RISK) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(RISK); \
 		go mod tidy; \
 		go mod vendor; \
@@ -106,7 +106,7 @@ codegen-risk:
 codegen-verify:
 	@echo "==> Running codegen-$(VERIFY)..."
 	@if [[ -f "pingone-$(VERIFY).yml" ]]; then \
-		openapi-generator generate -i pingone-$(VERIFY).yml -g go --additional-properties=packageName=$(VERIFY),packageVersion=$(VERSION) -o ./$(VERIFY) --git-repo-id $(REPO)/$(VERIFY) --git-user-id $(OWNER); \
+		openapi-generator generate -i pingone-$(VERIFY).yml -g go --additional-properties=packageName=$(VERIFY),packageVersion=$(VERSION),isGoSubmodule=true -o ./$(VERIFY) --git-repo-id $(REPO) --git-user-id $(OWNER); \
 		cd ./$(VERIFY); \
 		go mod tidy; \
 		go mod vendor; \
