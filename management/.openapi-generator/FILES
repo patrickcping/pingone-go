@@ -186,6 +186,7 @@ docs/OrganizationBillingConnectionsInner.md
 docs/OrganizationsApi.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
+docs/P1ErrorDetailsInnerInnerError.md
 docs/PasswordPoliciesApi.md
 docs/Population.md
 docs/PopulationPasswordPolicy.md
@@ -311,6 +312,7 @@ model_organization.go
 model_organization_billing_connections_inner.go
 model_p1_error.go
 model_p1_error_details_inner.go
+model_p1_error_details_inner_inner_error.go
 model_population.go
 model_population_password_policy.go
 model_resource.go

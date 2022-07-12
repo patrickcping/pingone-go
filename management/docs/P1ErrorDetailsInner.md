@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** |  | [optional] 
 **Target** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
+**InnerError** | Pointer to [**P1ErrorDetailsInnerInnerError**](P1ErrorDetailsInnerInnerError.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetMessage sets Message field to given value.
 `func (o *P1ErrorDetailsInner) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
+
+### GetInnerError
+
+`func (o *P1ErrorDetailsInner) GetInnerError() P1ErrorDetailsInnerInnerError`
+
+GetInnerError returns the InnerError field if non-nil, zero value otherwise.
+
+### GetInnerErrorOk
+
+`func (o *P1ErrorDetailsInner) GetInnerErrorOk() (*P1ErrorDetailsInnerInnerError, bool)`
+
+GetInnerErrorOk returns a tuple with the InnerError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInnerError
+
+`func (o *P1ErrorDetailsInner) SetInnerError(v P1ErrorDetailsInnerInnerError)`
+
+SetInnerError sets InnerError field to given value.
+
+### HasInnerError
+
+`func (o *P1ErrorDetailsInner) HasInnerError() bool`
+
+HasInnerError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

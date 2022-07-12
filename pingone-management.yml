@@ -45,6 +45,13 @@ components:
                 type: string
               message:
                 type: string
+              innerError:
+                type: object
+                properties:
+                  allowedValues:
+                    type: array
+                    items:
+                      type: string
     EntityArray:
       type: object
       properties:

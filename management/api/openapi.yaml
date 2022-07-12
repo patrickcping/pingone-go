@@ -13043,6 +13043,13 @@ components:
           description: The group ID to add the user to
           type: string
       type: object
+    P1Error_details_inner_innerError:
+      properties:
+        allowedValues:
+          items:
+            type: string
+          type: array
+      type: object
     P1Error_details_inner:
       properties:
         code:
@@ -13051,6 +13058,8 @@ components:
           type: string
         message:
           type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
       type: object
     EntityArray__embedded_attributes_inner:
       oneOf:
