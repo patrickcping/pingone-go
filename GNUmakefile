@@ -1,4 +1,4 @@
-VERSION=2.0.0-beta.1
+VERSION=1.9.0
 
 OWNER=patrickcping
 REPO=pingone-go
