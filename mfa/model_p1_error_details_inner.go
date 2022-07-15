@@ -16,9 +16,13 @@ import (
 
 // P1ErrorDetailsInner struct for P1ErrorDetailsInner
 type P1ErrorDetailsInner struct {
+	// A general fault code which the client must handle to provide all exception handling routines and to localize messages for users. This code is common across all PingOne services and is human readable (such as a defined constant rather than a number).
 	Code *string `json:"code,omitempty"`
+	// The item that caused the error (such as a form field ID or an attribute inside a JSON object).
 	Target *string `json:"target,omitempty"`
+	// A short description of the error. This message is intended to assist with debugging and is returned in English only.
 	Message *string `json:"message,omitempty"`
+	InnerError *P1ErrorDetailsInnerInnerError `json:"innerError,omitempty"`
 }
 
 // NewP1ErrorDetailsInner instantiates a new P1ErrorDetailsInner object
@@ -134,6 +138,38 @@ func (o *P1ErrorDetailsInner) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetInnerError returns the InnerError field value if set, zero value otherwise.
+func (o *P1ErrorDetailsInner) GetInnerError() P1ErrorDetailsInnerInnerError {
+	if o == nil || o.InnerError == nil {
+		var ret P1ErrorDetailsInnerInnerError
+		return ret
+	}
+	return *o.InnerError
+}
+
+// GetInnerErrorOk returns a tuple with the InnerError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *P1ErrorDetailsInner) GetInnerErrorOk() (*P1ErrorDetailsInnerInnerError, bool) {
+	if o == nil || o.InnerError == nil {
+		return nil, false
+	}
+	return o.InnerError, true
+}
+
+// HasInnerError returns a boolean if a field has been set.
+func (o *P1ErrorDetailsInner) HasInnerError() bool {
+	if o != nil && o.InnerError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInnerError gets a reference to the given P1ErrorDetailsInnerInnerError and assigns it to the InnerError field.
+func (o *P1ErrorDetailsInner) SetInnerError(v P1ErrorDetailsInnerInnerError) {
+	o.InnerError = &v
+}
+
 func (o P1ErrorDetailsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Code != nil {
@@ -144,6 +180,9 @@ func (o P1ErrorDetailsInner) MarshalJSON() ([]byte, error) {
 	}
 	if o.Message != nil {
 		toSerialize["message"] = o.Message
+	}
+	if o.InnerError != nil {
+		toSerialize["innerError"] = o.InnerError
 	}
 	return json.Marshal(toSerialize)
 }

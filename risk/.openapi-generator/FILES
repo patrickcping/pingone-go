@@ -10,6 +10,7 @@ docs/EntityArrayEmbedded.md
 docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
+docs/P1ErrorDetailsInnerInnerError.md
 docs/RiskAdvancedPredictorsApi.md
 docs/RiskEvaluation.md
 docs/RiskEvaluationDetails.md
@@ -55,6 +56,7 @@ model_entity_array__embedded.go
 model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go
+model_p1_error_details_inner_inner_error.go
 model_risk_evaluation.go
 model_risk_evaluation_details.go
 model_risk_evaluation_details_ip_address_reputation.go

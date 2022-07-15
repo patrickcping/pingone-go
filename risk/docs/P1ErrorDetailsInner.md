@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
-**Target** | Pointer to **string** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** | A general fault code which the client must handle to provide all exception handling routines and to localize messages for users. This code is common across all PingOne services and is human readable (such as a defined constant rather than a number). | [optional] 
+**Target** | Pointer to **string** | The item that caused the error (such as a form field ID or an attribute inside a JSON object). | [optional] 
+**Message** | Pointer to **string** | A short description of the error. This message is intended to assist with debugging and is returned in English only. | [optional] 
+**InnerError** | Pointer to [**P1ErrorDetailsInnerInnerError**](P1ErrorDetailsInnerInnerError.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetMessage sets Message field to given value.
 `func (o *P1ErrorDetailsInner) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
+
+### GetInnerError
+
+`func (o *P1ErrorDetailsInner) GetInnerError() P1ErrorDetailsInnerInnerError`
+
+GetInnerError returns the InnerError field if non-nil, zero value otherwise.
+
+### GetInnerErrorOk
+
+`func (o *P1ErrorDetailsInner) GetInnerErrorOk() (*P1ErrorDetailsInnerInnerError, bool)`
+
+GetInnerErrorOk returns a tuple with the InnerError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInnerError
+
+`func (o *P1ErrorDetailsInner) SetInnerError(v P1ErrorDetailsInnerInnerError)`
+
+SetInnerError sets InnerError field to given value.
+
+### HasInnerError
+
+`func (o *P1ErrorDetailsInner) HasInnerError() bool`
+
+HasInnerError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
