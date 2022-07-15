@@ -171,6 +171,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Environment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -183,6 +190,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -305,6 +319,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Environment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -540,6 +561,13 @@ paths:
                 enabled: false
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -552,6 +580,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -691,6 +726,13 @@ paths:
                 reconsentPeriodDays: 360
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -797,6 +839,13 @@ paths:
                 enabled: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -809,6 +858,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -969,6 +1025,13 @@ paths:
                 displayName: "Language_{{$timestamp}}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1089,6 +1152,13 @@ paths:
                 text: "So, you agree to all my terms, right?"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1101,6 +1171,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -1309,6 +1386,13 @@ paths:
                 - tom@example.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1321,6 +1405,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -1418,6 +1509,13 @@ paths:
                 - tom@example.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1510,6 +1608,13 @@ paths:
             schema:
               $ref: '#/components/schemas/createApplication_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1522,6 +1627,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -1665,6 +1777,13 @@ paths:
             schema:
               $ref: '#/components/schemas/updateApplication_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1768,6 +1887,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1780,6 +1906,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -1874,6 +2007,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationResourceGrant'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1886,6 +2026,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -2050,6 +2197,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationResourceGrant'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2158,6 +2312,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicyAssignment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2170,6 +2331,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -2334,6 +2502,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicyAssignment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2442,6 +2617,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RoleAssignment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2454,6 +2636,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -2663,6 +2852,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationAttributeMapping'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2675,6 +2871,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -2839,6 +3042,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationAttributeMapping'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2940,6 +3150,13 @@ paths:
                   "2019-01-31T22:54:12.988Z" AND actors.user.name eq "Bill"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2952,6 +3169,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -3155,6 +3379,13 @@ paths:
             schema:
               $ref: '#/components/schemas/BillOfMaterials'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3266,6 +3497,13 @@ paths:
                   id: "{{imageID}}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3398,6 +3636,13 @@ paths:
                   footer: some footer
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3410,6 +3655,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -3598,6 +3850,13 @@ paths:
                   footer: Good for Copyright information.
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3726,6 +3985,13 @@ paths:
                 default: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3864,6 +4130,13 @@ paths:
             schema:
               $ref: '#/components/schemas/_v1_environments__environmentID__keys_get_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3876,6 +4149,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4022,6 +4302,13 @@ paths:
                 default: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4167,6 +4454,13 @@ paths:
             schema:
               $ref: '#/components/schemas/_v1_environments__environmentID__certificates_get_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4179,6 +4473,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4364,6 +4665,13 @@ paths:
                 plainText: SGVsbG8sIFdvcmxkIQ==
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4376,6 +4684,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4415,6 +4730,13 @@ paths:
                 cipherText: 0kEOngncmwvmGal0pT1y71bNsfWfvllmoDQlPfUq4UxiFE/u2w0RoS0yqPieNY1samW971zFuZ+XGtqIp69id6KSd9WXaaZliE18GAk8XvnilKF4A6TW1lmkpGuezI6G6AxPaaFVMKZyPx6R8Ai90aRBkcZ+2TtOrzZjGWh0Z132R/3syiFpEzBIqmo/ksnHKcojfj0Eq8cMwaSeymLaxT/wykeCwDC4x2QrRQLVmM4yCDNM2eC/3ArkB24pjMXHKfcr5jzR9ZtHdlh7Bs8D4JpdNMyD+uI6mrJyFll+E3TLGUhRymjMc4ZiUpPPntoXVzYq4xupZdNTbbcClA6hyg==
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4427,6 +4749,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4467,6 +4796,13 @@ paths:
                   id: "{keyId}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4479,6 +4815,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4521,6 +4864,13 @@ paths:
                 signature: "{signature}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4533,6 +4883,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4634,6 +4991,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4724,6 +5088,13 @@ paths:
                 domainName: custom-domain.example.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4736,6 +5107,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -4896,6 +5274,13 @@ paths:
                   -----END RSA PRIVATE KEY-----
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4908,6 +5293,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -5053,6 +5445,13 @@ paths:
                 default: false
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5101,6 +5500,13 @@ paths:
             schema:
               $ref: '#/components/schemas/updateEnvironmentType_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5195,6 +5601,13 @@ paths:
             schema:
               $ref: '#/components/schemas/createGateway_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5207,6 +5620,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -5350,6 +5770,13 @@ paths:
             schema:
               $ref: '#/components/schemas/createGateway_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5402,6 +5829,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5414,6 +5848,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -5676,6 +6117,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RoleAssignment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5688,6 +6136,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -5858,6 +6313,13 @@ paths:
                   type: ENVIRONMENT
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5968,6 +6430,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Group'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5980,6 +6449,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -6131,6 +6607,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Group'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6239,6 +6722,13 @@ paths:
             schema:
               $ref: '#/components/schemas/GroupNesting'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6251,6 +6741,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -6338,6 +6835,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6350,6 +6854,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -6543,6 +7054,13 @@ paths:
                 name: Default Plan
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6555,6 +7073,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -6709,6 +7234,13 @@ paths:
                 name: Test-Propagation-Plan
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6824,6 +7356,13 @@ paths:
                   href: https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6836,6 +7375,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7002,6 +7548,13 @@ paths:
                   href: https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7070,6 +7623,13 @@ paths:
                   href: https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7082,6 +7642,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7130,6 +7697,13 @@ paths:
                   BASIC_AUTH_PASSWORD: password
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7142,6 +7716,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7185,6 +7766,13 @@ paths:
                   OAUTH_REFRESH_TOKEN: token
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7197,6 +7785,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7240,6 +7835,13 @@ paths:
                   OAUTH_REFRESH_TOKEN: yourRefreshToken
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7252,6 +7854,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7300,6 +7909,13 @@ paths:
                   BASIC_AUTH_PASSWORD: password
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7312,6 +7928,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7415,6 +8038,13 @@ paths:
                 deprovision: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7427,6 +8057,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -7658,6 +8295,13 @@ paths:
                 deprovision: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7773,6 +8417,13 @@ paths:
                 targetAttribute: accountId
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7894,6 +8545,13 @@ paths:
                 targetAttribute: userName
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -7906,6 +8564,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -8047,6 +8712,13 @@ paths:
                 url: https://Identity_Provider_oidc_well_known_endpoint
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -8059,6 +8731,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -8212,6 +8891,13 @@ paths:
                 - EMAIL
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -8318,6 +9004,13 @@ paths:
                 update: ALWAYS
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -8330,6 +9023,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -8491,6 +9191,13 @@ paths:
                 update: EMPTY_ONLY
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -8556,6 +9263,13 @@ paths:
               format: binary
               type: string
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -8568,6 +9282,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -9101,6 +9822,13 @@ paths:
                 enabled: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9150,6 +9878,13 @@ paths:
                 locale: fr
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9162,6 +9897,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -9256,6 +9998,13 @@ paths:
                 statusDetails: Status details here
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9268,6 +10017,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -9429,6 +10185,13 @@ paths:
                 statusDetails: Status Details - add updated status details here
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9686,6 +10449,13 @@ paths:
                 variant: variant_D
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9745,6 +10515,13 @@ paths:
                 deliveryMethod: Push
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -9757,6 +10534,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -9919,6 +10703,13 @@ paths:
                 deliveryMethod: Push
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10041,6 +10832,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10179,6 +10977,13 @@ paths:
                   address: reply@pingidentity.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10270,6 +11075,13 @@ paths:
                 provider: CUSTOM_SYNIVERSE
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10282,6 +11094,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -10415,6 +11234,13 @@ paths:
                   number: +972544440099
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10505,6 +11331,13 @@ paths:
                 domainName: auth.shopco.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10517,6 +11350,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -10919,6 +11759,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -10931,6 +11778,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -11023,6 +11877,13 @@ paths:
                 emailAddress: noreply1@auth.shopco.com
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11035,6 +11896,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -11116,6 +11984,13 @@ paths:
               $ref: '#/components/schemas/PasswordPolicy'
         required: true
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11128,6 +12003,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -11271,6 +12153,13 @@ paths:
             schema:
               $ref: '#/components/schemas/PasswordPolicy'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11386,6 +12275,13 @@ paths:
               $ref: '#/components/schemas/Population'
         required: true
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11398,6 +12294,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -11541,6 +12444,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Population'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11635,6 +12545,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Resource'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11647,6 +12564,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -11790,6 +12714,13 @@ paths:
             schema:
               $ref: '#/components/schemas/Resource'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11898,6 +12829,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceScope'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -11910,6 +12848,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -12074,6 +13019,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceScope'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12182,6 +13134,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceAttribute'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12194,6 +13153,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -12358,6 +13324,13 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceAttribute'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12563,6 +13536,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SchemaAttribute'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12575,6 +13555,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -12739,6 +13726,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SchemaAttribute'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12802,6 +13796,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SchemaAttribute'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12896,6 +13897,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicy'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -12908,6 +13916,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -13051,6 +14066,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicy'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13159,6 +14181,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicyAction'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13171,6 +14200,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -13335,6 +14371,13 @@ paths:
             schema:
               $ref: '#/components/schemas/SignOnPolicyAction'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13442,6 +14485,13 @@ paths:
                 enabled: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13454,6 +14504,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -13607,6 +14664,13 @@ paths:
                 verifyTlsCertificates: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13823,6 +14887,13 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -13835,6 +14906,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -13989,6 +15067,13 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14047,6 +15132,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14059,6 +15151,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -14103,6 +15202,13 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14210,6 +15316,13 @@ paths:
                   id: "{{idpID}}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14314,6 +15427,13 @@ paths:
                 verifyStatus: ENABLED
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14444,6 +15564,13 @@ paths:
             schema:
               $ref: '#/components/schemas/addUserToGroup_request'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14456,6 +15583,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -14673,6 +15807,13 @@ paths:
             schema:
               $ref: '#/components/schemas/UserEnabled'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -14999,6 +16140,13 @@ paths:
                 - id: "{{applicationID}}"
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15011,6 +16159,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -15105,6 +16260,13 @@ paths:
             schema:
               $ref: '#/components/schemas/UserPopulation'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15220,6 +16382,13 @@ paths:
                 newPassword: VerySecure123!
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15232,6 +16401,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -15284,6 +16460,13 @@ paths:
                 forceChange: true
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15390,6 +16573,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RoleAssignment'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15402,6 +16592,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -15602,6 +16799,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15614,6 +16818,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -15774,6 +16985,13 @@ paths:
                   status: APPROVED_NO_REQUEST
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15942,6 +17160,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -15954,6 +17179,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -16419,6 +17651,13 @@ paths:
                 name: Internal Test License
               type: object
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:

@@ -86,6 +86,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskPolicySet'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -98,6 +105,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -241,6 +255,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskPolicySet'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -291,6 +312,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskEvaluation'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -303,6 +331,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -400,6 +435,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskEvaluationEvent'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -494,6 +536,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskPredictor'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -506,6 +555,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "429":
           content:
             application/json:
@@ -649,6 +705,13 @@ paths:
             schema:
               $ref: '#/components/schemas/RiskPredictor'
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
