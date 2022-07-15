@@ -26,6 +26,7 @@ type EntityArrayEmbedded struct {
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
+	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 	Scopes []ResourceScope `json:"scopes,omitempty"`
@@ -372,6 +373,38 @@ func (o *EntityArrayEmbedded) SetOrganizations(v []Organization) {
 	o.Organizations = v
 }
 
+// GetPasswordPolicies returns the PasswordPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPasswordPolicies() []PasswordPolicy {
+	if o == nil || o.PasswordPolicies == nil {
+		var ret []PasswordPolicy
+		return ret
+	}
+	return o.PasswordPolicies
+}
+
+// GetPasswordPoliciesOk returns a tuple with the PasswordPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPasswordPoliciesOk() ([]PasswordPolicy, bool) {
+	if o == nil || o.PasswordPolicies == nil {
+		return nil, false
+	}
+	return o.PasswordPolicies, true
+}
+
+// HasPasswordPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPasswordPolicies() bool {
+	if o != nil && o.PasswordPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicies gets a reference to the given []PasswordPolicy and assigns it to the PasswordPolicies field.
+func (o *EntityArrayEmbedded) SetPasswordPolicies(v []PasswordPolicy) {
+	o.PasswordPolicies = v
+}
+
 // GetPopulations returns the Populations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPopulations() []Population {
 	if o == nil || o.Populations == nil {
@@ -627,6 +660,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
+	}
+	if o.PasswordPolicies != nil {
+		toSerialize["passwordPolicies"] = o.PasswordPolicies
 	}
 	if o.Populations != nil {
 		toSerialize["populations"] = o.Populations

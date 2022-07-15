@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
+**PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
@@ -290,6 +291,31 @@ SetOrganizations sets Organizations field to given value.
 `func (o *EntityArrayEmbedded) HasOrganizations() bool`
 
 HasOrganizations returns a boolean if a field has been set.
+
+### GetPasswordPolicies
+
+`func (o *EntityArrayEmbedded) GetPasswordPolicies() []PasswordPolicy`
+
+GetPasswordPolicies returns the PasswordPolicies field if non-nil, zero value otherwise.
+
+### GetPasswordPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetPasswordPoliciesOk() (*[]PasswordPolicy, bool)`
+
+GetPasswordPoliciesOk returns a tuple with the PasswordPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicies
+
+`func (o *EntityArrayEmbedded) SetPasswordPolicies(v []PasswordPolicy)`
+
+SetPasswordPolicies sets PasswordPolicies field to given value.
+
+### HasPasswordPolicies
+
+`func (o *EntityArrayEmbedded) HasPasswordPolicies() bool`
+
+HasPasswordPolicies returns a boolean if a field has been set.
 
 ### GetPopulations
 

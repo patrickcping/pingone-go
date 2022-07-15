@@ -288,9 +288,11 @@ Class | Method | HTTP request | Description
 *NotificationsTrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsPost**](docs/NotificationsTrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainspost) | **Post** /v1/environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
 *OrganizationsApi* | [**ReadAllOrganizations**](docs/OrganizationsApi.md#readallorganizations) | **Get** /v1/organizations | READ All Organizations
 *OrganizationsApi* | [**ReadOneOrganizations**](docs/OrganizationsApi.md#readoneorganizations) | **Get** /v1/organizations/{organizationID} | READ One Organization
-*PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesGet**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciesget) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
-*PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciespasswordpolicyidget) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
-*PasswordPoliciesApi* | [**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut**](docs/PasswordPoliciesApi.md#v1environmentsenvironmentidpasswordpoliciespasswordpolicyidput) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
+*PasswordPoliciesApi* | [**CreatePasswordPolicy**](docs/PasswordPoliciesApi.md#createpasswordpolicy) | **Post** /v1/environments/{environmentID}/passwordPolicies | CREATE Password Policy
+*PasswordPoliciesApi* | [**DeletePasswordPolicy**](docs/PasswordPoliciesApi.md#deletepasswordpolicy) | **Delete** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | DELETE Password Policy
+*PasswordPoliciesApi* | [**ReadAllPasswordPolicies**](docs/PasswordPoliciesApi.md#readallpasswordpolicies) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
+*PasswordPoliciesApi* | [**ReadOnePasswordPolicy**](docs/PasswordPoliciesApi.md#readonepasswordpolicy) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
+*PasswordPoliciesApi* | [**UpdatePasswordPolicy**](docs/PasswordPoliciesApi.md#updatepasswordpolicy) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
 *PopulationsApi* | [**CreatePopulation**](docs/PopulationsApi.md#createpopulation) | **Post** /v1/environments/{environmentID}/populations | CREATE Population
 *PopulationsApi* | [**DeletePopulation**](docs/PopulationsApi.md#deletepopulation) | **Delete** /v1/environments/{environmentID}/populations/{popID} | DELETE Population
 *PopulationsApi* | [**ReadAllPopulations**](docs/PopulationsApi.md#readallpopulations) | **Get** /v1/environments/{environmentID}/populations | READ All Populations
@@ -454,6 +456,11 @@ Class | Method | HTTP request | Description
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
+ - [PasswordPolicy](docs/PasswordPolicy.md)
+ - [PasswordPolicyHistory](docs/PasswordPolicyHistory.md)
+ - [PasswordPolicyLength](docs/PasswordPolicyLength.md)
+ - [PasswordPolicyLockout](docs/PasswordPolicyLockout.md)
+ - [PasswordPolicyMinCharacters](docs/PasswordPolicyMinCharacters.md)
  - [Population](docs/Population.md)
  - [PopulationPasswordPolicy](docs/PopulationPasswordPolicy.md)
  - [Resource](docs/Resource.md)

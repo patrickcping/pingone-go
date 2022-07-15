@@ -4,17 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPasswordPoliciesGet**](PasswordPoliciesApi.md#V1EnvironmentsEnvironmentIDPasswordPoliciesGet) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
-[**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet**](PasswordPoliciesApi.md#V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
-[**V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut**](PasswordPoliciesApi.md#V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
+[**CreatePasswordPolicy**](PasswordPoliciesApi.md#CreatePasswordPolicy) | **Post** /v1/environments/{environmentID}/passwordPolicies | CREATE Password Policy
+[**DeletePasswordPolicy**](PasswordPoliciesApi.md#DeletePasswordPolicy) | **Delete** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | DELETE Password Policy
+[**ReadAllPasswordPolicies**](PasswordPoliciesApi.md#ReadAllPasswordPolicies) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
+[**ReadOnePasswordPolicy**](PasswordPoliciesApi.md#ReadOnePasswordPolicy) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
+[**UpdatePasswordPolicy**](PasswordPoliciesApi.md#UpdatePasswordPolicy) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
 
 
 
-## V1EnvironmentsEnvironmentIDPasswordPoliciesGet
+## CreatePasswordPolicy
 
-> V1EnvironmentsEnvironmentIDPasswordPoliciesGet(ctx, environmentID).Execute()
+> PasswordPolicy CreatePasswordPolicy(ctx, environmentID).PasswordPolicy(passwordPolicy).Execute()
 
-READ All Password Policies
+CREATE Password Policy
 
 ### Example
 
@@ -30,14 +32,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    passwordPolicy := *openapiclient.NewPasswordPolicy(false, false, "Name_example", false) // PasswordPolicy | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.PasswordPoliciesApi.CreatePasswordPolicy(context.Background(), environmentID).PasswordPolicy(passwordPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.CreatePasswordPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreatePasswordPolicy`: PasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesApi.CreatePasswordPolicy`: %v\n", resp)
 }
 ```
 
@@ -51,11 +56,81 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreatePasswordPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+ **passwordPolicy** | [**PasswordPolicy**](PasswordPolicy.md) |  | 
+
+### Return type
+
+[**PasswordPolicy**](PasswordPolicy.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeletePasswordPolicy
+
+> DeletePasswordPolicy(ctx, environmentID, passwordPolicyID).Execute()
+
+DELETE Password Policy
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    passwordPolicyID := "passwordPolicyID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PasswordPoliciesApi.DeletePasswordPolicy(context.Background(), environmentID, passwordPolicyID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.DeletePasswordPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**passwordPolicyID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePasswordPolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -76,9 +151,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet
+## ReadAllPasswordPolicies
 
-> V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet(ctx, environmentID, passwordPolicyID).Execute()
+> EntityArray ReadAllPasswordPolicies(ctx, environmentID).Execute()
+
+READ All Password Policies
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PasswordPoliciesApi.ReadAllPasswordPolicies(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.ReadAllPasswordPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllPasswordPolicies`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesApi.ReadAllPasswordPolicies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllPasswordPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOnePasswordPolicy
+
+> PasswordPolicy ReadOnePasswordPolicy(ctx, environmentID, passwordPolicyID).Execute()
 
 READ One Password Policy
 
@@ -100,11 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet(context.Background(), environmentID, passwordPolicyID).Execute()
+    resp, r, err := apiClient.PasswordPoliciesApi.ReadOnePasswordPolicy(context.Background(), environmentID, passwordPolicyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.ReadOnePasswordPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOnePasswordPolicy`: PasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesApi.ReadOnePasswordPolicy`: %v\n", resp)
 }
 ```
 
@@ -119,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOnePasswordPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -129,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**PasswordPolicy**](PasswordPolicy.md)
 
 ### Authorization
 
@@ -145,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut
+## UpdatePasswordPolicy
 
-> V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut(ctx, environmentID, passwordPolicyID).Body(body).Execute()
+> PasswordPolicy UpdatePasswordPolicy(ctx, environmentID, passwordPolicyID).PasswordPolicy(passwordPolicy).Execute()
 
 UPDATE Password Policy
 
@@ -166,15 +311,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     passwordPolicyID := "passwordPolicyID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    passwordPolicy := *openapiclient.NewPasswordPolicy(false, false, "Name_example", false) // PasswordPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut(context.Background(), environmentID, passwordPolicyID).Body(body).Execute()
+    resp, r, err := apiClient.PasswordPoliciesApi.UpdatePasswordPolicy(context.Background(), environmentID, passwordPolicyID).PasswordPolicy(passwordPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesApi.UpdatePasswordPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdatePasswordPolicy`: PasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesApi.UpdatePasswordPolicy`: %v\n", resp)
 }
 ```
 
@@ -189,18 +336,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdatePasswordPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **passwordPolicy** | [**PasswordPolicy**](PasswordPolicy.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**PasswordPolicy**](PasswordPolicy.md)
 
 ### Authorization
 

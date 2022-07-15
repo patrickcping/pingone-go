@@ -23,25 +23,31 @@ import (
 // PasswordPoliciesApiService PasswordPoliciesApi service
 type PasswordPoliciesApiService service
 
-type ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest struct {
+type ApiCreatePasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesApiService
 	environmentID string
+	passwordPolicy *PasswordPolicy
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesGetExecute(r)
+func (r ApiCreatePasswordPolicyRequest) PasswordPolicy(passwordPolicy PasswordPolicy) ApiCreatePasswordPolicyRequest {
+	r.passwordPolicy = &passwordPolicy
+	return r
+}
+
+func (r ApiCreatePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Response, error) {
+	return r.ApiService.CreatePasswordPolicyExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDPasswordPoliciesGet READ All Password Policies
+CreatePasswordPolicy CREATE Password Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest
+ @return ApiCreatePasswordPolicyRequest
 */
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesGet(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest{
+func (a *PasswordPoliciesApiService) CreatePasswordPolicy(ctx context.Context, environmentID string) ApiCreatePasswordPolicyRequest {
+	return ApiCreatePasswordPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -49,16 +55,238 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 }
 
 // Execute executes the request
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesGetExecute(r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesGetRequest) (*http.Response, error) {
+//  @return PasswordPolicy
+func (a *PasswordPoliciesApiService) CreatePasswordPolicyExecute(r ApiCreatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PasswordPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.CreatePasswordPolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.passwordPolicy == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicy is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.passwordPolicy
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeletePasswordPolicyRequest struct {
+	ctx context.Context
+	ApiService *PasswordPoliciesApiService
+	environmentID string
+	passwordPolicyID string
+}
+
+func (r ApiDeletePasswordPolicyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePasswordPolicyExecute(r)
+}
+
+/*
+DeletePasswordPolicy DELETE Password Policy
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param passwordPolicyID
+ @return ApiDeletePasswordPolicyRequest
+*/
+func (a *PasswordPoliciesApiService) DeletePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiDeletePasswordPolicyRequest {
+	return ApiDeletePasswordPolicyRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		passwordPolicyID: passwordPolicyID,
+	}
+}
+
+// Execute executes the request
+func (a *PasswordPoliciesApiService) DeletePasswordPolicyExecute(r ApiDeletePasswordPolicyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.DeletePasswordPolicy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllPasswordPoliciesRequest struct {
+	ctx context.Context
+	ApiService *PasswordPoliciesApiService
+	environmentID string
+}
+
+func (r ApiReadAllPasswordPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllPasswordPoliciesExecute(r)
+}
+
+/*
+ReadAllPasswordPolicies READ All Password Policies
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @return ApiReadAllPasswordPoliciesRequest
+*/
+func (a *PasswordPoliciesApiService) ReadAllPasswordPolicies(ctx context.Context, environmentID string) ApiReadAllPasswordPoliciesRequest {
+	return ApiReadAllPasswordPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.ReadAllPasswordPolicies")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
@@ -87,19 +315,19 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -112,38 +340,47 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest struct {
+type ApiReadOnePasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesApiService
 	environmentID string
 	passwordPolicyID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetExecute(r)
+func (r ApiReadOnePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Response, error) {
+	return r.ApiService.ReadOnePasswordPolicyExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet READ One Password Policy
+ReadOnePasswordPolicy READ One Password Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param passwordPolicyID
- @return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest
+ @return ApiReadOnePasswordPolicyRequest
 */
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet(ctx context.Context, environmentID string, passwordPolicyID string) ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest{
+func (a *PasswordPoliciesApiService) ReadOnePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiReadOnePasswordPolicyRequest {
+	return ApiReadOnePasswordPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -152,16 +389,18 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 }
 
 // Execute executes the request
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGetRequest) (*http.Response, error) {
+//  @return PasswordPolicy
+func (a *PasswordPoliciesApiService) ReadOnePasswordPolicyExecute(r ApiReadOnePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *PasswordPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.ReadOnePasswordPolicy")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
@@ -191,19 +430,19 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -216,44 +455,53 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest struct {
+type ApiUpdatePasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesApiService
 	environmentID string
 	passwordPolicyID string
-	body *map[string]interface{}
+	passwordPolicy *PasswordPolicy
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest {
-	r.body = &body
+func (r ApiUpdatePasswordPolicyRequest) PasswordPolicy(passwordPolicy PasswordPolicy) ApiUpdatePasswordPolicyRequest {
+	r.passwordPolicy = &passwordPolicy
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutExecute(r)
+func (r ApiUpdatePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Response, error) {
+	return r.ApiService.UpdatePasswordPolicyExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut UPDATE Password Policy
+UpdatePasswordPolicy UPDATE Password Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param passwordPolicyID
- @return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest
+ @return ApiUpdatePasswordPolicyRequest
 */
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut(ctx context.Context, environmentID string, passwordPolicyID string) ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest{
+func (a *PasswordPoliciesApiService) UpdatePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiUpdatePasswordPolicyRequest {
+	return ApiUpdatePasswordPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -262,16 +510,18 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 }
 
 // Execute executes the request
-func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPutRequest) (*http.Response, error) {
+//  @return PasswordPolicy
+func (a *PasswordPoliciesApiService) UpdatePasswordPolicyExecute(r ApiUpdatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *PasswordPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.V1EnvironmentsEnvironmentIDPasswordPoliciesPasswordPolicyIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesApiService.UpdatePasswordPolicy")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
@@ -300,22 +550,22 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.passwordPolicy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -328,13 +578,22 @@ func (a *PasswordPoliciesApiService) V1EnvironmentsEnvironmentIDPasswordPolicies
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
