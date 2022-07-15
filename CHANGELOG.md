@@ -1,4 +1,19 @@
-# Release (2022- Unreleased)
+# Release (2022-07-15)
+
+* `github.com/patrickcping/pingone-go/management` : [v1.11.0](./management/CHANGELOG.md)
+    * **Feature:** Expansion of P1Error model
+    * **Feature:** Expansion of PasswordPolicy model + submodels
+    * **Feature:** Cleanup of the Password Policy API
+    * **Enhancement:** Change popID parameter name to populationID for readability
+    * **Feature:** Cleanup of the Sign-on Policies API
+    * **Feature:** Cleanup of the Application Sign-on policies assignment API
+    * **Enhancement:** Added common error codes
+* `github.com/patrickcping/pingone-go/mfa` : [v1.11.0](./mfa/CHANGELOG.md)
+    * **Feature:** Expansion of P1Error model
+    * **Enhancement:** Added common error codes
+* `github.com/patrickcping/pingone-go/risk` : [v1.11.0](./risk/CHANGELOG.md)
+    * **Feature:** Expansion of P1Error model
+    * **Enhancement:** Added common error codes
 
 # Release (2022-07-13)
 
