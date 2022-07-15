@@ -7652,7 +7652,7 @@ paths:
       summary: CREATE Population
       tags:
       - Populations
-  /v1/environments/{environmentID}/populations/{popID}:
+  /v1/environments/{environmentID}/populations/{populationID}:
     delete:
       operationId: deletePopulation
       parameters:
@@ -7665,7 +7665,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: popID
+        name: populationID
         required: true
         schema:
           type: string
@@ -7694,7 +7694,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: popID
+        name: populationID
         required: true
         schema:
           type: string
@@ -7727,7 +7727,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: popID
+        name: populationID
         required: true
         schema:
           type: string
@@ -9006,7 +9006,7 @@ paths:
                   - USER.CREATED
                   - USER.UPDATED
                   includedPopulations:
-                  - id: "{{popID}}"
+                  - id: "{{populationID}}"
                   includedApplications:
                   - id: "{{applicationID}}"
                 httpEndpoint:
@@ -9117,7 +9117,7 @@ paths:
                   - USER.CREATED
                   - USER.MODIFIED
                   includedPopulations:
-                  - id: "{popID}"
+                  - id: "{populationID}"
                   includedApplications:
                   - id: "{applicationID}"
                 httpEndpoint:

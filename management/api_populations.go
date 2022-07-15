@@ -149,7 +149,7 @@ type ApiDeletePopulationRequest struct {
 	ctx context.Context
 	ApiService *PopulationsApiService
 	environmentID string
-	popID string
+	populationID string
 }
 
 func (r ApiDeletePopulationRequest) Execute() (*http.Response, error) {
@@ -161,15 +161,15 @@ DeletePopulation DELETE Population
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param popID
+ @param populationID
  @return ApiDeletePopulationRequest
 */
-func (a *PopulationsApiService) DeletePopulation(ctx context.Context, environmentID string, popID string) ApiDeletePopulationRequest {
+func (a *PopulationsApiService) DeletePopulation(ctx context.Context, environmentID string, populationID string) ApiDeletePopulationRequest {
 	return ApiDeletePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		popID: popID,
+		populationID: populationID,
 	}
 }
 
@@ -186,9 +186,9 @@ func (a *PopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationReq
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{popID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{populationID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterToString(r.populationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -384,7 +384,7 @@ type ApiReadOnePopulationRequest struct {
 	ctx context.Context
 	ApiService *PopulationsApiService
 	environmentID string
-	popID string
+	populationID string
 }
 
 func (r ApiReadOnePopulationRequest) Execute() (*Population, *http.Response, error) {
@@ -396,15 +396,15 @@ ReadOnePopulation READ One Population
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param popID
+ @param populationID
  @return ApiReadOnePopulationRequest
 */
-func (a *PopulationsApiService) ReadOnePopulation(ctx context.Context, environmentID string, popID string) ApiReadOnePopulationRequest {
+func (a *PopulationsApiService) ReadOnePopulation(ctx context.Context, environmentID string, populationID string) ApiReadOnePopulationRequest {
 	return ApiReadOnePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		popID: popID,
+		populationID: populationID,
 	}
 }
 
@@ -423,9 +423,9 @@ func (a *PopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{popID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{populationID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterToString(r.populationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -499,7 +499,7 @@ type ApiUpdatePopulationRequest struct {
 	ctx context.Context
 	ApiService *PopulationsApiService
 	environmentID string
-	popID string
+	populationID string
 	population *Population
 }
 
@@ -517,15 +517,15 @@ UpdatePopulation UPDATE Population
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param popID
+ @param populationID
  @return ApiUpdatePopulationRequest
 */
-func (a *PopulationsApiService) UpdatePopulation(ctx context.Context, environmentID string, popID string) ApiUpdatePopulationRequest {
+func (a *PopulationsApiService) UpdatePopulation(ctx context.Context, environmentID string, populationID string) ApiUpdatePopulationRequest {
 	return ApiUpdatePopulationRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		popID: popID,
+		populationID: populationID,
 	}
 }
 
@@ -544,9 +544,9 @@ func (a *PopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{popID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/populations/{populationID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"popID"+"}", url.PathEscape(parameterToString(r.popID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterToString(r.populationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

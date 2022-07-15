@@ -3,6 +3,7 @@
 * **Feature:** Expansion of P1Error model
 * **Feature:** Expansion of PasswordPolicy model + submodels
 * **Feature:** Cleanup of the Password Policy API
+* **Enhancement:** Change popID parameter name to populationID for readability
 
 # v1.10.0 (2022-07-13)
 
