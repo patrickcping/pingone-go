@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Actions** | Pointer to [**[]SignOnPolicyAction**](SignOnPolicyAction.md) |  | [optional] 
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
 **Applications** | Pointer to [**[]EntityArrayEmbeddedApplicationsInner**](EntityArrayEmbeddedApplicationsInner.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
@@ -18,6 +19,8 @@ Name | Type | Description | Notes
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
+**SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
+**SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
@@ -41,6 +44,31 @@ will change when the set of required properties is changed
 NewEntityArrayEmbeddedWithDefaults instantiates a new EntityArrayEmbedded object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActions
+
+`func (o *EntityArrayEmbedded) GetActions() []SignOnPolicyAction`
+
+GetActions returns the Actions field if non-nil, zero value otherwise.
+
+### GetActionsOk
+
+`func (o *EntityArrayEmbedded) GetActionsOk() (*[]SignOnPolicyAction, bool)`
+
+GetActionsOk returns a tuple with the Actions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActions
+
+`func (o *EntityArrayEmbedded) SetActions(v []SignOnPolicyAction)`
+
+SetActions sets Actions field to given value.
+
+### HasActions
+
+`func (o *EntityArrayEmbedded) HasActions() bool`
+
+HasActions returns a boolean if a field has been set.
 
 ### GetAttributes
 
@@ -391,6 +419,56 @@ SetScopes sets Scopes field to given value.
 `func (o *EntityArrayEmbedded) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
+
+### GetSignOnPolicies
+
+`func (o *EntityArrayEmbedded) GetSignOnPolicies() []SignOnPolicy`
+
+GetSignOnPolicies returns the SignOnPolicies field if non-nil, zero value otherwise.
+
+### GetSignOnPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetSignOnPoliciesOk() (*[]SignOnPolicy, bool)`
+
+GetSignOnPoliciesOk returns a tuple with the SignOnPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignOnPolicies
+
+`func (o *EntityArrayEmbedded) SetSignOnPolicies(v []SignOnPolicy)`
+
+SetSignOnPolicies sets SignOnPolicies field to given value.
+
+### HasSignOnPolicies
+
+`func (o *EntityArrayEmbedded) HasSignOnPolicies() bool`
+
+HasSignOnPolicies returns a boolean if a field has been set.
+
+### GetSignOnPolicyAssignments
+
+`func (o *EntityArrayEmbedded) GetSignOnPolicyAssignments() []SignOnPolicyAssignment`
+
+GetSignOnPolicyAssignments returns the SignOnPolicyAssignments field if non-nil, zero value otherwise.
+
+### GetSignOnPolicyAssignmentsOk
+
+`func (o *EntityArrayEmbedded) GetSignOnPolicyAssignmentsOk() (*[]SignOnPolicyAssignment, bool)`
+
+GetSignOnPolicyAssignmentsOk returns a tuple with the SignOnPolicyAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignOnPolicyAssignments
+
+`func (o *EntityArrayEmbedded) SetSignOnPolicyAssignments(v []SignOnPolicyAssignment)`
+
+SetSignOnPolicyAssignments sets SignOnPolicyAssignments field to given value.
+
+### HasSignOnPolicyAssignments
+
+`func (o *EntityArrayEmbedded) HasSignOnPolicyAssignments() bool`
+
+HasSignOnPolicyAssignments returns a boolean if a field has been set.
 
 ### GetRoleAssignments
 

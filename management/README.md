@@ -115,11 +115,11 @@ Class | Method | HTTP request | Description
 *ApplicationsApplicationRoleAssignmentsApi* | [**ReadOneApplicationRoleAssignment**](docs/ApplicationsApplicationRoleAssignmentsApi.md#readoneapplicationroleassignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
 *ApplicationsApplicationSecretApi* | [**ReadApplicationSecret**](docs/ApplicationsApplicationSecretApi.md#readapplicationsecret) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/secret | READ Application Secret
 *ApplicationsApplicationSecretApi* | [**UpdateApplicationSecret**](docs/ApplicationsApplicationSecretApi.md#updateapplicationsecret) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/secret | UPDATE Application Secret
-*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGet**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvironmentidapplicationsapplicationidsignonpolicyassignmentsget) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | READ All SOP Assignments
-*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPost**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvironmentidapplicationsapplicationidsignonpolicyassignmentspost) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | CREATE SOP Assignment
-*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDelete**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvironmentidapplicationsapplicationidsignonpolicyassignmentssopassignmentiddelete) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | DELETE SOP Assignment
-*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGet**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvironmentidapplicationsapplicationidsignonpolicyassignmentssopassignmentidget) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | READ One SOP Assignment
-*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPut**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#v1environmentsenvironmentidapplicationsapplicationidsignonpolicyassignmentssopassignmentidput) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | UPDATE SOP Assignment
+*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**CreateSignOnPolicyAssignment**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#createsignonpolicyassignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | CREATE SOP Assignment
+*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**DeleteSignOnPolicyAssignment**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#deletesignonpolicyassignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | DELETE SOP Assignment
+*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**ReadAllSignOnPolicyAssignments**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#readallsignonpolicyassignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | READ All SOP Assignments
+*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**ReadOneSignOnPolicyAssignment**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#readonesignonpolicyassignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | READ One SOP Assignment
+*ApplicationsApplicationSignOnPolicyAssignmentsApi* | [**UpdateSignOnPolicyAssignment**](docs/ApplicationsApplicationSignOnPolicyAssignmentsApi.md#updatesignonpolicyassignment) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | UPDATE SOP Assignment
 *ApplicationsApplicationsApi* | [**CreateApplication**](docs/ApplicationsApplicationsApi.md#createapplication) | **Post** /v1/environments/{environmentID}/applications | CREATE Application
 *ApplicationsApplicationsApi* | [**DeleteApplication**](docs/ApplicationsApplicationsApi.md#deleteapplication) | **Delete** /v1/environments/{environmentID}/applications/{applicationID} | DELETE Application
 *ApplicationsApplicationsApi* | [**ReadAllApplications**](docs/ApplicationsApplicationsApi.md#readallapplications) | **Get** /v1/environments/{environmentID}/applications | READ All Applications
@@ -323,16 +323,16 @@ Class | Method | HTTP request | Description
 *SchemasApi* | [**ReadOneSchema**](docs/SchemasApi.md#readoneschema) | **Get** /v1/environments/{environmentID}/schemas/{schemaID} | READ One Schema
 *SchemasApi* | [**UpdateAttributePatch**](docs/SchemasApi.md#updateattributepatch) | **Patch** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Patch)
 *SchemasApi* | [**UpdateAttributePut**](docs/SchemasApi.md#updateattributeput) | **Put** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Put)
-*SignOnPoliciesSignOnPoliciesApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesGet**](docs/SignOnPoliciesSignOnPoliciesApi.md#v1environmentsenvironmentidsignonpoliciesget) | **Get** /v1/environments/{environmentID}/signOnPolicies | READ All Sign On Policies
-*SignOnPoliciesSignOnPoliciesApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete**](docs/SignOnPoliciesSignOnPoliciesApi.md#v1environmentsenvironmentidsignonpoliciespolicyiddelete) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
-*SignOnPoliciesSignOnPoliciesApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet**](docs/SignOnPoliciesSignOnPoliciesApi.md#v1environmentsenvironmentidsignonpoliciespolicyidget) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
-*SignOnPoliciesSignOnPoliciesApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut**](docs/SignOnPoliciesSignOnPoliciesApi.md#v1environmentsenvironmentidsignonpoliciespolicyidput) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
-*SignOnPoliciesSignOnPoliciesApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPost**](docs/SignOnPoliciesSignOnPoliciesApi.md#v1environmentsenvironmentidsignonpoliciespost) | **Post** /v1/environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
-*SignOnPoliciesSignOnPolicyActionsApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDActionsActionIDDelete**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#v1environmentsenvironmentidsignonpoliciespolicyidactionsactioniddelete) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | DELETE Sign-On Policy Action
-*SignOnPoliciesSignOnPolicyActionsApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDActionsActionIDGet**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#v1environmentsenvironmentidsignonpoliciespolicyidactionsactionidget) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | READ One Sign-On Policy Action
-*SignOnPoliciesSignOnPolicyActionsApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDActionsActionIDPut**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#v1environmentsenvironmentidsignonpoliciespolicyidactionsactionidput) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | UPDATE Sign-On Policy Action
-*SignOnPoliciesSignOnPolicyActionsApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDActionsGet**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#v1environmentsenvironmentidsignonpoliciespolicyidactionsget) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | READ All Sign-On Policy Actions
-*SignOnPoliciesSignOnPolicyActionsApi* | [**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDActionsPost**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#v1environmentsenvironmentidsignonpoliciespolicyidactionspost) | **Post** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | CREATE Sign-On Policy Action (AGREEMENT)
+*SignOnPoliciesSignOnPoliciesApi* | [**CreateSignOnPolicy**](docs/SignOnPoliciesSignOnPoliciesApi.md#createsignonpolicy) | **Post** /v1/environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
+*SignOnPoliciesSignOnPoliciesApi* | [**DeleteSignOnPolicy**](docs/SignOnPoliciesSignOnPoliciesApi.md#deletesignonpolicy) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
+*SignOnPoliciesSignOnPoliciesApi* | [**ReadAllSignOnPolicies**](docs/SignOnPoliciesSignOnPoliciesApi.md#readallsignonpolicies) | **Get** /v1/environments/{environmentID}/signOnPolicies | READ All Sign On Policies
+*SignOnPoliciesSignOnPoliciesApi* | [**ReadOneSignOnPolicy**](docs/SignOnPoliciesSignOnPoliciesApi.md#readonesignonpolicy) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
+*SignOnPoliciesSignOnPoliciesApi* | [**UpdateSignOnPolicy**](docs/SignOnPoliciesSignOnPoliciesApi.md#updatesignonpolicy) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
+*SignOnPoliciesSignOnPolicyActionsApi* | [**CreateSignOnPolicyAction**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#createsignonpolicyaction) | **Post** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | CREATE Sign-On Policy Action
+*SignOnPoliciesSignOnPolicyActionsApi* | [**DeleteSignOnPolicyAction**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#deletesignonpolicyaction) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | DELETE Sign-On Policy Action
+*SignOnPoliciesSignOnPolicyActionsApi* | [**ReadAllSignOnPolicyActions**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#readallsignonpolicyactions) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | READ All Sign-On Policy Actions
+*SignOnPoliciesSignOnPolicyActionsApi* | [**ReadOneSignOnPolicyAction**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#readonesignonpolicyaction) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | READ One Sign-On Policy Action
+*SignOnPoliciesSignOnPolicyActionsApi* | [**UpdateSignOnPolicyAction**](docs/SignOnPoliciesSignOnPolicyActionsApi.md#updatesignonpolicyaction) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | UPDATE Sign-On Policy Action
 *SubscriptionsWebhooksApi* | [**V1EnvironmentsEnvironmentIDSubscriptionsGet**](docs/SubscriptionsWebhooksApi.md#v1environmentsenvironmentidsubscriptionsget) | **Get** /v1/environments/{environmentID}/subscriptions | READ All Subscriptions
 *SubscriptionsWebhooksApi* | [**V1EnvironmentsEnvironmentIDSubscriptionsPost**](docs/SubscriptionsWebhooksApi.md#v1environmentsenvironmentidsubscriptionspost) | **Post** /v1/environments/{environmentID}/subscriptions | CREATE Subscriptions
 *SubscriptionsWebhooksApi* | [**V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDelete**](docs/SubscriptionsWebhooksApi.md#v1environmentsenvironmentidsubscriptionssubscriptioniddelete) | **Delete** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | DELETE Subscription
@@ -449,6 +449,7 @@ Class | Method | HTTP request | Description
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
  - [Image](docs/Image.md)
  - [ImageTargets](docs/ImageTargets.md)
+ - [ObjectApplication](docs/ObjectApplication.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectPopulation](docs/ObjectPopulation.md)
  - [Organization](docs/Organization.md)
@@ -475,6 +476,39 @@ Class | Method | HTTP request | Description
  - [Schema](docs/Schema.md)
  - [SchemaAttribute](docs/SchemaAttribute.md)
  - [SchemaAttributeSchema](docs/SchemaAttributeSchema.md)
+ - [SignOnPolicy](docs/SignOnPolicy.md)
+ - [SignOnPolicyAction](docs/SignOnPolicyAction.md)
+ - [SignOnPolicyActionAgreement](docs/SignOnPolicyActionAgreement.md)
+ - [SignOnPolicyActionAgreementAgreement](docs/SignOnPolicyActionAgreementAgreement.md)
+ - [SignOnPolicyActionCommon](docs/SignOnPolicyActionCommon.md)
+ - [SignOnPolicyActionCommonConditions](docs/SignOnPolicyActionCommonConditions.md)
+ - [SignOnPolicyActionCommonSignOnPolicy](docs/SignOnPolicyActionCommonSignOnPolicy.md)
+ - [SignOnPolicyActionIDFirst](docs/SignOnPolicyActionIDFirst.md)
+ - [SignOnPolicyActionIDFirstDiscoveryRulesInner](docs/SignOnPolicyActionIDFirstDiscoveryRulesInner.md)
+ - [SignOnPolicyActionIDFirstDiscoveryRulesInnerCondition](docs/SignOnPolicyActionIDFirstDiscoveryRulesInnerCondition.md)
+ - [SignOnPolicyActionIDFirstDiscoveryRulesInnerIdentityProvider](docs/SignOnPolicyActionIDFirstDiscoveryRulesInnerIdentityProvider.md)
+ - [SignOnPolicyActionIDP](docs/SignOnPolicyActionIDP.md)
+ - [SignOnPolicyActionIDPIdentityProvider](docs/SignOnPolicyActionIDPIdentityProvider.md)
+ - [SignOnPolicyActionIDPRegistration](docs/SignOnPolicyActionIDPRegistration.md)
+ - [SignOnPolicyActionLogin](docs/SignOnPolicyActionLogin.md)
+ - [SignOnPolicyActionLoginRecovery](docs/SignOnPolicyActionLoginRecovery.md)
+ - [SignOnPolicyActionLoginRegistration](docs/SignOnPolicyActionLoginRegistration.md)
+ - [SignOnPolicyActionLoginRegistrationExternal](docs/SignOnPolicyActionLoginRegistrationExternal.md)
+ - [SignOnPolicyActionLoginRegistrationPopulation](docs/SignOnPolicyActionLoginRegistrationPopulation.md)
+ - [SignOnPolicyActionLoginSocialProvidersInner](docs/SignOnPolicyActionLoginSocialProvidersInner.md)
+ - [SignOnPolicyActionMFA](docs/SignOnPolicyActionMFA.md)
+ - [SignOnPolicyActionMFAApplicationsInner](docs/SignOnPolicyActionMFAApplicationsInner.md)
+ - [SignOnPolicyActionMFAApplicationsInnerAutoEnrollment](docs/SignOnPolicyActionMFAApplicationsInnerAutoEnrollment.md)
+ - [SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization](docs/SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization.md)
+ - [SignOnPolicyActionMFAAuthenticator](docs/SignOnPolicyActionMFAAuthenticator.md)
+ - [SignOnPolicyActionMFABoundBiometrics](docs/SignOnPolicyActionMFABoundBiometrics.md)
+ - [SignOnPolicyActionMFAEmail](docs/SignOnPolicyActionMFAEmail.md)
+ - [SignOnPolicyActionMFASecurityKey](docs/SignOnPolicyActionMFASecurityKey.md)
+ - [SignOnPolicyActionMFASms](docs/SignOnPolicyActionMFASms.md)
+ - [SignOnPolicyActionMFAVoice](docs/SignOnPolicyActionMFAVoice.md)
+ - [SignOnPolicyActionProgressiveProfiling](docs/SignOnPolicyActionProgressiveProfiling.md)
+ - [SignOnPolicyActionProgressiveProfilingAttributes](docs/SignOnPolicyActionProgressiveProfilingAttributes.md)
+ - [SignOnPolicyAssignment](docs/SignOnPolicyAssignment.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
  - [UpdateEnvironmentTypeRequest](docs/UpdateEnvironmentTypeRequest.md)
  - [User](docs/User.md)
