@@ -1,6 +1,8 @@
 # v1.11.0 (Unreleased)
 
 * **Feature:** Expansion of P1Error model
+* **Feature:** Expansion of PasswordPolicy model + submodels
+* **Feature:** Cleanup of the Password Policy API
 
 # v1.10.0 (2022-07-13)
 
