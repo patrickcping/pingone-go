@@ -7415,6 +7415,7 @@ paths:
       - Notifications > Trusted Email Addresses
   /v1/environments/{environmentID}/passwordPolicies:
     get:
+      operationId: readAllPasswordPolicies
       parameters:
       - explode: false
         in: path
@@ -7432,13 +7433,77 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Password Policies
       tags:
       - Password Policies
+    post:
+      operationId: createPasswordPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordPolicy'
+        required: true
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordPolicy'
+          description: Successful response
+      summary: CREATE Password Policy
+      tags:
+      - Password Policies
   /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}:
+    delete:
+      operationId: deletePasswordPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: passwordPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unauthorised
+        "204":
+          description: Successful response
+      summary: DELETE Password Policy
+      tags:
+      - Password Policies
     get:
+      operationId: readOnePasswordPolicy
       parameters:
       - explode: false
         in: path
@@ -7463,12 +7528,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordPolicy'
           description: Successful response
       summary: READ One Password Policy
       tags:
       - Password Policies
     put:
+      operationId: updatePasswordPolicy
       parameters:
       - explode: false
         in: path
@@ -7488,29 +7556,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                id: 6e4b6b42-b73f-4d03-adbf-7bd231c8b23d
-                environment:
-                  id: 6e4b6b42-b73f-4d03-9871-24e7b26a290e
-                name: Basic
-                description: A relaxed standard policy to allow for maximum customer
-                  flexibility.
-                excludesProfileData: false
-                notSimilarToCurrent: false
-                excludesCommonlyUsed: true
-                lockout:
-                  failureCount: 8
-                  durationSeconds: 900
-                length:
-                  min: 8
-                  max: 255
-                minCharacters:
-                  abcdefghijklmnopqrstuvwxyz: 1
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-                  "0123456789": 1
-                  ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-                default: true
-              type: object
+              $ref: '#/components/schemas/PasswordPolicy'
       responses:
         "401":
           content:
@@ -7520,7 +7566,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordPolicy'
           description: Successful response
       summary: UPDATE Password Policy
       tags:
@@ -11088,7 +11136,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 2.027123023002322
+        size: 6.438423552598547
         _embedded:
           grants:
           - createdAt: createdAt
@@ -11215,7 +11263,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 7
+            accessTokenValiditySeconds: 6
             name: name
             description: description
             id: id
@@ -11227,7 +11275,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 7
+            accessTokenValiditySeconds: 6
             name: name
             description: description
             id: id
@@ -11296,7 +11344,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 9
+              secondsUntilUnlock: 8
               unlockAt: unlockAt
               status: LOCKED
             username: username
@@ -11362,7 +11410,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 9
+              secondsUntilUnlock: 8
               unlockAt: unlockAt
               status: LOCKED
             username: username
@@ -11461,6 +11509,75 @@ components:
           groupMemberships:
           - id: id
           - id: id
+          passwordPolicies:
+          - minCharacters:
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+              "0123456789": 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+              abcdefghijklmnopqrstuvwxyz: 6
+            populationCount: 9
+            length:
+              min: 16
+              max: 9
+            notSimilarToCurrent: true
+            description: description
+            newPassword: newPassword
+            excludesCommonlyUsed: true
+            history:
+              retentionDays: 1
+              count: 1
+            minComplexity: 4
+            excludesProfileData: true
+            currentPassword: currentPassword
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            bypassPolicy: false
+            minUniqueCharacters: 5
+            name: name
+            maxAgeDays: 1
+            id: id
+            maxRepeatedCharacters: 1
+            minAgeDays: 1
+            updatedAt: updatedAt
+          - minCharacters:
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+              "0123456789": 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+              abcdefghijklmnopqrstuvwxyz: 6
+            populationCount: 9
+            length:
+              min: 16
+              max: 9
+            notSimilarToCurrent: true
+            description: description
+            newPassword: newPassword
+            excludesCommonlyUsed: true
+            history:
+              retentionDays: 1
+              count: 1
+            minComplexity: 4
+            excludesProfileData: true
+            currentPassword: currentPassword
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            bypassPolicy: false
+            minUniqueCharacters: 5
+            name: name
+            maxAgeDays: 1
+            id: id
+            maxRepeatedCharacters: 1
+            minAgeDays: 1
+            updatedAt: updatedAt
           attributes:
           - null
           - null
@@ -11512,7 +11629,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 2
+            userCount: 9
             name: name
             description: description
             id: id
@@ -11520,7 +11637,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 2
+            userCount: 9
             name: name
             description: description
             id: id
@@ -11571,7 +11688,7 @@ components:
           applications:
           - null
           - null
-        count: 3.616076749251911
+        count: 9.018348186070783
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -12244,12 +12361,153 @@ components:
           readOnly: true
           type: array
       type: object
+    PasswordPolicy:
+      example:
+        minCharacters:
+          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+          "0123456789": 7
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+          abcdefghijklmnopqrstuvwxyz: 6
+        populationCount: 9
+        length:
+          min: 16
+          max: 9
+        notSimilarToCurrent: true
+        description: description
+        newPassword: newPassword
+        excludesCommonlyUsed: true
+        history:
+          retentionDays: 1
+          count: 1
+        minComplexity: 4
+        excludesProfileData: true
+        currentPassword: currentPassword
+        createdAt: createdAt
+        default: true
+        environment:
+          id: id
+        lockout:
+          durationSeconds: 1
+          failureCount: 1
+        bypassPolicy: false
+        minUniqueCharacters: 5
+        name: name
+        maxAgeDays: 1
+        id: id
+        maxRepeatedCharacters: 1
+        minAgeDays: 1
+        updatedAt: updatedAt
+      properties:
+        bypassPolicy:
+          default: false
+          description: "Determines whether the password policy for a user will be\
+            \ ignored. If this property is omitted from a CREATE Password Policy request,\
+            \ its value is set to false."
+          type: boolean
+        createdAt:
+          description: The date and time the resource was created (format ISO-8061).
+          readOnly: true
+          type: string
+        currentPassword:
+          description: The current password to be verified before the new password
+            is set. Required for self-change when the user already has a password
+            (the user whose password is being changed is the same as the actor in
+            the access token).
+          type: string
+        default:
+          description: "Indicates whether this password policy is enforced within\
+            \ the environment. When set to true, all other password policies are set\
+            \ to false."
+          type: boolean
+        description:
+          description: Specifies the brief description of the password policy.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        excludesCommonlyUsed:
+          description: Set this to true to ensure the password is not one of the commonly
+            used passwords.
+          type: boolean
+        excludesProfileData:
+          description: "Set this to true to ensure the password is not an exact match\
+            \ for the value of any attribute in the user’s profile, such as name,\
+            \ phone number, or address."
+          type: boolean
+        history:
+          $ref: '#/components/schemas/PasswordPolicy_history'
+        id:
+          description: The password resource’s unique identifier.
+          readOnly: true
+          type: string
+        length:
+          $ref: '#/components/schemas/PasswordPolicy_length'
+        lockout:
+          $ref: '#/components/schemas/PasswordPolicy_lockout'
+        maxAgeDays:
+          description: "The maximum number of days the same password can be used before\
+            \ it must be changed. The value must be a positive, non-zero integer.\
+            \  The value must be greater than the sum of minAgeDays (if set) + 21\
+            \ (the expiration warning interval for passwords)."
+          minimum: 1
+          type: integer
+        maxRepeatedCharacters:
+          description: The maximum number of repeated characters allowed. This property
+            is not enforced when not present.
+          type: integer
+        minAgeDays:
+          description: "The minimum number of days a password must be used before\
+            \ changing. The value must be a positive, non-zero integer. This property\
+            \ is not enforced when not present."
+          minimum: 1
+          type: integer
+        minCharacters:
+          $ref: '#/components/schemas/PasswordPolicy_minCharacters'
+        minComplexity:
+          description: The minimum complexity of the password based on the concept
+            of password haystacks. The value is the number of days required to exhaust
+            the entire search space during a brute force attack. This property is
+            not enforced when not present.
+          type: integer
+        minUniqueCharacters:
+          description: The minimum number of unique characters required. This property
+            is not enforced when not present.
+          type: integer
+        name:
+          description: The name of the password policy. This value must be unique
+            within the environment.
+          type: string
+        newPassword:
+          description: The new password (must satisfy all requirements).
+          type: string
+        notSimilarToCurrent:
+          description: "Set this to true to ensure that the proposed password is not\
+            \ too similar to the user's current password based on the Levenshtein\
+            \ distance algorithm. The value of this parameter is evaluated only for\
+            \ password change actions in which the user enters both the current and\
+            \ the new password. By design, PingOne does not know the user's current\
+            \ password."
+          type: boolean
+        populationCount:
+          description: Returned in the response. The number of populations associated
+            with the password policy.
+          readOnly: true
+          type: integer
+        updatedAt:
+          description: The date and time the resource was last updated (format ISO-8061).
+          readOnly: true
+          type: string
+      required:
+      - excludesCommonlyUsed
+      - excludesProfileData
+      - name
+      - notSimilarToCurrent
+      type: object
     Population:
       example:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 2
+        userCount: 9
         name: name
         description: description
         id: id
@@ -12291,7 +12549,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 7
+        accessTokenValiditySeconds: 6
         name: name
         description: description
         id: id
@@ -12740,7 +12998,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 9
+          secondsUntilUnlock: 8
           unlockAt: unlockAt
           status: LOCKED
         username: username
@@ -13201,7 +13459,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 7
+          accessTokenValiditySeconds: 6
           name: name
           description: description
           id: id
@@ -13213,7 +13471,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 7
+          accessTokenValiditySeconds: 6
           name: name
           description: description
           id: id
@@ -13282,7 +13540,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 9
+            secondsUntilUnlock: 8
             unlockAt: unlockAt
             status: LOCKED
           username: username
@@ -13348,7 +13606,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 9
+            secondsUntilUnlock: 8
             unlockAt: unlockAt
             status: LOCKED
           username: username
@@ -13447,6 +13705,75 @@ components:
         groupMemberships:
         - id: id
         - id: id
+        passwordPolicies:
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 9
+          length:
+            min: 16
+            max: 9
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 4
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 5
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 1
+          minAgeDays: 1
+          updatedAt: updatedAt
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 9
+          length:
+            min: 16
+            max: 9
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 4
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 5
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 1
+          minAgeDays: 1
+          updatedAt: updatedAt
         attributes:
         - null
         - null
@@ -13498,7 +13825,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 2
+          userCount: 9
           name: name
           description: description
           id: id
@@ -13506,7 +13833,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 2
+          userCount: 9
           name: name
           description: description
           id: id
@@ -13597,6 +13924,10 @@ components:
         organizations:
           items:
             $ref: '#/components/schemas/Organization'
+          type: array
+        passwordPolicies:
+          items:
+            $ref: '#/components/schemas/PasswordPolicy'
           type: array
         populations:
           items:
@@ -14332,6 +14663,91 @@ components:
           readOnly: true
           type: string
       type: object
+    PasswordPolicy_history:
+      description: Settings to control the users password history
+      example:
+        retentionDays: 1
+        count: 1
+      properties:
+        count:
+          description: "Specifies the number of prior passwords to keep for prevention\
+            \ of password re-use. The value must be a positive, non-zero integer."
+          minimum: 1
+          type: integer
+        retentionDays:
+          description: "The length of time to keep recent passwords for prevention\
+            \ of password re-use. The value must be a positive, non-zero integer."
+          minimum: 1
+          type: integer
+      type: object
+    PasswordPolicy_length:
+      description: Settings to control the user's password length
+      example:
+        min: 16
+        max: 9
+      properties:
+        max:
+          default: 255
+          description: The maximum number of characters allowed for the password.
+            Defaults to 255. This property is not enforced when not present.
+          type: integer
+        min:
+          default: 8
+          description: The minimum number of characters required for the password.
+            This can be from 8 to 32 (inclusive). Defaults to 8 characters. This property
+            is not enforced when not present.
+          maximum: 32
+          minimum: 8
+          type: integer
+      type: object
+    PasswordPolicy_lockout:
+      description: Settings to control the user's lockout on unsuccessful authentication
+        attempts
+      example:
+        durationSeconds: 1
+        failureCount: 1
+      properties:
+        durationSeconds:
+          description: "The length of time before a password is automatically moved\
+            \ out of the lock out state. The value must be a positive, non-zero integer."
+          minimum: 1
+          type: integer
+        failureCount:
+          description: "The number of tries before a password is placed in the lockout\
+            \ state. The value must be a positive, non-zero integer."
+          minimum: 1
+          type: integer
+      type: object
+    PasswordPolicy_minCharacters:
+      description: "A set of key-value pairs where the key is contains all characters\
+        \ that can be included, and the value is the minimum number of times one of\
+        \ the characters must appear in the password. The only allowed key values\
+        \ are `ABCDEFGHIJKLMNOPQRSTUVWXYZ`, `abcdefghijklmnopqrstuvwxyz`, `0123456789`,\
+        \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
+        \ not present."
+      example:
+        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+        "0123456789": 7
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+        abcdefghijklmnopqrstuvwxyz: 6
+      properties:
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ:
+          description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
+            that should feature in the user's password.
+          type: integer
+        abcdefghijklmnopqrstuvwxyz:
+          description: Count of alphabetical uppercase characters (`abcdefghijklmnopqrstuvwxyz`)
+            that should feature in the user's password.
+          type: integer
+        "0123456789":
+          description: Count of numeric characters (`0123456789`) that should feature
+            in the user's password.
+          type: integer
+        ~!@#$%^&*()-_=+[]{}|;:,.<>/?:
+          description: "Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`)\
+            \ that should feature in the user's password."
+          type: integer
+      type: object
     Population_passwordPolicy:
       description: The object reference to the password policy resource. This is an
         optional property.
@@ -14415,7 +14831,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 9
+        secondsUntilUnlock: 8
         unlockAt: unlockAt
         status: LOCKED
       properties:
