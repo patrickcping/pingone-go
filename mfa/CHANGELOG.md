@@ -1,6 +1,7 @@
 # v1.11.0 (Unreleased)
 
 * **Feature:** Expansion of P1Error model
+* **Enhancement:** Added common error codes
 
 # v1.10.0 (2022-07-13)
 
