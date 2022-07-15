@@ -294,10 +294,10 @@ Class | Method | HTTP request | Description
 *PasswordPoliciesApi* | [**ReadOnePasswordPolicy**](docs/PasswordPoliciesApi.md#readonepasswordpolicy) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
 *PasswordPoliciesApi* | [**UpdatePasswordPolicy**](docs/PasswordPoliciesApi.md#updatepasswordpolicy) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
 *PopulationsApi* | [**CreatePopulation**](docs/PopulationsApi.md#createpopulation) | **Post** /v1/environments/{environmentID}/populations | CREATE Population
-*PopulationsApi* | [**DeletePopulation**](docs/PopulationsApi.md#deletepopulation) | **Delete** /v1/environments/{environmentID}/populations/{popID} | DELETE Population
+*PopulationsApi* | [**DeletePopulation**](docs/PopulationsApi.md#deletepopulation) | **Delete** /v1/environments/{environmentID}/populations/{populationID} | DELETE Population
 *PopulationsApi* | [**ReadAllPopulations**](docs/PopulationsApi.md#readallpopulations) | **Get** /v1/environments/{environmentID}/populations | READ All Populations
-*PopulationsApi* | [**ReadOnePopulation**](docs/PopulationsApi.md#readonepopulation) | **Get** /v1/environments/{environmentID}/populations/{popID} | READ One Population
-*PopulationsApi* | [**UpdatePopulation**](docs/PopulationsApi.md#updatepopulation) | **Put** /v1/environments/{environmentID}/populations/{popID} | UPDATE Population
+*PopulationsApi* | [**ReadOnePopulation**](docs/PopulationsApi.md#readonepopulation) | **Get** /v1/environments/{environmentID}/populations/{populationID} | READ One Population
+*PopulationsApi* | [**UpdatePopulation**](docs/PopulationsApi.md#updatepopulation) | **Put** /v1/environments/{environmentID}/populations/{populationID} | UPDATE Population
 *ResourcesResourceAttributesApi* | [**CreateResourceAttribute**](docs/ResourcesResourceAttributesApi.md#createresourceattribute) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/attributes | CREATE Resource Attribute
 *ResourcesResourceAttributesApi* | [**DeleteResourceAttribute**](docs/ResourcesResourceAttributesApi.md#deleteresourceattribute) | **Delete** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | DELETE Resource Attribute
 *ResourcesResourceAttributesApi* | [**ReadAllResourceAttributes**](docs/ResourcesResourceAttributesApi.md#readallresourceattributes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes

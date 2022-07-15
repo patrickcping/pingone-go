@@ -5,10 +5,10 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePopulation**](PopulationsApi.md#CreatePopulation) | **Post** /v1/environments/{environmentID}/populations | CREATE Population
-[**DeletePopulation**](PopulationsApi.md#DeletePopulation) | **Delete** /v1/environments/{environmentID}/populations/{popID} | DELETE Population
+[**DeletePopulation**](PopulationsApi.md#DeletePopulation) | **Delete** /v1/environments/{environmentID}/populations/{populationID} | DELETE Population
 [**ReadAllPopulations**](PopulationsApi.md#ReadAllPopulations) | **Get** /v1/environments/{environmentID}/populations | READ All Populations
-[**ReadOnePopulation**](PopulationsApi.md#ReadOnePopulation) | **Get** /v1/environments/{environmentID}/populations/{popID} | READ One Population
-[**UpdatePopulation**](PopulationsApi.md#UpdatePopulation) | **Put** /v1/environments/{environmentID}/populations/{popID} | UPDATE Population
+[**ReadOnePopulation**](PopulationsApi.md#ReadOnePopulation) | **Get** /v1/environments/{environmentID}/populations/{populationID} | READ One Population
+[**UpdatePopulation**](PopulationsApi.md#UpdatePopulation) | **Put** /v1/environments/{environmentID}/populations/{populationID} | UPDATE Population
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## DeletePopulation
 
-> DeletePopulation(ctx, environmentID, popID).Execute()
+> DeletePopulation(ctx, environmentID, populationID).Execute()
 
 DELETE Population
 
@@ -102,11 +102,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    popID := "popID_example" // string | 
+    populationID := "populationID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PopulationsApi.DeletePopulation(context.Background(), environmentID, popID).Execute()
+    resp, r, err := apiClient.PopulationsApi.DeletePopulation(context.Background(), environmentID, populationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.DeletePopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**popID** | **string** |  | 
+**populationID** | **string** |  | 
 
 ### Other Parameters
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ReadOnePopulation
 
-> Population ReadOnePopulation(ctx, environmentID, popID).Execute()
+> Population ReadOnePopulation(ctx, environmentID, populationID).Execute()
 
 READ One Population
 
@@ -243,11 +243,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    popID := "popID_example" // string | 
+    populationID := "populationID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PopulationsApi.ReadOnePopulation(context.Background(), environmentID, popID).Execute()
+    resp, r, err := apiClient.PopulationsApi.ReadOnePopulation(context.Background(), environmentID, populationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.ReadOnePopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**popID** | **string** |  | 
+**populationID** | **string** |  | 
 
 ### Other Parameters
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePopulation
 
-> Population UpdatePopulation(ctx, environmentID, popID).Population(population).Execute()
+> Population UpdatePopulation(ctx, environmentID, populationID).Population(population).Execute()
 
 UPDATE Population
 
@@ -314,12 +314,12 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    popID := "popID_example" // string | 
+    populationID := "populationID_example" // string | 
     population := *openapiclient.NewPopulation("Name_example") // Population |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PopulationsApi.UpdatePopulation(context.Background(), environmentID, popID).Population(population).Execute()
+    resp, r, err := apiClient.PopulationsApi.UpdatePopulation(context.Background(), environmentID, populationID).Population(population).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.UpdatePopulation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**popID** | **string** |  | 
+**populationID** | **string** |  | 
 
 ### Other Parameters
 
