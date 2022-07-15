@@ -1419,6 +1419,7 @@ paths:
       - Applications > Application Resource Grants
   /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments:
     get:
+      operationId: readAllSignOnPolicyAssignments
       parameters:
       - explode: false
         in: path
@@ -1443,12 +1444,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All SOP Assignments
       tags:
       - Applications > Application Sign-On Policy Assignments
     post:
+      operationId: createSignOnPolicyAssignment
       parameters:
       - explode: false
         in: path
@@ -1468,11 +1472,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                priority: 1
-                signOnPolicy:
-                  id: "{{policyID}}"
-              type: object
+              $ref: '#/components/schemas/SignOnPolicyAssignment'
       responses:
         "401":
           content:
@@ -1482,13 +1482,16 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAssignment'
           description: Successful response
       summary: CREATE SOP Assignment
       tags:
       - Applications > Application Sign-On Policy Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}:
     delete:
+      operationId: deleteSignOnPolicyAssignment
       parameters:
       - explode: false
         in: path
@@ -1524,6 +1527,7 @@ paths:
       tags:
       - Applications > Application Sign-On Policy Assignments
     get:
+      operationId: readOneSignOnPolicyAssignment
       parameters:
       - explode: false
         in: path
@@ -1555,12 +1559,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAssignment'
           description: Successful response
       summary: READ One SOP Assignment
       tags:
       - Applications > Application Sign-On Policy Assignments
     put:
+      operationId: updateSignOnPolicyAssignment
       parameters:
       - explode: false
         in: path
@@ -1587,11 +1594,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                priority: 5
-                signOnPolicy:
-                  id: "{{policyID}}"
-              type: object
+              $ref: '#/components/schemas/SignOnPolicyAssignment'
       responses:
         "401":
           content:
@@ -1601,7 +1604,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAssignment'
           description: Successful response
       summary: UPDATE SOP Assignment
       tags:
@@ -8602,6 +8607,7 @@ paths:
       - Schemas
   /v1/environments/{environmentID}/signOnPolicies:
     get:
+      operationId: readAllSignOnPolicies
       parameters:
       - explode: false
         in: path
@@ -8619,12 +8625,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Sign On Policies
       tags:
       - Sign-On Policies > Sign-On Policies
     post:
+      operationId: createSignOnPolicy
       parameters:
       - explode: false
         in: path
@@ -8637,11 +8646,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Simple_Login
-                default: "false"
-                description: A new basic sign-on policy.
-              type: object
+              $ref: '#/components/schemas/SignOnPolicy'
       responses:
         "401":
           content:
@@ -8651,13 +8656,16 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicy'
           description: Successful response
       summary: CREATE Sign On Policy
       tags:
       - Sign-On Policies > Sign-On Policies
   /v1/environments/{environmentID}/signOnPolicies/{policyID}:
     delete:
+      operationId: deleteSignOnPolicy
       parameters:
       - explode: false
         in: path
@@ -8686,6 +8694,7 @@ paths:
       tags:
       - Sign-On Policies > Sign-On Policies
     get:
+      operationId: readOneSignOnPolicy
       parameters:
       - explode: false
         in: path
@@ -8710,12 +8719,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicy'
           description: Successful response
       summary: READ One Sign On Policy
       tags:
       - Sign-On Policies > Sign-On Policies
     put:
+      operationId: updateSignOnPolicy
       parameters:
       - explode: false
         in: path
@@ -8735,11 +8747,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Updated_Policy
-                description: a sign-on policy that has been updated
-                default: true
-              type: object
+              $ref: '#/components/schemas/SignOnPolicy'
       responses:
         "401":
           content:
@@ -8749,13 +8757,16 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicy'
           description: Successful response
       summary: UPDATE Sign On Policy
       tags:
       - Sign-On Policies > Sign-On Policies
   /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions:
     get:
+      operationId: readAllSignOnPolicyActions
       parameters:
       - explode: false
         in: path
@@ -8780,12 +8791,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Sign-On Policy Actions
       tags:
       - Sign-On Policies > Sign-On Policy Actions
     post:
+      operationId: createSignOnPolicyAction
       parameters:
       - explode: false
         in: path
@@ -8805,12 +8819,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                priority: 50
-                agreement:
-                  id: "{{agreementID}}"
-                type: AGREEMENT
-              type: object
+              $ref: '#/components/schemas/SignOnPolicyAction'
       responses:
         "401":
           content:
@@ -8820,13 +8829,16 @@ paths:
           description: Unauthorised
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAction'
           description: Successful response
-      summary: CREATE Sign-On Policy Action (AGREEMENT)
+      summary: CREATE Sign-On Policy Action
       tags:
       - Sign-On Policies > Sign-On Policy Actions
   /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID}:
     delete:
+      operationId: deleteSignOnPolicyAction
       parameters:
       - explode: false
         in: path
@@ -8862,6 +8874,7 @@ paths:
       tags:
       - Sign-On Policies > Sign-On Policy Actions
     get:
+      operationId: readOneSignOnPolicyAction
       parameters:
       - explode: false
         in: path
@@ -8893,12 +8906,15 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAction'
           description: Successful response
       summary: READ One Sign-On Policy Action
       tags:
       - Sign-On Policies > Sign-On Policy Actions
     put:
+      operationId: updateSignOnPolicyAction
       parameters:
       - explode: false
         in: path
@@ -8925,29 +8941,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                priority: 2
-                condition:
-                  or:
-                  - not:
-                      ipRange:
-                      - 10.5.3.72/24
-                      contains: "${flow.request.http.remoteIp}"
-                  - secondsSince: "${session.lastSignOn.withAuthenticator.pwd.at}"
-                    greater: 50400
-                  - value: "${user.population.id}"
-                    equals: 3985fb03-df09-4b00-a01f-89fd529c9de2
-                  - value: "${user.email}"
-                    equals: joe@pingidentity.com
-                  - ipRisk:
-                      minScore: 80
-                      maxScore: 100
-                    valid: "${flow.request.http.remoteIp}"
-                  - geoVelocity: "${flow.request.http.remoteIp}"
-                    valid:
-                      previousSuccessfulAuthenticationTime: "${user.lastSignOn.at}"
-                      previousSuccessfulAuthenticationIp: "${user.lastSignOn.remoteIp}"
-              type: object
+              $ref: '#/components/schemas/SignOnPolicyAction'
       responses:
         "401":
           content:
@@ -8957,7 +8951,9 @@ paths:
           description: Unauthorised
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignOnPolicyAction'
           description: Successful response
       summary: UPDATE Sign-On Policy Action
       tags:
@@ -11148,7 +11144,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 6.438423552598547
+        size: 3.5571952270680973
         _embedded:
           grants:
           - createdAt: createdAt
@@ -11293,6 +11289,23 @@ components:
             id: id
             type: OPENID_CONNECT
             updatedAt: updatedAt
+          signOnPolicies:
+          - createdAt: createdAt
+            default: false
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            default: false
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
           users:
           - preferredLanguage: preferredLanguage
             timezone: timezone
@@ -11356,7 +11369,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 8
+              secondsUntilUnlock: 9
               unlockAt: unlockAt
               status: LOCKED
             username: username
@@ -11422,10 +11435,27 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 8
+              secondsUntilUnlock: 9
               unlockAt: unlockAt
               status: LOCKED
             username: username
+          signOnPolicyAssignments:
+          - environment:
+              id: id
+            application:
+              id: id
+            signOnPolicy:
+              id: id
+            id: id
+            priority: 1
+          - environment:
+              id: id
+            application:
+              id: id
+            signOnPolicy:
+              id: id
+            id: id
+            priority: 1
           schemas:
           - environment:
               id: id
@@ -11637,6 +11667,9 @@ components:
             id: id
             gateway:
               id: id
+          actions:
+          - null
+          - null
           populations:
           - createdAt: createdAt
             passwordPolicy:
@@ -11700,7 +11733,7 @@ components:
           applications:
           - null
           - null
-        count: 9.018348186070783
+        count: 6.438423552598547
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -11708,6 +11741,17 @@ components:
           type: number
         size:
           type: number
+      type: object
+    ObjectApplication:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the application resource ID associated
+            with the object.
+          readOnly: true
+          type: string
+      readOnly: true
       type: object
     ObjectEnvironment:
       example:
@@ -12946,6 +12990,289 @@ components:
       - name
       - type
       type: object
+    SignOnPolicy:
+      example:
+        createdAt: createdAt
+        default: false
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The date and time the resource was created (format ISO-8061).
+          readOnly: true
+          type: string
+        default:
+          default: false
+          description: "A boolean that specifies whether this sign-on policy is the\
+            \ environment's default that is used by applications that do not have\
+            \ application-specific sign-on policy assignments. This property can only\
+            \ be set to true, in which case the isDefault property of all other sign-on\
+            \ policies are set to false."
+          type: boolean
+        description:
+          description: A string that specifies the description of the sign-on policy.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the sign-on policy resource’s unique
+            identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies the resource name. The name must be\
+            \ unique within the environment, and can consist of either a string of\
+            \ alphanumeric letters, underscore, hyphen, period `^[a-zA-Z0-9_. -]+$`\
+            \ or an absolute URI if the string contains a `:` character."
+          type: string
+        updatedAt:
+          description: The date and time the resource was last updated (format ISO-8061).
+          readOnly: true
+          type: string
+      required:
+      - name
+      type: object
+    SignOnPolicyAction:
+      allOf:
+      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
+      - oneOf:
+        - $ref: '#/components/schemas/SignOnPolicyActionLogin'
+        - $ref: '#/components/schemas/SignOnPolicyActionMFA'
+        - $ref: '#/components/schemas/SignOnPolicyActionIDFirst'
+        - $ref: '#/components/schemas/SignOnPolicyActionIDP'
+        - $ref: '#/components/schemas/SignOnPolicyActionAgreement'
+        - $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling'
+    SignOnPolicyActionCommon:
+      properties:
+        conditions:
+          $ref: '#/components/schemas/SignOnPolicyActionCommon_conditions'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the sign-on policy assignment resource’s
+            unique identifier.
+          readOnly: true
+          type: string
+        priority:
+          description: An integer that specifies the order in which the policy referenced
+            by this assignment is evaluated during an authentication flow relative
+            to other policies. An assignment with a lower priority will be evaluated
+            first. This is a required property.
+          minimum: 1
+          type: integer
+        signOnPolicy:
+          $ref: '#/components/schemas/SignOnPolicyActionCommon_signOnPolicy'
+        type:
+          description: "A string that specifies the type of action. Options are `LOGIN`,\
+            \ `MULTI_FACTOR_AUTHENTICATION`, `IDENTIFIER_FIRST`, `IDENTITY_PROVIDER`\
+            \ `AGREEMENT` and `PROGRESSIVE_PROFILING`."
+          enum:
+          - LOGIN
+          - MULTI_FACTOR_AUTHENTICATION
+          - IDENTIFIER_FIRST
+          - IDENTITY_PROVIDER
+          - PROGRESSIVE_PROFILING
+          - AGREEMENT
+          type: string
+      required:
+      - priority
+      - signOnPolicy
+      - type
+      type: object
+    SignOnPolicyActionLogin:
+      properties:
+        confirmIdentityProviderAttributes:
+          default: false
+          description: "A boolean that specifies whether users must confirm data returned\
+            \ from an identity provider prior to registration. Users can modify the\
+            \ data and omit non-required attributes. Modified attributes are added\
+            \ to the user's profile during account creation. This is an optional property.\
+            \ If omitted, the default value is set to false."
+          type: boolean
+        enforceLockoutForIdentityProviders:
+          description: "A boolean that if set to true and if the user's account is\
+            \ locked (the account.canAuthenticate attribute is set to false), then\
+            \ social sign on with an external identity provider is prevented."
+          type: boolean
+        recovery:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_recovery'
+        registration:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_registration'
+        socialProviders:
+          description: An array of strings that specifies the IDs of the identity
+            providers that can be used for the social login sign-on flow.
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_socialProviders_inner'
+          type: array
+      type: object
+    SignOnPolicyActionMFA:
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_authenticator'
+        boundBiometrics:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_boundBiometrics'
+        email:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_email'
+        securityKey:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_securityKey'
+        sms:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_sms'
+        voice:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_voice'
+        applications:
+          description: "The applications collection specifies all the native native\
+            \ applications that are allowed in the sign-on policy action.  If the\
+            \ applications collection is empty, a push notification is not allowed\
+            \ for the action."
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner'
+          type: array
+        noDeviceMode:
+          description: "A string that specifies the device mode for the MFA flow.\
+            \ Options are `BYPASS` to allow MFA without a specified device, or `BLOCK`\
+            \ to block the MFA flow if no device is specified. To use this configuration\
+            \ option, the authorize request must include a signed `login_hint_token`\
+            \ property. For more information, see Authorize (Browserless and MFA Only\
+            \ Flows)"
+          enum:
+          - BYPASS
+          - BLOCK
+          type: string
+      type: object
+    SignOnPolicyActionIDFirst:
+      properties:
+        confirmIdentityProviderAttributes:
+          default: false
+          description: "A boolean that specifies whether users must confirm data returned\
+            \ from an identity provider prior to registration. Users can modify the\
+            \ data and omit non-required attributes. Modified attributes are added\
+            \ to the user's profile during account creation. This is an optional property.\
+            \ If omitted, the default value is set to false."
+          type: boolean
+        discoveryRules:
+          description: The list of IDP discovery rules that are evaluated in order
+            when no user is associated with the user identifier. The maximum number
+            of rules is 100. The condition on which this identity provider is used
+            to authenticate the user is expressed using the PingOne policy condition
+            language
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionIDFirst_discoveryRules_inner'
+          type: array
+        enforceLockoutForIdentityProviders:
+          description: "A boolean that if set to true and if the user's account is\
+            \ locked (the account.canAuthenticate attribute is set to false), then\
+            \ social sign on with an external identity provider is prevented."
+          type: boolean
+        recovery:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_recovery'
+        registration:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_registration'
+        socialProviders:
+          description: An array of strings that specifies the IDs of the identity
+            providers that can be used for the social login sign-on flow.
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_socialProviders_inner'
+          type: array
+      type: object
+    SignOnPolicyActionIDP:
+      properties:
+        acrValues:
+          description: "A string that designates the sign-on policies included in\
+            \ the authorization flow request. Options can include the PingOne predefined\
+            \ sign-on policies, Single_Factor and Multi_Factor, or any custom defined\
+            \ sign-on policy names. Sign-on policy names should be listed in order\
+            \ of preference, and they must be assigned to the application. This property\
+            \ can be configured on the identity provider action and is passed to the\
+            \ identity provider if the identity provider is of type `SAML` or `OPENID_CONNECT`."
+          type: string
+        identityProvider:
+          $ref: '#/components/schemas/SignOnPolicyActionIDP_identityProvider'
+        passUserContext:
+          description: "A boolean that specifies whether to pass in a login hint to\
+            \ the identity provider on the authentication request. Based on user context,\
+            \ the login hint is set if (1) the user is set on the flow, and (2) the\
+            \ user already has an account link for the identity provider. If both\
+            \ of these conditions are true, then the user is sent to the identity\
+            \ provider with a login hint equal to their externalId for the identity\
+            \ provider (saved on the account link). If these conditions are not true,\
+            \ then the API checks see if there is an OIDC login hint on the flow.\
+            \ If so, that login hint is used. If none of these conditions are true,\
+            \ the login hint parameter is not included on the authorization request\
+            \ to the identity provider."
+          type: boolean
+        registration:
+          $ref: '#/components/schemas/SignOnPolicyActionIDP_registration'
+      required:
+      - identityProvider
+      type: object
+    SignOnPolicyActionAgreement:
+      properties:
+        agreement:
+          $ref: '#/components/schemas/SignOnPolicyActionAgreement_agreement'
+      required:
+      - agreement
+      type: object
+    SignOnPolicyActionProgressiveProfiling:
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_attributes'
+        preventMultiplePromptsPerFlow:
+          description: A boolean that specifies whether the progressive profiling
+            action will not be executed if another progressive profiling action has
+            already been executed during the flow. This property is required.
+          type: boolean
+        promptIntervalSeconds:
+          description: An integer that specifies how often to prompt the user to provide
+            profile data for the configured attributes for which they do not have
+            values. This property is required.
+          minimum: 1
+          type: integer
+        promptText:
+          description: A string that specifies text to display to the user when prompting
+            for attribute values. This property is required.
+          type: string
+      required:
+      - attributes
+      - preventMultiplePromptsPerFlow
+      - promptIntervalSeconds
+      - promptText
+      type: object
+    SignOnPolicyAssignment:
+      example:
+        environment:
+          id: id
+        application:
+          id: id
+        signOnPolicy:
+          id: id
+        id: id
+        priority: 1
+      properties:
+        application:
+          $ref: '#/components/schemas/ObjectApplication'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the sign-on policy assignment resource’s
+            unique identifier.
+          readOnly: true
+          type: string
+        priority:
+          description: The order in which the policy referenced by this assignment
+            is evaluated during an authentication flow relative to other policies.
+            An assignment with a lower priority will be evaluated first.
+          minimum: 1
+          type: integer
+        signOnPolicy:
+          $ref: '#/components/schemas/SignOnPolicyActionCommon_signOnPolicy'
+      required:
+      - priority
+      - signOnPolicy
+      type: object
     User:
       example:
         preferredLanguage: preferredLanguage
@@ -13010,7 +13337,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 8
+          secondsUntilUnlock: 9
           unlockAt: unlockAt
           status: LOCKED
         username: username
@@ -13049,6 +13376,7 @@ components:
           type: string
         id:
           description: A string that specifies the user resource’s unique identifier.
+          readOnly: true
           type: string
         identityProvider:
           $ref: '#/components/schemas/User_identityProvider'
@@ -13513,6 +13841,23 @@ components:
           id: id
           type: OPENID_CONNECT
           updatedAt: updatedAt
+        signOnPolicies:
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
         users:
         - preferredLanguage: preferredLanguage
           timezone: timezone
@@ -13576,7 +13921,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 8
+            secondsUntilUnlock: 9
             unlockAt: unlockAt
             status: LOCKED
           username: username
@@ -13642,10 +13987,27 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 8
+            secondsUntilUnlock: 9
             unlockAt: unlockAt
             status: LOCKED
           username: username
+        signOnPolicyAssignments:
+        - environment:
+            id: id
+          application:
+            id: id
+          signOnPolicy:
+            id: id
+          id: id
+          priority: 1
+        - environment:
+            id: id
+          application:
+            id: id
+          signOnPolicy:
+            id: id
+          id: id
+          priority: 1
         schemas:
         - environment:
             id: id
@@ -13857,6 +14219,9 @@ components:
           id: id
           gateway:
             id: id
+        actions:
+        - null
+        - null
         populations:
         - createdAt: createdAt
           passwordPolicy:
@@ -13921,6 +14286,10 @@ components:
         - null
         - null
       properties:
+        actions:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyAction'
+          type: array
         attributes:
           items:
             $ref: '#/components/schemas/EntityArray__embedded_attributes_inner'
@@ -13976,6 +14345,14 @@ components:
         scopes:
           items:
             $ref: '#/components/schemas/ResourceScope'
+          type: array
+        signOnPolicies:
+          items:
+            $ref: '#/components/schemas/SignOnPolicy'
+          type: array
+        signOnPolicyAssignments:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyAssignment'
           type: array
         roleAssignments:
           items:
@@ -14863,11 +15240,293 @@ components:
           readOnly: true
           type: string
       type: object
+    SignOnPolicyActionCommon_conditions:
+      properties:
+        ipRange:
+          description: A string that specifies the supported network IP addresses
+            expressed as classless inter-domain routing (CIDR) strings.
+          type: string
+        secondsSince:
+          description: An integer that specifies the maximum number of minutes to
+            wait since the last sign on before prompting for a new sign-on action.
+          type: string
+      type: object
+    SignOnPolicyActionCommon_signOnPolicy:
+      description: The sign-on policy associated with this sign-on policy assignment
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the sign-on policy resource's unique
+            identifier associated with this sign-on policy assignment.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionLogin_recovery:
+      description: Specifies the account recovery options.
+      properties:
+        enabled:
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ account recovery action. The default is disabled when creating a new\
+            \ policy. When enabled, it allows the use of the forgot password flow."
+          type: boolean
+      required:
+      - enabled
+      type: object
+    SignOnPolicyActionLogin_registration_external:
+      properties:
+        href:
+          description: A string that specifies the link to the external identity provider's
+            identity store. This property is set when the administrator chooses to
+            have users register in an external identity store. This attribute can
+            be set only when the registration.enabled property is set to false.
+          type: string
+      required:
+      - href
+      type: object
+    SignOnPolicyActionLogin_registration_population:
+      properties:
+        id:
+          description: A string that specifies the population ID associated with the
+            newly registered user.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionLogin_registration:
+      description: Specifies the account registration options.
+      properties:
+        enabled:
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ policy action. The default is disabled when creating a new policy. When\
+            \ enabled, it allows the use of the new user registration flow. This attribute\
+            \ should be set to true when implementing the social login sign-on policy\
+            \ option."
+          type: boolean
+        external:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_registration_external'
+        population:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_registration_population'
+      required:
+      - enabled
+      type: object
+    SignOnPolicyActionLogin_socialProviders_inner:
+      properties:
+        id:
+          description: ID of the identity provider that can be used for the social
+            login sign-on flow.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionMFA_authenticator:
+      description: Specifies MFA through a Time-based One-time Password (TOTP) option
+        over a third-party authenticator application.
+      properties:
+        enabled:
+          default: false
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ MFA through a Time-based One-time Password (TOTP) action. The default\
+            \ is disabled when creating a new policy. When enabled, it allows users\
+            \ to authenticate using a TOTP authenticator application."
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_boundBiometrics:
+      description: Specifies MFA through a FIDO2 biometrics platform device.
+      properties:
+        enabled:
+          default: false
+          description: A boolean that specifies whether to permit users to authenticate
+            with a FIDO2 biometrics platform device.
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_email:
+      description: Specifies MFA through email options.
+      properties:
+        enabled:
+          default: false
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ MFA through email action. The default is disbled when creating a new\
+            \ policy. When enabled, it allows users to receive the one-time password\
+            \ and authenticate through email."
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_securityKey:
+      description: Specifies MFA using a FIDO2 or U2F security key device.
+      properties:
+        enabled:
+          default: false
+          description: A boolean that specifies whether to permit users to authenticate
+            with a security key device.
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_sms:
+      description: Specifies MFA through SMS text messaging options.
+      properties:
+        enabled:
+          default: false
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ MFA through SMS action. The default is disabled when creating a new\
+            \ policy. When enabled, it allows users to receive the one-time password\
+            \ and authenticate through SMS text message."
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_voice:
+      description: Specifies MFA through voice messaging options.
+      properties:
+        enabled:
+          default: false
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ MFA through voice message action. The default is disabled when creating\
+            \ a new policy. When enabled, it allows users to receive the one-time\
+            \ password and authenticate through a voice message."
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_applications_inner_autoEnrollment:
+      properties:
+        enabled:
+          default: false
+          description: "A boolean that specifies the enabled/disabled state of automatic\
+            \ MFA enrollment for the application.  When enabled, it allows automatic\
+            \ enrollment of the native application to MFA during the authentication\
+            \ flow."
+          type: boolean
+      type: object
+    SignOnPolicyActionMFA_applications_inner_deviceAuthorization:
+      properties:
+        enabled:
+          default: false
+          description: A boolean that specifies the enabled/disabled state of automatic
+            MFA for native devices paired with the user for the specified application.
+          type: boolean
+        extraVerification:
+          default: disabled
+          description: "Specifies the level of further verification when deviceAuthorization\
+            \ is enabled. The PingOne platform performs an extra verification check\
+            \ by sending a silent push notification to the customer native application,\
+            \ and receives a confirmation in return.  `extraVerification` can be one\
+            \ of the following levels:\n`disabled` (default): The PingOne platform\
+            \ does not perform the extra verification check.\n`permissive`: The PingOne\
+            \ platform performs the extra verification check. Upon timeout or failure\
+            \ to get a response from the native app, the MFA step is treated as successfully\
+            \ completed.\n`restrictive`: The PingOne platform performs the extra verification\
+            \ check.The PingOne platform performs the extra verification check. Upon\
+            \ timeout or failure to get a response from the native app, the MFA step\
+            \ is treated as failed.\n"
+          enum:
+          - disabled
+          - permissive
+          - restrictive
+          type: string
+      type: object
+    SignOnPolicyActionMFA_applications_inner:
+      properties:
+        id:
+          type: string
+        autoEnrollment:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner_autoEnrollment'
+        deviceAuthorization:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner_deviceAuthorization'
+      required:
+      - id
+      type: object
+    SignOnPolicyActionIDFirst_discoveryRules_inner_condition:
+      properties:
+        contains:
+          type: string
+        value:
+          type: string
+      required:
+      - contains
+      - value
+      type: object
+    SignOnPolicyActionIDFirst_discoveryRules_inner_identityProvider:
+      properties:
+        id:
+          description: A string that specifies the identity provider that will be
+            used to authenticate the user if the condition is matched.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionIDFirst_discoveryRules_inner:
+      properties:
+        condition:
+          $ref: '#/components/schemas/SignOnPolicyActionIDFirst_discoveryRules_inner_condition'
+        identityProvider:
+          $ref: '#/components/schemas/SignOnPolicyActionIDFirst_discoveryRules_inner_identityProvider'
+      required:
+      - condition
+      - identityProvider
+      type: object
+    SignOnPolicyActionIDP_identityProvider:
+      description: A reference to the external identity provider that is used to authenticate
+        the user. This property is required.
+      properties:
+        id:
+          description: A string that specifies the ID of the external identity provider
+            to which the user is redirected for sign-on. This property is required.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionIDP_registration:
+      description: Specifies the account registration options.
+      properties:
+        confirmIdentityProviderAttributes:
+          default: false
+          description: "A boolean that specifies whether users must confirm data returned\
+            \ from an identity provider prior to registration. Users can modify the\
+            \ data and omit non-required attributes. Modified attributes are added\
+            \ to the user's profile during account creation. This is an optional property.\
+            \ If omitted, the default value is set to false."
+          type: boolean
+        enabled:
+          description: "A boolean that specifies the enabled/disabled state of the\
+            \ policy action. The property is disabled by default when creating a new\
+            \ policy. When enabled, it allows the use of the new user registration\
+            \ flow. This attribute should be set to true when implementing the social\
+            \ login sign-on policy option."
+          type: boolean
+        population:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_registration_population'
+      required:
+      - enabled
+      type: object
+    SignOnPolicyActionAgreement_agreement:
+      description: The relationship to the agreement to which the user must consent.
+        The agreement must exist and be enabled. An agreement cannot be disabed if
+        an action uses it. An enabled agreement must always support the default language.
+        This property is required.
+      properties:
+        id:
+          description: A string that specifies the ID of the agreement to which the
+            user must consent. This property is required.
+          type: string
+      required:
+      - id
+      type: object
+    SignOnPolicyActionProgressiveProfiling_attributes:
+      properties:
+        name:
+          description: "A string that specifies the name and path of the user profile\
+            \ attribute as defined in the user schema (for example, email or address.postalCode).\
+            \ This property is required."
+          type: string
+        required:
+          description: A boolean that specifies whether the user is required to provide
+            a value for the attribute. This property is required.
+          type: boolean
+      required:
+      - name
+      - required
+      type: object
     User_account:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 8
+        secondsUntilUnlock: 9
         unlockAt: unlockAt
         status: LOCKED
       properties:

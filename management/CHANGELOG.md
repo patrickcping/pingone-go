@@ -4,6 +4,8 @@
 * **Feature:** Expansion of PasswordPolicy model + submodels
 * **Feature:** Cleanup of the Password Policy API
 * **Enhancement:** Change popID parameter name to populationID for readability
+* **Feature:** Cleanup of the Sign-on Policies API
+* **Feature:** Cleanup of the Application Sign-on policies assignment API
 
 # v1.10.0 (2022-07-13)
 

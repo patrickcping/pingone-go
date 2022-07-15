@@ -4,19 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDSignOnPoliciesGet**](SignOnPoliciesSignOnPoliciesApi.md#V1EnvironmentsEnvironmentIDSignOnPoliciesGet) | **Get** /v1/environments/{environmentID}/signOnPolicies | READ All Sign On Policies
-[**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete**](SignOnPoliciesSignOnPoliciesApi.md#V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
-[**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet**](SignOnPoliciesSignOnPoliciesApi.md#V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
-[**V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut**](SignOnPoliciesSignOnPoliciesApi.md#V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
-[**V1EnvironmentsEnvironmentIDSignOnPoliciesPost**](SignOnPoliciesSignOnPoliciesApi.md#V1EnvironmentsEnvironmentIDSignOnPoliciesPost) | **Post** /v1/environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
+[**CreateSignOnPolicy**](SignOnPoliciesSignOnPoliciesApi.md#CreateSignOnPolicy) | **Post** /v1/environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
+[**DeleteSignOnPolicy**](SignOnPoliciesSignOnPoliciesApi.md#DeleteSignOnPolicy) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
+[**ReadAllSignOnPolicies**](SignOnPoliciesSignOnPoliciesApi.md#ReadAllSignOnPolicies) | **Get** /v1/environments/{environmentID}/signOnPolicies | READ All Sign On Policies
+[**ReadOneSignOnPolicy**](SignOnPoliciesSignOnPoliciesApi.md#ReadOneSignOnPolicy) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
+[**UpdateSignOnPolicy**](SignOnPoliciesSignOnPoliciesApi.md#UpdateSignOnPolicy) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
 
 
 
-## V1EnvironmentsEnvironmentIDSignOnPoliciesGet
+## CreateSignOnPolicy
 
-> V1EnvironmentsEnvironmentIDSignOnPoliciesGet(ctx, environmentID).Execute()
+> SignOnPolicy CreateSignOnPolicy(ctx, environmentID).SignOnPolicy(signOnPolicy).Execute()
 
-READ All Sign On Policies
+CREATE Sign On Policy
 
 ### Example
 
@@ -32,14 +32,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    signOnPolicy := *openapiclient.NewSignOnPolicy("Name_example") // SignOnPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.CreateSignOnPolicy(context.Background(), environmentID).SignOnPolicy(signOnPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.CreateSignOnPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateSignOnPolicy`: SignOnPolicy
+    fmt.Fprintf(os.Stdout, "Response from `SignOnPoliciesSignOnPoliciesApi.CreateSignOnPolicy`: %v\n", resp)
 }
 ```
 
@@ -53,16 +56,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSignOnPoliciesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateSignOnPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **signOnPolicy** | [**SignOnPolicy**](SignOnPolicy.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**SignOnPolicy**](SignOnPolicy.md)
 
 ### Authorization
 
@@ -70,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -78,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete
+## DeleteSignOnPolicy
 
-> V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete(ctx, environmentID, policyID).Execute()
+> DeleteSignOnPolicy(ctx, environmentID, policyID).Execute()
 
 DELETE Sign On Policy
 
@@ -102,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete(context.Background(), environmentID, policyID).Execute()
+    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.DeleteSignOnPolicy(context.Background(), environmentID, policyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.DeleteSignOnPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSignOnPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +151,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet
+## ReadAllSignOnPolicies
 
-> V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet(ctx, environmentID, policyID).Execute()
+> EntityArray ReadAllSignOnPolicies(ctx, environmentID).Execute()
+
+READ All Sign On Policies
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.ReadAllSignOnPolicies(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.ReadAllSignOnPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllSignOnPolicies`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `SignOnPoliciesSignOnPoliciesApi.ReadAllSignOnPolicies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllSignOnPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneSignOnPolicy
+
+> SignOnPolicy ReadOneSignOnPolicy(ctx, environmentID, policyID).Execute()
 
 READ One Sign On Policy
 
@@ -171,11 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet(context.Background(), environmentID, policyID).Execute()
+    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.ReadOneSignOnPolicy(context.Background(), environmentID, policyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.ReadOneSignOnPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneSignOnPolicy`: SignOnPolicy
+    fmt.Fprintf(os.Stdout, "Response from `SignOnPoliciesSignOnPoliciesApi.ReadOneSignOnPolicy`: %v\n", resp)
 }
 ```
 
@@ -190,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneSignOnPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -200,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SignOnPolicy**](SignOnPolicy.md)
 
 ### Authorization
 
@@ -216,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut
+## UpdateSignOnPolicy
 
-> V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut(ctx, environmentID, policyID).Body(body).Execute()
+> SignOnPolicy UpdateSignOnPolicy(ctx, environmentID, policyID).SignOnPolicy(signOnPolicy).Execute()
 
 UPDATE Sign On Policy
 
@@ -237,15 +311,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     policyID := "policyID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    signOnPolicy := *openapiclient.NewSignOnPolicy("Name_example") // SignOnPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut(context.Background(), environmentID, policyID).Body(body).Execute()
+    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.UpdateSignOnPolicy(context.Background(), environmentID, policyID).SignOnPolicy(signOnPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.UpdateSignOnPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateSignOnPolicy`: SignOnPolicy
+    fmt.Fprintf(os.Stdout, "Response from `SignOnPoliciesSignOnPoliciesApi.UpdateSignOnPolicy`: %v\n", resp)
 }
 ```
 
@@ -260,86 +336,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSignOnPoliciesPolicyIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateSignOnPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **signOnPolicy** | [**SignOnPolicy**](SignOnPolicy.md) |  | 
 
 ### Return type
 
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDSignOnPoliciesPost
-
-> V1EnvironmentsEnvironmentIDSignOnPoliciesPost(ctx, environmentID).Body(body).Execute()
-
-CREATE Sign On Policy
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SignOnPoliciesSignOnPoliciesApi.V1EnvironmentsEnvironmentIDSignOnPoliciesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSignOnPoliciesPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
+[**SignOnPolicy**](SignOnPolicy.md)
 
 ### Authorization
 

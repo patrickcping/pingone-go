@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created. | [optional] [readonly] 
 **Environment** | Pointer to [**UserEnvironment**](UserEnvironment.md) |  | [optional] 
 **ExternalId** | Pointer to **string** | A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max&#x3D;1/1024). | [optional] 
-**Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] 
+**Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
 **IdentityProvider** | Pointer to [**UserIdentityProvider**](UserIdentityProvider.md) |  | [optional] 
 **LastSignOn** | Pointer to [**UserLastSignOn**](UserLastSignOn.md) |  | [optional] 
 **Lifecycle** | Pointer to [**UserLifecycle**](UserLifecycle.md) |  | [optional] 

@@ -16,6 +16,7 @@ import (
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
+	Actions []SignOnPolicyAction `json:"actions,omitempty"`
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
 	Applications []EntityArrayEmbeddedApplicationsInner `json:"applications,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
@@ -30,6 +31,8 @@ type EntityArrayEmbedded struct {
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 	Scopes []ResourceScope `json:"scopes,omitempty"`
+	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
+	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []Role `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
@@ -51,6 +54,38 @@ func NewEntityArrayEmbedded() *EntityArrayEmbedded {
 func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 	this := EntityArrayEmbedded{}
 	return &this
+}
+
+// GetActions returns the Actions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetActions() []SignOnPolicyAction {
+	if o == nil || o.Actions == nil {
+		var ret []SignOnPolicyAction
+		return ret
+	}
+	return o.Actions
+}
+
+// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetActionsOk() ([]SignOnPolicyAction, bool) {
+	if o == nil || o.Actions == nil {
+		return nil, false
+	}
+	return o.Actions, true
+}
+
+// HasActions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasActions() bool {
+	if o != nil && o.Actions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActions gets a reference to the given []SignOnPolicyAction and assigns it to the Actions field.
+func (o *EntityArrayEmbedded) SetActions(v []SignOnPolicyAction) {
+	o.Actions = v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -501,6 +536,70 @@ func (o *EntityArrayEmbedded) SetScopes(v []ResourceScope) {
 	o.Scopes = v
 }
 
+// GetSignOnPolicies returns the SignOnPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetSignOnPolicies() []SignOnPolicy {
+	if o == nil || o.SignOnPolicies == nil {
+		var ret []SignOnPolicy
+		return ret
+	}
+	return o.SignOnPolicies
+}
+
+// GetSignOnPoliciesOk returns a tuple with the SignOnPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetSignOnPoliciesOk() ([]SignOnPolicy, bool) {
+	if o == nil || o.SignOnPolicies == nil {
+		return nil, false
+	}
+	return o.SignOnPolicies, true
+}
+
+// HasSignOnPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasSignOnPolicies() bool {
+	if o != nil && o.SignOnPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicies gets a reference to the given []SignOnPolicy and assigns it to the SignOnPolicies field.
+func (o *EntityArrayEmbedded) SetSignOnPolicies(v []SignOnPolicy) {
+	o.SignOnPolicies = v
+}
+
+// GetSignOnPolicyAssignments returns the SignOnPolicyAssignments field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetSignOnPolicyAssignments() []SignOnPolicyAssignment {
+	if o == nil || o.SignOnPolicyAssignments == nil {
+		var ret []SignOnPolicyAssignment
+		return ret
+	}
+	return o.SignOnPolicyAssignments
+}
+
+// GetSignOnPolicyAssignmentsOk returns a tuple with the SignOnPolicyAssignments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetSignOnPolicyAssignmentsOk() ([]SignOnPolicyAssignment, bool) {
+	if o == nil || o.SignOnPolicyAssignments == nil {
+		return nil, false
+	}
+	return o.SignOnPolicyAssignments, true
+}
+
+// HasSignOnPolicyAssignments returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasSignOnPolicyAssignments() bool {
+	if o != nil && o.SignOnPolicyAssignments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicyAssignments gets a reference to the given []SignOnPolicyAssignment and assigns it to the SignOnPolicyAssignments field.
+func (o *EntityArrayEmbedded) SetSignOnPolicyAssignments(v []SignOnPolicyAssignment) {
+	o.SignOnPolicyAssignments = v
+}
+
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment {
 	if o == nil || o.RoleAssignments == nil {
@@ -631,6 +730,9 @@ func (o *EntityArrayEmbedded) SetUsers(v []User) {
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Actions != nil {
+		toSerialize["actions"] = o.Actions
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -672,6 +774,12 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Scopes != nil {
 		toSerialize["scopes"] = o.Scopes
+	}
+	if o.SignOnPolicies != nil {
+		toSerialize["signOnPolicies"] = o.SignOnPolicies
+	}
+	if o.SignOnPolicyAssignments != nil {
+		toSerialize["signOnPolicyAssignments"] = o.SignOnPolicyAssignments
 	}
 	if o.RoleAssignments != nil {
 		toSerialize["roleAssignments"] = o.RoleAssignments

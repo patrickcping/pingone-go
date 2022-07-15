@@ -23,137 +23,33 @@ import (
 // ApplicationsApplicationSignOnPolicyAssignmentsApiService ApplicationsApplicationSignOnPolicyAssignmentsApi service
 type ApplicationsApplicationSignOnPolicyAssignmentsApiService service
 
-type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest struct {
+type ApiCreateSignOnPolicyAssignmentRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
 	environmentID string
 	applicationID string
+	signOnPolicyAssignment *SignOnPolicyAssignment
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGet READ All SOP Assignments
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest
-*/
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGet(ctx context.Context, environmentID string, applicationID string) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		applicationID: applicationID,
-	}
-}
-
-// Execute executes the request
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetExecute(r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
-	environmentID string
-	applicationID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest {
-	r.body = &body
+func (r ApiCreateSignOnPolicyAssignmentRequest) SignOnPolicyAssignment(signOnPolicyAssignment SignOnPolicyAssignment) ApiCreateSignOnPolicyAssignmentRequest {
+	r.signOnPolicyAssignment = &signOnPolicyAssignment
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostExecute(r)
+func (r ApiCreateSignOnPolicyAssignmentRequest) Execute() (*SignOnPolicyAssignment, *http.Response, error) {
+	return r.ApiService.CreateSignOnPolicyAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPost CREATE SOP Assignment
+CreateSignOnPolicyAssignment CREATE SOP Assignment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param applicationID
- @return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest
+ @return ApiCreateSignOnPolicyAssignmentRequest
 */
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPost(ctx context.Context, environmentID string, applicationID string) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest{
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignment(ctx context.Context, environmentID string, applicationID string) ApiCreateSignOnPolicyAssignmentRequest {
+	return ApiCreateSignOnPolicyAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -162,16 +58,18 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 }
 
 // Execute executes the request
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostExecute(r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPostRequest) (*http.Response, error) {
+//  @return SignOnPolicyAssignment
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SignOnPolicyAssignment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.CreateSignOnPolicyAssignment")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments"
@@ -200,22 +98,22 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.signOnPolicyAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -228,18 +126,27 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest struct {
+type ApiDeleteSignOnPolicyAssignmentRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
 	environmentID string
@@ -247,21 +154,21 @@ type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignme
 	sOPAssignmentID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteExecute(r)
+func (r ApiDeleteSignOnPolicyAssignmentRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSignOnPolicyAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDelete DELETE SOP Assignment
+DeleteSignOnPolicyAssignment DELETE SOP Assignment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param applicationID
  @param sOPAssignmentID
- @return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest
+ @return ApiDeleteSignOnPolicyAssignmentRequest
 */
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDelete(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest{
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignment(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiDeleteSignOnPolicyAssignmentRequest {
+	return ApiDeleteSignOnPolicyAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -271,14 +178,14 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 }
 
 // Execute executes the request
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDeleteRequest) (*http.Response, error) {
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.DeleteSignOnPolicyAssignment")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -347,48 +254,165 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest struct {
+type ApiReadAllSignOnPolicyAssignmentsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
 	environmentID string
 	applicationID string
-	sOPAssignmentID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetExecute(r)
+func (r ApiReadAllSignOnPolicyAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSignOnPolicyAssignmentsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGet READ One SOP Assignment
+ReadAllSignOnPolicyAssignments READ All SOP Assignments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param applicationID
- @param sOPAssignmentID
- @return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest
+ @return ApiReadAllSignOnPolicyAssignmentsRequest
 */
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGet(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest{
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignments(ctx context.Context, environmentID string, applicationID string) ApiReadAllSignOnPolicyAssignmentsRequest {
+	return ApiReadAllSignOnPolicyAssignmentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
 		applicationID: applicationID,
-		sOPAssignmentID: sOPAssignmentID,
 	}
 }
 
 // Execute executes the request
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetExecute(r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.ReadAllSignOnPolicyAssignments")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneSignOnPolicyAssignmentRequest struct {
+	ctx context.Context
+	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
+	environmentID string
+	applicationID string
+	sOPAssignmentID string
+}
+
+func (r ApiReadOneSignOnPolicyAssignmentRequest) Execute() (*SignOnPolicyAssignment, *http.Response, error) {
+	return r.ApiService.ReadOneSignOnPolicyAssignmentExecute(r)
+}
+
+/*
+ReadOneSignOnPolicyAssignment READ One SOP Assignment
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param applicationID
+ @param sOPAssignmentID
+ @return ApiReadOneSignOnPolicyAssignmentRequest
+*/
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssignment(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiReadOneSignOnPolicyAssignmentRequest {
+	return ApiReadOneSignOnPolicyAssignmentRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		applicationID: applicationID,
+		sOPAssignmentID: sOPAssignmentID,
+	}
+}
+
+// Execute executes the request
+//  @return SignOnPolicyAssignment
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SignOnPolicyAssignment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.ReadOneSignOnPolicyAssignment")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}"
@@ -419,19 +443,19 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -444,46 +468,55 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest struct {
+type ApiUpdateSignOnPolicyAssignmentRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationSignOnPolicyAssignmentsApiService
 	environmentID string
 	applicationID string
 	sOPAssignmentID string
-	body *map[string]interface{}
+	signOnPolicyAssignment *SignOnPolicyAssignment
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest {
-	r.body = &body
+func (r ApiUpdateSignOnPolicyAssignmentRequest) SignOnPolicyAssignment(signOnPolicyAssignment SignOnPolicyAssignment) ApiUpdateSignOnPolicyAssignmentRequest {
+	r.signOnPolicyAssignment = &signOnPolicyAssignment
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutExecute(r)
+func (r ApiUpdateSignOnPolicyAssignmentRequest) Execute() (*SignOnPolicyAssignment, *http.Response, error) {
+	return r.ApiService.UpdateSignOnPolicyAssignmentExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPut UPDATE SOP Assignment
+UpdateSignOnPolicyAssignment UPDATE SOP Assignment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param applicationID
  @param sOPAssignmentID
- @return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest
+ @return ApiUpdateSignOnPolicyAssignmentRequest
 */
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPut(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest{
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignment(ctx context.Context, environmentID string, applicationID string, sOPAssignmentID string) ApiUpdateSignOnPolicyAssignmentRequest {
+	return ApiUpdateSignOnPolicyAssignmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -493,16 +526,18 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 }
 
 // Execute executes the request
-func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutExecute(r ApiV1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPutRequest) (*http.Response, error) {
+//  @return SignOnPolicyAssignment
+func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SignOnPolicyAssignment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.V1EnvironmentsEnvironmentIDApplicationsApplicationIDSignOnPolicyAssignmentsSOPAssignmentIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationSignOnPolicyAssignmentsApiService.UpdateSignOnPolicyAssignment")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}"
@@ -532,22 +567,22 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.signOnPolicyAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -560,13 +595,22 @@ func (a *ApplicationsApplicationSignOnPolicyAssignmentsApiService) V1Environment
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
