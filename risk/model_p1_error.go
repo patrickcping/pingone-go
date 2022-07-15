@@ -16,9 +16,13 @@ import (
 
 // P1Error struct for P1Error
 type P1Error struct {
+	// A unique identifier that is stored in log files and always included in an error response. This value can be used to track the error received by the client, with server-side activity included for troubleshooting purposes.
 	Id *string `json:"id,omitempty"`
+	// A general fault code which the client must handle to provide all exception handling routines and to localize messages for users. This code is common across all PingOne services and is human readable (such as a defined constant rather than a number).
 	Code *string `json:"code,omitempty"`
+	// A short description of the error. This message is intended to assist with debugging and is returned in English only.
 	Message *string `json:"message,omitempty"`
+	// Additional details about the error. Optional information to help resolve the error and to display to users.
 	Details []P1ErrorDetailsInner `json:"details,omitempty"`
 }
 

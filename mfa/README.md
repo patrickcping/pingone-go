@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
+ - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [UpdateMFAPushCredentialRequest](docs/UpdateMFAPushCredentialRequest.md)
 
 

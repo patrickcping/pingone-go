@@ -22,6 +22,7 @@ docs/MFASettingsApi.md
 docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
+docs/P1ErrorDetailsInnerInnerError.md
 docs/UpdateMFAPushCredentialRequest.md
 docs/UsersEnableUsersMFAApi.md
 docs/UsersMFADevicesApi.md
@@ -39,6 +40,7 @@ model_mfa_push_credential_apns_all_of.go
 model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go
+model_p1_error_details_inner_inner_error.go
 model_update_mfa_push_credential_request.go
 response.go
 utils.go
