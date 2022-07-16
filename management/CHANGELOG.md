@@ -1,4 +1,12 @@
-# v1.11.0 (Unreleased)
+# v1.12.0 (2022-07-16)
+
+:warning: DEPRECATED :warning:
+
+This module is deprecated and replaced with [github.com/patrickcping/pingone-go-sdk-v2/management](https://github.com/patrickcping/pingone-go-sdk-v2/management)
+
+Conversion from this module to `github.com/patrickcping/pingone-go-sdk-v2/management` [v0.1.0](https://github.com/patrickcping/pingone-go-sdk-v2/tree/management/v0.1.0) is direct, there is no functional change.  The deprecation is to rebase the version history to better reflect the general stability of the module.
+
+# v1.11.0 (2022-07-15)
 
 * **Feature:** Expansion of P1Error model
 * **Feature:** Expansion of PasswordPolicy model + submodels

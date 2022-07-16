@@ -1,3 +1,4 @@
+// Deprecated: use github.com/patrickcping/pingone-go-sdk-v2/risk instead
 module github.com/patrickcping/pingone-go/risk
 
 go 1.13

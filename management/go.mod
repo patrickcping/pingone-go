@@ -1,3 +1,4 @@
+// Deprecated: use github.com/patrickcping/pingone-go-sdk-v2/management instead
 module github.com/patrickcping/pingone-go/management
 
 go 1.13
